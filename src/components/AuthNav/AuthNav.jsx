@@ -1,17 +1,17 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ButtonCss } from './AuthNav.styled';
+import ReusableButton from 'shared/components/Button';
 
 const AuthNav = () => {
     const navigate = useNavigate();
   return (
     <div>
-      <ButtonCss type="button" onClick={() => navigate('/login')}>
+      <ReusableButton type='submit' color='black' text="Here's the button!" onClick={() => navigate('/login')}>
         Log in
-      </ButtonCss>
-      <button type="button" onClick={() => navigate('/register')}>
+      </ReusableButton>
+      <ReusableButton type="button" onClick={() => navigate('/register')}>
         Registration
-      </button>
+      </ReusableButton>
     </div>
   );
 }
