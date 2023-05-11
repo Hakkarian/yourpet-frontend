@@ -1,13 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.9252c3bf.css",
-    "main.js": "/static/js/main.bc7e4dad.js",
+    "main.css": "/static/css/main.c5944f2c.css",
+    "main.js": "/static/js/main.862301df.js",
+    "static/js/979.8ff940fb.chunk.js": "/static/js/979.8ff940fb.chunk.js",
+    "static/js/644.10eb2b8c.chunk.js": "/static/js/644.10eb2b8c.chunk.js",
+    "static/js/175.9da409b5.chunk.js": "/static/js/175.9da409b5.chunk.js",
+    "static/js/833.1c07b770.chunk.js": "/static/js/833.1c07b770.chunk.js",
+    "static/js/755.29dd2462.chunk.js": "/static/js/755.29dd2462.chunk.js",
+    "static/js/369.a3203e3e.chunk.js": "/static/js/369.a3203e3e.chunk.js",
+    "static/js/860.66f4e916.chunk.js": "/static/js/860.66f4e916.chunk.js",
+    "static/js/122.2d2334d7.chunk.js": "/static/js/122.2d2334d7.chunk.js",
     "index.html": "/index.html",
-    "main.9252c3bf.css.map": "/static/css/main.9252c3bf.css.map",
-    "main.bc7e4dad.js.map": "/static/js/main.bc7e4dad.js.map"
+    "static/media/user.svg": "/static/media/user.660013a140ff036541d757d1182b65a9.svg",
+    "static/media/burger-menu.svg": "/static/media/burger-menu.1ce9ce72faabf082eaf0010a09d2ff70.svg",
+    "main.c5944f2c.css.map": "/static/css/main.c5944f2c.css.map",
+    "main.862301df.js.map": "/static/js/main.862301df.js.map",
+    "979.8ff940fb.chunk.js.map": "/static/js/979.8ff940fb.chunk.js.map",
+    "644.10eb2b8c.chunk.js.map": "/static/js/644.10eb2b8c.chunk.js.map",
+    "175.9da409b5.chunk.js.map": "/static/js/175.9da409b5.chunk.js.map",
+    "833.1c07b770.chunk.js.map": "/static/js/833.1c07b770.chunk.js.map",
+    "755.29dd2462.chunk.js.map": "/static/js/755.29dd2462.chunk.js.map",
+    "369.a3203e3e.chunk.js.map": "/static/js/369.a3203e3e.chunk.js.map",
+    "860.66f4e916.chunk.js.map": "/static/js/860.66f4e916.chunk.js.map",
+    "122.2d2334d7.chunk.js.map": "/static/js/122.2d2334d7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9252c3bf.css",
-    "static/js/main.bc7e4dad.js"
+    "static/css/main.c5944f2c.css",
+    "static/js/main.862301df.js"
   ]
 }
