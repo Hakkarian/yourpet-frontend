@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React from 'react';
+import { /*Link*/ NavLink } from 'react-router-dom';
 import { NavCss } from './Nav.styled';
 
 const Nav = () => {
@@ -10,6 +10,6 @@ const Nav = () => {
       <NavLink to="/friends">Our friends</NavLink>
     </NavCss>
   );
-}
+};
 
-export default Nav
+export default Nav;

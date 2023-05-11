@@ -1,47 +1,42 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL
-})
+  baseURL: 'localhost:3030/api',
+});
 
-const setToken = token => {
-    if (token) {
-        return instance.defaults.headers.authorization = `Bearer ${token}`
-    }
-    return instance.defaults.headers.authorization = '';
-}
+export const setToken = token => {
+  if (token) {
+    return (instance.defaults.headers.authorization = `Bearer ${token}`);
+  }
+  return (instance.defaults.headers.authorization = '');
+};
 
-export const registere = async (data) => {
-    const { data: result } = await instance.post('register', data);
-    setToken(result.token)
-    return result;
-}
+export const registere = async data => {
+  const { data: result } = await instance.post('/auth/register', data);
+  setToken(result.token);
+  return result;
+};
 
-export const logine = async (data) => {
-    const { data: result } = await instance.post('/login', data)
-    setToken(result.token);
-    return result;
-}
+export const logine = async data => {
+  const { data: result } = await instance.post('/auth/login', data);
+  setToken(result.token);
+  return result;
+};
 
 export const logoute = async () => {
-    const { data } = await instance.post('/logout');
-    setToken()
-    return data;
-}
+  const { data } = await instance.post('/user/logout');
+  setToken();
+  return data;
+};
 
-export const currente = async token => {
-    try {
-        setToken(token)
-        const { data } = await instance.get('/current')
-        return data;
-    } catch (error) {
-        setToken();
-        throw error;
-    }
-}
+export const infoService = async data => {
+  const { data: result } = await instance.patch('/user/info', data);
+  setToken(result.token);
+  return result;
+};
 
-export const info = async (data) => {
-    const { data: result } = await instance.patch('/info', data)
-    setToken(result.token)
-    return result;
-}
+export const refreshUserService = async data => {
+  const { data: result } = await instance.get('/user/current', data);
+  setToken(result.token);
+  return result;
+};
