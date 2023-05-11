@@ -34,7 +34,7 @@ export const UserWrapCss = styled.div`
 `;
 
 export const InfoCss = styled.p`
-  display: none;
+
   @media screen and (min-width: 768px) {
     display: inline-block;
   }
