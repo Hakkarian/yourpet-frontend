@@ -4,7 +4,7 @@ import Nav from 'components/Nav/Nav'
 import UserNav from 'components/UserNav'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AuthWrapCss, HeaderCss, InfoCss, LinkCss, UserWrapCss } from './Header.styled'
+import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled'
 
 
 import moblogo from '../../images/moblogo1x.png';
@@ -14,11 +14,11 @@ import user from '../../icons/user.svg';
 import burgerMenu from '../../icons/burger-menu.svg';
 
 const Header = () => {
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
+  // const handleOpen = () => {
+  //   setOpen(true)
+  // }
 
   return (
     <>
@@ -32,7 +32,7 @@ const Header = () => {
             <InfoCss>Anna</InfoCss>
           </UserWrapCss>
           <Link>
-            <img src={burgerMenu} alt="burger-menu" onClick={handleOpen} />
+            <img src={burgerMenu} alt="burger-menu" />
           </Link>
         </AuthWrapCss>
         <nav>

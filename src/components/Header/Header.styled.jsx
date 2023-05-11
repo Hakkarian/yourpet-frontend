@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Link } from 'react-router-dom';
 
 export const HeaderCss = styled.header`
     height: ${({theme}) => theme.spacing(15)}px;
