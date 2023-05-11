@@ -11,9 +11,7 @@ const UserData = () => {
             <Title>My information:</Title>
             <UserInfoWrap>
             <ImgDiv>
-                <UserImage src={require("../../images/default-user-img.jpg")} alt="User"/>
                 <IconWrap>
-                <Icon src={require("../../icons/camera.png")} alt="camera"/>
                 <ImgInput type="file" ></ImgInput>
                 </IconWrap>
                 <ul>

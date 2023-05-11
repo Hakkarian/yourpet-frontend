@@ -27,7 +27,7 @@ const Header = () => {
         <AuthWrapCss>
           <UserWrapCss>
             <Link to="/user">
-              <img src={user} alt="user" width='24' height='24' />
+              <img src={user} alt="user info" width='24' height='24' />
             </Link>
             <InfoCss>Anna</InfoCss>
           </UserWrapCss>

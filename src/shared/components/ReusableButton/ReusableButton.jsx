@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 
 const Button = styled.button`
   display: ${props => props.display};
+  align-items: ${props => props.alignItems};
+  gap: ${props => props.gap};
   background-color: ${props => props.backgroundColor};
   color: ${props => props.color};
   font-size: ${props => props.fontSize};
@@ -30,6 +32,8 @@ const ReusableButton = ({
   type,
   onClick,
   display,
+  alignItems,
+  gap,
   backgroundColor,
   color,
   fontSize,
@@ -50,6 +54,8 @@ const ReusableButton = ({
       type={type}
       ocClick={onClick}
       display={display}
+      alignItems={alignItems}
+      gap={gap}
       backgroundColor={backgroundColor}
       color={color}
       fontSize={fontSize}
@@ -77,6 +83,8 @@ ReusableButton.propTypes = {
   type: PropTypes.string,
   onClick: PropTypes.func,
   display: PropTypes.string,
+  alignItems: PropTypes.string,
+  gap: PropTypes.string,
   backgroundColor: PropTypes.string,
   color: PropTypes.string,
   fontSize: PropTypes.string,
@@ -96,6 +104,8 @@ ReusableButton.propTypes = {
 ReusableButton.defaultProps = {
   type: 'button',
   display: 'inline-block',
+  alignItems: '',
+  gap: '',
   backgroundColor:'yellow',
   color: '#fff',
   fontSize: '16px',

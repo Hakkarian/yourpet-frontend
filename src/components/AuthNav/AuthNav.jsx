@@ -11,6 +11,9 @@ const AuthNav = () => {
     <AuthNavCss>
       <ReusableButton
         type="button"
+        display='flex'
+        alignItems='center'
+        gap='5px'
         color="#FFC107"
         border="1px solid #FFC107"
         text="Log IN"
