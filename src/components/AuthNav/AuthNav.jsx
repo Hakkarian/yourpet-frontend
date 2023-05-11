@@ -1,13 +1,18 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import ReusableButton from 'shared/components/Button';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import ReusableButton from 'shared/components/Button'
 import { AuthNavCss } from './AuthNav.styled';
 
 const AuthNav = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <AuthNavCss>
-      <ReusableButton type='submit' color='black' text="Here's the button!" onClick={() => navigate('/login')}>
+      <ReusableButton
+        type="submit"
+        color="black"
+        text="Here's the button!"
+        onClick={() => navigate('/login')}
+      >
         Log in
       </ReusableButton>
       <ReusableButton type="button" onClick={() => navigate('/register')}>
@@ -15,6 +20,6 @@ const AuthNav = () => {
       </ReusableButton>
     </AuthNavCss>
   );
-}
+};
 
-export default AuthNav
+export default AuthNav;

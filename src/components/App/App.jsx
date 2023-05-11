@@ -1,30 +1,55 @@
-import NoticesPage from 'pages/NoticesPage';
 import SharedLayout from 'components/SharedLayout';
-import MainPage from 'pages/MainPage';
-import NewsPage from 'pages/NewsPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import OurFriendsPage from 'pages/OurFriendsPage';
-import RegisterPage from 'pages/RegisterPage';
-import LoginPage from 'pages/LoginPage';
-import UserPage from 'pages/UserPage';
-import AddPetPage from 'pages/AddPetPage';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { refreshUser } from 'redux/auth/auth-operations';
+import { lazy, useEffect } from 'react';
+import { Loader } from 'components/Loader';
+
+const MainPage = lazy(() => import('pages/MainPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
+const NoticesPage = lazy(() => import('pages/NoticesPage'));
+const UserPage = lazy(() => import('pages/UserPage'));
+const AddPetPage = lazy(() => import('pages/AddPetPage'));
 
 const App = () => {
-  return (
-    <BrowserRouter>
+  const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
+    <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="main" element={<MainPage />} />
-          <Route path="news" element={<NewsPage />} />
-          <Route path="notices" element={<NoticesPage />} />
-          <Route path="friends" element={<OurFriendsPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="users" element={<UserPage />} />
-          <Route path="add-pet" element={<AddPetPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="/add-pet" element={<AddPetPage />} />
+          <Route path="/notices">
+            <Route index element={<Navigate to="/notices/sell" />} />
+            <Route path=":categoryName" element={<NoticesPage />} />
+          </Route>
+          <Route
+            path="/user"
+            element={shouldRedirect ? <Navigate to="/" /> : <UserPage />}
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
