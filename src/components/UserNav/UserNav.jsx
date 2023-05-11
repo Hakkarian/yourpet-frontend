@@ -1,9 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { UserNavCss } from './UserNav.styled'
 
 const UserNav = () => {
   return (
-    <div><Link to='/users'>User</Link></div>
+    <UserNavCss>
+      <NavLink to='/users'>User</NavLink>
+    </UserNavCss>
   )
 }
 

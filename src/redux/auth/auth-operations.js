@@ -2,10 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 import {registere, logine, logoute, currente} from 'shared/services/auth-api'
 
-export const register = createAsyncThunk('register', async(data, { rejectWithValue }) => {
+export const register = createAsyncThunk('auth/register', async(data, { dispatch, rejectWithValue }) => {
     try {
         const result = await registere(data);
-        toast('Success! Now you can login.', {
+        toast('Success!', {
           icon: '😊',
           style: {
             borderRadius: '10px',
@@ -13,6 +13,11 @@ export const register = createAsyncThunk('register', async(data, { rejectWithVal
             color: '#fff',
           },
         });
+      const loginData = {
+        email: data.email,
+        password: data.password
+      }
+        await dispatch(login(loginData))
         return result;
     } catch ({response}) { //error.response
         if (response.status === 400) {
@@ -32,7 +37,7 @@ export const register = createAsyncThunk('register', async(data, { rejectWithVal
     }
 })
 
-export const login = createAsyncThunk('login', async (data, { rejectWithValue }) => {
+export const login = createAsyncThunk('auth/login', async (data, { rejectWithValue }) => {
     try {
         const result = await logine(data)
         toast('Long time no see!', {
@@ -100,4 +105,21 @@ export const current = createAsyncThunk('current', async (_, { rejectWithValue, 
             return false;
         }
     }
+})
+
+export const info = createAsyncThunk('/user/info', async (data, { rejectWithValue }) => {
+  try {
+    const result = await info(data);
+    toast('Changed succesfully!', {
+      icon: '😊',
+      style: {
+      borderRadius: '10px',
+      background: 'darkgreen',
+      color: '#fff',
+  },
+});
+    return result;
+  } catch (error) {
+    rejectWithValue(error)
+  }
 })

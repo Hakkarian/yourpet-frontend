@@ -1,13 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { NavCss } from './Nav.styled';
 
 const Nav = () => {
   return (
-    <div>
-      <Link to="/news">News</Link>
-      <Link to="/notices">Find pet</Link>
-      <Link to="/friends">Our friends</Link>
-    </div>
+    <NavCss>
+      <NavLink to="/news">News</NavLink>
+      <NavLink to="/notices">Find pet</NavLink>
+      <NavLink to="/friends">Our friends</NavLink>
+    </NavCss>
   );
 }
 

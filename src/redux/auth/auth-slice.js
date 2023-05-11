@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { current, login, logout, register } from './auth-operations';
+import { current, info, login, logout, register } from './auth-operations';
 
 const authSlice = createSlice({
     name: 'auth',
@@ -16,21 +16,26 @@ const authSlice = createSlice({
           .addCase(login.pending, state => (state.isLoading = true))
           .addCase(logout.pending, state => (state.isLoading = true))
           .addCase(current.pending, state => (state.isLoading = true))
+          .addCase(info.pending, state => state.isLoading = true)
           .addCase(register.rejected, (state, { payload }) => { // action.payload
-            state.isLoading = true;
+            state.isLoading = false;
             state.error = payload.error;
           })
           .addCase(login.rejected, (state, { payload }) => {
-            state.isLoading = true;
+            state.isLoading = false;
             state.error = payload.error;
           })
           .addCase(logout.rejected, (state, { payload }) => {
-            state.isLoading = true;
+            state.isLoading = false;
             state.error = payload.error;
           })
           .addCase(current.rejected, (state, { payload }) => {
-            state.isLoading = true;
+            state.isLoading = false;
             state.error = payload;
+          })
+          .addCase(info.rejected, (state, { payload }) => {
+            state.isLoading = false;
+            state.error = payload.error;
           })
           .addCase(register.fulfilled, (state, { payload }) => {
             const { user, token } = payload;
@@ -57,6 +62,10 @@ const authSlice = createSlice({
             state.user = payload;
             state.isLogin = true;
           })
+          .addCase(info.fulfilled, (state, { payload }) => {
+            state.isLoading = false;
+            state.user = payload;
+      })
     }
 })
 

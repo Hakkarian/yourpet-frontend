@@ -39,3 +39,9 @@ export const currente = async token => {
         throw error;
     }
 }
+
+export const info = async (data) => {
+    const { data: result } = await instance.patch('/info', data)
+    setToken(result.token)
+    return result;
+}
