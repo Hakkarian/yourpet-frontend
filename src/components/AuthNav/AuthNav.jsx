@@ -8,14 +8,25 @@ const AuthNav = () => {
   return (
     <AuthNavCss>
       <ReusableButton
-        type="submit"
-        color="black"
-        text="Here's the button!"
+        type="button"
+        color="white"
+        border="1px solid #FFC107"
+        text="Log IN"
+        backgroundColor="transparent"
+        borderRadius="40px"
         onClick={() => navigate('/login')}
       >
         Log in
       </ReusableButton>
-      <ReusableButton type="button" onClick={() => navigate('/register')}>
+      <ReusableButton
+        type="button"
+        color="white"
+        border="1px solid #FFC107"
+        text="Registration"
+        backgroundColor="transparent"
+        borderRadius="40px"
+        onClick={() => navigate('/register')}
+      >
         Registration
       </ReusableButton>
     </AuthNavCss>

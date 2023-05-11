@@ -8,6 +8,7 @@ const Button = styled.button`
     padding: ${props => props.padding};
     border: ${props => props.border};
     border-radius: ${props => props.borderRadius};
+    maxWidth: ${props => props.maxWidth};
 `;
 
 const ReusableButton = ({
@@ -20,6 +21,7 @@ const ReusableButton = ({
   padding,
   border,
   borderRadius,
+  maxWidth
 }) => {
   return (
     <Button
@@ -31,6 +33,7 @@ const ReusableButton = ({
       padding={padding}
       border={border}
       borderRadius={borderRadius}
+      maxWidth={maxWidth}
     >
       {text}
     </Button>
@@ -47,6 +50,7 @@ ReusableButton.propTypes = {
   padding: PropTypes.string,
   border: PropTypes.string,
   borderRadius: PropTypes.string,
+  maxWidth: PropTypes.string,
 };
 
 ReusableButton.defaultProps = {
@@ -55,8 +59,9 @@ ReusableButton.defaultProps = {
   color: '#fff',
   fontSize: '16px',
   padding: '7px 15px',
-  border: 'none',
+  border: '1px solid black',
   borderRadius: '5px',
+  maxWidth: '165px',
 };
 
 export default ReusableButton;
