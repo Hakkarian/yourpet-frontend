@@ -6,7 +6,7 @@ import { UserImage, ImgDiv, Icon, ImgInput, IconWrap } from "./UserData.styled";
 import useForm from "./useForm";
 import inputs from "./inputs";
 import { info } from "redux/auth/auth-operations";
-import UserDataItem from "components/UserDataItem/UserDataItem";
+import UserDataItem from "components/UserDataItem";
 
 const initialState = {
     name: "",
