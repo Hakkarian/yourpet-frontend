@@ -4,6 +4,7 @@ import ReusableButton from 'shared/components/ReusableButton';
 import { AuthNavCss, IconCss } from './AuthNav.styled';
 
 import paw from '../../icons/paw.svg';
+import ReusableInput from 'shared/components/ReusableInput/ReusableInput';
 
 const AuthNav = () => {
   const navigate = useNavigate();
@@ -37,8 +38,7 @@ const AuthNav = () => {
         hovfocBgColor="#FFC107"
         transition="background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out"
         onClick={() => navigate('/register')}
-      />
-    </AuthNavCss>
+      />    </AuthNavCss>
   );
 };
 
