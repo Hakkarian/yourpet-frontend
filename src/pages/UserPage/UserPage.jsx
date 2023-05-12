@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { UserDiv } from './UserPage.styled';
+import { Wrap, UserDiv, Title } from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
@@ -8,13 +8,14 @@ import Logout from 'components/Logout';
 const UserPage = () => {
   return (
     <UserDiv>
-      <div>
+       <Title>My information:</Title>
+      <Wrap>
       <UserData />
       <Logout />
-      </div>
+      </Wrap>
       <PetsData />
     </UserDiv>
   )
 }
 
-export default UserPage
+export default UserPage;
