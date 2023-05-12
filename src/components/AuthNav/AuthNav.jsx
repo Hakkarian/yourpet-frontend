@@ -4,7 +4,6 @@ import ReusableButton from 'shared/components/ReusableButton';
 import { AuthNavCss, IconCss } from './AuthNav.styled';
 
 import paw from '../../icons/paw.svg';
-import ReusableInput from 'shared/components/ReusableInput/ReusableInput';
 
 const AuthNav = () => {
   const navigate = useNavigate();
