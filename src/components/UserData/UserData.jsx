@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Title, UserImage, ImgDiv, UserInfoWrap, Icon, ImgInput, IconWrap, InfoP } from "./UserData.styled";
+import { Title, ImgDiv, UserInfoWrap, ImgInput, IconWrap, InfoP } from "./UserData.styled";
 
 
 const UserData = () => {
@@ -11,9 +11,7 @@ const UserData = () => {
             <Title>My information:</Title>
             <UserInfoWrap>
             <ImgDiv>
-                <UserImage src={require("../../images/default-user-img.jpg")} alt="User"/>
                 <IconWrap>
-                <Icon src={require("../../icons/camera.png")} alt="camera"/>
                 <ImgInput type="file" ></ImgInput>
                 </IconWrap>
                 <ul>

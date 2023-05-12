@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReusableButton from 'shared/components/Button'
-import { AuthNavCss } from './AuthNav.styled';
+import ReusableButton from 'shared/components/ReusableButton';
+import { AuthNavCss, IconCss } from './AuthNav.styled';
+
+import paw from '../../icons/paw.svg';
 
 const AuthNav = () => {
   const navigate = useNavigate();
@@ -9,26 +11,33 @@ const AuthNav = () => {
     <AuthNavCss>
       <ReusableButton
         type="button"
-        color="white"
+        display='flex'
+        alignItems='center'
+        gap='5px'
+        color="#FFC107"
         border="1px solid #FFC107"
         text="Log IN"
         backgroundColor="transparent"
         borderRadius="40px"
+        hovfocColor="white"
+        hovfocBgColor="#FFC107"
+        transition="background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out"
         onClick={() => navigate('/login')}
       >
-        Log in
+        <IconCss src={paw} alt="paw" width="24" height="24" />
       </ReusableButton>
       <ReusableButton
         type="button"
-        color="white"
+        color="#FFC107"
         border="1px solid #FFC107"
         text="Registration"
         backgroundColor="transparent"
         borderRadius="40px"
+        hovfocColor="white"
+        hovfocBgColor="#FFC107"
+        transition="background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out"
         onClick={() => navigate('/register')}
-      >
-        Registration
-      </ReusableButton>
+      />
     </AuthNavCss>
   );
 };
