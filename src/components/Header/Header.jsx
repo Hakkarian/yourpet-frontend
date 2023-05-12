@@ -49,7 +49,6 @@ const AdaptiveLogo = () => {
   const [isSmall, setIsSmall] = useState(false);
   const [isMedium, setIsMedium] = useState(false);
 
-  console.log(window.innerWidth);
   const handleResize = () => {
     if (window.innerWidth < 768) {
       setIsSmall(true);

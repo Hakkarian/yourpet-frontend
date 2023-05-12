@@ -7,37 +7,15 @@ import paw from '../../icons/paw.svg';
 
 const AuthNav = () => {
   const navigate = useNavigate();
+
+  const handleRegister = () => navigate('/register')
   return (
     <AuthNavCss>
-      <ReusableButton
-        type="button"
-        display='flex'
-        alignItems='center'
-        gap='5px'
-        color="#FFC107"
-        border="1px solid #FFC107"
-        text="Log IN"
-        backgroundColor="transparent"
-        borderRadius="40px"
-        hovfocColor="white"
-        hovfocBgColor="#FFC107"
-        transition="background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out"
-        onClick={() => navigate('/login')}
-      >
+      <ReusableButton text='Log IN'  >
         <IconCss src={paw} alt="paw" width="24" height="24" />
       </ReusableButton>
-      <ReusableButton
-        type="button"
-        color="#FFC107"
-        border="1px solid #FFC107"
-        text="Registration"
-        backgroundColor="transparent"
-        borderRadius="40px"
-        hovfocColor="white"
-        hovfocBgColor="#FFC107"
-        transition="background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out"
-        onClick={() => navigate('/register')}
-      />    </AuthNavCss>
+      <ReusableButton text='Register' onClick={handleRegister}/>
+    </AuthNavCss>
   );
 };
 

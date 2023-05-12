@@ -8,7 +8,7 @@ const UseFormExample = () => {
     email: '',
     password: '',
   });
-  console.log(values);
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
