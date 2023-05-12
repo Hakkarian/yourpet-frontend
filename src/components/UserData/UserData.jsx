@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import {ReactComponent as Check} from '../../icons/check.svg';
-import { UserImage, ImgDiv, Icon, ImgInput, IconWrap } from "./UserData.styled";
+import { ImgDiv, ImgInput, IconWrap } from "./UserData.styled";
 import useForm from "./useForm";
 import inputs from "./inputs";
 import { info } from "redux/auth/auth-operations";

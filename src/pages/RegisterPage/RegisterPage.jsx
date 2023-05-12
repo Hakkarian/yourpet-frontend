@@ -1,8 +1,9 @@
 import React from 'react'
+import { RegisterCss } from './RegisterPage.styled'
 
 const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
+    <RegisterCss>RegisterPage</RegisterCss>
   )
 }
 
