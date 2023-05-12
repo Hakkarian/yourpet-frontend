@@ -15,13 +15,13 @@ import bg_desc_paws_2x from "./bg_img/desc/bg_desc_paws_full_2x_original.png";
 
 export const SectionTag = styled.section`
     position: absolute;
-
-    min-height: calc(100vh - 168px);
-    padding: 108px 20px 60px 20px;
-    top: 0;
+    top: 60px;
     right: 0;
     bottom: 0;
     left: 0;
+
+    min-height: calc(100vh - 168px);
+    padding: 48px 20px 60px 20px;
 
     // background-color: rgba(0,0,0,0);
     background-image:url(${bg_mobile_paws});
@@ -42,7 +42,7 @@ export const SectionTag = styled.section`
     }
     div {
         position: absolute;
-        top: 216px;
+        top: 156px;
         right: 0;
         bottom: 0;
         left: 0;
