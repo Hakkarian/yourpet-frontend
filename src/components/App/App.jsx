@@ -15,6 +15,7 @@ const NewsPage = lazy(() => import('pages/NewsPage'));
 const NoticesPage = lazy(() => import('pages/NoticesPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 const AddPetPage = lazy(() => import('pages/AddPetPage'));
+const ErrorPage = lazy(() => import('pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const App = () => {
             path="/user"
             element={shouldRedirect ? <Navigate to="/" /> : <UserPage />}
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </>

@@ -15,16 +15,15 @@ import bg_desc_paws_2x from "./bg_img/desc/bg_desc_paws_full_2x_original.png";
 
 export const SectionTag = styled.section`
     position: absolute;
-
-    min-height: calc(100vh - 168px);
-    margin-top: 108px;
-    padding: 0px 20px 60px 20px;
-    top: 0;
+    top: 60px;
     right: 0;
     bottom: 0;
     left: 0;
 
-    background-color: rgba(0,0,0,0);
+    min-height: calc(100vh - 168px);
+    padding: 48px 20px 60px 20px;
+
+    // background-color: rgba(0,0,0,0);
     background-image:url(${bg_mobile_paws});
     background-position: 0% 0%;
     @media (min-device-pixel-ratio: 2),
@@ -43,13 +42,13 @@ export const SectionTag = styled.section`
     }
     div {
         position: absolute;
-        top: 216px;
+        top: 156px;
         right: 0;
         bottom: 0;
         left: 0;
         min-height: 384px;
 
-        background-color: rgba(0,0,0,0);
+        // background-color: rgba(0,0,0,0);
         background-image:url(${bg_mobile_pets});
         background-position: 58% -54px;
         background-size: 475px 457px;
