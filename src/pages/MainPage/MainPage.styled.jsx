@@ -23,7 +23,7 @@ export const SectionTag = styled.section`
     bottom: 0;
     left: 0;
 
-    background-color: rgba(0,0,0,0);
+    // background-color: rgba(0,0,0,0);
     background-image:url(${bg_mobile_paws});
     background-position: 0% 0%;
     @media (min-device-pixel-ratio: 2),
@@ -48,7 +48,7 @@ export const SectionTag = styled.section`
         left: 0;
         min-height: 384px;
 
-        background-color: rgba(0,0,0,0);
+        // background-color: rgba(0,0,0,0);
         background-image:url(${bg_mobile_pets});
         background-position: 58% -54px;
         background-size: 475px 457px;
