@@ -1,9 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReusableButton from 'shared/components/ReusableButton';
-import { AuthNavCss, IconCss, PawCss } from './AuthNav.styled';
-
-import { ReactComponent as Paw } from '../../icons/paw.svg';
+import { AuthNavCss, PawCss } from './AuthNav.styled';
 
 const AuthNav = () => {
   const navigate = useNavigate();
