@@ -10,6 +10,10 @@ const Button = styled.button`
   gap: ${({ theme }) => theme.spacing(1)}px;
 
   font-size: ${({ theme }) => theme.spacing(4)}px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  
   padding: ${({ theme }) => theme.spacing(2)}px
     ${({ theme }) => theme.spacing(5)}px;
 
@@ -24,12 +28,13 @@ const Button = styled.button`
     color: #fff;
     background-color: ${({ theme }) => theme.colors.yellow};
   }
-  transition: background-color 250ms ease-in-out, color 250ms ease-in-out, border 250ms ease-in-out;
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 250ms ease-in-out;
 `;
 
-const ReusableButton = ({type = 'button', text = "", children, onClick}) => {
+const ReusableButton = ({type = 'button', text = "", disabled, children, onClick}) => {
   return (
-    <Button type={type} onClick={onClick}>
+    <Button type={type} onClick={onClick} disabled={disabled}>
       {text}
       {children}
     </Button>

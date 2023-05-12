@@ -10,8 +10,9 @@ import { AuthWrapCss, HeaderCss, InfoCss, NavConnect, UserWrapCss } from './Head
 import moblogo from '../../images/moblogo1x.png';
 import tablogo from '../../images/tablogo1x.png';
 import logo from '../../images/logo1x.png';
-import user from '../../icons/user.svg';
-import burgerMenu from '../../icons/burger-menu.svg';
+
+import { ReactComponent as User } from '../../icons/user.svg';
+import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
 
 const Header = () => {
   // const [open, setOpen] = useState(false)
@@ -27,12 +28,12 @@ const Header = () => {
         <AuthWrapCss>
           <UserWrapCss>
             <Link to="/user">
-              <img src={user} alt="user info" width='24' height='24' />
+              <User width='24' height='24' />
             </Link>
             <InfoCss>Anna</InfoCss>
           </UserWrapCss>
           <Link>
-            <img src={burgerMenu} alt="burger-menu" />
+            <BurgerMenu width='24' height='24' />
           </Link>
         </AuthWrapCss>
         <NavConnect>
