@@ -26,13 +26,14 @@ const App = () => {
 
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
+
   return isRefreshing ? (
     <Loader />
   ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/main" element={<MainPage />} />
+          <Route index element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/news" element={<NewsPage />} />

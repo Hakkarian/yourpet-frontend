@@ -4,7 +4,7 @@ import Nav from 'components/Nav/Nav'
 import UserNav from 'components/UserNav'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled'
+import { AuthWrapCss, HeaderCss, InfoCss, NavConnect, UserWrapCss } from './Header.styled'
 
 
 import moblogo from '../../images/moblogo1x.png';
@@ -27,7 +27,7 @@ const Header = () => {
         <AuthWrapCss>
           <UserWrapCss>
             <Link to="/user">
-              <img src={user} alt="user" width='24' height='24' />
+              <img src={user} alt="user info" width='24' height='24' />
             </Link>
             <InfoCss>Anna</InfoCss>
           </UserWrapCss>
@@ -35,11 +35,11 @@ const Header = () => {
             <img src={burgerMenu} alt="burger-menu" />
           </Link>
         </AuthWrapCss>
-        <nav>
+        <NavConnect>
           <Nav />
           <AuthNav />
           <UserNav />
-        </nav>
+        </NavConnect>
       </HeaderCss>
     </>
   );

@@ -8,6 +8,7 @@ import inputs from "./inputs";
 import { info } from "redux/auth/auth-operations";
 import UserDataItem from "components/UserDataItem";
 
+
 const initialState = {
     name: "",
     email: "",
@@ -28,9 +29,7 @@ const UserData = () => {
     return (
         <div>
             <ImgDiv>
-                <UserImage src={require("../../images/default-user-img.jpg")} alt="User"/>
                 <IconWrap>
-                <Icon src={require("../../icons/camera.png")} alt="camera"/>
                 <ImgInput type="file" ></ImgInput>
                 </IconWrap>
                 <div>

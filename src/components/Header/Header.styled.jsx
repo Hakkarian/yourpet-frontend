@@ -11,6 +11,7 @@ export const AuthWrapCss = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-left: auto;
 
   @media screen and (min-width: 768px) {
     gap: 42px;
@@ -34,8 +35,17 @@ export const UserWrapCss = styled.div`
 `;
 
 export const InfoCss = styled.p`
+display: none;
 
   @media screen and (min-width: 768px) {
     display: inline-block;
+  }
+`;
+
+export const NavConnect = styled.nav`
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: space-between;
+    gap: 450px;
   }
 `;
