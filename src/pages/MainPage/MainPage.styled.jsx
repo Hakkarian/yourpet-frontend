@@ -64,7 +64,8 @@ export const SectionTag = styled.section`
 
     @media (min-width: 767px) {
         min-height: calc(100vh - 148px);
-        padding: 148px 32px 0px 32px;
+        margin-top: 148px;
+        padding: 0px 32px 0px 32px;
 
         
         background-image:url(${bg_tab_paws});
@@ -100,7 +101,8 @@ export const SectionTag = styled.section`
     @media (min-width: 1279px) {
         // min-height: calc(100vh - 148px);
         max-width:1280px;
-        padding: 100px 0px 0px 16px;
+        margin-top: 100px;
+        padding: 0px 0px 0px 16px;
         margin-right: auto;
         margin-left: auto;
 

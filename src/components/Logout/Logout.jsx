@@ -1,10 +1,21 @@
-import React from "react";
+// import {useState} from "react";
 
-const Logout = () => {
+// import {ReactComponent as OutIcon} from '../../icons/logout.svg';
+// import {OutBtn, OutWrap, OutText} from './Logout.styled';
 
-    return (
-        <div>Logout</div>
-    )
-};
+// const Logout = () => {
+//     // const [isOpenModal, setIsOpenModal] = useState(false);
 
-export default Logout;
+
+
+//     return (
+//         <OutWrap>
+//             <OutBtn type="button" onClick={() => setIsOpenModal(true)}>
+//                 <OutIcon />
+//             </OutBtn>
+//             <OutText>Log Out</OutText>
+//         </OutWrap>
+//     )
+// };
+
+// export default Logout;

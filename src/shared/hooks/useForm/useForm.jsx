@@ -10,7 +10,7 @@ const useForm = (initialState) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
+
     }
 
     return { values, handleChange, handleSubmit };

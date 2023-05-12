@@ -41,3 +41,11 @@ display: none;
     display: inline-block;
   }
 `;
+
+export const NavConnect = styled.nav`
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    justify-content: space-between;
+    gap: 450px;
+  }
+`;
