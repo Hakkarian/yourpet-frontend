@@ -1,20 +1,7 @@
-import React from 'react'
-
-import { useToggle } from 'hooks/useToggle';
-
-import ModalNotice from 'components/ModalNotice/ModalNotice';
+import React from 'react';
 
 const NoticesPage = () => {
-  const { isOpen, open, close } = useToggle();
+  return <div>NoticesPage</div>;
+};
 
-  return (
- 
-    <div>NoticesPage
-      <button type='button' onClick={open}>learn More</button>
-        {isOpen && <ModalNotice onClose={close} ></ModalNotice>}
-    </div>
-
-  )
-}
-
-export default NoticesPage
+export default NoticesPage;
