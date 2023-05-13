@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState } from 'react';
 
 import formFields from '../../FormModel/formFields';
 import TextField from '../../FormFields/TextField/TextField';
@@ -7,7 +7,7 @@ import Button from '../../FormFields/Button/Button';
 import { BtnWrapper } from './PersonalDetailsForm.styled';
 
 const PersonalDetailsForm = ({ helpers, changeStep }) => {
-  const { setFieldTouched, validateField, errors, setErrors } = helpers;
+  const { setFieldTouched, validateField, errors } = helpers;
 
   const [next, setNext] = useState(false);
   const fields = ['title', 'name', 'date', 'breed'];

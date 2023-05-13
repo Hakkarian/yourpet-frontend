@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import Title from 'pages/AddPetPage/AddPetForm/FormFields/Title/Title';
 import styled from '@emotion/styled';
-import { StyledForm, Wrapper } from './AddPetForm.styled';
+import { StyledForm } from './AddPetForm.styled';
 
 import initialValues from './FormModel/formInitualValues';
 import validationSchema from './FormModel/validationSchema';
