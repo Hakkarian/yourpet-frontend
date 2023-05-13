@@ -10,12 +10,16 @@ export const RegisterCss = styled.div`
 `;
 
 export const FlexDivCss = styled.div`
-  width: 280px;
-  height: 473px;
-  padding: 40px 12px;
+  height: 433px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 40px 12px 0px 12px;
 
 
   background-color: #fff;
+
+  border-radius: 20px;
+  box-shadow: ${({theme}) => theme.shadow.default};
 `;
 
 export const FormCss = styled(Form)`
@@ -24,24 +28,66 @@ export const FormCss = styled(Form)`
   align-items: center;
   row-gap: 30px;
 
-  label {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translate(0%, -50%);
-    transition: transform 250ms ease-in-out;
+
+  .field {
+    display: inline-block;
+    width: 250px;
+    height: 40px;
   }
 
-  input {
-    width: ${({ theme }) => theme.spacing(64)}px;
-    height: ${({ theme }) => theme.spacing(12)}px;
+  div {
 
+  }
+
+  div input {
+    width: 250px;
+    padding: 10px 12px 10px 12px;
     border: 1px solid ${({ theme }) => theme.colors.blue};
-    border-radius: ${({ theme }) => theme.spacing(10)}px;
+    border-radius: 5px;
+    font-size: 16px;
+
+
+    transition: transform 250ms ease-in-out, border 250ms ease-in-out;
   }
-  input:focus + label {
-    transform: translate(0%, 150%);
+
+  div span {
+    position: absolute;
+    top: 0px;
+    right: 62%;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 16px;
+
+    transition: transform 250ms ease-in-out, font-size 250ms linear,
+      padding 250ms ease-in-out, background-color 250ms ease-in-out,
+      border 250ms ease-in-out, letter-spacing 250ms linear, text-transform 250ms linear;
   }
+
+  div:nth-of-type(1) span {
+    right: 75%;
+  }
+
+  div input:focus ~ span {
+    color: black;
+    transform: translate(33px, -5px);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    background-color: ${({ theme }) => theme.colors.blue};
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  div:nth-of-type(1) input:focus ~ span {
+    transform: translate(30px, -7px);
+  } 
+
+   div input:focus {
+    border: 1px solid black;
+    transform: scale(1);
+   }
 `;
 
 export const AnchorCss = styled.div`
@@ -62,8 +108,22 @@ export const ReusableButtonCss = styled(ReusableButton)`
 
 export const ReusableTitleCss = styled(ReusableTitle)`
     margin-top: 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
     text-align: center;
 `
 
+export const TextWrapCss = styled.p`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+
+  font-family: 'Manrope';
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+export const TextCss = styled.p`
+   margin: 0;
+`

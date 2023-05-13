@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import * as Yup from 'yup';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik, Field } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss } from './RegisterPage.styled';
+import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
+import { Link } from 'react-router-dom';
+// import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
+// import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -9,6 +13,7 @@ const validationSchema = Yup.object().shape({
 })
 
 const RegisterPage = () => {
+  const [open, setOpen] = useState(true);
   const initialState = {
     email: '',
     password: ''
@@ -17,6 +22,8 @@ const RegisterPage = () => {
   const handleSubmit = ({ setSubmitting }) => {
     setSubmitting(false)
   }
+
+
   return (
     <RegisterCss>
       <FlexDivCss>
@@ -28,24 +35,43 @@ const RegisterPage = () => {
         >
           {({ isSubmitting }) => (
             <FormCss>
-              <AnchorCss>
-                <label htmlFor="email">Email</label>
+              <AnchorCss className="wraps">
                 <Field type="text" name="email" />
-                <ErrorMessage name="email"></ErrorMessage>
+                <span>Email</span>
               </AnchorCss>
               <AnchorCss>
-                <label htmlFor="password">Password</label>
-                <Field type="text" name="password" />
-                <ErrorMessage name="password"></ErrorMessage>
+                <Field type={open ? 'text' : 'password'} name="password" />
+                <span>Password</span>
+                {open ? (
+                  <button type="button" onClick={() => setOpen(false)}>
+                    Close
+                  </button>
+                ) : (
+                  <button type="button" onClick={() => setOpen(true)}>
+                    Open
+                  </button>
+                )}
               </AnchorCss>
               <AnchorCss>
-                <label htmlFor="password">Confirm password</label>
-                <Field type="text" name="password" />
-                <ErrorMessage name="password"></ErrorMessage>
+                <Field type="password" name="password" />
+                <span>Confirm password</span>
+                {open ? (
+                  <button type="button" onClick={() => setOpen(false)}>
+                    Close
+                  </button>
+                ) : (
+                  <button type="button" onClick={() => setOpen(true)}>
+                    Open
+                  </button>
+                )}
               </AnchorCss>
               <ReusableButton type="submit" disabled={isSubmitting}>
                 Register
               </ReusableButton>
+              <TextWrapCss>
+                <TextCss>Forgot an account?</TextCss>
+                <Link to="/login">Login</Link>
+              </TextWrapCss>
             </FormCss>
           )}
         </Formik>

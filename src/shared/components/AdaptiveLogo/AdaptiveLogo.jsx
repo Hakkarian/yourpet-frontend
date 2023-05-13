@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import moblogo from '../../../images/moblogo1x.png'
-import tablogo from '../../../images/tablogo1x.png';
-import logo from '../../../images/logo1x.png';
-
+// import tablogo from '../../../images/tablogo1x.png';
+// import logo from '../../../images/logo1x.png';
 
 
 const AdaptiveLogo = () => {
     const [isSmall, setIsSmall] = useState(false);
-    const [isMedium, setIsMedium] = useState(false);
+  const [isMedium, setIsMedium] = useState(false);
 
     const handleResize = () => {
       if (window.innerWidth < 768) {
@@ -24,7 +23,10 @@ const AdaptiveLogo = () => {
       }
     };
 
-    window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', handleResize);
+  if (window.innerWidth < 768) {
+      return <div>Hello</div>
+    }
   return (
     <Link to="/main">
       <img
