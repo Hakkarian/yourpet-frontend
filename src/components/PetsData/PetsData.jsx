@@ -1,9 +1,15 @@
 import React from "react";
 
+import PetsList from "components/PetsList";
+import { Title } from "pages/UserPage/UserPage.styled";
+
 const PetsData = () => {
 
     return (
-        <div>PetsData</div>
+        <div>
+            <Title>My pets:</Title>
+            <PetsList />
+        </div>
     )
 };
 
