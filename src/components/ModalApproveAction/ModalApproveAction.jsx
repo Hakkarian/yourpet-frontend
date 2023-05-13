@@ -2,7 +2,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Backdrop, Wrapper, CloseModalBtn, CancelBtn, YesBtn } from './ModalApproveAction.styled';
+import { Backdrop, Wrapper, CloseModalBtn, CancelBtn } from './ModalApproveAction.styled';
+import BlueButton from 'shared/components/BlueButton/BlueButton';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -29,7 +30,7 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
         <CloseModalBtn type='button' onClick={onClose}>x</CloseModalBtn>
         {children}
         <CancelBtn type='button' onClick={onClose}>Cancel</CancelBtn>
-        <YesBtn type='button'>Yes</YesBtn>
+        <BlueButton type='button'>Yes</BlueButton>
       </Wrapper>
     </Backdrop>,
     modalRoot

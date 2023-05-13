@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { useState } from 'react';
+// import { useState } from 'react';
+
+import { useToggle } from 'hooks/useToggle';
 
 import { UserDiv } from './UserPage.styled';
 import UserData from 'components/UserData';
@@ -11,17 +13,15 @@ import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction
 import { ModalTitle } from './UserPage.styled';
 
 const UserPage = () => {
-  const [isShowModal, setIsShouModal] = useState(false);
-  const shouModal = () => setIsShouModal(true);
-  const closeModal = () => setIsShouModal(false);
+  const { isOpen, open, close } = useToggle();
 
   return (
     <UserDiv>
       <div>
         <UserData />
-          <Logout onClick={shouModal} />
-          {isShowModal && (
-            <ModalApproveAction onClose={closeModal}>
+          <Logout onClick={open} />
+          {isOpen && (
+            <ModalApproveAction onClose={close}>
               <ModalTitle>Already leaving?</ModalTitle>
             </ModalApproveAction>
           )}
