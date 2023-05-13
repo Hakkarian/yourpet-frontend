@@ -1,18 +1,22 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 import { searchPetByQuery } from '../../../shared/services/notices-api';
 import { toast } from 'react-toastify';
 
-import SearchPetsPage from '../../../pages/SearchPetsPage/SearchPetsPage';
 import search from '../../../icons/search.svg';
 import deleteQuery from '../../../icons/cross-small.svg';
-import { TitleSearch, FormSearch, InputSearch, ButtonIcon } from './NoticesSearch.styled';
+import {
+  TitleSearch,
+  FormSearch,
+  InputSearch,
+  ButtonIcon,
+} from './NoticesSearch.styled';
 import NoticesCategoriesNav from '../NoticesCategoriesNav';
 
 const NoticesSearch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [pets, setPets] = useState([]);
+  const [, setPets] = useState([]);
   const searchPet = searchParams.get('query') ?? '';
   const [searchQuery, setSearchQuery] = useState(searchPet);
 
@@ -29,13 +33,12 @@ const NoticesSearch = () => {
     setSearchParams({ query: searchQuery });
   };
 
-   const handlerReset = e => {
-     e.preventDefault();
-     setPets('');
-     setSearchQuery('');
-     setSearchParams({ query: '' });
-   };
-
+  const handlerReset = e => {
+    e.preventDefault();
+    setPets('');
+    setSearchQuery('');
+    setSearchParams({ query: '' });
+  };
 
   useEffect(() => {
     if (!searchPet) {
@@ -47,31 +50,35 @@ const NoticesSearch = () => {
 
   return (
     <div>
-      <FormSearch onSubmit={handleSubmit}>
+      <FormSearch onSubmit={handleSubmit} onReset={handlerReset}>
         <TitleSearch>Find your favorite pet</TitleSearch>
         <InputSearch
           placeholder="Search"
           onChange={event => setSearchQuery(event.target.value)}
           value={searchQuery}
-          onReset={handlerReset}
           searchQuery={searchQuery.trim()}
         />
-        {!searchQuery && (
-          <ButtonIcon type="submit">
-            <img src={search} alt="search" width="24" height="24" />
-          </ButtonIcon>
-        )}
-        {searchQuery && (
-          <ButtonIcon type="reset">
-            <img src={deleteQuery} alt="delete" width="24" height="24" />
-          </ButtonIcon>
-        )}
+        <ButtonIcon type="submit">
+          <img
+            onClick={handleSubmit}
+            src={search}
+            alt="search"
+            width="24"
+            height="24"
+          />
+          {searchQuery && (
+            <img
+              onClick={handlerReset}
+              src={deleteQuery}
+              alt="delete"
+              width="24"
+              height="24"
+            />
+          )}
+        </ButtonIcon>
       </FormSearch>
       <NoticesCategoriesNav />
-
-      <main>
-        <SearchPetsPage notices={pets} />
-      </main>
+      <Outlet />
     </div>
   );
 };

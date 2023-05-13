@@ -4,8 +4,8 @@ import NoticesSearch from 'components/Notices/NoticesSearch';
 const NoticesPage = () => {
   return (
     <div>
-      <NoticesSearch />
-             </div>
+           <NoticesSearch />
+    </div>
   );
 };
 
