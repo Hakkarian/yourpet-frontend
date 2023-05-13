@@ -1,40 +1,56 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import { Title, ImgDiv, UserInfoWrap, ImgInput, IconWrap, InfoP } from "./UserData.styled";
+import {ReactComponent as Check} from '../../icons/check.svg';
+import { ImgDiv, Input, InputWrap, UserImage, CheckWrap,CheckBtn, IconWrap, InputText, Label} from "./UserData.styled";
+import useForm from "./useForm";
+import inputs from "./inputs";
+import { info } from "redux/auth/auth-operations";
+import UserDataItem from "components/UserDataItem";
 
+const initialState = {
+    name: "",
+    email: "",
+    birthday: "",
+    phone: "",
+    city: "",
+};
 
 const UserData = () => {
-
+   const dispatch = useDispatch();
+    const {state, handleChange} = useForm({initialState});
+    const {name, email, birthday, phone, city } = state;
+ 
+    const handleSubmit = (data) => {
+      dispatch(info(data));
+    };
 
     return (
         <div>
-            <Title>My information:</Title>
-            <UserInfoWrap>
             <ImgDiv>
-                <IconWrap>
-                <ImgInput type="file" ></ImgInput>
-                </IconWrap>
-                <ul>
-                    <li>
-                        <InfoP>Name:</InfoP>
-                    </li>
-                    <li>
-                        <InfoP>Email:</InfoP>
-                    </li>
-                    <li>
-                        <InfoP>Birthday:</InfoP>
-                    </li>
-                    <li>
-                        <InfoP>Phone:</InfoP>
-                    </li>
-                    <li>
-                        <InfoP>City:</InfoP>
-                    </li>
-                </ul>
+            <UserImage src={require("../../images/default-user-img.jpg")} alt="User"/>
+                <InputWrap>
+                <Input type="file" id="input__file"></Input>
+                <Label htmlFor="input__file">
+                  <IconWrap><img src={require("../../icons/camera.png")} alt="Edit"/></IconWrap>  
+                   <InputText>Edit photo</InputText>
+                </Label>
+                </InputWrap>
+                <CheckWrap>
+                    <Check width="24px" height="24px"/>
+                    <CheckBtn>Confirm</CheckBtn>
+                </CheckWrap>
+                <div>
+                    <UserDataItem value={name} handleChange={handleChange} {...inputs.name} onSubmit={handleSubmit} />
+                    <UserDataItem value={email} handleChange={handleChange} {...inputs.email} onSubmit={handleSubmit} />
+                    <UserDataItem value={birthday} handleChange={handleChange} {...inputs.birthday} onSubmit={handleSubmit} />
+                    <UserDataItem value={phone} handleChange={handleChange} {...inputs.phone} onSubmit={handleSubmit} />
+                    <UserDataItem value={city} handleChange={handleChange} {...inputs.city} onSubmit={handleSubmit} />
+                </div>
             </ImgDiv>
-            </UserInfoWrap>
         </div>
     )
 };
 
 export default UserData;
+//avatar - backend
