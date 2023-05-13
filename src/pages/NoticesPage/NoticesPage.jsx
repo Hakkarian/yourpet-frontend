@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import NoticesSearch from 'components/Notices/NoticesSearch';
 
 const NoticesPage = () => {
   return (
-    <div>NoticesPage</div>
-  )
-}
+    <div>
+      <NoticesSearch />
+             </div>
+  );
+};
 
-export default NoticesPage
+export default NoticesPage;
