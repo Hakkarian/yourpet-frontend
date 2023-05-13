@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
 padding-top: 20px;
-width: 88%;
+width: 100%;
 background: #FFFFFF;
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 20px;
