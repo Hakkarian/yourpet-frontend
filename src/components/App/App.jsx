@@ -15,6 +15,7 @@ const NewsPage = lazy(() => import('pages/NewsPage'));
 const NoticesPage = lazy(() => import('pages/NoticesPage'));
 const UserPage = lazy(() => import('pages/UserPage'));
 const AddPetPage = lazy(() => import('pages/AddPetPage'));
+const ErrorPage = lazy(() => import('pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,13 +27,15 @@ const App = () => {
 
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
+
   return isRefreshing ? (
     <Loader />
   ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/main" element={<MainPage />} />
+          <Route index element={<MainPage />} />
+          <Route path='/main' element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/news" element={<NewsPage />} />
@@ -46,7 +49,7 @@ const App = () => {
             path="/user"
             element={shouldRedirect ? <Navigate to="/" /> : <UserPage />}
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </>
