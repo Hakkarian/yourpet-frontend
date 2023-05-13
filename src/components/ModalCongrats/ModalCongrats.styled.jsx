@@ -1,4 +1,4 @@
-// import styled from 'styled-components';
+
 import styled from "@emotion/styled";
 
 export const Backdrop = styled.div`
@@ -10,38 +10,49 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: rgba(43, 43, 43, 0.6);
   backdrop-filter: blur(10px);
 `;
 
 export const Wrapper = styled.div`
 position: absolute;
+display: flex;
+align-items: center;
+text-align: center;
+flex-direction: column;
 top: 50%;
 left: 50%;
-background-color: white;
+background-color: ${({theme}) => theme.colors.white};
 transform: translate(-50%, -50%);
 min-height: 354px;
 max-width: 608px;
 width: 100%;
-
-
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 40px;
 `;
 
 export const CloseModalBtn = styled.button`
+padding: 0;
+width: 20px;
+height: 20px;
+
+position: absolute;
+top: 29px;
+right: 29px;
+background: none;
+border: none;
 `
 
 export const Text = styled.p`
-margin: 0px 129px 60px 129px;
+margin-bottom: 60px;
 font-weight: 500;
 font-size: 24px;
 letter-spacing: 0.04em;
 `
 
 export const Title = styled.h2`
-margin: 60px 191px 52px 191px;
+margin-top: 60px;
+margin-bottom: 52px;
 font-weight: 500;
 font-size: 36px;
 letter-spacing: 0.04em;
@@ -49,7 +60,7 @@ color: #111111;
 `
 
 export const GoToBtn = styled.div`
-margin: 0px 179px 60px 181px;
+margin-bottom: 60px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -65,7 +76,5 @@ border: none;
 
 &:focus,
   &:hover {
-    background: ${({ theme }) => theme.colors.lightblue};
-    border: 2px solid ${({ theme }) => theme.colors.blue};
-    color: ${({ theme }) => theme.colors.blue};
+    background: ${({ theme }) => theme.background.azure};
 `

@@ -30,6 +30,15 @@ border-radius: 40px;
 `;
 
 export const CloseModalBtn = styled.button`
+padding: 0;
+width: 20px;
+height: 20px;
+
+position: absolute;
+top: 29px;
+right: 29px;
+background: none;
+border: none;
 `
 
 export const CancelBtn = styled.button`
