@@ -106,6 +106,14 @@ export const ReusableButtonCss = styled(ReusableButton)`
     color: #fff;
 `;
 
+export const ReusableButtonEye = styled.button`
+   position: absolute;
+   top: 15%;
+   right: 0;
+   background-color: transparent;
+   border: none;
+`
+
 export const ReusableTitleCss = styled(ReusableTitle)`
     margin-top: 0;
     margin-bottom: 30px;

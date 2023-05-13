@@ -2,10 +2,10 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
+import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
 import { Link } from 'react-router-dom';
-// import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
-// import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
+import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -43,26 +43,26 @@ const RegisterPage = () => {
                 <Field type={open ? 'text' : 'password'} name="password" />
                 <span>Password</span>
                 {open ? (
-                  <button type="button" onClick={() => setOpen(false)}>
-                    Close
-                  </button>
+                  <ReusableButtonEye onClick={() => setOpen(false)}>
+                    <EyeOpen width="24" height="24" />
+                  </ReusableButtonEye>
                 ) : (
-                  <button type="button" onClick={() => setOpen(true)}>
-                    Open
-                  </button>
+                  <ReusableButtonEye onClick={() => setOpen(true)}>
+                    <EyeClosed width="24" height="24" />
+                  </ReusableButtonEye>
                 )}
               </AnchorCss>
               <AnchorCss>
                 <Field type="password" name="password" />
                 <span>Confirm password</span>
                 {open ? (
-                  <button type="button" onClick={() => setOpen(false)}>
-                    Close
-                  </button>
+                  <ReusableButtonEye onClick={() => setOpen(false)}>
+                    <EyeOpen width="24" height="24" />
+                  </ReusableButtonEye>
                 ) : (
-                  <button type="button" onClick={() => setOpen(true)}>
-                    Open
-                  </button>
+                  <ReusableButtonEye onClick={() => setOpen(true)}>
+                    <EyeClosed width="24" height="24" />
+                  </ReusableButtonEye>
                 )}
               </AnchorCss>
               <ReusableButton type="submit" disabled={isSubmitting}>
