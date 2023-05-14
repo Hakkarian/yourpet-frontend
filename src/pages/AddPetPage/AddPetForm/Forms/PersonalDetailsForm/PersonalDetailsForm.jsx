@@ -1,47 +1,51 @@
-import { useState, useEffect } from 'react';
-
 import formFields from '../../FormModel/formFields';
+import validationSchema from '../../FormModel/validationSchema';
+
 import TextField from '../../FormFields/TextField/TextField';
 import Button from '../../FormFields/Button/Button';
 
 import { BtnWrapper } from './PersonalDetailsForm.styled';
 
 const PersonalDetailsForm = ({ helpers, changeStep }) => {
-  const { setFieldTouched, validateField, isValid } = helpers;
-
-  const [next, setNext] = useState(null);
+  const { errors, setErrors, touched, values, setFieldTouched } = helpers;
   const fields = ['title', 'name', 'date', 'breed'];
 
-  const validateForm = async () => {
-    for (const field of fields) {
-      await setFieldTouched(field, true);
-      await validateField(field);
+  const validateForm = () => {
+    const formErrors = {};
+    try {
+      validationSchema.validateSync(values, {
+        abortEarly: false,
+      });
+    } catch (error) {
+      error.inner.map(err => {
+        if (fields.includes(err.path)) {
+          formErrors[err.path] = err.errors[0];
+        }
+        return err;
+      });
     }
+    return formErrors;
   };
 
-  useEffect(() => {
-    if (next === null) {
-      return;
-    }
-
-    setNext(true);
-
-    if (next && isValid) {
-      changeStep('next');
-    }
-  }, [next, isValid, changeStep]);
-
   const handleNextClick = async () => {
-    await validateForm();
-    setNext(false);
+    const errors = validateForm();
+    if (Object.keys(errors).length === 0) {
+      changeStep('next');
+    } else {
+      await setErrors(errors);
+      for (const field of fields) {
+        if (touched[field]) continue;
+        await setFieldTouched(field, true);
+      }
+    }
   };
 
   return (
-    <div style={{ marginBottom: 30 }}>
-      <TextField {...formFields.title} />
-      <TextField {...formFields.name} />
-      <TextField {...formFields.date} />
-      <TextField {...formFields.breed} />
+    <div>
+      <TextField errors={errors} touched={touched} {...formFields.title} />
+      <TextField errors={errors} touched={touched} {...formFields.name} />
+      <TextField errors={errors} touched={touched} {...formFields.date} />
+      <TextField errors={errors} touched={touched} {...formFields.breed} />
 
       <BtnWrapper>
         <Button

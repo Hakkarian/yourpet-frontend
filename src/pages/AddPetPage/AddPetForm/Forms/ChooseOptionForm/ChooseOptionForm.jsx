@@ -6,10 +6,11 @@ import formFields from '../../FormModel/formFields';
 import { ToolBar, FormWrap } from './ChooseOptionForm.styled';
 
 const ChooseOptionForm = ({ helpers, setCategory, changeStep }) => {
-  const { values } = helpers;
+  const { values, setErrors } = helpers;
   const handleClick = () => {
     setCategory(values.category);
     changeStep('next');
+    setErrors({});
   };
 
   return (
