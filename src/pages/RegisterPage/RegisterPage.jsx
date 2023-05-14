@@ -6,23 +6,33 @@ import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, Reusabl
 import { Link } from 'react-router-dom';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+// import { useDispatch } from 'react-redux';
+// import { register } from 'redux/auth/auth-operations';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
-  password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required!')
+  password: Yup.string().min(6, 'Password must be at least 6 characters'),
+  confirmPassword: Yup.string().when("password", {
+    is: val => (val && val.length > 0) ? true : false,
+    then: Yup.string().oneOf([Yup.ref("password")], "Both password must be the same")
+  })
 })
 
 const RegisterPage = () => {
   const [open, setOpen] = useState(true);
+  // const dispatch = useDispatch();
+
   const initialState = {
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   }
 
   const handleSubmit = ({ setSubmitting }) => {
+
+    // dispatch(register(values))
     setSubmitting(false)
   }
-
 
   return (
     <RegisterCss>
@@ -33,15 +43,19 @@ const RegisterPage = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ isSubmitting }) => (
+          {({ values, errors, handleBlur, handleChange, isSubmitting }) => (
             <FormCss>
               <AnchorCss className="wraps">
-                <Field type="text" name="email" />
-                <span>Email</span>
+                <Field type="text" name="email" placeholder="Email..." />
               </AnchorCss>
               <AnchorCss>
-                <Field type={open ? 'text' : 'password'} name="password" />
-                <span>Password</span>
+                <Field
+                  type={open ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password..."
+                  onChange={handleChange}
+                  value={values.password}
+                />
                 {open ? (
                   <ReusableButtonEye onClick={() => setOpen(false)}>
                     <EyeOpen width="24" height="24" />
@@ -52,9 +66,15 @@ const RegisterPage = () => {
                   </ReusableButtonEye>
                 )}
               </AnchorCss>
+              <span style={{ color: 'red' }}>{errors.password}</span>
               <AnchorCss>
-                <Field type="password" name="password" />
-                <span>Confirm password</span>
+                <Field
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password..."
+                  onChange={handleChange}
+                  value={values.confirmPassword}
+                />
                 {open ? (
                   <ReusableButtonEye onClick={() => setOpen(false)}>
                     <EyeOpen width="24" height="24" />
@@ -64,8 +84,13 @@ const RegisterPage = () => {
                     <EyeClosed width="24" height="24" />
                   </ReusableButtonEye>
                 )}
+                <span style={{ color: 'red' }}>{errors.confirmPassword}</span>
               </AnchorCss>
-              <ReusableButton type="submit" disabled={isSubmitting}>
+              <ReusableButton
+                className="form"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Register
               </ReusableButton>
               <TextWrapCss>
