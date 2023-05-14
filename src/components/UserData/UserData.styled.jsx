@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
+import {ReactComponent as Camera} from '../../icons/camera.svg';
+import { Form } from "formik";
 // import { theme } from "constants/theme";
+
+export const FormThumb = styled(Form)`
+`;
 
 export const CheckWrap = styled.div`
  display: flex;
@@ -69,4 +74,10 @@ align-items: center;
 justify-content: center;
 cursor: pointer;
 margin: 0 auto;
+`;
+
+export const CameraIcon = styled(Camera)`
+width: 24px;
+height: 24px;
+color: 
 `;
