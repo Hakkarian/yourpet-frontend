@@ -38,3 +38,12 @@ export const UserDiv = styled.div`
   margin-right: auto;
   background-color: #FEF9F9;
 `;
+
+export const ModalTitle = styled.h2`
+margin-top: 109px;
+margin-bottom: 52px;
+font-weight: 500;
+font-size: 36px;
+letter-spacing: 0.04em;
+color: ${({theme}) => theme.colors.black};
+`

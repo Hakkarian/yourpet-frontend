@@ -1,9 +1,13 @@
-import React from 'react'
+import AddPetForm from './AddPetForm/AddPetForm';
+
+import { Container } from 'shared/components/Container/Container.styled';
 
 const AddPetPage = () => {
   return (
-    <div>AddPetPage</div>
-  )
-}
+    <Container>
+      <AddPetForm />
+    </Container>
+  );
+};
 
-export default AddPetPage
+export default AddPetPage;
