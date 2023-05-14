@@ -27,9 +27,10 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    console.log(values)
-    dispatch(register(values))
-    console.log('success')
+    const { email, password } = values;
+    const payload = { email, password }
+    console.log(payload)
+    dispatch(register(payload))
   }
   return (
     <RegisterCss>
@@ -49,22 +50,31 @@ const RegisterPage = () => {
                 </div>
               </div>
               <div>
-                <Field name="password" type="password" />
+                <Field name="password" type={open ? 'text' : 'password'} />
                 <div className="form-div">
                   <ErrorMessage name="password" />
                 </div>
                 {open ? (
-                  <ReusableButtonEye onClick={() => setOpen(false)}>
+                  <ReusableButtonEye
+                    type="button"
+                    onClick={() => setOpen(false)}
+                  >
                     <EyeOpen width="24" height="24" />
                   </ReusableButtonEye>
                 ) : (
-                  <ReusableButtonEye onClick={() => setOpen(true)}>
+                  <ReusableButtonEye
+                    type="button"
+                    onClick={() => setOpen(true)}
+                  >
                     <EyeClosed width="24" height="24" />
                   </ReusableButtonEye>
                 )}
               </div>
               <AnchorCss>
-                <Field name="confirmPassword" type="password" />
+                <Field
+                  name="confirmPassword"
+                  type={open ? 'text' : 'password'}
+                />
                 <div className="form-div">
                   <ErrorMessage name="confirmPassword" />
                 </div>
@@ -83,7 +93,7 @@ const RegisterPage = () => {
               </ReusableButton>
               <TextWrapCss>
                 <TextCss>Already have an account?</TextCss>
-                <Link to='/login'>Login</Link>
+                <Link to="/login">Login</Link>
               </TextWrapCss>
             </FormCss>
           )}
