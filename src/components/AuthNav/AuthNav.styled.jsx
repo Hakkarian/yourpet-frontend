@@ -13,6 +13,7 @@ export const AuthNavCss = styled.div`
 `;
 
 export const ButtonCss = styled(Button)`
+  min-width: 165px;
   background-color: yellow;
 `
 

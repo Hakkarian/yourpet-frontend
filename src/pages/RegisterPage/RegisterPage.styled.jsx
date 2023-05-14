@@ -4,6 +4,7 @@ import { Form } from 'formik';
 import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
 import responsiveMixin from 'shared/utils/responsiveDesign';
 import { color, font } from 'shared/utils/mixin.styled';
+import Button from 'shared/components/Button/Button';
 
 export const RegisterCss = styled.div`
     display: flex;
@@ -97,7 +98,7 @@ export const ReusableButtonCss = styled(ReusableButton)`
 
 `;
 
-export const ReusableButtonEye = styled.button`
+export const ButtonEye = styled(Button)`
    position: absolute;
    top: 15%;
    right: 0;
