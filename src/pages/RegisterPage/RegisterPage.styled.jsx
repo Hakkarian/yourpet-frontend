@@ -35,6 +35,7 @@ export const FormCss = styled(Form)`
   }
 
   div {
+    position: relative;
   }
 
   div input {
@@ -46,7 +47,7 @@ export const FormCss = styled(Form)`
 
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
   }
-  .form {
+  .form-button {
     background-color: ${({ theme }) => theme.colors.blue};
     color: white;
     border: 1px solid transparent;
@@ -56,6 +57,14 @@ export const FormCss = styled(Form)`
       background-color: transparent;
       color: ${({ theme }) => theme.colors.blue};
     }
+  }
+  .form-div {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    tranform: translate(100%, -100%);
+
+    color: red;
   }
 `;
 
