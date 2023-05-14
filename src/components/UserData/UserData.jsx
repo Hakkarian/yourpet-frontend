@@ -1,25 +1,20 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, {useRef} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Formik, ErrorMessage  } from "formik";
 
 import {ReactComponent as Check} from '../../icons/check.svg';
-import { ImgDiv, Input, InputWrap, UserImage, CheckWrap,CheckBtn, IconWrap, InputText, Label} from "./UserData.styled";
-import useForm from "./useForm";
-import inputs from "./inputs";
+import { ImgDiv, Input, InputWrap, CheckWrap,CheckBtn, IconWrap, InputText, Label, CameraIcon, FormThumb} from "./UserData.styled";
 import { info } from "redux/auth/auth-operations";
+import { userValidationSchema } from "./userValidation";
 import UserDataItem from "components/UserDataItem";
-
-const initialState = {
-    name: "",
-    email: "",
-    birthday: "",
-    phone: "",
-    city: "",
-};
+import  UserImage  from '../UserImage';
+import { selectUser } from "redux/auth/auth-selector";
 
 const UserData = () => {
    const dispatch = useDispatch();
-    const {state, handleChange} = useForm({initialState});
-    const {name, email, birthday, phone, city } = state;
+   const fileRef = useRef(null);
+    const user = useSelector(selectUser);
+    const {name, email, birthday, phone, city, avatar } = user;
  
     const handleSubmit = (data) => {
       dispatch(info(data));
@@ -28,29 +23,48 @@ const UserData = () => {
     return (
         <div>
             <ImgDiv>
-            <UserImage src={require("../../images/default-user-img.jpg")} alt="User"/>
-                <InputWrap>
-                <Input type="file" id="input__file"></Input>
+            <Formik 
+            initialValues={{
+                file: avatar || null,
+                name:name || '',
+                email: email || '',
+                birthday: birthday || '',
+                phone: phone || '',
+                city:city || '',
+            }}
+            validationSchema={userValidationSchema}
+            onSubmit={values => console.log(values)}>
+         {({values, setFieldValue}) => (
+            <FormThumb>
+              <InputWrap>
+                <Input type="file" id="input__file" ref={fileRef} onChange={event => {
+                    setFieldValue('file', event.target.files[0]); console.log(event.target.files[0]);
+                }}></Input>
                 <Label htmlFor="input__file">
-                  <IconWrap><img src={require("../../icons/camera.png")} alt="Edit"/></IconWrap>  
+                  <IconWrap><CameraIcon /></IconWrap>  
                    <InputText>Edit photo</InputText>
                 </Label>
                 </InputWrap>
-                <CheckWrap>
-                    <Check width="24px" height="24px"/>
-                    <CheckBtn>Confirm</CheckBtn>
-                </CheckWrap>
-                <div>
-                    <UserDataItem value={name} handleChange={handleChange} {...inputs.name} onSubmit={handleSubmit} />
-                    <UserDataItem value={email} handleChange={handleChange} {...inputs.email} onSubmit={handleSubmit} />
-                    <UserDataItem value={birthday} handleChange={handleChange} {...inputs.birthday} onSubmit={handleSubmit} />
-                    <UserDataItem value={phone} handleChange={handleChange} {...inputs.phone} onSubmit={handleSubmit} />
-                    <UserDataItem value={city} handleChange={handleChange} {...inputs.city} onSubmit={handleSubmit} />
+                <ErrorMessage name="file" />
+                {values.file ? 
+                <UserImage file={values.file}/> :  <img src={require("../../images/default-user-img.jpg")} alt="User" />}
+              <CheckWrap>
+                <Check width="24px" height="24px"/>
+                <CheckBtn type="button" onClick={() => { fileRef.current.click()}}>Confirm</CheckBtn>
+            </CheckWrap>
+            <div>
+                    <UserDataItem value={name} type="text" name="name" onSubmit={handleSubmit} label="Name: "/>
+                    <UserDataItem value={email} type="email" name="email" onSubmit={handleSubmit} label="Email: " />
+                    <UserDataItem value={birthday} type="text" name="birthday" onSubmit={handleSubmit} label="Birthday: "/>
+                    <UserDataItem value={phone} type="text" name="phone" onSubmit={handleSubmit} label="Phone: "/>
+                    <UserDataItem value={city} type="text" name="city" onSubmit={handleSubmit} label="City: "/>
                 </div>
+            </FormThumb>
+         )}
+          </Formik>
             </ImgDiv>
         </div>
     )
 };
 
 export default UserData;
-//avatar - backend

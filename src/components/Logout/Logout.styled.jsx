@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Link } from 'react-router-dom';
 
-export const OutBtn = styled.button`
+export const OutBtn = styled(Link)`
  cursor: pointer;
  border: none;
  background-color: transparent;
