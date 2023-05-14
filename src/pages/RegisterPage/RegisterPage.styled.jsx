@@ -62,8 +62,7 @@ export const FormCss = styled(Form)`
     position: absolute;
     bottom: 0;
     left: 100%;
-    tranform: translate(100%, -100%);
-
+    tranform: translate(100%, -110%);
     color: red;
   }
 `;

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
-import { Link } from 'react-router-dom';
+import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss } from './RegisterPage.styled';
+
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 // import { useDispatch } from 'react-redux';
@@ -22,12 +22,6 @@ const validationSchema = Yup.object().shape({
 const RegisterPage = () => {
   const [open, setOpen] = useState(true);
   // const dispatch = useDispatch();
-
-  const initialState = {
-    email: '',
-    password: '',
-    confirmPassword: ''
-  }
 
   return (
     <RegisterCss>
