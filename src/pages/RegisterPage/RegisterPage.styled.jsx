@@ -3,6 +3,7 @@ import ReusableButton from 'shared/components/ReusableButton';
 import { Form } from 'formik';
 import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
 import responsiveMixin from 'shared/utils/responsiveDesign';
+import { color } from 'shared/utils/mixin.styled';
 
 export const RegisterCss = styled.div`
     display: flex;
@@ -82,8 +83,10 @@ export const LabelCss = styled.label`
 `
 
 export const ReusableButtonCss = styled(ReusableButton)`
-    background-color: ${({ theme }) => theme.colors.blue};
-    color: #fff;
+    width: 100%;
+
+    ${color('#fff', ({theme}) => theme.colors.blue)}
+
 `;
 
 export const ReusableButtonEye = styled.button`

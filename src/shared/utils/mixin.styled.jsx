@@ -10,9 +10,9 @@ const flex = (alignItems, jContent) => css`
     justify-content: ${jContent};
 `;
 
-const wrapper = (gap) => css`
+const wrapper = (gap, wrap) => css`
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: ${wrap};
     gap: ${gap};
 `
 
