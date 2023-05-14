@@ -15,11 +15,13 @@ export const FlexDivCss = styled.div`
   margin-bottom: 40px;
   padding: 40px 12px 0px 12px;
 
-
   background-color: #fff;
 
   border-radius: 20px;
-  box-shadow: ${({theme}) => theme.shadow.default};
+  box-shadow: ${({ theme }) => theme.shadow.default};
+
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 export const FormCss = styled(Form)`
@@ -27,6 +29,7 @@ export const FormCss = styled(Form)`
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
+
 
   .field {
     display: inline-block;

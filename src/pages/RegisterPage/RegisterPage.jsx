@@ -2,10 +2,13 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss } from './RegisterPage.styled';
+import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
 
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+import { register } from 'redux/auth/auth-operations';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { register } from 'redux/auth/auth-operations';
 
@@ -21,8 +24,13 @@ const validationSchema = Yup.object().shape({
 
 const RegisterPage = () => {
   const [open, setOpen] = useState(true);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  const handleSubmit = (values) => {
+    console.log(values)
+    dispatch(register(values))
+    console.log('success')
+  }
   return (
     <RegisterCss>
       <FlexDivCss>
@@ -30,9 +38,7 @@ const RegisterPage = () => {
         <Formik
           initialValues={{ email: '', password: '', confirmPassword: '' }}
           validationSchema={validationSchema}
-          onSubmit={values => {
-            console.log(values);
-          }}
+          onSubmit={handleSubmit}
         >
           {({ errors, touched }) => (
             <FormCss>
@@ -72,7 +78,13 @@ const RegisterPage = () => {
                   </ReusableButtonEye>
                 )}
               </AnchorCss>
-              <ReusableButton className='form-button' type="submit">Submit</ReusableButton>
+              <ReusableButton className="form-button" type="submit">
+                Submit
+              </ReusableButton>
+              <TextWrapCss>
+                <TextCss>Already have an account?</TextCss>
+                <Link to='/login'>Login</Link>
+              </TextWrapCss>
             </FormCss>
           )}
         </Formik>
