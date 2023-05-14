@@ -21,17 +21,18 @@ const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(register.rejected, (state, { payload }) => {
+        console.log(payload)
         // action.payload
         state.isLoading = false;
-        state.error = payload.error;
+        state.error = payload;
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.error;
+        state.error = payload;
       })
       .addCase(logout.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.error;
+        state.error = payload;
       })
       .addCase(info.rejected, (state, { payload }) => {
         state.isLoading = false;

@@ -10,18 +10,18 @@ const flex = (alignItems, jContent) => css`
     justify-content: ${jContent};
 `;
 
-const wrapper = (gap) => css`
+const wrapper = (gap, wrap) => css`
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: ${wrap};
     gap: ${gap};
 `
 
 const font = (fs, lh, fw, ls, color) => css`
-    font-size: $fs;
-    line-height: $lh;
-    font-weight: $fw;
-    letter-spacing: $ls;
-    color: $color;
+    font-size: ${fs};
+    line-height: ${lh};
+    font-weight: ${fw};
+    letter-spacing: ${ls};
+    color: ${color};
 ` 
 
 const color = (color, bgColor) => css`

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
-import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
+
+import { AnchorCss, ButtonEye, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
 
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 import { register } from 'redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from 'shared/components/Button/Button';
 // import { useDispatch } from 'react-redux';
 // import { register } from 'redux/auth/auth-operations';
 
@@ -27,9 +28,10 @@ const RegisterPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    console.log(values)
-    dispatch(register(values))
-    console.log('success')
+    const { email, password } = values;
+    const payload = { email, password }
+    console.log(payload)
+    dispatch(register(payload))
   }
   return (
     <RegisterCss>
@@ -49,41 +51,44 @@ const RegisterPage = () => {
                 </div>
               </div>
               <div>
-                <Field name="password" type="password" />
+                <Field name="password" type={open ? 'text' : 'password'} />
                 <div className="form-div">
                   <ErrorMessage name="password" />
                 </div>
                 {open ? (
-                  <ReusableButtonEye onClick={() => setOpen(false)}>
+                  <ButtonEye type="button" onClick={() => setOpen(false)}>
                     <EyeOpen width="24" height="24" />
-                  </ReusableButtonEye>
+                  </ButtonEye>
                 ) : (
-                  <ReusableButtonEye onClick={() => setOpen(true)}>
+                  <ButtonEye type="button" onClick={() => setOpen(true)}>
                     <EyeClosed width="24" height="24" />
-                  </ReusableButtonEye>
+                  </ButtonEye>
                 )}
               </div>
               <AnchorCss>
-                <Field name="confirmPassword" type="password" />
+                <Field
+                  name="confirmPassword"
+                  type={open ? 'text' : 'password'}
+                />
                 <div className="form-div">
                   <ErrorMessage name="confirmPassword" />
                 </div>
                 {open ? (
-                  <ReusableButtonEye onClick={() => setOpen(false)}>
+                  <ButtonEye type="button" onClick={() => setOpen(false)}>
                     <EyeOpen width="24" height="24" />
-                  </ReusableButtonEye>
+                  </ButtonEye>
                 ) : (
-                  <ReusableButtonEye onClick={() => setOpen(true)}>
+                  <ButtonEye type="button" onClick={() => setOpen(true)}>
                     <EyeClosed width="24" height="24" />
-                  </ReusableButtonEye>
+                  </ButtonEye>
                 )}
               </AnchorCss>
-              <ReusableButton className="form-button" type="submit">
+              <Button className="form-button" type="submit">
                 Submit
-              </ReusableButton>
+              </Button>
               <TextWrapCss>
                 <TextCss>Already have an account?</TextCss>
-                <Link to='/login'>Login</Link>
+                <Link to="/login">Login</Link>
               </TextWrapCss>
             </FormCss>
           )}

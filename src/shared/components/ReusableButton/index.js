@@ -1,3 +1,3 @@
-import ReusableButton from './ReusableButton';
+import ReusableButton from './ReusableButton'
 
 export default ReusableButton;

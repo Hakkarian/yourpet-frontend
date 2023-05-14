@@ -22,6 +22,7 @@ export const register = createAsyncThunk(
           color: '#fff',
         },
       });
+      console.log(data)
       const loginData = {
         email: data.email,
         password: data.password,
