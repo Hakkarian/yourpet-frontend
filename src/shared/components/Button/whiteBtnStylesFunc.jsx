@@ -1,6 +1,6 @@
 // тут прописуються стилі для БІЛОЇ кнопки!
 
-export const whiteBtnStylesFunc = (width, { colors }) => `
+export const whiteBtnStylesFunc = (width, { colors, background }) => `
     width: ${width};
     padding: 8px 20px;
     border: 2px solid ${colors.blue};
@@ -10,7 +10,7 @@ export const whiteBtnStylesFunc = (width, { colors }) => `
     :hover, :focus {
         padding: 10px 22px;
         color:${colors.white};
-        background: ${colors.gradBlue};
+        background: ${background.azure};
         border: none;
     }
 `;
