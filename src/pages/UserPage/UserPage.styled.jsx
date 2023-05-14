@@ -32,3 +32,5 @@ font-size: 36px;
 letter-spacing: 0.04em;
 color: ${({theme}) => theme.colors.black};
 `
+
+

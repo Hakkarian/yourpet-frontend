@@ -1,35 +1,49 @@
 import React from 'react';
 
-const OurFriendsPage = () => {
-  return <div>OurFriendsPage</div>;
-};
+// const OurFriendsPage = () => {
+//   return <div>OurFriendsPage</div>;
+// };
 
-export default OurFriendsPage;
+// export default OurFriendsPage;
 
 
 
 // не видяляйте це, я тут відкриваю модалку
 // import ModalCongrats from 'components/ModalCongrats';
 
-// import { useToggle } from 'hooks/useToggle';
-// import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
-// import { ModalTitle } from 'pages/UserPage/UserPage.styled';
+import { useToggle } from 'shared/hooks/useToggle'
+import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
+import { ModalTitle, ModalText, ColorSpan } from 'pages/OurFriendsPage/OurFriendsPage.styled';
 
-// const OurFriendsPage = () => {
-//   const { isOpen, open, close } = useToggle();
+const OurFriendsPage = () => {
+  const { isOpen, open, close } = useToggle();
 
-//   return (
-//     <div>
-//       OurFriendsPage
-//       <button type="button" onClick={open}>
-//         open modal
-//       </button>
-//       {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
-//       {isOpen && <ModalApproveAction onClose={close}>
-//       <ModalTitle>Already leaving?</ModalTitle>
-//         </ModalApproveAction>}
-//     </div>
-//   );
-// };
+  return (
+    // <div>
+    //   OurFriendsPage
+    //   <button type="button" onClick={open}>
+    //     open modal
+    //   </button>
+    //   {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
+    //   {isOpen && <ModalApproveAction onClose={close}>
+    //   <ModalTitle>Already leaving?</ModalTitle>
+    //     </ModalApproveAction>}
+    // </div>
+    <div>
+    OurFriendsPage
+    <button type="button" onClick={open}>
+      open modal
+    </button>
+    {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
+    {isOpen && <ModalApproveAction onClose={close}>
+   
+    <ModalTitle>Delete adverstiment?</ModalTitle>
+    <ModalText>Are you sure you want to delete  <ColorSpan>“Cute dog looking <br></br>for a home”?</ColorSpan> 
+<br></br>You can`t undo this action.</ModalText>
+    
+      </ModalApproveAction>}
+  </div>
+  );
+};
 
-// export default OurFriendsPage;
+export default OurFriendsPage;

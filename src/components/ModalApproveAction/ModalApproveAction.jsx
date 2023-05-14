@@ -13,6 +13,7 @@ import BlueButton from 'shared/components/BlueButton/BlueButton';
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
 import { ReactComponent as CrossSmall } from '../../icons/cross-small.svg';
 // import { ReactComponent as LogoutSvg} from '../../icons/logout.svg';
+// import { ReactComponent as Trash} from '../../icons/trash.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -45,8 +46,8 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
         <CancelBtn type="button" onClick={onClose}>
           Cancel
         </CancelBtn>
-        <BlueButton type="button">Yes
-        {/* <LogoutSvg stroke="#54ADFF"/> */}
+        <BlueButton type="button">Yes 
+        {/* <Trash stroke="white"/> */}
         </BlueButton>
         </ContainerButton>
       </Wrapper>
