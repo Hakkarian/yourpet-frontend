@@ -10,7 +10,13 @@ import formFields from '../../FormModel/formFields';
 
 import { Subtitle, Wrap } from './MoreInfoForm.styled';
 
-const MoreInfoForm = ({ setPhoto, photo, category, changeStep, helpers }) => {
+const MoreInfoForm = ({
+  setPhoto,
+  photo,
+  category,
+  changeStep,
+  helpers: { errors, touched },
+}) => {
   // console.log(helpers);
 
   // useEffect(() => {
@@ -38,13 +44,16 @@ const MoreInfoForm = ({ setPhoto, photo, category, changeStep, helpers }) => {
       <Wrap gap={28}>
         <Subtitle>Add photo</Subtitle>
         <FileInput
+          photo={photo}
           {...formFields.photo}
           onChange={e => setPhoto(e.currentTarget.files[0])}
         />
       </Wrap>
-      <TextField {...formFields.location} />
-      {category === 'sell' && <TextField {...formFields.price} />}
-      <TextField {...formFields.comments} />
+      <TextField errors={errors} touched={touched} {...formFields.location} />
+      {category === 'sell' && (
+        <TextField errors={errors} touched={touched} {...formFields.price} />
+      )}
+      <TextField errors={errors} touched={touched} {...formFields.comments} />
       <StyledButton type="submit" width={248}>
         Done
       </StyledButton>
