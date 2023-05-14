@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
-import ReusableButton from 'shared/components/ReusableButton';
-import { AnchorCss, ButtonEye, FlexDivCss, FormCss, RegisterCss, ReusableButtonEye, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
+
+import { AnchorCss, ButtonEye, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
 
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
