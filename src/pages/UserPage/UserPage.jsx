@@ -4,7 +4,7 @@ import { Wrap, UserDiv, Title, ModalTitle } from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
-import { useToggle } from 'hooks/useToggle';
+import { useToggle } from 'shared/hooks/useToggle';
 import ModalCongrats from 'components/ModalCongrats';
 
 const UserPage = () => {
