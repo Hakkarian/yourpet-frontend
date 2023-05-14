@@ -2,7 +2,7 @@ import SharedLayout from 'components/SharedLayout';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
 import { Loader } from 'components/Loader';
@@ -27,7 +27,6 @@ const App = () => {
 
   const shouldRedirect = !isLoggedIn && !isRefreshing;
 
-
   return isRefreshing ? (
     <Loader />
   ) : (
@@ -35,7 +34,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
-          <Route path='/main' element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/news" element={<NewsPage />} />

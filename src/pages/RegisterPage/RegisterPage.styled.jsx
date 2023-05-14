@@ -15,11 +15,13 @@ export const FlexDivCss = styled.div`
   margin-bottom: 40px;
   padding: 40px 12px 0px 12px;
 
-
   background-color: #fff;
 
   border-radius: 20px;
-  box-shadow: ${({theme}) => theme.shadow.default};
+  box-shadow: ${({ theme }) => theme.shadow.default};
+
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 export const FormCss = styled(Form)`
@@ -28,6 +30,7 @@ export const FormCss = styled(Form)`
   align-items: center;
   row-gap: 30px;
 
+
   .field {
     display: inline-block;
     width: 250px;
@@ -35,6 +38,7 @@ export const FormCss = styled(Form)`
   }
 
   div {
+    position: relative;
   }
 
   div input {
@@ -46,7 +50,7 @@ export const FormCss = styled(Form)`
 
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
   }
-  .form {
+  .form-button {
     background-color: ${({ theme }) => theme.colors.blue};
     color: white;
     border: 1px solid transparent;
@@ -56,6 +60,13 @@ export const FormCss = styled(Form)`
       background-color: transparent;
       color: ${({ theme }) => theme.colors.blue};
     }
+  }
+  .form-div {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    tranform: translate(100%, -110%);
+    color: red;
   }
 `;
 
