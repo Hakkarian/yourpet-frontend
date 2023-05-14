@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import ReusableButton from 'shared/components/ReusableButton';
 import { Form } from 'formik';
 import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
+import responsiveMixin from 'shared/utils/responsiveDesign';
 
 export const RegisterCss = styled.div`
     display: flex;
@@ -10,18 +11,16 @@ export const RegisterCss = styled.div`
 `;
 
 export const FlexDivCss = styled.div`
-  height: 433px;
   margin-top: 40px;
   margin-bottom: 40px;
-  padding: 40px 12px 0px 12px;
 
   background-color: #fff;
 
   border-radius: 20px;
   box-shadow: ${({ theme }) => theme.shadow.default};
 
-  @media screen and (min-width: 768px) {
-  }
+
+  ${responsiveMixin('padding', { xs: '40px 12px', md: '60px 75px' })}
 `;
 
 export const FormCss = styled(Form)`
@@ -29,13 +28,6 @@ export const FormCss = styled(Form)`
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
-
-
-  .field {
-    display: inline-block;
-    width: 250px;
-    height: 40px;
-  }
 
   div {
     position: relative;
@@ -49,6 +41,14 @@ export const FormCss = styled(Form)`
     font-size: 16px;
 
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
+
+    @media screen and (min-width: 768px) {
+      width: 458px;
+    }
+  }
+
+  div input::placeholder {
+    font-size: 16px;
   }
   .form-button {
     background-color: ${({ theme }) => theme.colors.blue};
@@ -95,11 +95,19 @@ export const ReusableButtonEye = styled.button`
 `
 
 export const ReusableTitleCss = styled(ReusableTitle)`
-    margin-top: 0;
-    margin-bottom: 30px;
+  margin-top: 0;
+  margin-bottom: 30px;
 
-    text-align: center;
-`
+  text-align: center;
+  font-size: ${({ theme }) => theme.spacing(6)}px;
+  font-weight: 500;
+  line-height: 1.375;
+
+  @media screen and (min-width: 768px) {
+    font-size: ${({ theme }) => theme.spacing(9)}px;
+    line-height: 1.361;
+  }
+`;
 
 export const TextWrapCss = styled.p`
   display: flex;

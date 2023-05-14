@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import responsiveMixin from "shared/utils/responsiveDesign";
 
 export const HeaderCss = styled.header`
     height: ${({theme}) => theme.spacing(15)}px;
@@ -8,7 +9,6 @@ export const HeaderCss = styled.header`
 `
 
 export const AuthWrapCss = styled.div`
-  display: flex;
   align-items: center;
   gap: 12px;
   margin-left: auto;
@@ -16,9 +16,9 @@ export const AuthWrapCss = styled.div`
   @media screen and (min-width: 768px) {
     gap: 42px;
   }
-  @media screen and (min-width: 1280px) {
-    display: none;
-  }
+
+
+  ${responsiveMixin('display', {xs: 'flex', xl: 'none'})}
 `;
 
 export const UserWrapCss = styled.div`
