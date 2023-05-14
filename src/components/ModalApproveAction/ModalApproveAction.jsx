@@ -7,10 +7,12 @@ import {
   Wrapper,
   CloseModalBtn,
   CancelBtn,
+  ContainerButton
 } from './ModalApproveAction.styled';
 import BlueButton from 'shared/components/BlueButton/BlueButton';
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
 import { ReactComponent as CrossSmall } from '../../icons/cross-small.svg';
+// import { ReactComponent as LogoutSvg} from '../../icons/logout.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -38,12 +40,15 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
           <CrossSmall />
         </CloseModalBtn>
         {/* <CrossButton type='button' onClick={onClose}/> */}
-
         {children}
+        <ContainerButton>
         <CancelBtn type="button" onClick={onClose}>
           Cancel
         </CancelBtn>
-        <BlueButton type="button">Yes</BlueButton>
+        <BlueButton type="button">Yes
+        {/* <LogoutSvg stroke="#54ADFF"/> */}
+        </BlueButton>
+        </ContainerButton>
       </Wrapper>
     </Backdrop>,
     modalRoot
