@@ -17,11 +17,11 @@ const wrapper = (gap, wrap) => css`
 `
 
 const font = (fs, lh, fw, ls, color) => css`
-    font-size: $fs;
-    line-height: $lh;
-    font-weight: $fw;
-    letter-spacing: $ls;
-    color: $color;
+    font-size: ${fs};
+    line-height: ${lh};
+    font-weight: ${fw};
+    letter-spacing: ${ls};
+    color: ${color};
 ` 
 
 const color = (color, bgColor) => css`
