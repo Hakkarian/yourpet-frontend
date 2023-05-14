@@ -43,6 +43,7 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
         {/* <CrossButton type='button' onClick={onClose}/> */}
         {children}
         <ContainerButton>
+          
         <CancelBtn type="button" onClick={onClose}>
           Cancel
         </CancelBtn>
