@@ -10,7 +10,7 @@ import validationSchema from './FormModel/validationSchema';
 
 import Stepper from './Stepper/Stepper';
 import ChooseOptionForm from './Forms/ChooseOptionForm/ChooseOptionForm';
-import PersonalDetailsForm from './Forms/PersonalDetailsForm/ValidateOnChange';
+import PersonalDetailsForm from './Forms/PersonalDetailsForm/PersonalDetailsForm';
 import MoreInfoForm from './Forms/MoreInfoForm/MoreInfoForm';
 
 const ErrorText = styled.p`
@@ -69,13 +69,12 @@ const AddPetForm = () => {
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={validationSchema}
-        // validateOnChange={false}
         validateOnBlur={false}
         validateOnMount={false}
         onSubmit={handleSubmit}
       >
         {helpers => (
-          <StyledForm id="add-pet-form" autoComplete="off">
+          <StyledForm autoComplete="off">
             {currentStep === 0 && (
               <ChooseOptionForm
                 helpers={helpers}

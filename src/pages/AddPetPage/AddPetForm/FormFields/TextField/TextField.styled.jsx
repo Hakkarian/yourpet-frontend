@@ -19,8 +19,10 @@ export const Input = styled(Field)`
   padding-top: ${({ theme }) => theme.spacing(2.375)}px;
   padding-bottom: ${({ theme }) => theme.spacing(2.375)}px;
   border: 1px solid
-    ${props => {
-      return props.error ? props.theme.colors.red : props.theme.colors.blue;
+    ${({ name, errors, touched, theme }) => {
+      return errors[name] && touched[name]
+        ? theme.colors.red
+        : theme.colors.blue;
     }};
   border-radius: ${({ theme, as }) => {
     if (as === 'textarea') {
