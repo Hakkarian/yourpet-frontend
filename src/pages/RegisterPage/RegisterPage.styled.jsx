@@ -28,7 +28,6 @@ export const FormCss = styled(Form)`
   align-items: center;
   row-gap: 30px;
 
-
   .field {
     display: inline-block;
     width: 250px;
@@ -36,58 +35,28 @@ export const FormCss = styled(Form)`
   }
 
   div {
-
   }
 
   div input {
     width: 250px;
     padding: 10px 12px 10px 12px;
     border: 1px solid ${({ theme }) => theme.colors.blue};
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
-
 
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
   }
-
-  div span {
-    position: absolute;
-    top: 0px;
-    right: 62%;
-    padding: 10px;
-    pointer-events: none;
-    font-size: 16px;
-
-    transition: transform 250ms ease-in-out, font-size 250ms linear,
-      padding 250ms ease-in-out, background-color 250ms ease-in-out,
-      border 250ms ease-in-out, letter-spacing 250ms linear, text-transform 250ms linear;
-  }
-
-  div:nth-of-type(1) span {
-    right: 75%;
-  }
-
-  div input:focus ~ span {
-    color: black;
-    transform: translate(33px, -5px);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 5px 10px;
+  .form {
     background-color: ${({ theme }) => theme.colors.blue};
+    color: white;
+    border: 1px solid transparent;
 
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    &:hover {
+      border: 1px solid ${({ theme }) => theme.colors.blue};
+      background-color: transparent;
+      color: ${({ theme }) => theme.colors.blue};
+    }
   }
-
-  div:nth-of-type(1) input:focus ~ span {
-    transform: translate(30px, -7px);
-  } 
-
-   div input:focus {
-    border: 1px solid black;
-    transform: scale(1);
-   }
 `;
 
 export const AnchorCss = styled.div`
