@@ -6,11 +6,10 @@ import { List } from './NewsList.styled';
 export const NewsList = ({ news }) => {
   return (
     <List>
-      {news.map(({ _id, id, imgUrl, title, text, date, url }) => (
+      {news.map(({ _id, imgUrl, title, text, date, url }) => (
         <NewsItem
           key={_id}
-          id={id}
-          img={imgUrl}
+          imgUrl={imgUrl}
           title={title}
           text={text}
           date={date}
