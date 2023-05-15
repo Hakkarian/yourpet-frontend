@@ -2,10 +2,11 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { Formik, Field, ErrorMessage } from 'formik';
 
-import { AnchorCss, ButtonEye, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
+import { AbsDivCss, AnchorCss, ButtonEye, FlexDivCss, FormCss, RegisterCss, ReusableTitleCss, TextCss, TextWrapCss } from './RegisterPage.styled';
 
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { register } from 'redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -13,10 +14,17 @@ import Button from 'shared/components/Button/Button';
 // import { useDispatch } from 'react-redux';
 // import { register } from 'redux/auth/auth-operations';
 
+console.log(process.env.REACT_APP_API_URL + '/auth/register');
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
-    .min(8, 'Password must be at least 8 characters')
+    .min(6, 'Password must be at least 6 characters')
+    .max(16, 'Password must be less than 16 characters')
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/,
+      'Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
+    )
     .required('Required'),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -24,14 +32,18 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterPage = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState({
+    passwordEye: false,
+    confirmPasswordEye: false
+  });
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, actions) => {
     const { email, password } = values;
-    const payload = { email, password }
-    console.log(payload)
-    dispatch(register(payload))
+    const payload = { email, password };
+    console.log('payload', payload);
+    dispatch(register(payload));
+    actions.resetForm();
   }
   return (
     <RegisterCss>
@@ -42,56 +54,101 @@ const RegisterPage = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          {({ errors, touched }) => (
-            <FormCss>
-              <div>
-                <Field name="email" type="email" />
-                <div className="form-div">
-                  <ErrorMessage name="email" />
+          {({ errors, values, touched }) => {
+            return (
+              <FormCss>
+                <div>
+                  <Field
+                    name="email"
+                    type="email"
+                    className={errors.email ? 'input-error' : 'input-valid'}
+                  />
+                  <div className="form-div">
+                    <ErrorMessage name="email" />
+                  </div>
+                  {errors.email && (
+                    <AbsDivCss>
+                      <Cross width="24" height="24" stroke="#F43F5E" />
+                    </AbsDivCss>
+                  )}
                 </div>
-              </div>
-              <div>
-                <Field name="password" type={open ? 'text' : 'password'} />
-                <div className="form-div">
-                  <ErrorMessage name="password" />
+                <div>
+                  <Field
+                    className={errors.password ? 'input-error' : 'input-valid'}
+                    name="password"
+                    type={open.passwordEye ? 'text' : 'password'}
+                  />
+                  <div className="form-div">
+                    <ErrorMessage name="password" />
+                  </div>
+
+                  {open.passwordEye ? (
+                    <ButtonEye
+                      type="button"
+                      onClick={() => setOpen({ ...open, passwordEye: false })}
+                    >
+                      <EyeOpen width="24" height="24" />
+                    </ButtonEye>
+                  ) : (
+                    <ButtonEye
+                      type="button"
+                      onClick={() => setOpen({ ...open, passwordEye: true })}
+                    >
+                      <EyeClosed width="24" height="24" />
+                    </ButtonEye>
+                  )}
+                  {errors.password && (
+                    <AbsDivCss>
+                      <Cross width="24" height="24" stroke="#F43F5E" />
+                    </AbsDivCss>
+                  )}
                 </div>
-                {open ? (
-                  <ButtonEye type="button" onClick={() => setOpen(false)}>
-                    <EyeOpen width="24" height="24" />
-                  </ButtonEye>
-                ) : (
-                  <ButtonEye type="button" onClick={() => setOpen(true)}>
-                    <EyeClosed width="24" height="24" />
-                  </ButtonEye>
-                )}
-              </div>
-              <AnchorCss>
-                <Field
-                  name="confirmPassword"
-                  type={open ? 'text' : 'password'}
-                />
-                <div className="form-div">
-                  <ErrorMessage name="confirmPassword" />
-                </div>
-                {open ? (
-                  <ButtonEye type="button" onClick={() => setOpen(false)}>
-                    <EyeOpen width="24" height="24" />
-                  </ButtonEye>
-                ) : (
-                  <ButtonEye type="button" onClick={() => setOpen(true)}>
-                    <EyeClosed width="24" height="24" />
-                  </ButtonEye>
-                )}
-              </AnchorCss>
-              <Button className="form-button" type="submit">
-                Submit
-              </Button>
-              <TextWrapCss>
-                <TextCss>Already have an account?</TextCss>
-                <Link to="/login">Login</Link>
-              </TextWrapCss>
-            </FormCss>
-          )}
+                <AnchorCss>
+                  <Field
+                    className={
+                      errors.confirmPassword ? 'input-error' : 'input-valid'
+                    }
+                    name="confirmPassword"
+                    type={open.confirmPasswordEye ? 'text' : 'password'}
+                  />
+                  <div className="form-div">
+                    <ErrorMessage name="confirmPassword" />
+                  </div>
+                  {open.confirmPasswordEye ? (
+                    <ButtonEye
+                      type="button"
+                      onClick={() =>
+                        setOpen({ ...open, confirmPasswordEye: false })
+                      }
+                    >
+                      <EyeOpen width="24" height="24" />
+                    </ButtonEye>
+                  ) : (
+                    <ButtonEye
+                      type="button"
+                      onClick={() =>
+                        setOpen({ ...open, confirmPasswordEye: true })
+                      }
+                    >
+                      <EyeClosed width="24" height="24" />
+                    </ButtonEye>
+                  )}
+                  {errors.confirmPassword && (
+                    <AbsDivCss>
+                      <Cross width="24" height="24" stroke="#F43F5E" />
+                    </AbsDivCss>
+                  )}
+                </AnchorCss>
+                <Button className="form-button" type="submit">
+                  Submit
+                </Button>
+                <TextWrapCss>
+                  <TextCss>Already have an account?</TextCss>
+                  <Link to="/login">Login</Link>
+                </TextWrapCss>
+              </FormCss>
+            );
+          }}
         </Formik>
       </FlexDivCss>
     </RegisterCss>

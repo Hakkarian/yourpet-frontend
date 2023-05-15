@@ -1,23 +1,25 @@
 import { combineReducers } from 'redux';
-import { persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import authReducer from './auth/auth-slice'
+import authReducer from './auth/auth-slice';
 import noticesReducer from './notices/notices-slice';
 import petsReducer from './pets/pets-slice';
+import newsReducer from './news/news-slice';
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    whitelist: ['token']
-}
+  key: 'root',
+  storage,
+  whitelist: ['token'],
+};
 
-const persistedReducer = persistReducer(persistConfig, authReducer)
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const rootReducer = combineReducers({
-    auth: persistedReducer,
-    notices: noticesReducer,
-    pets: petsReducer,
-})
+  auth: persistedReducer,
+  notices: noticesReducer,
+  pets: petsReducer,
+  news: newsReducer,
+});
 
 export default persistedReducer;

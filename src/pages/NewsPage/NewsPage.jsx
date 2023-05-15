@@ -1,15 +1,36 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { fetchAllNews } from 'redux/news/news-operations';
+import {
+  selectNews,
+  selectIsLoading,
+  selectError,
+  selectOperation,
+} from 'redux/news/news-selector';
 
-import newsItems from '../../components/NewsList/news.json';
-
+import { Loader } from 'components/Loader';
+import ReusableTitle from 'shared/components/ReusableTitle';
 import { NewsList } from 'components/NewsList/NewsList';
-import { Title } from './NewsPage.styled';
+
+// import newsItems from '../../components/NewsList/news.json';
 
 const NewsPage = () => {
+  const dispatch = useDispatch();
+  const newsItems = useSelector(selectNews);
+  const isLoading = useSelector(selectIsLoading);
+  const operation = useSelector(selectOperation);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchAllNews());
+  }, [dispatch]);
+
   return (
     <>
-      <Title>News</Title>
+      {isLoading && operation === 'fetch' && !error && <Loader />}
+      <ReusableTitle>News</ReusableTitle>
       <NewsList news={newsItems} />
     </>
   );

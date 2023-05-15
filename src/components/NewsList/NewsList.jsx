@@ -4,12 +4,11 @@ import NewsItem from './NewsItem/NewsItem';
 import { List } from './NewsList.styled';
 
 export const NewsList = ({ news }) => {
-  console.log(news);
   return (
     <List>
-      {news.map(({ id, imgUrl, title, text, date, url }) => (
+      {news.map(({ _id, id, imgUrl, title, text, date, url }) => (
         <NewsItem
-          key={id}
+          key={_id}
           id={id}
           img={imgUrl}
           title={title}
