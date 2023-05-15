@@ -16,7 +16,12 @@ import Button from 'shared/components/Button/Button';
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
   password: Yup.string()
-    .min(8, 'Password must be at least 8 characters')
+    .min(6, 'Password must be at least 6 characters')
+    .max(16, 'Password must be less than 16 characters')
+    .matches(
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/,
+      'Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
+    )
     .required('Required'),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')
@@ -27,11 +32,12 @@ const RegisterPage = () => {
   const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values, actions) => {
     const { email, password } = values;
-    const payload = { email, password }
-    console.log(payload)
-    dispatch(register(payload))
+    const payload = { email, password };
+    console.log(payload);
+    dispatch(register(payload));
+    actions.resetForm();
   }
   return (
     <RegisterCss>
@@ -41,6 +47,7 @@ const RegisterPage = () => {
           initialValues={{ email: '', password: '', confirmPassword: '' }}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
+          
         >
           {({ errors, touched }) => (
             <FormCss>
