@@ -3,7 +3,8 @@ import ReusableButton from 'shared/components/ReusableButton';
 import { Form } from 'formik';
 import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
 import responsiveMixin from 'shared/utils/responsiveDesign';
-import { color } from 'shared/utils/mixin.styled';
+import { color, font } from 'shared/utils/mixin.styled';
+import Button from 'shared/components/Button/Button';
 
 export const RegisterCss = styled.div`
     display: flex;
@@ -48,26 +49,34 @@ export const FormCss = styled(Form)`
     }
   }
 
+  input:valid {
+    border: 1px solid ${({ theme }) => theme.colors.green};
+  }
+  input:invalid {
+    border: 1px solid ${({ theme }) => theme.colors.red};
+  }
+
   div input::placeholder {
     font-size: 16px;
   }
   .form-button {
-    background-color: ${({ theme }) => theme.colors.blue};
+    width: 100%;
     color: white;
+    background-color: ${({ theme }) => theme.colors.blue};
     border: 1px solid transparent;
 
     &:hover {
       border: 1px solid ${({ theme }) => theme.colors.blue};
-      background-color: transparent;
       color: ${({ theme }) => theme.colors.blue};
+      background-color: transparent;
     }
   }
   .form-div {
     position: absolute;
     bottom: 0;
-    left: 100%;
-    tranform: translate(100%, -110%);
-    color: red;
+    transform: translate(2%, 97%);
+    font-size: 12px;
+    ${font(null, 1.3, 500, '0.03em', 'red')
   }
 `;
 
@@ -89,7 +98,7 @@ export const ReusableButtonCss = styled(ReusableButton)`
 
 `;
 
-export const ReusableButtonEye = styled.button`
+export const ButtonEye = styled(Button)`
    position: absolute;
    top: 15%;
    right: 0;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import ReusableButton from 'shared/components/ReusableButton';
-import { AuthNavCss, PawCss, ReusableButtonCss } from './AuthNav.styled';
+
+import { AuthNavCss, ButtonCss, PawCss } from './AuthNav.styled';
 
 const AuthNav = () => {
   const navigate = useNavigate();
@@ -9,11 +9,11 @@ const AuthNav = () => {
   const handleRegister = () => navigate('/register')
   return (
     <AuthNavCss>
-      <ReusableButtonCss>
+      <ButtonCss>
         Log IN
         <PawCss width="24" height="24" />
-      </ReusableButtonCss>
-      <ReusableButton onClick={handleRegister}>Register</ReusableButton>
+      </ButtonCss>
+      <ButtonCss onClick={handleRegister}>Register</ButtonCss>
     </AuthNavCss>
   );
 };

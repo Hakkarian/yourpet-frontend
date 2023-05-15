@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { ReactComponent as Paw } from '../../icons/paw.svg';
-import ReusableButton from "shared/components/ReusableButton";
+
+import Button from "shared/components/Button/Button";
 
 export const AuthNavCss = styled.div`
   display: none;
@@ -11,7 +12,8 @@ export const AuthNavCss = styled.div`
   }
 `;
 
-export const ReusableButtonCss = styled(ReusableButton)`
+export const ButtonCss = styled(Button)`
+  min-width: 165px;
   background-color: yellow;
 `
 
