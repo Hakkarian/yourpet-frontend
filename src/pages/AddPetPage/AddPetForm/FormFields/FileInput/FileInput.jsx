@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { nanoid } from 'nanoid';
-import { FormError } from '../../AddPetForm';
+import FormError from '../FormError/FormError';
 
 import { CustomInput, CustomLabel, FilePreview } from './FileInput.styled';
 

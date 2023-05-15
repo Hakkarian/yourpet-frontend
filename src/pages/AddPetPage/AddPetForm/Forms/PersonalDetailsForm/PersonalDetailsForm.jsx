@@ -6,9 +6,12 @@ import Button from '../../FormFields/Button/Button';
 
 import { BtnWrapper } from './PersonalDetailsForm.styled';
 
-const PersonalDetailsForm = ({ helpers, changeStep }) => {
+const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
   const { errors, setErrors, touched, values, setFieldTouched } = helpers;
-  const fields = ['title', 'name', 'date', 'breed'];
+  const fields =
+    category === 'my pet'
+      ? ['name', 'date', 'breed']
+      : ['title', 'name', 'date', 'breed'];
 
   const validateForm = () => {
     const formErrors = {};
@@ -39,17 +42,17 @@ const PersonalDetailsForm = ({ helpers, changeStep }) => {
       }
     }
   };
-
   return (
     <div>
-      <TextField errors={errors} touched={touched} {...formFields.title} />
+      {category !== 'my pet' && (
+        <TextField errors={errors} touched={touched} {...formFields.title} />
+      )}
       <TextField errors={errors} touched={touched} {...formFields.name} />
       <TextField errors={errors} touched={touched} {...formFields.date} />
       <TextField errors={errors} touched={touched} {...formFields.breed} />
 
       <BtnWrapper>
         <Button
-          id="test"
           width={248}
           onClick={evt => {
             handleNextClick(evt);
