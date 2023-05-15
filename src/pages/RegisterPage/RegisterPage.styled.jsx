@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import ReusableButton from 'shared/components/ReusableButton';
 import { Form } from 'formik';
-import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
+import ReusableTitle from 'shared/components/ReusableTitle';
 import responsiveMixin from 'shared/utils/responsiveDesign';
 import { color, font } from 'shared/utils/mixin.styled';
 import Button from 'shared/components/Button/Button';
@@ -15,14 +15,17 @@ export const RegisterCss = styled.div`
 export const FlexDivCss = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
+  padding: 40px 12px;
 
   background-color: #fff;
 
   border-radius: 20px;
   box-shadow: ${({ theme }) => theme.shadow.default};
 
+  @media screen and (min-width: 768px) {
+    padding: 60px 75px;
+  }
 
-  ${responsiveMixin('padding', { xs: '40px 12px', md: '60px 75px' })}
 `;
 
 export const FormCss = styled(Form)`
@@ -49,10 +52,11 @@ export const FormCss = styled(Form)`
     }
   }
 
-  input:valid {
+  .input-valid {
     border: 1px solid ${({ theme }) => theme.colors.green};
   }
-  input:invalid {
+
+  .input-error {
     border: 1px solid ${({ theme }) => theme.colors.red};
   }
 
@@ -76,8 +80,7 @@ export const FormCss = styled(Form)`
     bottom: 0;
     transform: translate(2%, 97%);
     font-size: 12px;
-    ${font(null, 1.3, 500, '0.03em', 'red')
-  }
+    ${font(null, 1.3, 500, '0.03em', 'red')}
 `;
 
 export const AnchorCss = styled.div`
@@ -98,13 +101,19 @@ export const ReusableButtonCss = styled(ReusableButton)`
 
 `;
 
-export const ButtonEye = styled(Button)`
+export const ButtonEye = styled(ReusableButton)`
+   min-width: 0;
    position: absolute;
-   top: 15%;
+   top: 0;
    right: 0;
    background-color: transparent;
    border: none;
 `
+export const AbsDivCss = styled.span`
+  position: absolute;
+  top: 20%;
+  right: 10%;
+`;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
   margin-top: 0;

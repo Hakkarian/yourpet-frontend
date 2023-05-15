@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -13,16 +13,19 @@ import {
   Error,
   Lable,
   AbsoluteDiv,
-} from '../FormStyles';
-import Input from '../';
+  InputPassword,
+} from './FormStyles';
+
 import Button from 'shared/components/Button/Button';
-import Title from 'shared/components/ReusableTitle/ReusableTitle';
-import Icon from 'shared/components/AdaptiveLogo/AdaptiveLogo';
+import Title from 'shared/components/ReusableTitle';
+import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
+import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 
 import { login } from 'redux/auth/auth-operations';
 
 import { useNavigate } from 'react-router-dom';
-import useAuth from 'shared/hooks/useAuth';
+import { useAuth } from '../../shared/hooks/useAuth';
+import { ButtonEye } from 'pages/RegisterPage/RegisterPage.styled';
 
 const validateShecma = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -36,14 +39,16 @@ const validateShecma = Yup.object().shape({
     .required('Required'),
 });
 const LoginForm = () => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/notices/sell');
-    }
-  }, [isLoggedIn, navigate]);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/notices/sell');
+  //   }
+  // }, []);
 
   const dispatch = useDispatch();
   const validateEmail = value => {
@@ -92,30 +97,35 @@ const LoginForm = () => {
                 name="email"
                 placeholder="Email"
                 error={errors.email ? '#f43f5e' : '#54adff'}
-                validate={validateEmail}
               />
-              {errors.email && (
-                <>
-                  <AbsoluteDiv>
-                    <Icon id={'cross'} s={'red'} />
-                  </AbsoluteDiv>
-                  <ErrorMessage component={Error} name="email" />
-                </>
+            </Lable>
+            <Lable>
+              <InputPassword
+                type={open ? 'text' : 'password'}
+                name={'password'}
+                placeholder={'Password'}
+              />
+              <div className="form-div">
+                <ErrorMessage name="password" />
+              </div>
+              {open ? (
+                <ButtonEye type="button" onClick={() => setOpen(false)}>
+                  <EyeOpen width="24" height="24" />
+                </ButtonEye>
+              ) : (
+                <ButtonEye type="button" onClick={() => setOpen(true)}>
+                  <EyeClosed width="24" height="24" />
+                </ButtonEye>
               )}
             </Lable>
-            <Input
-              errors={errors?.password}
-              name={'password'}
-              placeholder={'Password'}
-            />
           </InputContainer>
           <Button shape={'solid'} w={'100%'} h={'48'}>
             Login
           </Button>
-          <Text>
+          {/* <Text>
             Don't have an account?
             <StyledLink to={'/register'}>Register</StyledLink>
-          </Text>
+          </Text> */}
         </Forms>
       )}
     </Formik>

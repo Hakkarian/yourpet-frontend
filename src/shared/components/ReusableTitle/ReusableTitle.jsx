@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ReusableTitle = styled.h1`
+const ReusableTitle = styled.h1`
   margin-bottom: 40px;
   text-align: center;
   font-size: ${({ theme }) => theme.spacing(12)}px;
@@ -9,3 +9,5 @@ export const ReusableTitle = styled.h1`
   letter-spacing: 0.03em;
   color: ${({ theme }) => theme.colors.black};
 `;
+
+export default ReusableTitle;

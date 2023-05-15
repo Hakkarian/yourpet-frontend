@@ -11,7 +11,7 @@ import {
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
+import ReusableTitle from 'shared/components/ReusableTitle';
 import { NewsList } from 'components/NewsList/NewsList';
 
 // import newsItems from '../../components/NewsList/news.json';

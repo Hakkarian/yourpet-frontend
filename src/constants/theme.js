@@ -13,7 +13,7 @@ export const theme = {
     azure: 'linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);',
   },
   shadow: {
-    default: '3px 8px 14px rgba(136, 198, 253, 0.19);',
+    default: '3px 8px 14px rgba(136, 198, 253, 0.19)',
     hover: '7px 13px 14px rgba(116, 177, 232, 0.24);',
   },
   utils: {

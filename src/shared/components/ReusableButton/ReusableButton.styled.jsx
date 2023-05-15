@@ -16,11 +16,7 @@ const ReusableButton = styled.button`
   color: ${({ theme }) => theme.colors.yellow};
   border: 1px solid ${({ theme }) => theme.colors.yellow};
   border-radius: ${({ theme }) => theme.spacing(10)}px;
-  &:hover,
-  &:focus {
-    color: #fff;
-    background-color: ${({ theme }) => theme.colors.yellow};
-  }
+
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
     border 250ms ease-in-out;
 `;
