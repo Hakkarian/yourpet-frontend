@@ -2,9 +2,7 @@ import styled from '@emotion/styled';
 import ReusableButton from 'shared/components/ReusableButton';
 import { Form } from 'formik';
 import ReusableTitle from 'shared/components/ReusableTitle';
-import responsiveMixin from 'shared/utils/responsiveDesign';
 import { color, font } from 'shared/utils/mixin.styled';
-import Button from 'shared/components/Button/Button';
 
 export const RegisterCss = styled.div`
     display: flex;

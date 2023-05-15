@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { ErrorMessage, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -8,11 +8,7 @@ import {
   Forms,
   InputEmail,
   InputContainer,
-  Text,
-  StyledLink,
-  Error,
   Lable,
-  AbsoluteDiv,
   InputPassword,
 } from './FormStyles';
 
@@ -23,8 +19,6 @@ import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 
 import { login } from 'redux/auth/auth-operations';
 
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../shared/hooks/useAuth';
 import { ButtonEye } from 'pages/RegisterPage/RegisterPage.styled';
 
 const validateShecma = Yup.object().shape({
@@ -40,8 +34,7 @@ const validateShecma = Yup.object().shape({
 });
 const LoginForm = () => {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const { isLoggedIn } = useAuth();
+
 
 
   // useEffect(() => {
@@ -51,15 +44,15 @@ const LoginForm = () => {
   // }, []);
 
   const dispatch = useDispatch();
-  const validateEmail = value => {
-    let error;
-    if (!value) {
-      error = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-      error = 'Invalid email address';
-    }
-    return error;
-  };
+  // const validateEmail = value => {
+  //   let error;
+  //   if (!value) {
+  //     error = 'Required';
+  //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+  //     error = 'Invalid email address';
+  //   }
+  //   return error;
+  // };
 
   return (
     <Formik
