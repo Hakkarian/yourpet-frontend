@@ -12,7 +12,7 @@ import {
 
 import { Loader } from 'components/Loader';
 
-import { Container } from 'shared/components/Container/Container.styled';
+// import { Container } from 'shared/components/Container/Container.styled';
 import { SearchForm } from 'shared/components/SearchForm/SearchForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 
