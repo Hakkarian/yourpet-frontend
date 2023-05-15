@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
+import Button from 'shared/components/Button/Button';
 import {
   Backdrop,
   Wrapper,
-  GoToBtn,
   Title,
   Text,
-  CloseModalBtn
+  CloseModalBtn,
 } from './ModalCongrats.styled';
 import { ReactComponent as Paw } from '../../icons/paw.svg';
 import { ReactComponent as CrossSmall } from '../../icons/cross-small.svg';
@@ -37,17 +37,15 @@ const ModalCongrats = ({ onClose, children, shouModal }) => {
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
-      <CloseModalBtn type="button" onClick={onClose}>
-      <CrossSmall />
-    </CloseModalBtn>
+        <CloseModalBtn type="button" onClick={onClose}>
+          <CrossSmall />
+        </CloseModalBtn>
         {/* <CrossButton onClick={onClose}/> */}
         <Title>Congrats!</Title>
         <Text>Youre registration is success</Text>
-        <GoToBtn onClick={onClose}>
-          Go to profile
-          <Paw />
-          {/* <ImgPaw src={paw} alt="paw" width="24" height="24" ></ImgPaw> */}
-        </GoToBtn>
+        <Button type="button" color="white" width="248px" onClick={onClose}>
+          Go to profile <Paw width="24px" height="24px" />
+        </Button>
       </Wrapper>
     </Backdrop>,
     modalRoot

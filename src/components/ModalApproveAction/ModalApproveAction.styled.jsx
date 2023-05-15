@@ -65,6 +65,7 @@ border: 2px solid #54ADFF;
   }
 `
 
+
 // export const YesBtn = styled.button`
 // font-weight: 700;
 // font-size: 16px;

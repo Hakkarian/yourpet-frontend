@@ -6,7 +6,6 @@ import {
   Backdrop,
   Wrapper,
   CloseModalBtn,
-  CancelBtn,
   ContainerButton
 } from './ModalApproveAction.styled';
 
@@ -14,7 +13,7 @@ import {
 import { ReactComponent as CrossSmall } from '../../icons/cross-small.svg';
 import Button from 'shared/components/Button/Button';
 // import { ReactComponent as LogoutSvg} from '../../icons/logout.svg';
-import { ReactComponent as Trash} from '../../icons/trash.svg';
+// import { ReactComponent as Trash} from '../../icons/trash.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -44,12 +43,8 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
         {/* <CrossButton type='button' onClick={onClose}/> */}
         {children}
         <ContainerButton>
-          
-        <CancelBtn type="button" onClick={onClose}>
-          Cancel
-        </CancelBtn>
+        <Button type="button" color="white" width="129px" onClick={onClose}>Cancel</Button>
         <Button type="button" color="blue" width="129px">Yes</Button>
-       
         </ContainerButton>
       </Wrapper>
     </Backdrop>,

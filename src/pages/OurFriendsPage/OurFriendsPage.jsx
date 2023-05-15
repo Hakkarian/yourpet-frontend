@@ -10,10 +10,13 @@ import React from 'react';
 
 // не видяляйте це, я тут відкриваю модалку
 // import ModalCongrats from 'components/ModalCongrats';
+import ModalNotice from 'components/ModalNotice/ModalNotice';
+// import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
 
 import { useToggle } from 'shared/hooks/useToggle'
-import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
-import { ModalTitle, ModalText, ColorSpan } from 'pages/OurFriendsPage/OurFriendsPage.styled';
+
+// import { ModalTitle, ModalText, ColorSpan } from 'pages/OurFriendsPage/OurFriendsPage.styled';
+
 
 const OurFriendsPage = () => {
   const { isOpen, open, close } = useToggle();
@@ -35,13 +38,14 @@ const OurFriendsPage = () => {
       open modal
     </button>
     {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
-    {isOpen && <ModalApproveAction onClose={close}>
+    {isOpen && <ModalNotice onClose={close}></ModalNotice>}
+    {/* {isOpen && <ModalApproveAction onClose={close}> */}
    
-    <ModalTitle>Delete adverstiment?</ModalTitle>
+    {/* <ModalTitle>Delete adverstiment?</ModalTitle>
     <ModalText>Are you sure you want to delete  <ColorSpan>“Cute dog looking <br></br>for a home”?</ColorSpan> 
 <br></br>You can`t undo this action.</ModalText>
     
-      </ModalApproveAction>}
+      </ModalApproveAction>} */}
   </div>
   );
 };

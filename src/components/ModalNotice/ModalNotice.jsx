@@ -2,74 +2,100 @@ import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Backdrop, Wrapper, CloseModalBtn, ContactsLink } from './ModalNotice.styled';
-import BlueButton from 'shared/components/BlueButton/BlueButton';
+import {
+  Backdrop,
+  Wrapper,
+  CloseModalBtn,
+  ContactsLink,
+  Container,
+  Img,
+  Title,
+  List,
+  Item,
+  Text,
+  BtnContainer,
+} from './ModalNotice.styled';
+// import CrossButton from 'shared/components/CrossButton/CrossButton';
+import { ReactComponent as CrossIcon } from '../../icons/cross-small.svg';
+import { ReactComponent as HeartIcon } from '../../icons/heart.svg';
+import Button from 'shared/components/Button/Button';
+import defaultImage from '../../images/default-user-img.jpg';
 
 const modalRoot = document.querySelector('#modal-root');
 
 const ModalNotice = ({ onClose, children }) => {
-    useEffect(() => {
-        const handleKeyDowm = e => {
-          if (e.code === 'Escape') onClose();
-        };
-        window.addEventListener('keydown', handleKeyDowm);
-        return () => {
-          window.removeEventListener('keydown', handleKeyDowm);
-        };
-      }, [onClose]);
-    
-      const handleBackdropClick = e => {
-        if (e.currentTarget === e.target) {
-            onClose();
-        }
-      };
+  useEffect(() => {
+    const handleKeyDowm = e => {
+      if (e.code === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDowm);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDowm);
+    };
+  }, [onClose]);
+
+  const handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  };
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
-        <CloseModalBtn type='button' onClick={onClose}>
-          x
+        <CloseModalBtn type="button" onClick={onClose}>
+          <CrossIcon />
         </CloseModalBtn>
+        {/* <CrossButton type='button' onClick={onClose}/> */}
         <div>
-            <div>foto</div>
-            <div>
-                <h2>Title</h2>
-                <ul>
-                    <li>
-                        <p>Name:</p>
-                    </li>
-                    <li>
-                        <p>Birthday:</p>
-                    </li>
-                    <li>
-                        <p>Breed:</p>
-                    </li>
-                    <li>
-                        <p>Place:</p>
-                    </li>
-                    <li>
-                        <p>The sex:</p>
-                    </li>
-                    <li>
-                        <p>Email:</p>
-                    </li>
-                    <li>
-                        <p>Phone:</p>
-                    </li>
-                </ul>
-                <p>Coments:</p>
+          <Container>
+          <Img
+      src={defaultImage}
+      alt='User'/>
+          <div>
+            <Title>Title</Title>
+            <List>
+              <Item>
+                <Text>Name:</Text>
+              </Item>
+              <Item>
+                <Text>Birthday:</Text>
+              </Item>
+              <Item>
+                <Text>Breed:</Text>
+              </Item>
+              <Item>
+                <Text>Place:</Text>
+              </Item>
+              <Item>
+                <Text>The sex:</Text>
+              </Item>
+              <Item>
+                <Text>Email:</Text>
+              </Item>
+              <Item>
+                <Text>Texthone:</Text>
+              </Item>
+            </List>
+          </div>
+          </Container>
 
-                {/* <AddToBtn type='button'>Add to</AddToBtn> */}
-                <BlueButton>Add to</BlueButton>
-                <ContactsLink>Contacts</ContactsLink>
+          <Text>Coments:</Text>
 
-            </div>
+          <BtnContainer>
+          <Button type="button" color="blue" width="129px">
+            Add to <HeartIcon width="24px" height="24px" />
+          </Button>
+
+          <ContactsLink>Contacts</ContactsLink>
+          </BtnContainer>
+
+          
         </div>
-       
       </Wrapper>
     </Backdrop>,
     modalRoot
   );
-}
+};
 
 export default ModalNotice;
