@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <CenrteredDiv>
       <FormContainer>
-        <LoginForm />
+        {/* <LoginForm /> */}
       </FormContainer>
     </CenrteredDiv>
   );
