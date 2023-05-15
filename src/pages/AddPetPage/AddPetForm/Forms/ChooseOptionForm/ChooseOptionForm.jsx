@@ -16,26 +16,20 @@ const ChooseOptionForm = ({ helpers, setCategory, changeStep }) => {
   return (
     <FormWrap>
       <ToolBar>
-        {/* <label>
-              <Field
-                type="radio"
-                name="category"
-                value="yourPet"
-                checked={category === 'yourPet' ? true : false}
-              />
-              Your pet
-            </label>
-            <br /> */}
-
+        <RadioButtonField
+          value="my pet"
+          label="Your pet"
+          {...formFields.category}
+        />
         <RadioButtonField value="sell" label="Sell" {...formFields.category} />
         <RadioButtonField
-          value="lostFound"
+          value="lost-found"
           label="Lost / found"
           {...formFields.category}
         />
         <RadioButtonField
-          value="inGoodHands"
-          label="In good handsll"
+          value="for-free"
+          label="In good hands"
           {...formFields.category}
         />
       </ToolBar>

@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import Title from 'pages/AddPetPage/AddPetForm/FormFields/Title/Title';
-import styled from '@emotion/styled';
 import { StyledForm } from './AddPetForm.styled';
 
 import initialValues from './FormModel/formInitualValues';
@@ -13,23 +12,8 @@ import ChooseOptionForm from './Forms/ChooseOptionForm/ChooseOptionForm';
 import PersonalDetailsForm from './Forms/PersonalDetailsForm/PersonalDetailsForm';
 import MoreInfoForm from './Forms/MoreInfoForm/MoreInfoForm';
 
-const ErrorText = styled.p`
-  color: ${({ theme }) => theme.colors.red};
-  font-size: ${({ theme }) => theme.spacing(3)}px;
-  margin: 4px 0 0;
-`;
-
-export const FormError = ({ name }) => {
-  return (
-    <ErrorMessage
-      name={name}
-      render={message => <ErrorText>{message}</ErrorText>}
-    />
-  );
-};
-
 const AddPetForm = () => {
-  const [category, setCategory] = useState('lostFound');
+  const [category, setCategory] = useState('my pet');
   const [photo, setPhoto] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -52,6 +36,14 @@ const AddPetForm = () => {
     formData.append('photo', photo);
     for (let value in values) {
       if (!values[value]) {
+        continue;
+      }
+      const fields = ['title', 'location', 'sex'];
+      if (fields.includes(value) && category === 'my pet') {
+        continue;
+      }
+
+      if (value === 'price' && category !== 'sell') {
         continue;
       }
       formData.append(value, values[value]);
@@ -83,7 +75,11 @@ const AddPetForm = () => {
               />
             )}
             {currentStep === 1 && (
-              <PersonalDetailsForm helpers={helpers} changeStep={changeStep} />
+              <PersonalDetailsForm
+                helpers={helpers}
+                changeStep={changeStep}
+                category={category}
+              />
             )}
             {currentStep === 2 && (
               <MoreInfoForm
