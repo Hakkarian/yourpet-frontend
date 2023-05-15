@@ -1,9 +1,20 @@
 import styled from "@emotion/styled";
 import {ReactComponent as Camera} from '../../icons/camera.svg';
+import {ReactComponent as Check} from '../../icons/check.svg';
 import { Form } from "formik";
 // import { theme } from "constants/theme";
 
+export const CheckIcon = styled(Check)`
+fill:none;
+width: 24px;
+height: 24px;
+`;
+
 export const FormThumb = styled(Form)`
+justify-content: center;
+align-items: center;
+display: flex;
+flex-direction: column;
 `;
 
 export const CheckWrap = styled.div`
@@ -12,17 +23,12 @@ export const CheckWrap = styled.div`
  align-items: center;
 `;
 
-export const CheckBtn = styled.button`
- cursor: pointer;
- border: none;
- background-color: transparent;
-`;
-
-export const ImgDiv = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+export const ImageDef = styled.img`
+margin-bottom: 14px;
+width: 182px;
+height: 182px;
+border-radius: 40px;
+overflow: hidden;
 `;
 
 export const UserImage = styled.img`
@@ -51,7 +57,7 @@ width: 100%;
 position: relative;
 align-items: center;
 text-align: center;
-margin-bottom: 24px;
+margin-bottom: 22px;
 `;
 
 export const InputText = styled.span`
@@ -79,5 +85,9 @@ margin: 0 auto;
 export const CameraIcon = styled(Camera)`
 width: 24px;
 height: 24px;
-color: 
+fill: none;
+`;
+
+export const Wrapper = styled.div`
+
 `;

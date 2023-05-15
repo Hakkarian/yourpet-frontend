@@ -17,6 +17,8 @@ export const UserImage = ({ file }) => {
     <Box>
      <img
       src={preview ? preview : defaultImage}
-      alt='User'/>
+      alt='User'
+      width='182px'
+      height='182px'/>
     </Box>)
 };
