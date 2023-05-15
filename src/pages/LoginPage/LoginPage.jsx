@@ -1,9 +1,14 @@
 import React from 'react'
+import { CenrteredDiv, FormContainer } from './LoginPage.styled'
 
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
-  )
-}
+    <CenrteredDiv>
+      <FormContainer>
+        <loginForm />
+      </FormContainer>
+    </CenrteredDiv>
+  );
+};
 
-export default LoginPage
+export default LoginPage;
