@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3030/api',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export const getAllNews = async () => {

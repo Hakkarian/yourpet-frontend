@@ -4,7 +4,6 @@ export const FormContainer = styled.div`
   max-width: 608px;
   width: 100%;
   background: #ffffff;
-  box-shadow: ${props => props.theme.shadows.default};
   border-radius: 40px;
   @media (min-width: 768px) {
     width: 608px;

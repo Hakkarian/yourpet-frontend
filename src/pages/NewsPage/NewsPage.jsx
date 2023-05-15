@@ -11,9 +11,11 @@ import {
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
+
 import { Container } from 'shared/components/Container/Container.styled';
-import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
 import { SearchForm } from 'shared/components/SearchForm/SearchForm';
+import ReusableTitle from 'shared/components/ReusableTitle';
+
 import { NewsList } from 'components/NewsList/NewsList';
 
 // import newsItems from '../../components/NewsList/news.json';

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'localhost:3030/api',
+  baseURL: 'http://localhost:3030/api'
 });
 
 export const setToken = token => {
@@ -13,6 +13,7 @@ export const setToken = token => {
 
 export const registere = async data => {
   const { data: result } = await instance.post('/auth/register', data);
+  console.log('result', result);
   setToken(result.token);
   return result;
 };

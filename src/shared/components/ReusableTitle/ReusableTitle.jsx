@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
+
 export const ReusableTitle = styled.h1`
   margin-bottom: 24px;
+
   text-align: center;
   font-size: ${({ theme }) => theme.spacing(6)}px;
   font-weight: 700;
@@ -14,3 +16,5 @@ export const ReusableTitle = styled.h1`
     margin-bottom: 40px;
   }
 `;
+
+export default ReusableTitle;
