@@ -1,9 +1,9 @@
-// import PropTypes from 'prop-types';
-import { css } from '@emotion/react';
+import PropTypes from 'prop-types';
+
 import {
   Item,
   Line,
-  WrapImg,
+  Wrap,
   Img,
   Title,
   Decsr,
@@ -13,44 +13,36 @@ import {
 } from './NewsItem.styled';
 
 const NewsItem = ({ imgUrl, title, text, date, url }) => {
+  const transformDate = date => {
+    return date.split('T')[0].split('-').reverse().join('/');
+  };
   return (
     <Item>
-      <div>
-        <Line />
-        <WrapImg>
-          <Img
-            src=/*{pathSrc ? `${pathImg}${pathSrc}` : NoImageAvailable}*/ {
-              imgUrl
-            }
-            alt={title}
-            loading="lazy"
-            width="280"
-            height="252"
-          />
-        </WrapImg>
-      </div>
-      <div
-        className={css`
-          padding: 0 12px 12px;
-        `}
-      >
+      <Line></Line>
+      <Img src={imgUrl} alt={title} loading="lazy" width="280" height="252" />
+      <Wrap>
         <Title>{title}</Title>
         <Decsr>{text}</Decsr>
         <WrapBottom>
-          <Date>{date}</Date>
+          <Date>{transformDate(date)}</Date>
           <Link href={url} target="_blank" rel="noreferrer noopener">
             Read more
           </Link>
         </WrapBottom>
-      </div>
+      </Wrap>
     </Item>
   );
 };
 
 export default NewsItem;
 
-// FriendListItem.propTypes = {
-//   isOnline: PropTypes.bool.isRequired,
-//   avatar: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-// };
+/*{pathSrc ? `${pathImg}${pathSrc}` : NoImageAvailable}*/
+NewsItem.propTypes = {
+  // _id: PropTypes.string.isRequired,
+  // id: PropTypes.string,
+  imgUrl: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};

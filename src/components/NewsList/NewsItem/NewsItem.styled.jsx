@@ -23,13 +23,12 @@ export const Item = styled.li`
 
 export const Line = styled.div`
   margin: 0 auto;
+  width: 100%;
+  border-radius: 2px;
 `;
 
-export const WrapImg = styled.div`
-  margin-bottom: 16px;
-  width: 280px;
-  height: 252px;
-  border: 1px;
+export const Wrap = styled.div`
+  padding: 16px;
 `;
 
 export const Img = styled.img`
