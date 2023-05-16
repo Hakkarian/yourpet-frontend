@@ -6,18 +6,19 @@ import {
   Backdrop,
   Wrapper,
   CloseModalBtn,
-  ContainerButton
-} from './ModalApproveAction.styled';
+
+} from './Modal.styled';
 
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
-import { ReactComponent as CrossSmall } from '../../icons/cross-small.svg';
-import Button from 'shared/components/Button/Button';
+import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
+// import Button from 'shared/components/Button/Button';
+// import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
 // import { ReactComponent as LogoutSvg} from '../../icons/logout.svg';
 // import { ReactComponent as Trash} from '../../icons/trash.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalApproveAction = ({ onClose, children, shouModal }) => {
+const Modal = ({ onClose, children, shouModal }) => {
   useEffect(() => {
     const handleKeyDowm = e => {
       if (e.code === 'Escape') onClose();
@@ -37,19 +38,14 @@ const ModalApproveAction = ({ onClose, children, shouModal }) => {
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
-        <CloseModalBtn type="button" onClick={onClose}>
+      <CloseModalBtn type="button" onClick={onClose}>
           <CrossSmall />
         </CloseModalBtn>
-        {/* <CrossButton type='button' onClick={onClose}/> */}
-        {children}
-        <ContainerButton>
-        <Button type="button" color="white" width="129px" onClick={onClose}>Cancel</Button>
-        <Button type="button" color="blue" width="129px">Yes</Button>
-        </ContainerButton>
+        {children}    
       </Wrapper>
     </Backdrop>,
     modalRoot
   );
 };
 
-export default ModalApproveAction;
+export default Modal;

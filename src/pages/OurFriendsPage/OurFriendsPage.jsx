@@ -6,47 +6,51 @@ import React from 'react';
 
 // export default OurFriendsPage;
 
-
-
 // не видяляйте це, я тут відкриваю модалку
 // import ModalCongrats from 'components/ModalCongrats';
-import ModalNotice from 'components/ModalNotice/ModalNotice';
+// import ModalNotice from 'components/ModalNotice/ModalNotice';
 // import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
+import Modal from 'shared/components/Modal/Modal';
+import ModalDelete from 'components/ModalDelete';
+import ModalCongrats from 'components/ModalCongrats';
+import ModalNotice from 'components/ModalNotice';
 
-import { useToggle } from 'shared/hooks/useToggle'
 
-// import { ModalTitle, ModalText, ColorSpan } from 'pages/OurFriendsPage/OurFriendsPage.styled';
+import { useToggle } from 'shared/hooks/useToggle';
+import ModalLogOut from 'components/ModalLogOut';
 
+
+
+// import {
+//   ModalTitle,
+//   ModalText,
+//   ColorSpan,
+// } from 'pages/OurFriendsPage/OurFriendsPage.styled';
 
 const OurFriendsPage = () => {
   const { isOpen, open, close } = useToggle();
 
   return (
-    // <div>
-    //   OurFriendsPage
-    //   <button type="button" onClick={open}>
-    //     open modal
-    //   </button>
-    //   {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
-    //   {isOpen && <ModalApproveAction onClose={close}>
-    //   <ModalTitle>Already leaving?</ModalTitle>
-    //     </ModalApproveAction>}
-    // </div>
     <div>
-    OurFriendsPage
-    <button type="button" onClick={open}>
-      open modal
-    </button>
-    {/* {isOpen && <ModalCongrats onClose={close}></ModalCongrats>} */}
-    {isOpen && <ModalNotice onClose={close}></ModalNotice>}
-    {/* {isOpen && <ModalApproveAction onClose={close}> */}
-   
-    {/* <ModalTitle>Delete adverstiment?</ModalTitle>
-    <ModalText>Are you sure you want to delete  <ColorSpan>“Cute dog looking <br></br>for a home”?</ColorSpan> 
-<br></br>You can`t undo this action.</ModalText>
-    
-      </ModalApproveAction>} */}
-  </div>
+      OurFriendsPage
+      <button type="button" onClick={open}>
+        open modal
+      </button>
+      {isOpen && (
+        <Modal onClose={close} >
+          
+          {/* <ModalCongrats onClose={close}/> */}
+
+         
+          {/* <ModalDelete onClose={close} /> */}
+
+          <ModalLogOut onClose={close}/>
+
+          {/* <ModalNotice onClose={close} /> */}
+
+        </Modal>
+      )}
+    </div>
   );
 };
 

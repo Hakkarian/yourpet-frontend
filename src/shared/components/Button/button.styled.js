@@ -22,6 +22,9 @@ export const ButtonTag = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.04em;
 
     border-radius: 40px;
 
@@ -37,5 +40,6 @@ export const ButtonTag = styled.button`
     svg {
         margin-left:12px;
         fill:red;
+
     }
 `;

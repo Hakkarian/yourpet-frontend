@@ -1,5 +1,6 @@
 
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 // import styled from 'styled-components';
 
 export const Backdrop = styled.div`
@@ -67,9 +68,39 @@ margin-bottom: 8px;
 export const BtnContainer = styled.div`
 display: flex;
 position: absolute;
-left: 521px;
-top: 476px;
+left: 426px;
+top: 520px;
+
+button {
+  padding: 0;
+}
+
+svg {
+  fill: white;
+  stroke: red;
+  margin: 0px;
+  margin-left: 9px;
+}
 `
+
+export const ContactsLink = styled(NavLink)`
+padding: 0;
+margin-left: 20px;
+  border-radius: 40px;
+  border: 2px solid ${({theme}) => theme.colors.blue}; 
+  width: 125px;
+  height: 40px;
+  font-weight: 700;
+font-size: 16px;
+display: flex;
+justify-content: center;
+align-items: center;
+letter-spacing: 0.04em;
+
+  &.active {
+    color: ${({theme}) => theme.colors.blue};
+  }
+`;
 
 // export const AddToBtn = styled.button`
 // font-weight: 700;
@@ -89,5 +120,3 @@ top: 476px;
 //     color: ${({ theme }) => theme.colors.blue};
 // `
 
-export const ContactsLink = styled.button`
-`
