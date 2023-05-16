@@ -1,5 +1,5 @@
 const initialValues = {
-  category: 'lostFound',
+  category: 'my pet',
   title: '',
   name: '',
   date: '',
@@ -10,13 +10,5 @@ const initialValues = {
   photo: undefined,
   comments: '',
 };
-
-// const initialYourPetInfo = {
-//   name: '',
-//   date: '',
-//   breed: '',
-//   photo: null,
-//   comments: '',
-// };
 
 export default initialValues;

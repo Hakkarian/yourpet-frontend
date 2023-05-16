@@ -13,18 +13,25 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(register.pending, state => (state.isLoading = true))
-      .addCase(login.pending, state => (state.isLoading = true))
-      .addCase(logout.pending, state => (state.isLoading = true))
-      .addCase(info.pending, state => (state.isLoading = true))
+      .addCase(register.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(login.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(logout.pending, state => {
+        state.isLoading = true
+      })
+      .addCase(info.pending, state => {
+        state.isLoading = true
+      })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(register.rejected, (state, { payload }) => {
-        console.log(payload)
+      .addCase(register.rejected, (state, action) => {
         // action.payload
         state.isLoading = false;
-        state.error = payload;
+        state.error = action.payload;
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -36,16 +43,15 @@ const authSlice = createSlice({
       })
       .addCase(info.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = payload.error;
+        state.error = payload;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
-        const { user, token } = payload;
+        const { user } = payload;
         state.isLoading = false;
         state.user = user;
-        state.token = token;
         state.isLogin = true;
       })
       .addCase(login.fulfilled, (state, { payload }) => {

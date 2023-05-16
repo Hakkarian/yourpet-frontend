@@ -1,4 +1,11 @@
 import styled from "@emotion/styled";
+import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
+
+export const Icon = styled(DeleteIcon)`
+fill:none;
+width: 24px;
+height: 24px;
+`;
 
 export const Item = styled.li`
 background: #FFFFFF;

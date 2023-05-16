@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Item = styled.li`
   margin: 0 auto;
+  height: 100%;
 
   @media screen and (min-width: 480px) {
     font-size: 1em;
@@ -22,20 +23,34 @@ export const Item = styled.li`
 `;
 
 export const Line = styled.div`
-  margin: 0 auto;
+  margin-bottom: 12px;
   width: 100%;
-  border-radius: 2px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.blue};
+  background: ${({ theme }) => theme.background.azure};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 14px;
+  }
 `;
 
-export const Wrap = styled.div`
-  padding: 16px;
+export const WrapImg = styled.div`
+  overflow: hidden;
+  margin-bottom: 16px;
+  border-radius: 20px;
 `;
 
 export const Img = styled.img`
-  width: 280px;
-  height: 252px;
+  display: block;
+  width: 100%;
+  object-fit: cover;
 `;
 
+export const Wrap = styled.div`
+  padding: 0 12px;
+  margin-bottom: 12px;
+`;
 export const Title = styled.h2`
   margin-left: 0;
   margin-bottom: 16px;
@@ -67,6 +82,7 @@ export const WrapBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 12px;
 `;
 export const Date = styled.p`
   font-family: 'Manrope';
@@ -74,18 +90,20 @@ export const Date = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
+  color: #888888;
 
   @media screen and (min-width: 480px) {
     font-size: 1em;
   }
 `;
 
-export const Link = styled.button`
+export const Link = styled.a`
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
+  color: ${({ theme }) => theme.colors.blue};
 
   @media screen and (min-width: 480px) {
     font-size: 1em;

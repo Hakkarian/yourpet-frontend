@@ -36,7 +36,5 @@ export const ButtonTag = styled.button`
     }
     svg {
         margin-left:12px;
-        fill:red;
-
     }
 `;

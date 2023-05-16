@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 
 export const Wrap = styled.div`
 padding-top: 20px;
-width: 100%;
+padding-bottom: 25px;
+padding-right: 8px;
+padding-left: 8px;
 background: #FFFFFF;
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 20px;
@@ -33,9 +35,7 @@ margin-bottom:18px;
 `;
 
 export const UserDiv = styled.div`
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+
   background-color: #FEF9F9;
 `;
 

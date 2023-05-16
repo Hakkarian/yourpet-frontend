@@ -11,7 +11,11 @@ import {
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-import { ReusableTitle } from 'shared/components/ReusableTitle/ReusableTitle';
+
+// import { Container } from 'shared/components/Container/Container.styled';
+import { SearchForm } from 'shared/components/SearchForm/SearchForm';
+import ReusableTitle from 'shared/components/ReusableTitle';
+
 import { NewsList } from 'components/NewsList/NewsList';
 
 // import newsItems from '../../components/NewsList/news.json';
@@ -29,9 +33,12 @@ const NewsPage = () => {
 
   return (
     <>
-      {isLoading && operation === 'fetch' && !error && <Loader />}
+      {/* <Container> */}
       <ReusableTitle>News</ReusableTitle>
-      <NewsList news={newsItems} />
+      <SearchForm />
+      {isLoading && operation === 'fetch' && !error && <Loader />}
+      {newsItems.length !== 0 && <NewsList news={newsItems} />}
+      {/* </Container> */}
     </>
   );
 };

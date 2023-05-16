@@ -6,7 +6,7 @@ export const Forms = styled(Form)`
   flex-direction: column;
   align-items: center;
   padding: 40px 12px;
-  @media (min-width: 481px) {
+  @media (min-width: 768px) {
     padding: 60px 75px;
   }
 `;
@@ -14,13 +14,8 @@ export const InputEmail = styled(Field)`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid;
-  border-color: ${props => props.error};
-  border-radius: ${props => props.theme.radius.normal};
 
   ::placeholder {
-    font-weight: ${props => props.theme.fontWeiths.normal};
-    font-size: ${props => props.theme.fontSizes.s};
-    color: ${props => props.theme.colors.grey};
   }
   :focus {
     outline: none;
@@ -30,13 +25,9 @@ export const InputPassword = styled(Field)`
   width: 100%;
   padding: 12px 16px;
   border: 1px solid;
-  border-color: ${props => props.error};
-  border-radius: ${props => props.theme.radius.normal};
 
   ::placeholder {
-    font-weight: ${props => props.theme.fontWeiths.normal};
-    font-size: ${props => props.theme.fontSizes.s};
-    color: ${props => props.theme.colors.grey};
+
   }
   :focus {
     outline: none;
@@ -51,19 +42,16 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 export const Text = styled.p`
-  font-weight: ${props => props.theme.fontWeiths.normal};
-  font-size: ${props => props.theme.fontSizes.xs};
+
   line-height: 16px;
-  color: ${props => props.theme.colors.grey};
+
   margin-top: 20px;
 `;
 export const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.link};
 `;
 export const Error = styled.p`
-  font-weight: ${props => props.theme.fontWeiths.normal};
-  font-size: ${props => props.theme.fontSizes.xs};
-  color: ${props => props.theme.colors.red};
+
   padding-left: 12px;
   margin-top: 4px;
 `;
