@@ -4,9 +4,12 @@ import NewsItem from './NewsItem/NewsItem';
 import { List } from './NewsList.styled';
 
 export const NewsList = ({ news }) => {
+  const sortedNews = [...news].sort(
+    (a, b) => Date.parse(b.date) - Date.parse(a.date)
+  );
   return (
     <List>
-      {news.map(({ _id, imgUrl, title, text, date, url }) => (
+      {sortedNews.map(({ _id, imgUrl, title, text, date, url }) => (
         <NewsItem
           key={_id}
           imgUrl={imgUrl}

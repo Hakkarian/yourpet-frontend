@@ -1,8 +1,13 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { Formik } from 'formik';
+import { addPets } from 'redux/pets/pets-operations';
+import { addNotices } from 'redux/notices/notices-operations';
+
+import { Formik, Form } from 'formik';
 import Title from 'pages/AddPetPage/AddPetForm/FormFields/Title/Title';
-import { StyledForm } from './AddPetForm.styled';
+import { ContainerCss } from './AddPetForm.styled';
+import { useLocation } from 'react-router-dom';
 
 import initialValues from './FormModel/formInitualValues';
 import validationSchema from './FormModel/validationSchema';
@@ -17,6 +22,11 @@ const AddPetForm = () => {
   const [photo, setPhoto] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+  const prevLocation = location?.state?.from || '/';
+
   const changeStep = direction => {
     if (direction === 'next') {
       setCurrentStep(prev => prev + 1);
@@ -28,14 +38,18 @@ const AddPetForm = () => {
 
   const handleSubmit = async (values, { setFieldError }) => {
     if (!photo) {
-      await setFieldError('photo', 'Load image');
+      await setFieldError('photo', 'Please load image');
       return;
     }
 
+    //form request body
     let formData = new FormData();
     formData.append('photo', photo);
     for (let value in values) {
       if (!values[value]) {
+        continue;
+      }
+      if (value === 'category' && category === 'my pet') {
         continue;
       }
       const fields = ['title', 'location', 'sex'];
@@ -52,10 +66,17 @@ const AddPetForm = () => {
     for (let property of formData.entries()) {
       console.log(property[0], property[1]);
     }
+
+    //setd data on backend
+    if (category === 'my pet') {
+      dispatch(addPets(formData));
+    } else {
+      dispatch(addNotices(formData));
+    }
   };
 
   return (
-    <>
+    <ContainerCss>
       <Title category={category} currentStep={currentStep} />
       <Stepper currentStep={currentStep} />
       <Formik
@@ -66,12 +87,13 @@ const AddPetForm = () => {
         onSubmit={handleSubmit}
       >
         {helpers => (
-          <StyledForm autoComplete="off">
+          <Form autoComplete="off">
             {currentStep === 0 && (
               <ChooseOptionForm
                 helpers={helpers}
                 setCategory={setCategory}
                 changeStep={changeStep}
+                location={prevLocation}
               />
             )}
             {currentStep === 1 && (
@@ -90,11 +112,18 @@ const AddPetForm = () => {
                 photo={photo}
               />
             )}
-          </StyledForm>
+          </Form>
         )}
       </Formik>
-    </>
+    </ContainerCss>
   );
 };
 
 export default AddPetForm;
+
+// import { useLocation } from 'react-router-dom';
+// const location = useLocation();
+
+// <Link to="/add-pet" state={{ from: location }}>
+//   Add Pet
+// </Link>;

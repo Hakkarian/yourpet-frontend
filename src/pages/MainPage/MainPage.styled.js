@@ -20,6 +20,7 @@ export const SectionTag = styled.section`
     bottom: 0;
     left: 0;
 
+    width: 100vw;
     min-height: calc(100vh - 168px);
     padding: 48px 20px 60px 20px;
 
@@ -64,7 +65,7 @@ export const SectionTag = styled.section`
 
     @media (min-width: 767px) {
         min-height: calc(100vh - 148px);
-        margin-top: 148px;
+        margin-top: 88px;
         padding: 0px 32px 0px 32px;
 
         
@@ -81,7 +82,7 @@ export const SectionTag = styled.section`
             line-height: calc(100 / 68);
         }
         div {
-            top: 375px;
+            top: 225px;
             min-height: 684px;
 
             // background-color: red;
@@ -101,7 +102,7 @@ export const SectionTag = styled.section`
     @media (min-width: 1279px) {
         // min-height: calc(100vh - 148px);
         max-width:1280px;
-        margin-top: 100px;
+        margin-top: 0px;
         padding: 0px 0px 0px 16px;
         margin-right: auto;
         margin-left: auto;
@@ -116,7 +117,7 @@ export const SectionTag = styled.section`
             }
 
         h1 {
-            width: 505px;
+            width: 525px;
             margin-top: 188px;
 
             // font-weight: 800;
@@ -124,7 +125,7 @@ export const SectionTag = styled.section`
             line-height: 130%;
         }
         div {
-            top: 110px;
+            top: 48px;
             left:363px;
             min-height: 684px;
 
