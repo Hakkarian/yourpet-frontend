@@ -1,10 +1,10 @@
-import { ContainerButton, ModalTitle, ModalText, ColorSpan,  } from './ModalDelete.styled';
+import { ContainerButton, ModalTitle, ModalText, ColorSpan, Container  } from './ModalDelete.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
 
 const ModalDelete = ({ onClose }) => {
   return (
-    <div>
+    <Container>
        <ModalTitle>Delete adverstiment?</ModalTitle>
           <ModalText>
             Are you sure you want to delete{' '}
@@ -21,7 +21,7 @@ const ModalDelete = ({ onClose }) => {
           Yes <DeleteIcon className="svg" width="24px" height="24px" />
         </Button>
       </ContainerButton>
-    </div>
+    </Container>
   );
 };
 

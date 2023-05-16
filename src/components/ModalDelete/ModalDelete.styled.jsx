@@ -32,6 +32,8 @@ width: 275px;
   fill: none;
   stroke="#FFFFFF"
 }
+
+// прибрати ці стилі якщо вони зєявиться в блакитній та жовтій кнопках
 .btn {
   padding: 0;
  height: 40px;
@@ -43,6 +45,14 @@ width: 275px;
     background: ${({theme}) => theme.background.azure};
     border: none;
   }
+}
+`
+export const Container = styled.div`
+display: flex;
+align-items: center;
+text-align: center;
+flex-direction: column;
+margin-bottom: 60px;
 }
 `
 

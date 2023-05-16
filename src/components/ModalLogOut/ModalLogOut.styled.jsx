@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 
+export const Container = styled.div`
+
+
+`
+
 export const ContainerButton = styled.div`
 display: flex;
 align-items: center;
@@ -18,6 +23,11 @@ svg {
  height: 40px;
  font-weight: 700;
  font-size: 16px;
+ //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+  :hover {
+    background: ${({theme}) => theme.background.azure};
+    border: none;
+  }
 }
 
  .svg {
@@ -25,19 +35,9 @@ svg {
   // stroke: ${({theme}) => theme.colors.white};
  }
 
-//  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
-  :hover {
-    background: ${({theme}) => theme.background.azure};
-    border: none;
-  }
-
 }
 `
-
-
-
 export const ModalTitle = styled.h2`
-margin-top: 109px;
 margin-bottom: 52px;
 font-weight: 500;
 font-size: 36px;

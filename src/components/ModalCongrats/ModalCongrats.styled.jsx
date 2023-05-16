@@ -49,12 +49,11 @@ align-items: center;
 text-align: center;
 flex-direction: column;
 margin-bottom: 60px;
-
-button {
-  font-weight: 700;
-  font-size: 16px;
 }
 `
+// перевірити чи додали стилі для ховеру на кнопки
+
+
 
 export const Text = styled.p`
 margin-bottom: 60px;

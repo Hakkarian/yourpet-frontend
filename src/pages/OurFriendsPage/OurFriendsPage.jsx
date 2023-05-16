@@ -8,10 +8,10 @@
 
 // не видяляйте це, я тут відкриваю модалку
 import Modal from 'shared/components/Modal/Modal';
-// import ModalDelete from 'components/ModalDelete';
+import ModalDelete from 'components/ModalDelete';
 import ModalCongrats from 'components/ModalCongrats';
 // import ModalNotice from 'components/ModalNotice';
-// import ModalLogOut from 'components/ModalLogOut';
+import ModalLogOut from 'components/ModalLogOut';
 
 import { useToggle } from 'shared/hooks/useToggle';
 

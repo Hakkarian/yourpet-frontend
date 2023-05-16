@@ -7,8 +7,8 @@ const ModalCongrats = ({ onClose }) => {
     <Container>
       <Title>Congrats!</Title>
       <Text>Youre registration is success</Text>
-      <Button type="button" color="blue" width="248px" onClick={onClose}>
-        Go to profile <Paw width="24px" height="24px" />
+      <Button className="btn" type="button" color="blue" width="248px" onClick={onClose}>
+        Go to profile <Paw stroke="#FFFFFF" fill="none" width="24px" height="24px" />
       </Button>
     </Container>
   );
