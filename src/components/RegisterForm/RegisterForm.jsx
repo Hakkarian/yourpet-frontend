@@ -117,7 +117,7 @@ const RegisterForm = () => {
                         setOpen({ ...open, confirmPasswordEye: false })
                       }
                     >
-                      <EyeOpen width="24" height="24" />
+                      <EyeOpen width="24" height="24" fill="none" />
                     </ButtonEye>
                   ) : (
                     <ButtonEye
@@ -126,7 +126,7 @@ const RegisterForm = () => {
                         setOpen({ ...open, confirmPasswordEye: true })
                       }
                     >
-                      <EyeClosed width="24" height="24" />
+                      <EyeClosed width="24" height="24" stroke="#54ADFF" fill="none" />
                     </ButtonEye>
                   )}
                   {errors.confirmPassword && (

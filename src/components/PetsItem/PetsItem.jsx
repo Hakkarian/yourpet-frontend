@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 
 import {Item, DeleteBtn, Span, BtnWrap, Icon} from './PetsItem.styled';
-import ModalApproveAction from "components/ModalApproveAction/ModalApproveAction";
+// import ModalApproveAction from "components/ModalApproveAction/ModalApproveAction";
 
 const PetsItem = ({pet}) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const [isModalOpen, setIsModalOpen] = useState(false);
 
     const onDeleteBtn = () => {
-       setIsModalOpen(true);
+    //    setIsModalOpen(true);
     };
 
     return (
@@ -23,7 +23,7 @@ const PetsItem = ({pet}) => {
             <p>Date of birth: <Span>{pet.birthday}</Span></p>
             <p>Breed: <Span>{pet.breed}</Span></p>
             <p>Comments: <Span>{pet.comments}</Span></p>
-            {isModalOpen && <ModalApproveAction />}
+            {/* {isModalOpen && <ModalApproveAction />} */}
          </Item>
         </>
     )
