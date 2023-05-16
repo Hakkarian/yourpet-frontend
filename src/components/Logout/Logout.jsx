@@ -7,25 +7,25 @@ import { logout } from 'redux/auth/auth-operations';
 
 
 const Logout = () => {
-    const dispatch = useDispatch();
+//     const dispatch = useDispatch();
   
-    const [isOpenModal, setIsOpenModal] = useState(false);
+//     const [isOpenModal, setIsOpenModal] = useState(false);
 
-    const onLogOut = () => {
-      dispatch(logout());
-      setIsOpenModal(true)
-    };
+//     const onLogOut = () => {
+//       dispatch(logout());
+//       setIsOpenModal(true)
+//     };
 
-    return (
-        <OutWrap>
-            <OutBtn type="button" onClick={onLogOut} >
-                <Icon />
-            </OutBtn>
-            <OutText>Log Out</OutText>
-//             {isOpenModal && (
-//                 <ModalApproveAction /> )}
-        </OutWrap>
-    )
+//     return (
+//         <OutWrap>
+//             <OutBtn type="button" onClick={onLogOut} >
+//                 <Icon />
+//             </OutBtn>
+//             <OutText>Log Out</OutText>
+// //             {isOpenModal && (
+// //                 <ModalApproveAction /> )}
+//         </OutWrap>
+//     )
 };
 
 export default Logout;
