@@ -151,3 +151,89 @@ const RegisterForm = () => {
 }
 
 export default RegisterForm;
+
+// const LoginForme = () => {
+//   const [open, setOpen] = useState({
+//     passwordEye: false,
+//     confirmPasswordEye: false,
+//   });
+//   const dispatch = useDispatch();
+
+//   const handleSubmit = (values, actions) => {
+//     const { email, password } = values;
+//     const payload = { email, password };
+//     console.log('submit');
+//     dispatch(login(payload));
+//     actions.resetForm();
+//   };
+//   return (
+//     <FlexDivCss>
+//       <ReusableTitleCss>Login</ReusableTitleCss>
+//       <Formik
+//         initialValues={{ email: '', password: '', confirmPassword: '' }}
+//         validationSchema={validationSchema}
+//         onSubmit={handleSubmit}
+//       >
+//         {({ errors, values, touched }) => {
+//           return (
+//             <FormCss>
+//               <div>
+//                 <Field
+//                   name="email"
+//                   type="email"
+//                   className={errors.email ? 'input-error' : 'input-valid'}
+//                 />
+//                 <div className="form-div">
+//                   <ErrorMessage name="email" />
+//                 </div>
+//                 {errors.email && (
+//                   <AbsDivCss>
+//                     <Cross width="24" height="24" stroke="#F43F5E" />
+//                   </AbsDivCss>
+//                 )}
+//               </div>
+//               <div>
+//                 <Field
+//                   className={errors.password ? 'input-error' : 'input-valid'}
+//                   name="password"
+//                   type={open.passwordEye ? 'text' : 'password'}
+//                 />
+//                 <div className="form-div">
+//                   <ErrorMessage name="password" />
+//                 </div>
+
+//                 {open.passwordEye ? (
+//                   <ButtonEye
+//                     type="button"
+//                     onClick={() => setOpen({ ...open, passwordEye: false })}
+//                   >
+//                     <EyeOpen width="24" height="24" />
+//                   </ButtonEye>
+//                 ) : (
+//                   <ButtonEye
+//                     type="button"
+//                     onClick={() => setOpen({ ...open, passwordEye: true })}
+//                   >
+//                     <EyeClosed width="24" height="24" />
+//                   </ButtonEye>
+//                 )}
+//                 {errors.password && (
+//                   <AbsDivCss>
+//                     <Cross width="24" height="24" stroke="#F43F5E" />
+//                   </AbsDivCss>
+//                 )}
+//               </div>
+//               <Button className="form-button" type="submit">
+//                 Submit
+//               </Button>
+//               <TextWrapCss>
+//                 <TextCss>Already have an account?</TextCss>
+//                 <Link to="/register">Register</Link>
+//               </TextWrapCss>
+//             </FormCss>
+//           );
+//         }}
+//       </Formik>
+//     </FlexDivCss>
+//   );
+// };
