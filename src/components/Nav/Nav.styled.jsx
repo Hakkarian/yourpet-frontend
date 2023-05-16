@@ -3,16 +3,9 @@ import { NavLink } from "react-router-dom";
 
 
 export const NavCss = styled.div`
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    gap: 42px;
-  }
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
+  display: flex;
+  align-items: center;
+  gap: 40px;
 `;
 
 export const NavLinkCss = styled(NavLink)`

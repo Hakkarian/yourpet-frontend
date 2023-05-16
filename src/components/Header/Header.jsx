@@ -1,8 +1,9 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import{ useMediaQuery } from 'react-responsive';
+
 import AuthNav from 'components/AuthNav'
 import Nav from 'components/Nav/Nav'
 import UserNav from 'components/UserNav'
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { AuthWrapCss, HeaderCss, InfoCss, NavConnect, UserWrapCss } from './Header.styled'
 
@@ -17,6 +18,17 @@ import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
 const Header = () => {
   // const [isAuth, setIsAuth] = useState(true);
 
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1280px)',
+  });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
+  const isMobile = useMediaQuery({
+    query: '(max-width: 1279px)',
+  });
+
+
   const isAuth = false;
 
   return (
@@ -28,25 +40,27 @@ const Header = () => {
             <>
               <UserWrapCss>
                 <Link to="/user">
-                  <User width="24" height="24" />
+                  <User width="28" height="28" />
                 </Link>
-                <InfoCss>Anna</InfoCss>
-              </UserWrapCss>{' '}
-              <Link>
+                {isTablet && <InfoCss>Anna</InfoCss>}
+              </UserWrapCss>
+              {isMobile && <Link>
                 <BurgerMenu width="24" height="24" />
-              </Link>
+              </Link>}
             </>
           ) : (
-              <Link>
-                <BurgerMenu width="24" height="24" />
-              </Link>
+            <>
+              {' '}
+              {isDesktop && <Nav />}
+              {isTablet && <AuthNav />}
+              {isMobile && (
+                <Link>
+                  <BurgerMenu width="24" height="24" />
+                </Link>
+              )}
+            </>
           )}
         </AuthWrapCss>
-        <NavConnect>
-          <Nav />
-          <AuthNav />
-          <UserNav />
-        </NavConnect>
       </HeaderCss>
     </>
   );
