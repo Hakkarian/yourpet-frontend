@@ -1,4 +1,4 @@
-import { ContainerButton, ModalTitle, Container } from './ModalLogOut.styled';
+import { ContainerButton, ModalTitle } from './ModalLogOut.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as LogOutIcon} from '../../icons/logout.svg';
 
