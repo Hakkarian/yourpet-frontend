@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { nanoid } from 'nanoid';
 
 import { Input, Label, Wrapper } from './TextField.styled';
-import { FormError } from '../../AddPetForm';
+import FormError from '../FormError/FormError';
 
 const TextField = ({ errors, touched, label, name, ...props }) => {
   const id = useMemo(() => nanoid(), []);

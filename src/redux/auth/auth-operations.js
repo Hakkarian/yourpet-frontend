@@ -22,14 +22,13 @@ export const register = createAsyncThunk(
           color: '#fff',
         },
       });
-      console.log('login to go', data)
-      const loginData = {
-        email: data.email,
-        password: data.password,
-      };
-      await dispatch(login(loginData));
+      // const loginData = {
+      //   email: data.email,
+      //   password: data.password,
+      // };
+      // await dispatch(login(loginData));
       return result;
-    } catch ({ response }) {
+    } catch ({response}) {
       //error.response
       if (response.status === 400) {
         toast(
@@ -58,6 +57,8 @@ export const register = createAsyncThunk(
     }
   }
 );
+
+
 
 export const login = createAsyncThunk(
   'auth/login',

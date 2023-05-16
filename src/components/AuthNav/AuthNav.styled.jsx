@@ -13,9 +13,20 @@ export const AuthNavCss = styled.div`
 `;
 
 export const ButtonCss = styled(Button)`
-  min-width: 165px;
-  background-color: yellow;
-`
+    min-width: 165px;
+    color: #fff;
+    background-color: ${({ theme }) => theme.colors.blue};
+    border: 1px solid transparent;
+
+    transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+
+    &:hover {
+      border: 1px solid ${({ theme }) => theme.colors.blue};
+      color: ${({ theme }) => theme.colors.blue};
+      background: none;
+      background-color: transparent;
+    }
+`;
 
 export const PawCss = styled(Paw)`
   fill: currentColor;
