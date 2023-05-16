@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import PetsList from "components/PetsList";
 import { Title } from "pages/UserPage/UserPage.styled";
+
 import {PetsWrap, BtnWrap, } from './PetsData.styled';
 // import BlueButton from "shared/components/BlueButton/BlueButton";
 

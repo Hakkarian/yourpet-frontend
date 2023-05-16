@@ -6,8 +6,13 @@ import {
   ItemNav,
   WrapperNav,
   ContainerNav,
+  BoxNav,
+  AddPetButton,
+  Span,
+  IconAddPet,
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+import plus from '../../../icons/plus.svg';
 
 const buttons = [
   {
@@ -60,6 +65,12 @@ const NoticesCategoriesNav = () => {
                 </ItemNav>
               ))}
           </WrapperNav>
+          <BoxNav>
+            <AddPetButton>
+              <Span>Add pet</Span>
+              <IconAddPet src={plus} alt="add-pet"/>
+            </AddPetButton>
+          </BoxNav>
         </ListNav>
       </NavStyle>
     </>
