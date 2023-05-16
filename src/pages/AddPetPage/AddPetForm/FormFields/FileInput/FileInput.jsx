@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { nanoid } from 'nanoid';
+
 import FormError from '../FormError/FormError';
+import { PlusIcon } from './FileInput.styled';
 
 import { CustomInput, CustomLabel, FilePreview } from './FileInput.styled';
 
@@ -13,6 +15,7 @@ const FileInput = ({ onChange, name, photo }) => {
   return (
     <div>
       <CustomLabel htmlFor={id}>
+        <PlusIcon photourl={photoUrl} />
         <FilePreview src={photoUrl} photoUrl={photoUrl} />
       </CustomLabel>
       <div>

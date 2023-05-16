@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
     .matches(/^[a-zA-Z ]+$/, 'A name can only contain letters')
     .trim()
     .required('Please enter a name'),
-  date: Yup.string('Please enter a date in a format "dd.mm.yyyy"')
+  birthday: Yup.string('Please enter a date in a format "dd.mm.yyyy"')
     .transform(formatDateString)
     .trim()
     .required('Please enter a date in a format "dd.mm.yyyy"'),

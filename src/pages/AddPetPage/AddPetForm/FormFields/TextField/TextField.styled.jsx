@@ -3,13 +3,13 @@ import { Field } from 'formik';
 
 export const Label = styled.label`
   display: block;
-  font-size: ${({ theme }) => theme.spacing(4)}px;
+  font-size: ${({ theme }) => theme.spacing(3.5)}px;
   /* font-weight: 500; */
   margin-bottom: ${({ theme }) => theme.spacing(1)}px;
 `;
 
 export const Input = styled(Field)`
-  width: ${({ theme }) => theme.spacing(66)}px;
+  width: ${({ theme }) => theme.spacing(65)}px;
   height: ${({ theme, as }) => {
     if (as === 'textarea') {
       return theme.spacing(23);
