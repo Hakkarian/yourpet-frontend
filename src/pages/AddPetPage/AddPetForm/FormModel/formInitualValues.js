@@ -2,7 +2,7 @@ const initialValues = {
   category: 'my pet',
   title: '',
   name: '',
-  date: '',
+  birthday: '',
   breed: '',
   sex: '',
   location: '',

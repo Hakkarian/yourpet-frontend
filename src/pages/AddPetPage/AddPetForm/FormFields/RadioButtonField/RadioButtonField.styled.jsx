@@ -24,7 +24,10 @@ export const RadioInput = styled(Field)`
 `;
 
 export const RadioLabel = styled.label`
-  display: inline-block;
+  /* display: inline-block; */
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background-color: ${({ theme, name }) => {
     if (name === 'category') {
       return theme.colors.lightblue;
@@ -56,6 +59,14 @@ export const RadioLabel = styled.label`
   }};
   border: none;
   border-radius: 40px;
+
+  svg {
+    fill: transparent;
+  }
+
+  svg > path {
+    stroke: ${({ theme, fill }) => theme.colors[fill]};
+  }
 
   &:hover {
     cursor: pointer;
