@@ -3,9 +3,8 @@ import{ useMediaQuery } from 'react-responsive';
 
 import AuthNav from 'components/AuthNav'
 import Nav from 'components/Nav/Nav'
-import UserNav from 'components/UserNav'
 import { Link } from 'react-router-dom'
-import { AuthWrapCss, HeaderCss, InfoCss, NavConnect, UserWrapCss } from './Header.styled'
+import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled'
 
 
 import moblogo from '../../images/moblogo1x.png';
