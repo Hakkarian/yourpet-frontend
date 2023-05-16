@@ -1,16 +1,16 @@
 import Button from 'shared/components/Button/Button';
-import { Title, Text } from './ModalCongrats.styled';
+import { Title, Text, Container } from './ModalCongrats.styled';
 import { ReactComponent as Paw } from '../../icons/paw.svg';
 
 const ModalCongrats = ({ onClose }) => {
   return (
-    <div>
+    <Container>
       <Title>Congrats!</Title>
       <Text>Youre registration is success</Text>
-      <Button type="button" color="white" width="248px" onClick={onClose}>
+      <Button type="button" color="blue" width="248px" onClick={onClose}>
         Go to profile <Paw width="24px" height="24px" />
       </Button>
-    </div>
+    </Container>
   );
 };
 

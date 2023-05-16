@@ -14,11 +14,11 @@ const ModalDelete = ({ onClose }) => {
             <br></br>You can`t undo this action.
           </ModalText>
       <ContainerButton>
-        <Button type="button" color="white" width="129px" onClick={onClose}>
+        <Button className="btn" type="button" color="white" width="129px" onClick={onClose}>
           Cancel
         </Button>
-        <Button type="button" color="blue" width="129px">
-          Yes <DeleteIcon width="24px" height="24px" />
+        <Button className="btn" type="button" color="blue" width="129px">
+          Yes <DeleteIcon className="svg" width="24px" height="24px" />
         </Button>
       </ContainerButton>
     </div>

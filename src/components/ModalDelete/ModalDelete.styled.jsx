@@ -24,9 +24,25 @@ export const ContainerButton = styled.div`
 display: flex;
 align-items: center;
 text-align: center;
+justify-content: space-between;
+margin: 0 auto;
+width: 275px;
 
-svg {
-  fill: white;
+.svg {
+  fill: none;
+  stroke="#FFFFFF"
+}
+.btn {
+  padding: 0;
+ height: 40px;
+ font-weight: 700;
+ font-size: 16px;
+
+ //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+  :hover {
+    background: ${({theme}) => theme.background.azure};
+    border: none;
+  }
 }
 `
 

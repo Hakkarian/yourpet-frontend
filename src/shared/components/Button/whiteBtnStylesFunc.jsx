@@ -13,5 +13,6 @@ export const whiteBtnStylesFunc = (width, { colors, background }) => `
 
     :hover, :focus {
         color:${colors.white};
+
     }
 `;
