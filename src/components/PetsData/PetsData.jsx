@@ -1,15 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PetsList from "components/PetsList";
 import { Title } from "pages/UserPage/UserPage.styled";
+import {PetsWrap, BtnWrap, PlusIcon } from './PetsData.styled';
+import BlueButton from "shared/components/BlueButton/BlueButton";
 
 const PetsData = () => {
 
+    const handleAddPet = () => {
+        console.log("Add pet!!! Cool!!")
+    };
+
     return (
-        <div>
+        <PetsWrap>
+            <BtnWrap>
             <Title>My pets:</Title>
+            <Link to="/add-pet"><BlueButton  type="button" onAuxClick={handleAddPet}>Add Pet
+            <PlusIcon />
+            </BlueButton></Link>
+            </BtnWrap>
             <PetsList />
-        </div>
+        </PetsWrap>
     )
 };
 
