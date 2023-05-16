@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchAllNews } from './news-operations';
+import { fetchNews } from './news-operations';
 
 const newsSlice = createSlice({
   name: 'news',
@@ -8,22 +8,26 @@ const newsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
-    operation: null,
+    totalPage: null,
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchAllNews.pending, store => {
+      .addCase(fetchNews.pending, store => {
         store.isLoading = true;
-        store.operation = 'fetch';
         store.error = null;
       })
-      .addCase(fetchAllNews.fulfilled, (store, action) => {
+      .addCase(fetchNews.fulfilled, (store, action) => {
         store.isLoading = false;
         store.error = null;
-        store.items = action.payload;
-        store.operation = null;
+        store.items = action.payload.news;
+        console.log(store.items.length);
+        store.totalPage = Math.ceil(
+          action.payload.total / action.payload.news.length
+        );
+
+        console.log(store.totalPage);
       })
-      .addCase(fetchAllNews.rejected, (store, action) => {
+      .addCase(fetchNews.rejected, (store, action) => {
         store.isLoading = false;
         store.error = action.payload;
       });
