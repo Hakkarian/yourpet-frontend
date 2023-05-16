@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import {OutBtn, OutWrap, OutText, Icon} from './Logout.styled';
 import { logout } from 'redux/auth/auth-operations';
-import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
+// import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
 
 
 const Logout = () => {
@@ -22,8 +22,8 @@ const Logout = () => {
                 <Icon />
             </OutBtn>
             <OutText>Log Out</OutText>
-            {isOpenModal && (
-                <ModalApproveAction /> )}
+//             {isOpenModal && (
+//                 <ModalApproveAction /> )}
         </OutWrap>
     )
 };
