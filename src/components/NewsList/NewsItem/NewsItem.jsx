@@ -4,6 +4,7 @@ import {
   Item,
   Line,
   Wrap,
+  WrapImg,
   Img,
   Title,
   Decsr,
@@ -19,17 +20,20 @@ const NewsItem = ({ imgUrl, title, text, date, url }) => {
   return (
     <Item>
       <Line></Line>
-      <Img src={imgUrl} alt={title} loading="lazy" width="280" height="252" />
+      <WrapImg>
+        <Img src={imgUrl} alt={title} loading="lazy" width="280" height="252" />
+      </WrapImg>
+
       <Wrap>
         <Title>{title}</Title>
         <Decsr>{text}</Decsr>
-        <WrapBottom>
-          <Date>{transformDate(date)}</Date>
-          <Link href={url} target="_blank" rel="noreferrer noopener">
-            Read more
-          </Link>
-        </WrapBottom>
       </Wrap>
+      <WrapBottom>
+        <Date>{transformDate(date)}</Date>
+        <Link href={url} target="_blank" rel="noreferrer noopener">
+          Read more
+        </Link>
+      </WrapBottom>
     </Item>
   );
 };

@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 import { Link } from 'react-router-dom';
+import {ReactComponent as OutIcon} from '../../icons/logout.svg';
+
+export const Icon = styled(OutIcon)`
+fill: none;
+`;
 
 export const OutBtn = styled(Link)`
  cursor: pointer;

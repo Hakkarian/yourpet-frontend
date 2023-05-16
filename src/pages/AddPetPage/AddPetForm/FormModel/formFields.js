@@ -16,7 +16,7 @@ const fields = {
   },
   date: {
     name: 'date',
-    type: 'text',
+    type: 'date',
     label: 'Date of birth',
     placeholder: 'Type date of birth',
   },

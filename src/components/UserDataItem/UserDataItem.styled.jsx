@@ -1,15 +1,24 @@
 import styled from '@emotion/styled';
 import {ReactComponent as EditIcon} from '../../icons/edit-2.svg';
 
-export const Edit = styled(EditIcon)`
+export const EditButton = styled.button`
 position: absolute;
 right: 8px;
+top: 4px;
+border: none;
+background-color: transparent;
+margin: 0;
+padding: 0;
+`;
+
+export const Edit = styled(EditIcon)`
 width: 24px;
 height: 24px;
 `;
 
 export const Input = styled.input`
-width: 100%;
+width: 190px;
+margin-right: 8px;
 height: 28px;
 outline: 1px solid #54ADFF;
 border: none;
@@ -27,13 +36,15 @@ position: relative;
 display: flex;
 justify-content: space-between;
 align-items: center;
+margin-bottom: 21px;
 `;
 
 export const Label = styled.label`
 font-weight: 600;
 font-size: 14px;
-line-height: 19px;
+line-height: 1.35;
 letter-spacing: 0.04em;   
+color: #111111;
 `;
 
 export const InputWrap = styled.div`
