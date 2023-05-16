@@ -15,26 +15,32 @@ import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
 
 const Header = () => {
-  // const [open, setOpen] = useState(false)
+  // const [isAuth, setIsAuth] = useState(true);
 
-  // const handleOpen = () => {
-  //   setOpen(true)
-  // }
+  const isAuth = false;
 
   return (
     <>
       <HeaderCss>
         <AdaptiveLogo />
         <AuthWrapCss>
-          <UserWrapCss>
-            <Link to="/user">
-              <User width='24' height='24' />
-            </Link>
-            <InfoCss>Anna</InfoCss>
-          </UserWrapCss>
-          <Link>
-            <BurgerMenu width='24' height='24' />
-          </Link>
+          {isAuth ? (
+            <>
+              <UserWrapCss>
+                <Link to="/user">
+                  <User width="24" height="24" />
+                </Link>
+                <InfoCss>Anna</InfoCss>
+              </UserWrapCss>{' '}
+              <Link>
+                <BurgerMenu width="24" height="24" />
+              </Link>
+            </>
+          ) : (
+              <Link>
+                <BurgerMenu width="24" height="24" />
+              </Link>
+          )}
         </AuthWrapCss>
         <NavConnect>
           <Nav />
