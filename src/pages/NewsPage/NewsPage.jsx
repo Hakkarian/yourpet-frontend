@@ -1,44 +1,48 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchAllNews } from 'redux/news/news-operations';
+import { fetchNews } from 'redux/news/news-operations';
 import {
   selectNews,
   selectIsLoading,
   selectError,
-  selectOperation,
+  selectTotalPage,
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
 
 // import { Container } from 'shared/components/Container/Container.styled';
-import { SearchForm } from 'shared/components/SearchForm/SearchForm';
+import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 
-import { NewsList } from 'components/NewsList/NewsList';
-
-// import newsItems from '../../components/NewsList/news.json';
+import { NewsList } from 'components/News/NewsList/NewsList';
 
 const NewsPage = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(6);
+
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
-  const operation = useSelector(selectOperation);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchAllNews());
-  }, [dispatch]);
+    dispatch(fetchNews({ page, limit, searchQuery }));
+  }, [dispatch, page, limit, searchQuery]);
+
+  const handleNewsSearchSubmit = value => {
+    console.log('отримуємо дані з форми у NewsPage--->', value);
+    console.log('setSearchQuery(value)--->', setSearchQuery(value));
+    setSearchQuery(value);
+  };
 
   return (
     <>
-      {/* <Container> */}
       <ReusableTitle>News</ReusableTitle>
-      <SearchForm />
-      {isLoading && operation === 'fetch' && !error && <Loader />}
+      <SearchNewsForm onSubmit={handleNewsSearchSubmit} />
+      {isLoading && !error && <Loader />}
       {newsItems.length !== 0 && <NewsList news={newsItems} />}
-      {/* </Container> */}
     </>
   );
 };

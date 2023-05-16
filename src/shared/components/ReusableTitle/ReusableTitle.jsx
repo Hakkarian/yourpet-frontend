@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
-
 export const ReusableTitle = styled.h1`
+  margin-top: 40px;
   margin-bottom: 24px;
 
   text-align: center;
@@ -13,6 +13,7 @@ export const ReusableTitle = styled.h1`
 
   @media screen and (min-width: 768px) {
     font-size: ${({ theme }) => theme.spacing(12)}px;
+    margin-top: 70px;
     margin-bottom: 40px;
   }
 `;

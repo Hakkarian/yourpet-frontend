@@ -18,7 +18,7 @@ export const FormSearch = styled.form`
 
 export const InputSearch = styled.input`
   width: 100%;
-   height: 40px;
+   height: 44px;
   box-shadow: ${({ theme }) => theme.shadow.default};
   &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 40px;
@@ -26,35 +26,41 @@ export const InputSearch = styled.input`
   padding:8px 20px;
    box-sizing: border-box;
    outline:none;
+   &:: placeholder {font-size: 14px}
 
     @media screen and (min-width: 768px) {
     width: 492px;
-    height: 44px;
+    
   }
 
   @media screen and (min-width: 1024px) {
     width: 608px;
-    height: 44px;
+  
+    &:: placeholder {font-size: 20px}
   }
+`;
+export const Wrap = styled.div`
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
 `;
 
 export const ButtonIcon = styled.button`
-  position: absolute;
-  padding: 12px 14px;
-  right: 12px;
-  top: 54px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   transition: color 250ms linear;
   cursor: pointer;
-  color: black;
 
   @media screen and (min-width: 768px) {
-    right: 15px;
-    top: 57px;
+    right: 20px;
   }
 
   @media screen and (min-width: 1024px) {
-    top: 105px;
   }
 `;
