@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3030/api'
+  baseURL: process.env.REACT_APP_API_URL
 });
 
 export const setToken = token => {
@@ -11,10 +11,9 @@ export const setToken = token => {
   return (instance.defaults.headers.authorization = '');
 };
 
-export const registere = async data => {
-  const { data: result } = await instance.post('/auth/register', data);
-  console.log('result', result);
-  setToken(result.token);
+export const registere = async thing => {
+  console.log('here api')
+  const {data: result} = await instance.post('/auth/register', thing);
   return result;
 };
 

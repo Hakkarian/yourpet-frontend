@@ -10,7 +10,7 @@ const AuthNav = () => {
     <AuthNavCss>
       <ButtonCss onClick={() => navigate('/login')}>
         Log IN
-        <PawCss width="24" height="24" />
+        <PawCss width="24" height="24" fill='none' />
       </ButtonCss>
       <ButtonCss onClick={() => navigate('/register')}>Register</ButtonCss>
     </AuthNavCss>

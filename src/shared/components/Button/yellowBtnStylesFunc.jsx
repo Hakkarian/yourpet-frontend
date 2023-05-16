@@ -7,10 +7,12 @@ export const yellowBtnStylesFunc = (width, { colors }) => `
     color:${colors.yellow};
     background: ${colors.white};
 
+    transition: background-color 250ms ${({ theme }) =>
+      theme.utils.cubicBezier}, color 250ms ${({ theme }) =>
+  theme.utils.cubicBezier};
+
     :hover, :focus {
-        padding: 10px 22px;
         color:${colors.white};
-        background: ${colors.yellow};
-        border: none;
+        background-color: ${colors.yellow};
     }
 `;
