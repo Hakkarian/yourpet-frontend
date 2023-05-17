@@ -1,10 +1,10 @@
-import { ContainerButton, ModalTitle, ModalText, ColorSpan,  } from './ModalDelete.styled';
+import { ContainerButton, ModalTitle, ModalText, ColorSpan, Container  } from './ModalDelete.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
 
 const ModalDelete = ({ onClose }) => {
   return (
-    <div>
+    <Container>
        <ModalTitle>Delete adverstiment?</ModalTitle>
           <ModalText>
             Are you sure you want to delete{' '}
@@ -14,14 +14,14 @@ const ModalDelete = ({ onClose }) => {
             <br></br>You can`t undo this action.
           </ModalText>
       <ContainerButton>
-        <Button type="button" color="white" width="129px" onClick={onClose}>
+        <Button className="btn" type="button" color="white" width="129px" onClick={onClose}>
           Cancel
         </Button>
-        <Button type="button" color="blue" width="129px">
-          Yes <DeleteIcon width="24px" height="24px" />
+        <Button className="btn" type="button" color="blue" width="129px">
+          Yes <DeleteIcon className="svg" stroke="white" width="24px" height="24px" />
         </Button>
       </ContainerButton>
-    </div>
+    </Container>
   );
 };
 

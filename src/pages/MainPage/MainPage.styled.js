@@ -1,17 +1,17 @@
 import styled from "@emotion/styled";
 
-import bg_mobile_pets from "./bg_img/mobile/bg_mobile_pets_full_original.png";
-import bg_mobile_paws from "./bg_img/mobile/bg_mobile_paws_full_original.png";
-import bg_mobile_pets_2x from "./bg_img/mobile/bg_mobile_pets_full_2x_original.png";
-import bg_mobile_paws_2x from "./bg_img/mobile/bg_mobile_paws_full_2x_original.png";
-import bg_tab_pets from "./bg_img/tab/bg_tablet_pets_full_original.png";
-import bg_tab_paws from "./bg_img/tab/bg_tablet_paws_full_original.png";
-import bg_tab_pets_2x from "./bg_img/tab/bg_tablet_pets_full_2x_original.png";
-import bg_tab_paws_2x from "./bg_img/tab/bg_tablet_paws_full_2x_original.png";
-import bg_desc_pets from "./bg_img/desc/bg_desc_pets_full_original.png";
-import bg_desc_paws from "./bg_img/desc/bg_desc_paws_full_original.png";
-import bg_desc_pets_2x from "./bg_img/desc/bg_desc_pets_full_2x_original.png";
-import bg_desc_paws_2x from "./bg_img/desc/bg_desc_paws_full_2x_original.png";
+import bg_mobile_pets from "../../images/bg_img/mobile/bg_mobile_pets_full_original.png";
+import bg_mobile_paws from '../../images/bg_img/mobile/bg_mobile_paws_full_original.png';
+import bg_mobile_pets_2x from '../../images/bg_img/mobile/bg_mobile_pets_full_2x_original.png';
+import bg_mobile_paws_2x from '../../images/bg_img/mobile/bg_mobile_paws_full_2x_original.png';
+import bg_tab_pets from '../../images/bg_img/tab/bg_tablet_pets_full_original.png';
+import bg_tab_paws from '../../images/bg_img/tab/bg_tablet_paws_full_original.png';
+import bg_tab_pets_2x from '../../images/bg_img/tab/bg_tablet_pets_full_2x_original.png';
+import bg_tab_paws_2x from '../../images/bg_img/tab/bg_tablet_paws_full_2x_original.png';
+import bg_desc_pets from '../../images/bg_img/desc/bg_desc_pets_full_original.png';
+import bg_desc_paws from '../../images/bg_img/desc/bg_desc_paws_full_original.png';
+import bg_desc_pets_2x from '../../images/bg_img/desc/bg_desc_pets_full_2x_original.png';
+import bg_desc_paws_2x from '../../images/bg_img/desc/bg_desc_paws_full_2x_original.png';
 
 export const SectionTag = styled.section`
     position: absolute;

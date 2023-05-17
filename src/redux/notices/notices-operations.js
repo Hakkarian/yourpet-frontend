@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import * as api from 'shared/services/notices-api';
+
 // import { instance } from 'shared/services/auth-api';
 
 const instance = axios.create({
@@ -145,13 +146,13 @@ export const getUserNotices = createAsyncThunk(
   }
 );
 
+
 export const addNotices = createAsyncThunk(
-  'pets/addPets',
+  'notices/addNotice',
   async (data, { rejectWithValue }) => {
     try {
       const result = await api.addNotice(data);
-      console.log('result', result);
-      return result.data;
+      return result.notice;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);
     }

@@ -1,25 +1,27 @@
 import { useState } from 'react';
 
-import { ErrorMessage, Formik } from 'formik';
+import { ErrorMessage, Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
 import {
-  Forms,
-  InputEmail,
-  InputContainer,
-  Lable,
-  InputPassword,
-} from './FormStyles';
+  AbsDivCss,
+  ReusableTitleCss,
+  FlexDivCss,
+  TextWrapCss,
+  TextCss,
+  ButtonEye,
+  ErrorText,
+} from './FormStyles.styled';
 
 import Button from 'shared/components/Button/Button';
-import Title from 'shared/components/ReusableTitle';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 
 import { login } from 'redux/auth/auth-operations';
-
-import { ButtonEye } from 'pages/RegisterPage/RegisterPage.styled';
+import { Link } from 'react-router-dom';
+import { FormCss } from 'components/RegisterForm/RegisterForm.styled';
 
 const validateShecma = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -34,95 +36,84 @@ const validateShecma = Yup.object().shape({
 });
 const LoginForm = () => {
   const [open, setOpen] = useState(false);
-
-
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/notices/sell');
-  //   }
-  // }, []);
-
   const dispatch = useDispatch();
-  // const validateEmail = value => {
-  //   let error;
-  //   if (!value) {
-  //     error = 'Required';
-  //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-  //     error = 'Invalid email address';
-  //   }
-  //   return error;
-  // };
 
+  const handleSubmit = (values, actions) => {
+    const { email, password } = values;
+    const payload = { email, password };
+    console.log('submit');
+    dispatch(login(payload));
+    actions.resetForm();
+  };
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
-      onSubmit={(values, actions) => {
-        console.log(values);
-        dispatch(
-          login({
-            email: values.email,
-            password: values.password,
-          })
-        );
-        actions.resetForm();
-      }}
-      validationSchema={validateShecma}
-    >
-      {({ errors }) => (
-        <Forms>
-          <Title
-            as="p"
-            weight="500"
-            tabSize="36"
-            tabLine="1.36"
-            tabweight="500"
-            deskWeight="500"
-            deskSize="36"
-            deskLine="1.36"
-          >
-            Login
-          </Title>
-          <InputContainer>
-            <Lable>
-              <InputEmail
-                type="text"
-                name="email"
-                placeholder="Email"
-                error={errors.email ? '#f43f5e' : '#54adff'}
-              />
-            </Lable>
-            <Lable>
-              <InputPassword
-                type={open ? 'text' : 'password'}
-                name={'password'}
-                placeholder={'Password'}
-              />
-              <div className="form-div">
-                <ErrorMessage name="password" />
+    <FlexDivCss>
+      <ReusableTitleCss>Login</ReusableTitleCss>
+      <Formik
+        initialValues={{ email: '', password: '', confirmPassword: '' }}
+        validationSchema={validateShecma}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, values, touched }) => {
+          return (
+            <FormCss>
+              <div>
+                <Field
+                  name="email"
+                  type="email"
+                  className={errors.email ? 'input-error' : 'input-valid'}
+                />
+                <ErrorText>
+                  <ErrorMessage name="email" />
+                </ErrorText>
+                {errors.email && (
+                  <AbsDivCss>
+                    <Cross width="24" height="24" stroke="#F43F5E" />
+                  </AbsDivCss>
+                )}
               </div>
-              {open ? (
-                <ButtonEye type="button" onClick={() => setOpen(false)}>
-                  <EyeOpen width="24" height="24" />
-                </ButtonEye>
-              ) : (
-                <ButtonEye type="button" onClick={() => setOpen(true)}>
-                  <EyeClosed width="24" height="24" />
-                </ButtonEye>
-              )}
-            </Lable>
-          </InputContainer>
-          <Button shape={'solid'} w={'100%'} h={'48'}>
-            Login
-          </Button>
-          {/* <Text>
-            Don't have an account?
-            <StyledLink to={'/register'}>Register</StyledLink>
-          </Text> */}
-        </Forms>
-      )}
-    </Formik>
+              <div style={{position: 'relative'}}>
+                <Field
+                  className={errors.password ? 'input-error' : 'input-valid'}
+                  name="password"
+                  type={open ? 'text' : 'password'}
+                />
+                <ErrorText>
+                  <ErrorMessage name="password" />
+                </ErrorText>
+
+                {open ? (
+                  <ButtonEye className='eye-button'
+                    type="button"
+                    onClick={() => setOpen(false)}
+                  >
+                    <EyeOpen width="24" height="24" />
+                  </ButtonEye>
+                ) : (
+                  <ButtonEye
+                    type="button"
+                    onClick={() => setOpen(true)}
+                  >
+                    <EyeClosed width="24" height="24" />
+                  </ButtonEye>
+                )}
+                {errors.password && (
+                  <AbsDivCss>
+                    <Cross width="24" height="24" stroke="#F43F5E" />
+                  </AbsDivCss>
+                )}
+              </div>
+              <Button className="form-button" type="submit">
+                Submit
+              </Button>
+              <TextWrapCss>
+                <TextCss>Don't have an account?</TextCss>
+                <Link to="/register">Register</Link>
+              </TextWrapCss>
+            </FormCss>
+          );
+        }}
+      </Formik>
+    </FlexDivCss>
   );
 };
-
 export default LoginForm;

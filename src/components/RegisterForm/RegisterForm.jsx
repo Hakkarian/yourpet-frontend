@@ -5,7 +5,7 @@ import { register } from "redux/auth/auth-operations";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Formik } from 'formik';
 
-import { AbsDivCss, AnchorCss, ButtonEye, FlexDivCss, FormCss, ReusableTitleCss, TextCss, TextWrapCss } from "./RegisterForm.styled";
+import { AbsDivCss, AnchorCss, ButtonEye, ErrorText, FlexDivCss, FormCss, ReusableTitleCss, TextCss, TextWrapCss } from "./RegisterForm.styled";
 import Button from 'shared/components/Button/Button';
 
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
@@ -40,6 +40,7 @@ const RegisterForm = () => {
       const { email, password } = values;
       const payload = { email, password };
       dispatch(register(payload));
+      
       actions.resetForm();
     };
     return (
@@ -59,9 +60,9 @@ const RegisterForm = () => {
                     type="email"
                     className={errors.email ? 'input-error' : 'input-valid'}
                   />
-                  <div className="form-div">
+                  <ErrorText>
                     <ErrorMessage name="email" />
-                  </div>
+                  </ErrorText>
                   {errors.email && (
                     <AbsDivCss>
                       <Cross width="24" height="24" stroke="#F43F5E" />
@@ -74,9 +75,9 @@ const RegisterForm = () => {
                     name="password"
                     type={open.passwordEye ? 'text' : 'password'}
                   />
-                  <div className="form-div">
+                  <ErrorText>
                     <ErrorMessage name="password" />
-                  </div>
+                  </ErrorText>
 
                   {open.passwordEye ? (
                     <ButtonEye
@@ -107,9 +108,9 @@ const RegisterForm = () => {
                     name="confirmPassword"
                     type={open.confirmPasswordEye ? 'text' : 'password'}
                   />
-                  <div className="form-div">
-                    <ErrorMessage name="confirmPassword" />
-                  </div>
+                  <ErrorText>
+                    <ErrorMessage className="form-div" name="confirmPassword" />
+                  </ErrorText>
                   {open.confirmPasswordEye ? (
                     <ButtonEye
                       type="button"
@@ -151,89 +152,3 @@ const RegisterForm = () => {
 }
 
 export default RegisterForm;
-
-// const LoginForme = () => {
-//   const [open, setOpen] = useState({
-//     passwordEye: false,
-//     confirmPasswordEye: false,
-//   });
-//   const dispatch = useDispatch();
-
-//   const handleSubmit = (values, actions) => {
-//     const { email, password } = values;
-//     const payload = { email, password };
-//     console.log('submit');
-//     dispatch(login(payload));
-//     actions.resetForm();
-//   };
-//   return (
-//     <FlexDivCss>
-//       <ReusableTitleCss>Login</ReusableTitleCss>
-//       <Formik
-//         initialValues={{ email: '', password: '', confirmPassword: '' }}
-//         validationSchema={validationSchema}
-//         onSubmit={handleSubmit}
-//       >
-//         {({ errors, values, touched }) => {
-//           return (
-//             <FormCss>
-//               <div>
-//                 <Field
-//                   name="email"
-//                   type="email"
-//                   className={errors.email ? 'input-error' : 'input-valid'}
-//                 />
-//                 <div className="form-div">
-//                   <ErrorMessage name="email" />
-//                 </div>
-//                 {errors.email && (
-//                   <AbsDivCss>
-//                     <Cross width="24" height="24" stroke="#F43F5E" />
-//                   </AbsDivCss>
-//                 )}
-//               </div>
-//               <div>
-//                 <Field
-//                   className={errors.password ? 'input-error' : 'input-valid'}
-//                   name="password"
-//                   type={open.passwordEye ? 'text' : 'password'}
-//                 />
-//                 <div className="form-div">
-//                   <ErrorMessage name="password" />
-//                 </div>
-
-//                 {open.passwordEye ? (
-//                   <ButtonEye
-//                     type="button"
-//                     onClick={() => setOpen({ ...open, passwordEye: false })}
-//                   >
-//                     <EyeOpen width="24" height="24" />
-//                   </ButtonEye>
-//                 ) : (
-//                   <ButtonEye
-//                     type="button"
-//                     onClick={() => setOpen({ ...open, passwordEye: true })}
-//                   >
-//                     <EyeClosed width="24" height="24" />
-//                   </ButtonEye>
-//                 )}
-//                 {errors.password && (
-//                   <AbsDivCss>
-//                     <Cross width="24" height="24" stroke="#F43F5E" />
-//                   </AbsDivCss>
-//                 )}
-//               </div>
-//               <Button className="form-button" type="submit">
-//                 Submit
-//               </Button>
-//               <TextWrapCss>
-//                 <TextCss>Already have an account?</TextCss>
-//                 <Link to="/register">Register</Link>
-//               </TextWrapCss>
-//             </FormCss>
-//           );
-//         }}
-//       </Formik>
-//     </FlexDivCss>
-//   );
-// };

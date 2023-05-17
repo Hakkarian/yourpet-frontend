@@ -19,6 +19,7 @@ position: absolute;
 display: flex;
 align-items: center;
 text-align: center;
+justify-content: center;
 flex-direction: column;
 top: 50%;
 left: 50%;
@@ -39,6 +40,10 @@ height: 20px;
 position: absolute;
 top: 29px;
 right: 29px;
-background: none;
+background: green;
 border: none;
+
+svg {
+  fill: ;
+}
 `

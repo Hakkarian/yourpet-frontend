@@ -71,8 +71,20 @@ position: absolute;
 left: 426px;
 top: 520px;
 
-button {
+.btn {
+  margin-right: 20px;
   padding: 0;
+  height: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+   :hover {
+     background: ${({theme}) => theme.background.azure};
+     border: none;
+   }
+   :last-child {
+    margin-right: 0;
+   }
 }
 
 svg {

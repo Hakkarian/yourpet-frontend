@@ -1,14 +1,17 @@
 import styled from "@emotion/styled";
 
 export const CloseModalBtn = styled.button`
-padding: 0;
-width: 30px;
-height: 30px;
-
 position: absolute;
-top: 29px;
-right: 29px;
+top: 21px;
+right: 21px;
+padding: 0;
+width: 20px;
+height: 20px;
 background: none;
 border: none;
+text-align: center;
 
+svg {
+
+}
 `

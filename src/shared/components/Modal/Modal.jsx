@@ -5,12 +5,11 @@ import { createPortal } from 'react-dom';
 import {
   Backdrop,
   Wrapper,
-  CloseModalBtn,
-
 } from './Modal.styled';
 
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
-import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
+// import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
+import CrossButton from '../CrossButton/CrossButton';
 // import Button from 'shared/components/Button/Button';
 // import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
 // import { ReactComponent as LogoutSvg} from '../../icons/logout.svg';
@@ -38,9 +37,10 @@ const Modal = ({ onClose, children, shouModal }) => {
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
-      <CloseModalBtn type="button" onClick={onClose}>
-          <CrossSmall />
-        </CloseModalBtn>
+        <CrossButton onClick={onClose}/>
+      {/* <CloseModalBtn type="button" onClick={onClose}>
+          <CrossSmall width="14px" height="14px"/>
+        </CloseModalBtn> */}
         {children}    
       </Wrapper>
     </Backdrop>,

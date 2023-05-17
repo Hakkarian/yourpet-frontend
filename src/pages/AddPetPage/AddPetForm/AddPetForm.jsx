@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+// import { useSelector } from 'react-redux';
 
 import { addPets } from 'redux/pets/pets-operations';
 import { addNotices } from 'redux/notices/notices-operations';
@@ -7,7 +10,6 @@ import { addNotices } from 'redux/notices/notices-operations';
 import { Formik, Form } from 'formik';
 import Title from 'pages/AddPetPage/AddPetForm/FormFields/Title/Title';
 import { ContainerCss } from './AddPetForm.styled';
-import { useLocation } from 'react-router-dom';
 
 import initialValues from './FormModel/formInitualValues';
 import validationSchema from './FormModel/validationSchema';
@@ -17,15 +19,22 @@ import ChooseOptionForm from './Forms/ChooseOptionForm/ChooseOptionForm';
 import PersonalDetailsForm from './Forms/PersonalDetailsForm/PersonalDetailsForm';
 import MoreInfoForm from './Forms/MoreInfoForm/MoreInfoForm';
 
+// import {
+//   selectShouldNoticeRedirect,
+// } from 'redux/notices/notices-selector';
+
 const AddPetForm = () => {
   const [category, setCategory] = useState('my pet');
   const [photo, setPhoto] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   const location = useLocation();
   const prevLocation = location?.state?.from || '/';
+
+  // const shouldRedirect = useSelector(selectAddedNotice);
 
   const changeStep = direction => {
     if (direction === 'next') {
@@ -63,15 +72,16 @@ const AddPetForm = () => {
       formData.append(value, values[value]);
     }
 
-    for (let property of formData.entries()) {
-      console.log(property[0], property[1]);
-    }
+    // for (let property of formData.entries()) {
+    //   console.log(property[0], property[1]);
+    // }
 
     //setd data on backend
     if (category === 'my pet') {
       dispatch(addPets(formData));
     } else {
       dispatch(addNotices(formData));
+      // console.log('shoul not redirect', shouldRedirect);
     }
   };
 

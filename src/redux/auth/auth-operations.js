@@ -22,11 +22,12 @@ export const register = createAsyncThunk(
           color: '#fff',
         },
       });
-      // const loginData = {
-      //   email: data.email,
-      //   password: data.password,
-      // };
-      // await dispatch(login(loginData));
+      const loginData = {
+        email: data.email,
+        password: data.password,
+      };
+      await dispatch(login(loginData));
+      
       return result;
     } catch ({response}) {
       //error.response

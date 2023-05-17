@@ -28,17 +28,19 @@ const initialState = {
 
 const noticesSlice = createSlice({
   name: 'notices',
-  initialState,
 
+  initialState,
   extraReducers: builder => {
     builder
       .addCase(addNotices.pending, state => {
         state.isLoading = true;
+        // state.addedNotice = false;
       })
       .addCase(addNotices.fulfilled, (state, { payload }) => {
         state.notices.push(payload);
         state.isError = null;
         state.isLoading = false;
+        // state.addedNotice = true;
       })
       .addCase(addNotices.rejected, (state, { payload }) => {
         state.isError = payload;
@@ -158,3 +160,9 @@ const noticesSlice = createSlice({
 });
 
 export default noticesSlice.reducer;
+
+//  .addCase(addPets.fulfilled, (state, { payload }) => {
+//         state.items.push(payload);
+//         state.error = null;
+//         state.isLoading = false;
+//       })
