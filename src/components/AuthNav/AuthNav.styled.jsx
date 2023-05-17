@@ -6,10 +6,6 @@ import Button from "shared/components/Button/Button";
 export const AuthNavCss = styled.div`
   display: flex;
   gap: 20px;
-
-  @media screen and (min-width: 1280px) {
-    margin-left: 300px;
-  }
 `;
 
 export const ButtonCss = styled(Button)`

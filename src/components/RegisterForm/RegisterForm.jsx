@@ -54,7 +54,7 @@ const RegisterForm = () => {
           {({ errors, values, touched }) => {
             return (
               <FormCss>
-                <div>
+                <AnchorCss>
                   <Field
                     name="email"
                     type="email"
@@ -68,8 +68,8 @@ const RegisterForm = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
-                <div>
+                </AnchorCss>
+                <AnchorCss>
                   <Field
                     className={errors.password ? 'input-error' : 'input-valid'}
                     name="password"
@@ -99,7 +99,7 @@ const RegisterForm = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
+                </AnchorCss>
                 <AnchorCss>
                   <Field
                     className={

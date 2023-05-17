@@ -12,6 +12,7 @@ import {
   TextCss,
   ButtonEye,
   ErrorText,
+  AnchorCss,
 } from './FormStyles.styled';
 
 import Button from 'shared/components/Button/Button';
@@ -56,7 +57,7 @@ const LoginForm = () => {
         {({ errors, values, touched }) => {
           return (
             <FormCss>
-              <div>
+              <AnchorCss>
                 <Field
                   name="email"
                   type="email"
@@ -70,8 +71,8 @@ const LoginForm = () => {
                     <Cross width="24" height="24" stroke="#F43F5E" />
                   </AbsDivCss>
                 )}
-              </div>
-              <div style={{position: 'relative'}}>
+              </AnchorCss>
+              <AnchorCss style={{position: 'relative'}}>
                 <Field
                   className={errors.password ? 'input-error' : 'input-valid'}
                   name="password"
@@ -101,7 +102,7 @@ const LoginForm = () => {
                     <Cross width="24" height="24" stroke="#F43F5E" />
                   </AbsDivCss>
                 )}
-              </div>
+              </AnchorCss>
               <Button className="form-button" type="submit">
                 Submit
               </Button>
