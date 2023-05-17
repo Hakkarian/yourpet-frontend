@@ -25,9 +25,6 @@ export const FormCss = styled(Form)`
   align-items: center;
   row-gap: 30px;
 
-  div {
-    position: relative;
-  }
 
   div input {
     width: 250px;
@@ -68,13 +65,19 @@ export const FormCss = styled(Form)`
       background: none;
       background-color: transparent;
     }
-  }
+
   .form-div {
     position: absolute;
     bottom: 0;
-    transform: translate(2%, 97%);
     font-size: 12px;
     ${font(null, 1.3, 500, '0.03em', 'red')}
+  }
+`;
+
+export const ErrorText = styled.div`
+  position: absolute;
+  font-size: 12px;
+  ${font(null, 1.3, 500, '0.03em', 'red')}
 `;
 
 export const AnchorCss = styled.div`
