@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 import { fetchNews } from 'redux/news/news-operations';
 import {
@@ -19,7 +19,9 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [page, setPage] = useState(1);
+//   const [page, setPage] = useState(1); // setPage is defined but not used
+  
+  const page = 1;
 
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
