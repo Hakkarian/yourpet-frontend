@@ -1,53 +1,70 @@
+//import PropTypes from 'prop-types';
 import React, {useRef, useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+//import {useSelector } from "react-redux";
 import { Formik, ErrorMessage  } from "formik";
+// import { useNavigate } from "react-router-dom";
 
-import { ImageDef, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CheckIcon, Wrapper} from "./UserData.styled";
-import { info } from "redux/auth/auth-operations";
+// import { selectIsLoggedIn } from "redux/auth/auth-selector";
+import { ImageDef, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CrossIcon, Wrapper, ErrorWrap} from "./UserData.styled";
+//import { info } from "redux/auth/auth-operations";
 import { userValidationSchema } from "./userValidation";
 import UserDataItem from "components/UserDataItem";
 import  UserImage  from '../UserImage';
-import { selectUser } from "redux/auth/auth-selector";
 
-const UserData = () => {
-  const [photo, setPhoto] = useState(null);
-   const dispatch = useDispatch();
+const UserData = ({ name, birthday, email, phone, city}) => {
+   //const dispatch = useDispatch();
+  //  const navigate = useNavigate();
+  //  const isLogin = useSelector(selectIsLoggedIn);
+   const [photo, setPhoto] = useState(null);
    const fileRef = useRef(null);
-    const user = useSelector(selectUser);
-    const {name, email, birthday, phone, city, avatar } = user;
- 
-    const handleSubmit = (data) => {
-      dispatch(info(data, photo));
-    };
 
-    const handleChange = event => {
-      //console.log(event.currentTarget.name);
-    };
+  
+  //  useEffect(() => {
+  //    if(!isLogin) {
+  //    navigate('/login');
+  //    }
+  //  }, [isLogin, navigate]);
+
+   const handleSubmit = async(values, {setFieldError}) => {
+    if(!photo) {
+      await setFieldError('photo', 'Load avatar');
+      return;
+    }
+
+    let formData = new FormData();
+    formData.append('photo', photo);
+    console.log(photo);
+  };
 
     return (
         <div>
             <Formik 
             initialValues={{
-                file: avatar || null,
-                name:name || 'Anna',
-                email: email || 'anna00@gmail.com',
-                birthday: birthday || '00.00.0000',
-                phone: phone || '+38000000000',
-                city:city || 'Kiev',
+              file: photo || null,
+              name:name || '',
+              email: email || '',
+              birthday: birthday || '',
+              phone: phone || '',
+              city:city || '',
             }}
             validationSchema={userValidationSchema}
-            onSubmit={(values, actions) => console.log('submit', values)}>
-         {({values, setFieldValue}) => (
+            onSubmit={handleSubmit}>
+         {({values, setFieldValue, errors}) => (
             <FormThumb>
                {values.file ? 
-                <UserImage file={values.file}/> :  <ImageDef src={require("../../images/default-user-img.jpg")} alt="User" width="182px" height="182px"/>}
+                <UserImage file={values.file}/> : 
+                 <ImageDef src={require("../../images/default-user-img.jpg")} 
+                 alt="User" 
+                 width="182px" 
+                 height="182px"   
+                 onClick={() => {fileRef.current.click() }}/>}
               {values.file ? (<InputWrap>
               <Input type="file" id="input__file" ref={fileRef} onChange={event => {
                   setFieldValue('file', event.target.files[0]); setPhoto(event.target.files[0]); console.log(event.target.files[0]);
               }}></Input>
               <Label htmlFor="input__file">
-                <IconWrap><CheckIcon /></IconWrap>  
-                 <InputText>Confirm</InputText>
+                <IconWrap><CrossIcon /></IconWrap>  
+                 <InputText>Change photo</InputText>
               </Label>
               <ErrorMessage name="file" />
               </InputWrap>) : (
@@ -59,15 +76,17 @@ const UserData = () => {
                 <IconWrap><CameraIcon /></IconWrap>  
                  <InputText>Edit photo</InputText>
               </Label>
+              <ErrorWrap>
               <ErrorMessage name="file" />
+              </ErrorWrap>
               </InputWrap>
             ) }
             <Wrapper>
-                <UserDataItem  type="text" name="name" onChange={handleChange} onSubmit={handleSubmit} label="Name: "  />
-                <UserDataItem value={email} type="email" onChange={handleChange} name="email" onSubmit={handleSubmit} label="Email: " />
-                <UserDataItem value={birthday} type="text" onChange={handleChange} name="birthday" onSubmit={handleSubmit} label="Birthday: "/>
-                <UserDataItem value={phone} type="text" onChange={handleChange} name="phone" onSubmit={handleSubmit} label="Phone: "/>
-                <UserDataItem value={city} type="text" onChange={handleChange} name="city" onSubmit={handleSubmit} label="City: "/>
+                <UserDataItem  type="text" name="name" label="Name: "  />
+                <UserDataItem  type="email" name="email" label="Email: "/>
+                <UserDataItem  type="date" name="birthday" label="Birthday: "/>
+                <UserDataItem  type="text" name="phone" label="Phone: "/>
+                <UserDataItem  type="text" name="city" label="City: "/>
             </Wrapper>
             </FormThumb>
          )}
@@ -75,5 +94,7 @@ const UserData = () => {
         </div>
     )
 };
+
+
 
 export default UserData;

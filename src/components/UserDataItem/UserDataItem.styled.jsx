@@ -1,5 +1,12 @@
 import styled from '@emotion/styled';
 import {ReactComponent as EditIcon} from '../../icons/edit-2.svg';
+import {ReactComponent as Check} from '../../icons/check.svg';
+
+export const CheckIcon = styled(Check)`
+fill:none;
+width: 24px;
+height: 24px;
+`;
 
 export const EditButton = styled.button`
 position: absolute;
@@ -14,6 +21,7 @@ padding: 0;
 export const Edit = styled(EditIcon)`
 width: 24px;
 height: 24px;
+fill: #54ADFF;
 `;
 
 export const Input = styled.input`
