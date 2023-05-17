@@ -19,10 +19,6 @@ import ReusableTitle from 'shared/components/ReusableTitle';
 
 import { NewsList } from 'components/News/NewsList/NewsList';
 import { Box, Pagination, Stack } from '@mui/material';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 
 const NewsPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
