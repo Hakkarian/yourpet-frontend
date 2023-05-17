@@ -13,9 +13,14 @@ import logo from '../../images/logo1x.png';
 
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
+import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+import { useSelector } from 'react-redux';
+
 
 const Header = () => {
   // const [isAuth, setIsAuth] = useState(true);
+
+  const isLogin = useSelector(selectIsLoggedIn)
 
   const isDesktop = useMediaQuery({
     query: '(min-width: 1280px)',
@@ -28,14 +33,12 @@ const Header = () => {
   });
 
 
-  const isAuth = false;
-
   return (
     <>
       <HeaderCss>
         <AdaptiveLogo />
         <AuthWrapCss>
-          {isAuth ? (
+          {isLogin ? (
             <>
               <UserWrapCss>
                 <Link to="/user">
