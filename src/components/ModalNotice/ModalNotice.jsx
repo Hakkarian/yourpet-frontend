@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { getNoticeDetails } from 'shared/services/pets-api';
 
 import {
   Backdrop,
@@ -25,6 +26,13 @@ import defaultImage from '../../images/default-user-img.jpg';
 const modalRoot = document.querySelector('#modal-root');
 
 const ModalNotice = ({ onClose, children }) => {
+  const [details, setDetails] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    getNoticeDetails(id).then(setDetails);
+  }, [id]);
+
   useEffect(() => {
     const handleKeyDowm = e => {
       if (e.code === 'Escape') onClose();
@@ -52,7 +60,7 @@ const ModalNotice = ({ onClose, children }) => {
               <Title>Title</Title>
               <List>
                 <Item>
-                  <Text>Name:</Text>
+                  <Text>Name:{details.name}</Text>
                 </Item>
                 <Item>
                   <Text>Birthday:</Text>

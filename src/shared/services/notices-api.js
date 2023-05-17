@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // export const instance = axios.create({
@@ -22,3 +22,9 @@ export const addNotice = async data => {
   const { data: result } = await instance.post('/notices', data);
   return result;
 };
+
+// запрос полной информации о фильме для страницы кинофильма.
+export async function getNoticeDetails(id) {
+  const response = await axios.get(`notice/${id}`);
+  return response.data;
+}
