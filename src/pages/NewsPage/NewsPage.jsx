@@ -25,8 +25,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 const NewsPage = () => {
-  // const [searchQuery, setSearchQuery] = useState('');
-  // const [page] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
