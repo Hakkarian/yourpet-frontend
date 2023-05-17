@@ -9,7 +9,7 @@ export const TitleSearch = styled.h2`
   text-align: center;
   margin-top: 70px;
   margin-bottom: 28px;
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.colors.black};
   ${responsiveMixin('font-size', { xl: '48px' })}
   ${responsiveMixin('margin-bottom', { xl: '40px' })}
 }
@@ -42,16 +42,17 @@ export const InputSearch = styled.input`
 export const ButtonIcon = styled.button`
   position: absolute;
   padding: 12px 14px;
-  top:84px;
-  right:12px;
+  top: 84px;
+  right: 12px;
   background-color: transparent;
   border: none;
   transition: color 250ms linear;
   cursor: pointer;
-  color: black;
 
-  ${responsiveMixin('top', {  md: '57px', xl: '105px' })}
+  ${responsiveMixin('top', { md: '57px', xl: '105px' })}
   ${responsiveMixin('right', { md: '15px' })}
 `;
 
-export const IconSearch = styled.img``;
+export const IconSearch = styled.img`
+  fill: ${({ theme }) => theme.colors.blue};
+`;

@@ -9,12 +9,11 @@ import {
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
-  deleteUserNotice,
-  createNotice,
   getUserNotices,
 } from 'redux/notices/notices-operations';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../ModalNotice/ModalNotice';
+import { useToggle } from 'shared/hooks/useToggle';
 import {
   Item,
   ImageWrapper,
@@ -30,6 +29,7 @@ import {
   SvgWrapper,
    IconItem,
   Span,
+  CardContainer, IconItemPaw, DescriptionInner
 } from './NoticesCategoryItem.styled';
 import { ButtonTag } from 'shared/components/Button/button.styled';
 import clock from '../../../icons/clock.svg';
@@ -38,6 +38,7 @@ import locationPet from '../../../icons/location-pet.svg';
 import male from '../../../icons/male.svg';
 import trash from '../../../icons/trash.svg';
 import paw from '../../../icons/paw.svg';
+import heart from '../../../icons/heart.svg';
 
 const categoryShelf = {
   sell: 'sell',
@@ -45,13 +46,32 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-
 const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
   const { photo, birthday, sex, location, title, id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   let query = null;
+
+const getAge = utcDate => {
+    const date = new Date(utcDate);
+    const day = `0${date.getDate()}`.slice(-2); 
+    const month = `0${date.getMonth() + 1}`.slice(-2);
+    const year = date.getFullYear();
+    const convertedDate = [day, month, year].join('.');
+    return convertedDate;
+  };
+   const dateOfBirth = getAge(birthday);
+   const difOfAge = dateOfBirth => {
+     return Math.trunc(
+       (new Date().getTime() - new Date(birthday)) / (24 * 3600 * 365.25 * 1000)
+     );
+   };
+
+  const age = difOfAge(birthday);
+  
+  const { isOpen, open, close, toggle } = useToggle();
+  
 
   const refreshingPage = category => {
     if (categoryPet === categoryShelf[category])
@@ -91,28 +111,38 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
   };
 
   const onChangeOpenModal = () => {
+
     dispatch(getOneNotice(id));
+    open()
   };
 
-    const toggleModal = () => {
-      setIsModalOpen(prev => !prev);
-    };
+    // const toggleModal = () => {
+    //   setIsModalOpen(prev => !prev);
+    // };
 
   return (
     <Item key={id}>
+      <DescriptionInner>
+      <CardContainer>
+
       <ImageWrapper>
         <Image src={photo} alt="Pet" loading="lazy" />
-      </ImageWrapper>
+        </ImageWrapper>
+        
       <CategoryName>{category}</CategoryName>
 
       {!isFavorite && (
         <SvgWrapper>
-          <AddToFavoriteBtn onClick={addToFavorite} />
+          <AddToFavoriteBtn onClick={addToFavorite}>
+                       <IconItem src={heart} alt="heart" width="24" height="24" />
+          </AddToFavoriteBtn>{' '}
         </SvgWrapper>
       )}
       {isFavorite && (
         <SvgWrapper>
-          <RemoveFromFavoriteBtn onClick={removeFromFavorite} />
+          <RemoveFromFavoriteBtn onClick={removeFromFavorite} >
+            <IconItem src={heart} alt="heart" width="24" height="24" />
+          </RemoveFromFavoriteBtn>
         </SvgWrapper>
       )}
 
@@ -123,52 +153,42 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         </DescriptionTextContainer>
         <DescriptionTextContainer>
           <IconItem src={clock} alt="clock" width="24" height="24" />
-          <DescriptionText>{birthday}</DescriptionText>
+          <DescriptionText>
+            {age === 0 && 'less than 1 year'}
+            {age === 1 && `${age} year`}
+            {age !== 1 && age !== 0 && `${age} years`}
+          </DescriptionText>
         </DescriptionTextContainer>
         <DescriptionTextContainer>
-          {' '}
-          <DescriptionText>{sex}</DescriptionText>
-          {'female' && (
+                   {'female' ?
             <IconItem src={female} alt="sex" width="24" height="24" />
-          )}
-          {'male' && <IconItem src={male} alt="sex" width="24" height="24" />}
+          :
+          'male' && <IconItem src={male} alt="sex" width="24" height="24" />} <DescriptionText>{sex}</DescriptionText>
         </DescriptionTextContainer>
+        </DescriptionWrapper>
 
-        <Title>{title}</Title>
-      </DescriptionWrapper>
+      </CardContainer>
 
-      <ButtonTag onClick={onChangeOpenModal}>
+      <Title>{title}</Title>
+      
+           <ButtonTag onClick={onChangeOpenModal} margin='20px 16px 24px 16px' width='248px'>
         <Span> Learn more </Span>
-        <IconItem src={paw} alt="paw" width="24" height="24" />
-      </ButtonTag>
+        <IconItemPaw src={paw} alt="paw" width="24" height="24" />
+      </ButtonTag> </DescriptionInner>
 
       <ButtonDiv>
-        <ModalNotice/>
-        {/* {isLoggedIn ? (
+        {isOpen && <ModalNotice onCloseModal={close} />}
+
+        {isOwner && (
           <>
-            <ButtonsWrapper>
-              <StyledButton onClick={onChangeOpenModal}>
-                <ModalNotice
-                  refreshingPage={() => {
-                    refreshingPage(categoryPet);
-                  }}
-                />
-              </StyledButton> */}
-              {isOwner && (
-                <>
-                  <ButtonTag onClick={toggleModal}>
-                    <IconItem src={trash} alt="trash" width="24" height="24" />
-                  </ButtonTag>
-                </>
-              )}
-            {/* </ButtonsWrapper>
+            <ButtonTag onClick={toggle}>
+              <IconItem src={trash} alt="trash" width="24" height="24" />
+            </ButtonTag>
           </>
-        ) : (
-          <StyledButton onClick={onChangeOpenModal}>
-            <ModalNotice />
-          </StyledButton> */}
-      </ButtonDiv>
-    </Item>
+        )}
+        
+        </ButtonDiv>
+         </Item>
   );
 };
 

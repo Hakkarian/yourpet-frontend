@@ -93,7 +93,7 @@ export const BoxNav = styled.div`
 
 
 export const AddPetButton = styled.button`
- position: fixed;
+  position: fixed;
   z-index: 1;
 
   width: 80px;
@@ -103,7 +103,7 @@ export const AddPetButton = styled.button`
   padding: 0;
   background: ${({ theme }) => theme.colors.blue};
   min-width: 44px;
-  transform: translateX(-107%);
+  transform: translateX(217%) translateY(-55%);
   bottom: 15vh;
 
   transition: normal;
@@ -124,13 +124,13 @@ export const AddPetButton = styled.button`
     margin-left: 12px;
 
     transform: none;
-  }`
+  }
+`;
 
 export const IconAddPet = styled.img`
   position: absolute;
   width: 21px;
   height: 21px;
-  color: #fff;
   top: 20px;
   right: 29px;
   fill: ${({ theme }) => theme.colors.white};
