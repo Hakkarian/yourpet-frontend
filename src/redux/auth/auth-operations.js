@@ -27,6 +27,7 @@ export const register = createAsyncThunk(
         password: data.password,
       };
       await dispatch(login(loginData));
+      
       return result;
     } catch ({response}) {
       //error.response
