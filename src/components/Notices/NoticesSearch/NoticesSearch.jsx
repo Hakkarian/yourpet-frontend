@@ -1,9 +1,6 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { Outlet, useSearchParams } from 'react-router-dom';
-import { searchPetByQuery } from '../../../shared/services/notices-api';
-import { toast } from 'react-toastify';
-
+import { Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import search from '../../../icons/search.svg';
 import deleteQuery from '../../../icons/cross-small.svg';
 import {
@@ -11,76 +8,50 @@ import {
   FormSearch,
   InputSearch,
   ButtonIcon,
+  IconSearch,
+  IconSearchDelete,
 } from './NoticesSearch.styled';
 import NoticesCategoriesNav from '../NoticesCategoriesNav';
 
-const NoticesSearch = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [, setPets] = useState([]);
-  const searchPet = searchParams.get('query') ?? '';
-  const [searchQuery, setSearchQuery] = useState(searchPet);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    if (searchQuery === '') {
-      return toast.error('Please enter pet!', {
-        position: 'top-center',
-        autoClose: 3000,
-        theme: 'colored',
-      });
-    }
-    setSearchParams({ query: searchQuery });
-  };
-
-  const handlerReset = e => {
-    e.preventDefault();
-    setPets('');
-    setSearchQuery('');
-    setSearchParams({ query: '' });
-  };
-
-  useEffect(() => {
-    if (!searchPet) {
-      return;
-    }
-
-    searchPetByQuery(searchPet).then(setPets);
-  }, [searchPet, setPets]);
-
+const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
   return (
     <div>
-      <FormSearch onSubmit={handleSubmit} onReset={handlerReset}>
+      <FormSearch onSubmit={onSubmit} onReset={onReset}>
         <TitleSearch>Find your favorite pet</TitleSearch>
         <InputSearch
           placeholder="Search"
-          onChange={event => setSearchQuery(event.target.value)}
-          value={searchQuery}
-          searchQuery={searchQuery.trim()}
+          onChange={onChange}
+          value={value}
+          type="text"
         />
-        <ButtonIcon type="submit">
-          <img
-            onClick={handleSubmit}
-            src={search}
-            alt="search"
-            width="24"
-            height="24"
-          />
-          {searchQuery && (
-            <img
-              onClick={handlerReset}
+        {!searchValue && (
+          <ButtonIcon type="submit">
+            <IconSearch src={search} alt="search" width="24" height="24" />
+          </ButtonIcon>
+        )}
+        {searchValue && (
+          <ButtonIcon type="reset">
+            <IconSearchDelete
               src={deleteQuery}
               alt="delete"
               width="24"
               height="24"
-            />
-          )}
-        </ButtonIcon>
+            />{' '}
+          </ButtonIcon>
+        )}
       </FormSearch>
       <NoticesCategoriesNav />
       <Outlet />
     </div>
   );
+};
+
+NoticesSearch.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onReset: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
 };
 
 export default NoticesSearch;
