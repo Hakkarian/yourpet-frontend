@@ -6,8 +6,16 @@ import {
   ItemNav,
   WrapperNav,
   ContainerNav,
+  BoxNav,
+  AddPetButton,
+  Span,
+  IconAddPet, AddPetButtonWrp
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+import plus from '../../../icons/plus.svg';
+import { NavLink } from 'react-router-dom';
+import { useToggle } from 'shared/hooks/useToggle';
+import { toast } from 'react-toastify';
 
 const buttons = [
   {
@@ -37,6 +45,15 @@ const authButtons = [
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
+    const { isOpen, open, close, toggle } = useToggle();
+
+  const openAddPet = () => {
+      if (isLoggedIn) {
+        open();
+      } else   
+  toast.error('You need to authorize in to access this page');
+}
+
   return (
     <>
       <NavStyle>
@@ -60,6 +77,12 @@ const NoticesCategoriesNav = () => {
                 </ItemNav>
               ))}
           </WrapperNav>
+          <BoxNav><AddPetButtonWrp onClick={openAddPet}>
+            <AddPetButton to={'/add-pet'} ></AddPetButton >
+              <Span>Add pet</Span>
+              <IconAddPet src={plus} alt="add-pet"/>
+            </AddPetButtonWrp>
+          </BoxNav>
         </ListNav>
       </NavStyle>
     </>

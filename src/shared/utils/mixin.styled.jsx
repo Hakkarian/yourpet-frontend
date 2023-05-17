@@ -34,7 +34,17 @@ const background = (repeat, position, size) => css`
     background-size: ${size};
 `
 
-export { background, color, font, flex, wrapper, bordered };
+const retina = (image) => css`
+ @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image:
+            url(${image});
+        }
+
+`
+
+export { background, color, font, flex, wrapper, bordered, retina };
 
 // @mixin retina {
 //     @media (min-device-pixel-ratio: 2),

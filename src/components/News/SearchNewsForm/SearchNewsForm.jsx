@@ -1,6 +1,5 @@
 import { useState } from 'react';
-// import { useSearchParams } from 'react-router-dom';
-
+// import { toast } from 'react-toastify';
 
 import { ImSearch } from 'react-icons/im';
 import { RxCross1 } from 'react-icons/rx';
@@ -21,11 +20,11 @@ export const SearchNewsForm = ({ onSubmit }) => {
     if (searchQuery.trim() === '') {
       return alert('Enter your regust');
 
-      // return toast.error('Enter your regust', {
-      //   position: 'top-center',
-      //   autoClose: 3000,
-      //   theme: 'colored',
-      // });
+      //   return toast.error('Enter your regust', {
+      //     position: 'top-center',
+      //     autoClose: 3000,
+      //     theme: 'colored',
+      //   });
     }
 
     onSubmit(searchQuery);
@@ -35,12 +34,12 @@ export const SearchNewsForm = ({ onSubmit }) => {
     setSearchQuery(e.target.value.toLowerCase().trim());
   };
 
-  // const handleReset = () => {
-  //   setSearchQuery('');
-  // };
+  const handleReset = () => {
+    setSearchQuery('');
+  };
 
   return (
-    <FormSearch onSubmit={handleSubmit}>
+    <FormSearch onSubmit={handleSubmit} onReset={handleReset}>
       <InputSearch
         placeholder="Search"
         type="text"

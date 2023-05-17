@@ -1,5 +1,6 @@
 // тут прописуються стилі для БІЛОЇ кнопки!
 
+
 export const whiteBtnStylesFunc = (width, { colors, background }) => `
     width: ${width};
     padding: 8px 20px;

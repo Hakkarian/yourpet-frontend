@@ -11,14 +11,20 @@ export const StyledForm = styled(Form)`
 `;
 
 export const ContainerCss = styled.div`
-  width: 280px;
-  background-color: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 8px;
-  padding-right: 8px;
+  width: ${({ theme }) => theme.spacing(70)}px;
+  background-color: ${({ theme }) => theme.colors.white};
+  padding-top: ${({ theme }) => theme.spacing(5)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(5)}px;
+  padding-left: ${({ theme }) => theme.spacing(2)}px;
+  padding-right: ${({ theme }) => theme.spacing(2)}px;
   border-radius: 40px;
   margin: 0 auto;
+
+  /* @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(114.5)}px;
+    padding-left: ${({ theme }) => theme.spacing(8)}px;
+    padding-right: ${({ theme }) => theme.spacing(8)}px;
+  } */
 `;
 
 export const PawIcon = styled(Paw)`
@@ -44,4 +50,12 @@ export const BtnWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   gap: ${({ theme }) => theme.spacing(3)}px;
+
+  /* @media screen and (min-width: 768px) {
+    margin-top: ${({ theme }) => theme.spacing(4)}px;
+  } */
 `;
+
+// @media screen and (min-width: 768px) {
+//     padding: 60px 75px;
+//   }
