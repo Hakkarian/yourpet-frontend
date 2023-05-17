@@ -24,9 +24,6 @@ const Header = () => {
   
   const { email } = useSelector(selectUser);
 
-  const trimmedEmail = email.split('@')[0]
-
-
   return (
     <>
       <HeaderCss>
@@ -36,18 +33,18 @@ const Header = () => {
         </MediaQuery>
         <AuthWrapCss>
           {isLogin ? (
-              <UserWrapCss>
-                <Link to="/user">
-                  <User width="28" height="28" />
-                </Link>
-                <MediaQuery minWidth={768}>
-                <InfoCss>{trimmedEmail}</InfoCss>
-                </MediaQuery>
-              </UserWrapCss>
-          ) : (
+            <UserWrapCss>
+              <Link to="/user">
+                <User width="28" height="28" />
+              </Link>
               <MediaQuery minWidth={768}>
-                <AuthNav />
+                <InfoCss>{email.split('@')[0]}</InfoCss>
               </MediaQuery>
+            </UserWrapCss>
+          ) : (
+            <MediaQuery minWidth={768}>
+              <AuthNav />
+            </MediaQuery>
           )}
           <MediaQuery maxWidth={1279}>
             <Link>

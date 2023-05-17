@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
 
 import {
-  addNotices,
   getNoticeByCategory,
   getOneNotice,
   addToFavorites,
@@ -63,7 +61,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
     const convertedDate = [day, month, year].join('.');
     return convertedDate;
   };
-  const dateOfBirth = getAge(birthday);
+  getAge(birthday);
   const difOfAge = dateOfBirth => {
     return Math.trunc(
       (new Date().getTime() - new Date(birthday)) / (24 * 3600 * 365.25 * 1000)

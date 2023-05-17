@@ -34,7 +34,7 @@ const NoticesCategoryList = () => {
   const isNoticeAdded = useSelector(selectIsNoticeAdded);
   const user = useSelector(selectUser);
   const category = location.pathname.split('/')[2];
-  const [search, setSearch] = useSearchParams();
+  const [search] = useSearchParams();
   const query = search.get('query');
   const page = search.get('page');
 
