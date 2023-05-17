@@ -5,12 +5,10 @@ import { createPortal } from 'react-dom';
 import {
   Backdrop,
   Wrapper,
-  CloseModalBtn,
-
 } from './Modal.styled';
 
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
-import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
+// import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
 import CrossButton from '../CrossButton/CrossButton';
 // import Button from 'shared/components/Button/Button';
 // import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
