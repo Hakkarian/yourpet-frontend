@@ -18,7 +18,7 @@ import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 
 import { NewsList } from 'components/News/NewsList/NewsList';
-import { Pagination, Stack } from '@mui/material';
+import { Box, Pagination, Stack } from '@mui/material';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
