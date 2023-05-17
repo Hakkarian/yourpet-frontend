@@ -5,8 +5,12 @@ import RadioButtonField from '../../FormFields/RadioButtonField/RadioButtonField
 import FormError from '../../FormFields/FormError/FormError';
 import FileInput from '../../FormFields/FileInput/FileInput';
 
-import { StyledButton } from '../../FormFields/Button/Button.styled';
-import { Subtitle, Wrap } from './MoreInfoForm.styled';
+import { ReactComponent as FemaleIcon } from 'icons/female.svg';
+import { ReactComponent as MaleIcon } from 'icons/male.svg';
+
+import Button from '../../FormFields/Button/Button';
+import { Subtitle, Wrap, DivCss } from './MoreInfoForm.styled';
+import { PawIcon, ArrowIcon, BtnWrapper } from '../../AddPetForm.styled';
 
 const MoreInfoForm = ({
   setPhoto,
@@ -18,18 +22,26 @@ const MoreInfoForm = ({
   return (
     <div>
       {category !== 'my pet' && (
-        <div>
+        <DivCss>
           <Subtitle>The sex</Subtitle>
           <Wrap gap={12}>
             <RadioButtonField
               value="female"
               label="Female"
+              icon={FemaleIcon}
+              fill="red"
               {...formFields.sex}
             />
-            <RadioButtonField value="male" label="Male" {...formFields.sex} />
+            <RadioButtonField
+              value="male"
+              label="Male"
+              icon={MaleIcon}
+              fill="blue"
+              {...formFields.sex}
+            />
           </Wrap>
           <FormError name="sex" />
-        </div>
+        </DivCss>
       )}
 
       <Wrap gap={28}>
@@ -48,17 +60,21 @@ const MoreInfoForm = ({
         <TextField errors={errors} touched={touched} {...formFields.price} />
       )}
       <TextField errors={errors} touched={touched} {...formFields.comments} />
-      <StyledButton type="submit" width={248}>
-        Done
-      </StyledButton>
-      <StyledButton
-        transparent={true}
-        type="button"
-        width={248}
-        onClick={() => changeStep('back')}
-      >
-        Back
-      </StyledButton>
+      <BtnWrapper>
+        <Button type="submit" width={248}>
+          Done
+          <PawIcon />
+        </Button>
+        <Button
+          transparent={true}
+          type="button"
+          width={248}
+          onClick={() => changeStep('back')}
+        >
+          <ArrowIcon />
+          Back
+        </Button>
+      </BtnWrapper>
     </div>
   );
 };

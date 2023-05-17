@@ -4,7 +4,11 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 import NoticeCategoryItem from '../NoticesCategoryItem/NoticesCategoryItem';
 import { Loader } from '../../Loader/Loader';
-import operations from 'redux/notices/notices-operations';
+import {
+    getNoticeByCategory,
+    getFavorites,
+   getUserNotices,
+} from 'redux/notices/notices-operations';
 import {
   selectNoticesByCategory,
   selectIsLoading,
@@ -40,25 +44,25 @@ const NoticesCategoryList = () => {
     if (category) {
       if (category === categoryShelf[category] && query) {
         dispatch(
-          operations.getNoticesByCategory({ category: category, query, page })
+          getNoticeByCategory({ category: category, query, page })
         );
       }
       if (category === 'favorites-ads' && query) {
-        dispatch(operations.getFavorites({ query, page }));
+        dispatch(getFavorites({ query, page }));
       }
       if (category === 'my-ads' && query) {
-        dispatch(operations.getUserNotices({ query, page }));
+        dispatch(getUserNotices({ query, page }));
       } else {
         if (category === categoryShelf[category]) {
           dispatch(
-            operations.getNoticesByCategory({ category: category, query, page })
+            getNoticeByCategory({ category: category, query, page })
           );
         }
         if (category === 'favorites-ads') {
-          dispatch(operations.getFavorites({ query, page }));
+          dispatch(getFavorites({ query, page }));
         }
         if (category === 'my-ads') {
-          dispatch(operations.getUserNotices({ query, page }));
+          dispatch(getUserNotices({ query, page }));
         }
       }
     }

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import heart from '../../../icons/heart.svg';
+// import heart from '../../../icons/heart.svg';
 
 export const ButtonsWrapper = styled.div`
   display: flex;
@@ -114,11 +114,11 @@ export const SvgWrapper = styled.div`
   border-radius: 50%;
 `;
 
-export const AddToFavoriteBtn = styled(heart)`
+export const AddToFavoriteBtn = styled(img)`
   cursor: pointer;
 `;
 
-export const RemoveFromFavoriteBtn = styled(heart)`
+export const RemoveFromFavoriteBtn = styled(img)`
   fill: #f59256;
   cursor: pointer;
 `;

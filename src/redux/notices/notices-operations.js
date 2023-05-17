@@ -1,12 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import * as api from 'shared/services/notices-api';
+
+// import { instance } from '../../shared/services/auth-api';
 
 const instance = axios.create({
-  baseURL: 'process.env.REACT_APP_API_URL',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 // отримання оголошень по категоріях
-const getNoticesByCategory = createAsyncThunk(
+export const getNoticeByCategory = createAsyncThunk(
   'notices/getNoticesByCategory',
   async ({ category, query, page }, { rejectWithValue }) => {
     try {
@@ -17,7 +20,7 @@ const getNoticesByCategory = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/${category}?query=${query}`
+          `/notices/title/search/${category}?query=${query}`
         );
         return data;
       }
@@ -28,7 +31,7 @@ const getNoticesByCategory = createAsyncThunk(
 );
 
 // get отримання одного оголошення
-const getOneNotice = createAsyncThunk(
+export const getOneNotice = createAsyncThunk(
   'notices/getOneNotice',
   async (id, { rejectWithValue }) => {
     try {
@@ -42,7 +45,7 @@ const getOneNotice = createAsyncThunk(
 );
 
 // post  додавання оголошення до обраних
-const addToFavorites = createAsyncThunk(
+export const addToFavorites = createAsyncThunk(
   'notices/addToFavorites',
   async (id, { rejectWithValue }) => {
     try {
@@ -56,7 +59,7 @@ const addToFavorites = createAsyncThunk(
 );
 
 // get отримання оголошень авторизованого користувача доданих ним же в обрані
-const getFavorites = createAsyncThunk(
+export const getFavorites = createAsyncThunk(
   '/notices/getFavorites',
   async ({ query, page }, { rejectWithValue }) => {
     try {
@@ -80,7 +83,7 @@ const getFavorites = createAsyncThunk(
 );
 
 // delete видалення оголошення авторизованого користувача доданих цим же до обраних
-const deleteFromFavorites = createAsyncThunk(
+export const deleteFromFavorites = createAsyncThunk(
   'notices/deleteFromFavorites',
   async (id, { rejectWithValue }) => {
     try {
@@ -94,7 +97,7 @@ const deleteFromFavorites = createAsyncThunk(
 );
 
 // delete видалення оголошення авторизованого користувача створеного цим же користувачем
-const deleteUserNotice = createAsyncThunk(
+export const deleteUserNotice = createAsyncThunk(
   'notices/deleteUserNotice',
   async (id, { rejectWithValue }) => {
     try {
@@ -108,7 +111,7 @@ const deleteUserNotice = createAsyncThunk(
 );
 
 // post додавання оголошень відповідно до обраної категорії
-const createNotice = createAsyncThunk(
+export const createNotice = createAsyncThunk(
   'notices/createNotice',
   async (credentials, { rejectWithValue }) => {
     try {
@@ -122,7 +125,7 @@ const createNotice = createAsyncThunk(
 );
 
 // get отримання оголошень авторизованого кoристувача створених цим же користувачем
-const getUserNotices = createAsyncThunk(
+export const getUserNotices = createAsyncThunk(
   'notices/getUserNotices',
   async ({ query, page }, { rejectWithValue }) => {
     try {
@@ -143,15 +146,17 @@ const getUserNotices = createAsyncThunk(
   }
 );
 
-const operations = {
-  getNoticesByCategory,
-  getOneNotice,
-  addToFavorites,
-  getFavorites,
-  deleteFromFavorites,
-  createNotice,
-  getUserNotices,
-  deleteUserNotice,
-};
+export const addNotices = createAsyncThunk(
+  'pets/addPets',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await api.addNotice(data);
+      console.log('result', result);
+      return result.data;
+    } catch ({ response }) {
+      return rejectWithValue(response.data.message);
+    }
+  }
+);
 
-export default operations;
+

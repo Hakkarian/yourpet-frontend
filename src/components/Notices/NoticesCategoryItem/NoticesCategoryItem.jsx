@@ -2,7 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
-import operations from 'redux/notices/notices-operations';
+import {
+  addNotices,
+  getNoticeByCategory,
+  getOneNotice,
+  addToFavorites,
+  getFavorites,
+  deleteFromFavorites,
+  deleteUserNotice,
+  createNotice,
+  getUserNotices,
+} from 'redux/notices/notices-operations';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../ModalNotice/ModalNotice';
 import {
@@ -45,12 +55,12 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
 
   const refreshingPage = category => {
     if (categoryPet === categoryShelf[category])
-      dispatch(operations.getNoticesByCategory({ category, query }));
+      dispatch(getNoticeByCategory({ category, query }));
     if (categoryPet === 'favorites-ads') {
-      dispatch(operations.getFavorites({ query }));
+      dispatch(getFavorites({ query }));
     }
     if (categoryPet === 'my-ads') {
-      dispatch(operations.getUserNotices({ query }));
+      dispatch(getUserNotices({ query }));
     }
   };
 
@@ -60,7 +70,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         'You need to authorize before adding pets to favorites.'
       );
     }
-    dispatch(operations.addToFavorites(id)).then(() => {
+    dispatch(addToFavorites(id)).then(() => {
       refreshingPage(category);
     });
 
@@ -73,7 +83,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         'You need to authorize before removing pets from favorites.'
       );
     }
-    dispatch(operations.deleteFromFavorites(id)).then(() => {
+    dispatch(deleteFromFavorites(id)).then(() => {
       refreshingPage(categoryPet);
     });
 
@@ -81,7 +91,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
   };
 
   const onChangeOpenModal = () => {
-    dispatch(operations.getOneNotice(id));
+    dispatch(getOneNotice(id));
   };
 
     const toggleModal = () => {

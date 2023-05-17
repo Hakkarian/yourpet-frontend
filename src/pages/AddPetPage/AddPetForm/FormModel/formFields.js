@@ -14,8 +14,8 @@ const fields = {
     label: 'Name pet',
     placeholder: 'Type pet name',
   },
-  date: {
-    name: 'date',
+  birthday: {
+    name: 'birthday',
     type: 'date',
     label: 'Date of birth',
     placeholder: 'Type date of birth',

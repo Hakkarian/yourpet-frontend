@@ -16,11 +16,12 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   position: relative;
-  text-align: center;
-  width: ${({ theme }) => theme.spacing(20)}px;
+  /* text-align: center; */
+  width: ${({ theme }) => theme.spacing(21)}px;
   font-weight: 500;
   padding: ${({ theme }) => theme.spacing(3)}px 0;
-  font-size: ${({ theme }) => theme.spacing(2.5)}px;
+  font-size: ${({ theme }) => theme.spacing(2.4)}px;
+  line-height: 14px;
   color: ${({ theme, currentStep, idx }) => {
     if (currentStep < idx) return '#888888';
     if (currentStep === idx) return theme.colors.blue;
@@ -34,6 +35,7 @@ export const Item = styled.li`
     height: ${({ theme }) => theme.spacing(2)}px;
     position: absolute;
     top: ${({ theme }) => theme.spacing(9)}px;
+    left: 2px;
 
     background-color: ${({ theme, currentStep, idx }) => {
       if (currentStep < idx) return theme.colors.lightblue;

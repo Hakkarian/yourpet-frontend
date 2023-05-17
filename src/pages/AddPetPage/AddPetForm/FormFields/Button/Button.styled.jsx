@@ -11,14 +11,13 @@ export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: ${({ theme }) => theme.spacing(1)}px;
 
   font-size: ${({ theme }) => theme.spacing(4)}px;
   font-weight: 700;
   padding: ${({ theme }) => theme.spacing(2)}px
     ${({ theme }) => theme.spacing(5)}px;
 
-  background-color: ${({ theme, transparent }) => {
+  background: ${({ theme, transparent }) => {
     if (transparent) {
       return 'transparent';
     } else {
@@ -36,24 +35,24 @@ export const StyledButton = styled.button`
   border: none;
   border-radius: ${({ theme }) => theme.spacing(10)}px;
 
+  transition: background-color 2000ms ${({ theme }) => theme.utils.cubicBezier};
+  cursor: pointer;
+
   &:hover,
   &:focus {
-    color: ${({ theme, transparent }) => {
+    /* color: ${({ theme, transparent }) => {
       if (transparent) {
         return theme.colors.white;
       } else {
         return theme.colors.blue;
       }
-    }};
-    background-color: ${({ theme, transparent }) => {
+    }}; */
+    background: ${({ theme, transparent }) => {
       if (transparent) {
-        return theme.colors.blue;
-      } else {
         return 'transparent';
+      } else {
+        return theme.background.azure;
       }
     }};
   }
-  cursor: pointer;
-  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
-    border 250ms ease-in-out;
 `;
