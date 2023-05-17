@@ -20,7 +20,7 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [page] = useState(1); 
-  
+
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
@@ -43,6 +43,7 @@ const NewsPage = () => {
       <SearchNewsForm onSubmit={handleNewsSearchSubmit} />
       {isLoading && !error && <Loader />}
       {newsItems.length !== 0 && <NewsList news={newsItems} />}
+      {!isLoading && newsItems.length === 0 && <p> Such news wasn't found </p>}
     </>
   );
 };
