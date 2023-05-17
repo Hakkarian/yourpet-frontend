@@ -95,11 +95,11 @@
 
 import Modal from 'shared/components/Modal/Modal';
 import ModalDelete from 'components/ModalDelete';
-import ModalCongrats from 'components/ModalCongrats';
-import ModalLogOut from 'components/ModalLogOut';
+// import ModalCongrats from 'components/ModalCongrats';
+// import ModalLogOut from 'components/ModalLogOut';
 
 import { useToggle } from 'shared/hooks/useToggle';
-import ModalNotice from 'components/ModalNotice';
+// import ModalNotice from 'components/ModalNotice';
 
 const OurFriendsPage = () => {
   const { isOpen, open, close } = useToggle();
