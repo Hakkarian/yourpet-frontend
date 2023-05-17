@@ -40,6 +40,7 @@ const RegisterForm = () => {
       const { email, password } = values;
       const payload = { email, password };
       dispatch(register(payload));
+      
       actions.resetForm();
     };
     return (
