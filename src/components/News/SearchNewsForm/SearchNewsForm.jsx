@@ -58,7 +58,7 @@ export const SearchNewsForm = ({ onSubmit }) => {
           />
         </ButtonIcon>
         {searchQuery !== '' && (
-          <ButtonIcon>
+          <ButtonIcon type="reset">
             <RxCross1
               size={iconSize.md}
               style={{
