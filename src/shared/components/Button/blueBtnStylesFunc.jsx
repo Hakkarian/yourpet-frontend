@@ -1,6 +1,6 @@
 // тут прописуються стилі для СИНЬОЇ кнопки!
 
-export const blueBtnStylesFunc = (width, { colors }) => `
+export const blueBtnStylesFunc = (width, { colors, background }) => `
     width: ${width};
     padding: 8px 20px;
     border: 2px solid ${colors.blue};
@@ -13,6 +13,8 @@ export const blueBtnStylesFunc = (width, { colors }) => `
 
     :hover, :focus {
         color:${colors.white};
-        background-color: ${colors.blue};
+        background: ${background.azure};
+        border: none;
+ 
     }
 `;

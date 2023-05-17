@@ -1,14 +1,16 @@
 import React from 'react';
 
-import { ReactComponent as CrossSmall } from '../../../icons/cross-small.svg';
+import { ReactComponent as CrossIcon } from '../../../icons/cross-small.svg';
 import { CloseModalBtn } from './CrossButton.styled';
 
-const CrossButton = ({ onClose }) => {
+const CrossButton = ({ onClick }) => {
   return (
-    <CloseModalBtn type="button" onClick={onClose}>
-      <CrossSmall />
-    </CloseModalBtn>
-  );
+  
+    <CloseModalBtn type="button" onClick={onClick}>
+
+      <CrossIcon stroke="#54ADFF"  width="20" height="20"/>
+    </CloseModalBtn> 
+ );
 };
 
 export default CrossButton;
