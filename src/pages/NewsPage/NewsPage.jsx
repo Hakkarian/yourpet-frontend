@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import { fetchNews } from 'redux/news/news-operations';
 import {
@@ -18,11 +19,7 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  // const [page, setPage] = useState(1);
-  // const [limit, setLimit] = useState(6);
-
-  const page = 1;
-  const limit = 6;
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
@@ -30,15 +27,16 @@ const NewsPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchNews({ page, limit, searchQuery }));
-  }, [dispatch, page, limit, searchQuery]);
+    dispatch(fetchNews({ page, search: searchQuery }));
+  }, [dispatch, page, searchQuery]);
 
   const handleNewsSearchSubmit = value => {
     console.log('отримуємо дані з форми у NewsPage--->', value);
-    console.log('setSearchQuery(value)--->', setSearchQuery(value));
+
     setSearchQuery(value);
   };
 
+  console.log('searchQuery(value)--->', searchQuery);
   return (
     <>
       <ReusableTitle>News</ReusableTitle>
