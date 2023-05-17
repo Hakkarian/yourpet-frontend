@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import * as api from 'shared/services/pets-api';
-// import { addPet } from 'shared/services/pets-api';
 
 export const getAllPets = createAsyncThunk(
   'pets/fetchAll',
