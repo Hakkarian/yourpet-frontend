@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+// import { useSearchParams } from 'react-router-dom';
 
-import { toast } from 'react-toastify';
+
 import { ImSearch } from 'react-icons/im';
 import { RxCross1 } from 'react-icons/rx';
 
@@ -35,9 +35,9 @@ export const SearchNewsForm = ({ onSubmit }) => {
     setSearchQuery(e.target.value.toLowerCase().trim());
   };
 
-  const handleReset = () => {
-    setSearchQuery('');
-  };
+  // const handleReset = () => {
+  //   setSearchQuery('');
+  // };
 
   return (
     <FormSearch onSubmit={handleSubmit}>

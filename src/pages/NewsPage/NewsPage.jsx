@@ -6,7 +6,6 @@ import {
   selectNews,
   selectIsLoading,
   selectError,
-  selectTotalPage,
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
@@ -19,8 +18,11 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(6);
+  // const [page, setPage] = useState(1);
+  // const [limit, setLimit] = useState(6);
+
+  const page = 1;
+  const limit = 6;
 
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
