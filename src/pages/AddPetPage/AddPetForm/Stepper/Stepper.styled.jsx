@@ -9,14 +9,21 @@ export const List = styled.ul`
     return theme.spacing(6);
   }}px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(3)}px;
+
+  /* @media screen and (min-width: 768px) {
+    margin-bottom: ${({ theme, currentStep }) => {
+    if (currentStep === 0) {
+      return theme.spacing(12);
+    }
+    return theme.spacing(6);
+  }}px;
+  } */
 `;
 
 export const Item = styled.li`
   position: relative;
-  /* text-align: center; */
   width: ${({ theme }) => theme.spacing(21)}px;
   font-weight: 500;
   padding: ${({ theme }) => theme.spacing(3)}px 0;
@@ -27,6 +34,11 @@ export const Item = styled.li`
     if (currentStep === idx) return theme.colors.blue;
     if (currentStep > idx) return theme.colors.green;
   }};
+
+  /* @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(32)}px;
+    font-size: ${({ theme }) => theme.spacing(3.7)}px;
+  } */
 
   &::after {
     content: '';
@@ -43,5 +55,10 @@ export const Item = styled.li`
       if (currentStep > idx) return theme.colors.green;
     }};
     border-radius: ${({ theme }) => theme.spacing(2)}px;
+
+    /* @media screen and (min-width: 768px) {
+      width: ${({ theme }) => theme.spacing(30)}px;
+      top: ${({ theme }) => theme.spacing(9.5)}px;
+    } */
   }
 `;
