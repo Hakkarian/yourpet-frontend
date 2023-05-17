@@ -8,18 +8,12 @@ import {
   FormSearch,
   InputSearch,
   ButtonIcon,
-  IconSearch
+  IconSearch,
+  IconSearchDelete,
 } from './NoticesSearch.styled';
 import NoticesCategoriesNav from '../NoticesCategoriesNav';
 
-const NoticesSearch = ({
-  value,
-  onChange,
-  onSubmit,
-  onReset,
-  searchValue,
-}) => {
-  
+const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
   return (
     <div>
       <FormSearch onSubmit={onSubmit} onReset={onReset}>
@@ -28,25 +22,24 @@ const NoticesSearch = ({
           placeholder="Search"
           onChange={onChange}
           value={value}
-          type='text'
+          type="text"
         />
-                  {!searchValue && (<ButtonIcon type="submit">
-            <IconSearch
-                            src={search}
-              alt="search"
-              width="24"
-              height="24"
-            /></ButtonIcon>
-          )}
-          {searchValue && (<ButtonIcon type="reset">
-            <IconSearch
-                           src={deleteQuery}
+        {!searchValue && (
+          <ButtonIcon type="submit">
+            <IconSearch src={search} alt="search" width="24" height="24" />
+          </ButtonIcon>
+        )}
+        {searchValue && (
+          <ButtonIcon type="reset">
+            <IconSearchDelete
+              src={deleteQuery}
               alt="delete"
               width="24"
               height="24"
-            /> </ButtonIcon>
-          )}
-             </FormSearch>
+            />{' '}
+          </ButtonIcon>
+        )}
+      </FormSearch>
       <NoticesCategoriesNav />
       <Outlet />
     </div>

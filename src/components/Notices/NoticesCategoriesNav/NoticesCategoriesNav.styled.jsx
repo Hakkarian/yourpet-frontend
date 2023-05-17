@@ -92,7 +92,9 @@ export const BoxNav = styled.div`
 `;
 
 
-export const AddPetButton = styled.button`
+export const AddPetButton = styled(NavLink)``
+
+export const AddPetButtonWrp = styled.button`
   position: fixed;
   z-index: 1;
 

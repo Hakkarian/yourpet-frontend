@@ -21,7 +21,7 @@ import ErrorPage from '../../../pages/ErrorPage/ErrorPage';
 const categoryShelf = {
   sell: 'sell',
   'lost-found': 'lost-found',
-  'in-good-hands': 'in-good-hands',
+  'for-free': 'for-free',
 };
 
 const NoticesCategoryList = () => {
@@ -101,7 +101,7 @@ const NoticesCategoryList = () => {
                     notice={notice}
                     isFavorite={isFavorite}
                     isOwner={isOwner}
-                    category={category}
+                    categoryPet={category}
                   />
                 );
               })}

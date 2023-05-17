@@ -56,3 +56,7 @@ export const ButtonIcon = styled.button`
 export const IconSearch = styled.img`
   fill: ${({ theme }) => theme.colors.blue};
 `;
+
+export const IconSearchDelete = styled.img`
+  fill: ${({ theme }) => theme.colors.blue};
+`;
