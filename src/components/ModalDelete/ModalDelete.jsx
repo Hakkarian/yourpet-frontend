@@ -18,7 +18,7 @@ const ModalDelete = ({ onClose }) => {
           Cancel
         </Button>
         <Button className="btn" type="button" color="blue" width="129px">
-          Yes <DeleteIcon className="svg" width="24px" height="24px" />
+          Yes <DeleteIcon className="svg" stroke="white" width="24px" height="24px" />
         </Button>
       </ContainerButton>
     </Container>

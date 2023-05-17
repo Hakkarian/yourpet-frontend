@@ -13,6 +13,8 @@ export const blueBtnStylesFunc = (width, { colors, background }) => `
 
     :hover, :focus {
         color:${colors.white};
+        background: ${background.azure};
+        border: none;
  
     }
 `;
