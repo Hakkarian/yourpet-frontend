@@ -40,15 +40,18 @@ const Header = () => {
         <AuthWrapCss>
           {isLogin ? (
             <>
+              {isDesktop && <Nav />}
               <UserWrapCss>
                 <Link to="/user">
                   <User width="28" height="28" />
                 </Link>
                 {isTablet && <InfoCss>Anna</InfoCss>}
               </UserWrapCss>
-              {isMobile && <Link>
-                <BurgerMenu width="24" height="24" />
-              </Link>}
+              {isMobile && (
+                <Link>
+                  <BurgerMenu width="24" height="24" />
+                </Link>
+              )}
             </>
           ) : (
             <>
