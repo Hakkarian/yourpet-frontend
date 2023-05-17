@@ -18,6 +18,7 @@ margin-top: 40px;
 
 export const BtnWrap = styled.div`
 display: flex;
+align-items: center;
 justify-content: space-between;
 margin-bottom: 40px;
 `;

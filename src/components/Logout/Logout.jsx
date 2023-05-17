@@ -1,31 +1,26 @@
 // import {useState} from "react";
-// import { useDispatch } from 'react-redux';
 
 // import {OutBtn, OutWrap, OutText, Icon} from './Logout.styled';
-// import { logout } from 'redux/auth/auth-operations';
-// import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
+// import ModalLogOut from "components/ModalLogOut";
 
 
 const Logout = () => {
-//     const dispatch = useDispatch();
-  
-//     const [isOpenModal, setIsOpenModal] = useState(false);
+    // const [isOpenModal, setIsOpenModal] = useState(false);
 
-//     const onLogOut = () => {
-//       dispatch(logout());
-//       setIsOpenModal(true)
-//     };
+    // const onLogOut = () => {
+    //   setIsOpenModal(true)
+    // };
 
-//     return (
-//         <OutWrap>
-//             <OutBtn type="button" onClick={onLogOut} >
-//                 <Icon />
-//             </OutBtn>
-//             <OutText>Log Out</OutText>
-// //             {isOpenModal && (
-// //                 <ModalApproveAction /> )}
-//         </OutWrap>
-//     )
+    // return (
+    //     <OutWrap>
+    //         <OutBtn type="button" onClick={onLogOut} >
+    //             <Icon />
+    //         </OutBtn>
+    //         <OutText>Log Out</OutText>
+    //         {isOpenModal && (
+    //             <ModalLogOut /> )}
+    //     </OutWrap>
+    // )
 };
 
 export default Logout;

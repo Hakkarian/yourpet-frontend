@@ -1,6 +1,8 @@
 import React from "react";
+//import { useSelector } from "react-redux";
 
 import {List} from './PetsList.styled';
+// import { selectAllPets } from "redux/pets/pets-selector";
 import PetsItem from "components/PetsItem";
 
 const pets = [
@@ -26,6 +28,7 @@ const pets = [
   ];
 
 const PetsList = () => {
+    //const pets = useSelector(selectAllPets);
  
     return (
         <List>

@@ -32,6 +32,12 @@ color: #000000;
 letter-spacing: 0.04em;
 line-height: 1.35;
 margin-bottom:18px;
+
+@media screen and (min-width: 768px) {
+  font-size: 28px;
+  color: #111111;
+  margin-bottom: 24px;
+}
 `;
 
 export const UserDiv = styled.div`

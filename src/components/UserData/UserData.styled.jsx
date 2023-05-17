@@ -1,10 +1,25 @@
 import styled from "@emotion/styled";
 import {ReactComponent as Camera} from '../../icons/camera.svg';
-import {ReactComponent as Check} from '../../icons/check.svg';
-import { Form } from "formik";
-// import { theme } from "constants/theme";
+import {ReactComponent as Cross} from '../../icons/cross-small-2.svg';
+import { Form, ErrorMessage } from "formik";
 
-export const CheckIcon = styled(Check)`
+export const Error = styled(ErrorMessage)`
+
+`;
+
+export const ErrorWrap = styled.div`
+position: absolute;
+top: -12px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 10px;
+line-height: 1.33;
+color: #F43F5E;
+`;
+
+export const CrossIcon = styled(Cross)`
 fill:none;
 width: 24px;
 height: 24px;
@@ -15,6 +30,20 @@ justify-content: center;
 align-items: center;
 display: flex;
 flex-direction: column;
+
+@media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    padding: 20px 76px 20px 20px;
+    gap: 71px;
+    border-radius: 40px;
+}
+
+@media screen and (min-width: 1280px) {
+    flex-direction: column;
+    padding: 20px 24px 20px 16px;
+    border-radius: 40px;
+    width: 395px;
+    gap: 0;
 `;
 
 export const CheckWrap = styled.div`
