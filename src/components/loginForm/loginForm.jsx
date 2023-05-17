@@ -1,26 +1,26 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-import { ErrorMessage, Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
 import {
-  AbsDivCss,
+  // AbsDivCss,
   ReusableTitleCss,
   FlexDivCss,
-  TextWrapCss,
-  TextCss,
-  ButtonEye,
-  ErrorText,
+  // TextWrapCss,
+  // TextCss,
+  // ButtonEye,
+  // ErrorText,
 } from './FormStyles.styled';
 
-import Button from 'shared/components/Button/Button';
-import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
-import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
-import { ReactComponent as Cross } from '../../icons/cross-small.svg';
+// import Button from 'shared/components/Button/Button';
+// import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
+// import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+// import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 
 import { login } from 'redux/auth/auth-operations';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { FormCss } from 'components/RegisterForm/RegisterForm.styled';
 
 const validateShecma = Yup.object().shape({
@@ -35,7 +35,7 @@ const validateShecma = Yup.object().shape({
     .required('Required'),
 });
 const LoginForm = () => {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -56,7 +56,7 @@ const LoginForm = () => {
         {({ errors, values, touched }) => {
           return (
             <FormCss>
-              <div>
+              {/* <div>
                 <Field
                   name="email"
                   type="email"
@@ -108,7 +108,7 @@ const LoginForm = () => {
               <TextWrapCss>
                 <TextCss>Don't have an account?</TextCss>
                 <Link to="/register">Register</Link>
-              </TextWrapCss>
+              </TextWrapCss> */}
             </FormCss>
           );
         }}
