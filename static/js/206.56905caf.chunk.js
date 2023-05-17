@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[206],{206:function(e,t,n){n.r(t),n.d(t,{default:function(){return s}});n(2791);var r,c=n(168),u=n(8789).ZP.section(r||(r=(0,c.Z)(["\n  display: flex;\n  align-items: center;\n  justify-content: center;\n"]))),a=n(184),s=function(){return(0,a.jsx)(u,{})}}}]);
+//# sourceMappingURL=206.56905caf.chunk.js.map
