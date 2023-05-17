@@ -19,9 +19,7 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  //   const [page, setPage] = useState(1); // setPage is defined but not used
-
-  const page = 1;
+  const [page] = useState(1); 
 
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
