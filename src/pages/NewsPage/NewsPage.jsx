@@ -97,8 +97,6 @@ const NewsPage = () => {
             <Pagination count={10} />
             <Pagination count={10} size="large" />
           </Stack> */}
-
-          {/* <div></div> */}
         </>
       )}
       {!isLoading && newsItems.length === 0 && <p> Such news wasn't found </p>}
