@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
-import err_mobile from "./bg_img/404_mobile_origin.png";
-import err_mobile_2x from "./bg_img/404_mobile_2x_origin.png";
-import err_tab from "./bg_img/404_tab_origin.png";
-import err_tab_2x from "./bg_img/404_tab_2x_origin.png";
-import err_desc from "./bg_img/404_desc_origin.png";
-import err_desc_2x from "./bg_img/404_desc_2x_origin.png";
+import err_mobile from '../../images/bg_img/error/404_mobile_origin.png';
+import err_mobile_2x from '../../images/bg_img/error/404_mobile_2x_origin.png';
+import err_tab from '../../images/bg_img/error/404_tab_origin.png';
+import err_tab_2x from '../../images/bg_img/error/404_tab_2x_origin.png';
+import err_desc from '../../images/bg_img/error/404_desc_origin.png';
+import err_desc_2x from '../../images/bg_img/error/404_desc_2x_origin.png';
 
 export const DivTag = styled.div`
     display:flex;

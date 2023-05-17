@@ -4,12 +4,18 @@ import { Field } from 'formik';
 export const Label = styled.label`
   display: block;
   font-size: ${({ theme }) => theme.spacing(3.5)}px;
-  /* font-weight: 500; */
+  font-weight: 500;
   margin-bottom: ${({ theme }) => theme.spacing(1)}px;
+
+  /* @media screen and (min-width: 768px) {
+    font-size: ${({ theme }) => theme.spacing(5)}px;
+    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+  } */
 `;
 
 export const Input = styled(Field)`
-  width: ${({ theme }) => theme.spacing(65)}px;
+  /* width: ${({ theme }) => theme.spacing(65)}px; */
+  width: 100%;
   height: ${({ theme, as }) => {
     if (as === 'textarea') {
       return theme.spacing(23);
@@ -37,6 +43,11 @@ export const Input = styled(Field)`
     }
   }}
 
+  /* @media screen and (min-width: 768px) {
+    padding-bottom: ${({ theme }) => theme.spacing(3)}px;
+    font-size: ${({ theme }) => theme.spacing(4)}px;
+  } */
+
   &::-webkit-calendar-picker-indicator {
     margin-right: 20px;
   }
@@ -50,4 +61,8 @@ export const TextErrorCss = styled.span`
 
 export const Wrapper = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing(5)}px;
+
+  /* @media screen and (min-width: 768px) {
+    margin-bottom: ${({ theme }) => theme.spacing(6)}px;
+  } */
 `;
