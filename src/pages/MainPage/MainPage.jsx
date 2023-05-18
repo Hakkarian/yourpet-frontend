@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { SectionTag } from "./MainPage.styled";
+import { SectionTag } from './MainPage.styled';
+
+const a = {
+  func: value => value * 4,
+};
+
+const b = a.func(2);
+
+console.log(b);
 
 const MainPage = () => {
   return (

@@ -40,10 +40,10 @@ export const RadioLabel = styled.label`
     }
     return '#888888';
   }};
-  padding-top: ${({ theme }) => theme.spacing(2)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(2)}px;
-  padding-left: ${({ theme }) => theme.spacing(4)}px;
-  padding-right: ${({ theme }) => theme.spacing(4)}px;
+  padding-top: ${({ theme }) => theme.spacing(2)};
+  padding-bottom: ${({ theme }) => theme.spacing(2)};
+  padding-left: ${({ theme }) => theme.spacing(4)};
+  padding-right: ${({ theme }) => theme.spacing(4)};
   font-family: inherit;
   font-size: ${({ theme, name }) => {
     if (name === 'category') {

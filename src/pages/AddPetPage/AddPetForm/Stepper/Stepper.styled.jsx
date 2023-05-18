@@ -24,10 +24,10 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   position: relative;
-  width: ${({ theme }) => theme.spacing(21)}px;
+  width: ${({ theme }) => theme.spacing(21)};
   font-weight: 500;
-  padding: ${({ theme }) => theme.spacing(3)}px 0;
-  font-size: ${({ theme }) => theme.spacing(2.4)}px;
+  padding: ${({ theme }) => theme.spacing(3)} 0;
+  font-size: ${({ theme }) => theme.spacing(2.4)};
   line-height: 14px;
   color: ${({ theme, currentStep, idx }) => {
     if (currentStep < idx) return '#888888';
@@ -36,17 +36,17 @@ export const Item = styled.li`
   }};
 
   /* @media screen and (min-width: 768px) {
-    width: ${({ theme }) => theme.spacing(32)}px;
-    font-size: ${({ theme }) => theme.spacing(3.7)}px;
+    width: ${({ theme }) => theme.spacing(32)};
+    font-size: ${({ theme }) => theme.spacing(3.7)};
   } */
 
   &::after {
     content: '';
     display: block;
-    width: ${({ theme }) => theme.spacing(20)}px;
-    height: ${({ theme }) => theme.spacing(2)}px;
+    width: ${({ theme }) => theme.spacing(20)};
+    height: ${({ theme }) => theme.spacing(2)};
     position: absolute;
-    top: ${({ theme }) => theme.spacing(9)}px;
+    top: ${({ theme }) => theme.spacing(9)};
     left: 2px;
 
     background-color: ${({ theme, currentStep, idx }) => {
@@ -54,11 +54,11 @@ export const Item = styled.li`
       if (currentStep === idx) return theme.colors.blue;
       if (currentStep > idx) return theme.colors.green;
     }};
-    border-radius: ${({ theme }) => theme.spacing(2)}px;
+    border-radius: ${({ theme }) => theme.spacing(2)};
 
     /* @media screen and (min-width: 768px) {
-      width: ${({ theme }) => theme.spacing(30)}px;
-      top: ${({ theme }) => theme.spacing(9.5)}px;
+      width: ${({ theme }) => theme.spacing(30)};
+      top: ${({ theme }) => theme.spacing(9.5)};
     } */
   }
 `;
