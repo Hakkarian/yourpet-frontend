@@ -14,8 +14,7 @@ const PetsData = () => {
             <BtnWrap>
             <Title>My pets:</Title>
                 <Link to="/add-pet" state={{from: location}}>
-                    <Button type="button" color="blue" width="129px">Add Pet
-                 <PlusIcon />
+                    <Button type="button" color="blue" width="129px">  <PlusIcon  stroke="white"  width="10px" height="10px"/>Add Pet
                     </Button>
                 </Link>
             </BtnWrap>

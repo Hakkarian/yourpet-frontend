@@ -2,9 +2,7 @@
 import React, {useRef, useState} from "react";
 //import {useSelector } from "react-redux";
 import { Formik, ErrorMessage  } from "formik";
-// import { useNavigate } from "react-router-dom";
 
-// import { selectIsLoggedIn } from "redux/auth/auth-selector";
 import { ImageDef, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CrossIcon, Wrapper, ErrorWrap} from "./UserData.styled";
 //import { info } from "redux/auth/auth-operations";
 import { userValidationSchema } from "./userValidation";
@@ -13,17 +11,8 @@ import  UserImage  from '../UserImage';
 
 const UserData = ({ name, birthday, email, phone, city}) => {
    //const dispatch = useDispatch();
-  //  const navigate = useNavigate();
-  //  const isLogin = useSelector(selectIsLoggedIn);
    const [photo, setPhoto] = useState(null);
    const fileRef = useRef(null);
-
-  
-  //  useEffect(() => {
-  //    if(!isLogin) {
-  //    navigate('/login');
-  //    }
-  //  }, [isLogin, navigate]);
 
    const handleSubmit = async(values, {setFieldError}) => {
     if(!photo) {
@@ -41,11 +30,11 @@ const UserData = ({ name, birthday, email, phone, city}) => {
             <Formik 
             initialValues={{
               file: photo || null,
-              name:name || '',
-              email: email || '',
-              birthday: birthday || '',
-              phone: phone || '',
-              city:city || '',
+              name: name || "Anna",
+              email: email || 'anna00@gmail.com',
+              birthday: birthday || '00.00.0000',
+              phone: phone || '+38000000000',
+              city:city || 'Kiev',
             }}
             validationSchema={userValidationSchema}
             onSubmit={handleSubmit}>
@@ -84,7 +73,7 @@ const UserData = ({ name, birthday, email, phone, city}) => {
             <Wrapper>
                 <UserDataItem  type="text" name="name" label="Name: "  />
                 <UserDataItem  type="email" name="email" label="Email: "/>
-                <UserDataItem  type="date" name="birthday" label="Birthday: "/>
+                <UserDataItem  type="text" name="birthday" label="Birthday: "/>
                 <UserDataItem  type="text" name="phone" label="Phone: "/>
                 <UserDataItem  type="text" name="city" label="City: "/>
             </Wrapper>

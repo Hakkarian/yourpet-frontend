@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { selectIsRegistered, selectUser } from 'redux/auth/auth-selector';
 import { Container } from 'shared/components/Container/Container.styled';
-import { Wrap, UserDiv, Title} from './UserPage.styled';
+import { Wrap, UserDiv, Title, MainBox} from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
@@ -17,13 +17,15 @@ const UserPage = () => {
 
   const user = useSelector(selectUser);
   const isRegister = useSelector(selectIsRegistered);
-  const { name, birthday, email, phone, city } = user;
+  const {name, birthday, email, phone, city } = user;
+  //const name = email.split("@")[0];
   
   return (
   <>
     { isRegister && (<ModalCongrats />)}
     <Container>
     <UserDiv>
+      <MainBox>
       <Title>My information:</Title>
       <Wrap>
         <UserData 
@@ -39,6 +41,7 @@ const UserPage = () => {
           </Modal>
         )}
       </Wrap>
+      </MainBox>
       <PetsData />
     </UserDiv>
       </Container>
