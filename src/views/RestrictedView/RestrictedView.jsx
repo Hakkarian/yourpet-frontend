@@ -5,7 +5,10 @@ import { selectIsLoggedIn, selectUser } from 'redux/auth/auth-selector';
 
 const RestrictedView = () => {
       const isLogin = useSelector(selectIsLoggedIn);
-      const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
+  if(!isLogin && user.token) {
+    return <div>Loading...</div>
+  }
       if (isLogin && user.token) {
         return <Navigate to="/user" />;
       }

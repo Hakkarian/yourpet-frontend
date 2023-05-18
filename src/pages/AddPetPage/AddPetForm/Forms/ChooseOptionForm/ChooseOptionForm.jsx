@@ -46,7 +46,7 @@ const ChooseOptionForm = ({ helpers, setCategory, changeStep, location }) => {
         />
       </ToolBar>
       <BtnWrapper>
-        <Button type="button" onClick={handleClick} width={248}>
+        <Button type="button" onClick={handleClick} width="248px">
           Next
           <PawIcon />
         </Button>

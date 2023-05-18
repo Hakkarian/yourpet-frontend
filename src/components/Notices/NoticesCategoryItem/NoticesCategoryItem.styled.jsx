@@ -62,16 +62,16 @@ export const Item = styled.li`
 // `;
 
 export const ImageWrapper = styled.div`
-// position: relative;
-//   width: 100%;
-//   margin-bottom: 20px;
+  // position: relative;
+  //   width: 100%;
+  //   margin-bottom: 20px;
 `;
 
 export const Image = styled.img`
   width: 288px;
   height: 288px;
   object-fit: cover;
-  
+
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 288px;
@@ -117,7 +117,7 @@ export const SvgWrapper = styled.div`
 export const AddToFavoriteBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
-  border:none;
+  border: none;
 `;
 
 export const RemoveFromFavoriteBtn = styled.button`
@@ -138,8 +138,8 @@ export const Title = styled.h3`
 `;
 
 export const CardContainer = styled.div`
-position: relative;
-`
+  position: relative;
+`;
 
 export const DescriptionWrapper = styled.div`
   position: absolute;
@@ -168,15 +168,14 @@ export const DescriptionTextContainer = styled.div`
 `;
 
 export const DescriptionText = styled.p`
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-    letter-spacing: 0.04em;
-    line-height: 1.37;
+  letter-spacing: 0.04em;
+  line-height: 1.37;
   color: ${({ theme }) => theme.colors.black};
-  }
 `;
 
 export const ButtonDiv = styled.div`
@@ -188,12 +187,13 @@ export const ButtonDiv = styled.div`
 `;
 
 export const IconItem = styled.img`
-fill: transparent;
+  fill: transparent;
 `;
 
 export const IconItemPaw = styled.img`
-opacity:0;
-  &:hover, :focus: {
+  opacity: 0;
+  &:hover,
+  &:focus {
     fill: ${({ theme }) => theme.colors.white};
     visibility: hidden;
     background: ${({ theme }) => theme.colors.blue};

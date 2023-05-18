@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { toast } from 'react-toastify';
 
@@ -16,6 +16,10 @@ import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 
 import { NewsList } from 'components/News/NewsList/NewsList';
+import { useSearchParams } from 'react-router-dom';
+import { selectTotalPage } from 'redux/news/news-selector';
+import { Box, Pagination, Stack } from '@mui/material';
+import MediaQuery from 'react-responsive';
 
 const NewsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -26,9 +30,13 @@ const NewsPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  const page = Number(searchParams.get('page')) || 1;
+  const search = searchParams.get('search') ?? '';
+  const pageQty = useSelector(selectTotalPage);
+
   useEffect(() => {
-    dispatch(fetchNews({ page, search: searchQuery }));
-  }, [dispatch, page, searchQuery]);
+    dispatch(fetchNews({ page, search }));
+  }, [dispatch, page, search]);
 
   const handleNewsSearchSubmit = value => {
     setSearchQuery(value);
@@ -36,6 +44,7 @@ const NewsPage = () => {
 
   return (
     <>
+
       <Container>
         <ReusableTitle>News</ReusableTitle>
         <SearchNewsForm onSubmit={handleNewsSearchSubmit} />

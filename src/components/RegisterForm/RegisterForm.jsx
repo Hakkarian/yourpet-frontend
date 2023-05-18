@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login, register } from "redux/auth/auth-operations";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Formik } from 'formik';
@@ -34,13 +34,19 @@ const RegisterForm = () => {
       passwordEye: false,
       confirmPasswordEye: false,
     });
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
     const handleSubmit = (values, actions) => {
       const { email, password } = values;
       const payload = { email, password };
-      dispatch(register(payload));
-      dispatch(login(payload));
+      dispatch(register(payload)).then(() => {
+        dispatch(login(payload));
+        console.log('before')
+        navigate('/user');
+        console.log('after');
+      }).catch(err => console.log(err))
+
       actions.resetForm();
     };
     return (
