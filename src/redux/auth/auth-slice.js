@@ -18,13 +18,13 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.pending, state => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(logout.pending, state => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(info.pending, state => {
-        state.isLoading = true
+        state.isLoading = true;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;

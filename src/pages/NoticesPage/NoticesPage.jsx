@@ -4,12 +4,19 @@ import { Container } from 'shared/components/Container/Container.styled';
 import NoticesSearch from 'components/Notices/NoticesSearch';
 import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesCategoryList';
 import { GlobalBox, Wrapper } from './NoticesPage.styled';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
+import { useDispatch } from 'react-redux';
 
 const NoticesPage = () => {
   const [input, setInput] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(changeIsNoticeAdded());
+  }, [dispatch]);
 
   const handlerSubmit = e => {
     e.preventDefault();
