@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { toast } from 'react-toastify';
 
-import { ImSearch } from 'react-icons/im';
-import { RxCross1 } from 'react-icons/rx';
+// import { ImSearch } from 'react-icons/im';
+// import { RxCross1 } from 'react-icons/rx';
 
+import { ButtonIconForm } from 'shared/services/ButtonIconForm/ButtonIconForm';
 import {
   FormSearch,
   InputSearch,
-  ButtonIcon,
-  Wrap,
+  // ButtonIcon,
+  // Wrap,
 } from './SearchNewsForm.styled';
 
 export const SearchNewsForm = ({ onSubmit }) => {
@@ -47,7 +48,8 @@ export const SearchNewsForm = ({ onSubmit }) => {
         value={searchQuery}
         onChange={e => handleChange(e)}
       />
-      <Wrap>
+      <ButtonIconForm searchQuery={searchQuery} />
+      {/* <Wrap>
         <ButtonIcon
           type="submit"
           color={'#757575'}
@@ -61,7 +63,7 @@ export const SearchNewsForm = ({ onSubmit }) => {
             <RxCross1 size={24} hoverColor={'#F43F5E'} />
           </ButtonIcon>
         )}
-      </Wrap>
+      </Wrap> */}
     </FormSearch>
   );
 };
