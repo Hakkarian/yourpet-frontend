@@ -1,12 +1,11 @@
 import SharedLayout from 'components/SharedLayout';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
 import { Loader } from 'components/Loader';
-import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import PrivateView from 'views/PrivateView';
 import RestrictedView from 'views/RestrictedView';
 import { Toaster } from 'react-hot-toast';

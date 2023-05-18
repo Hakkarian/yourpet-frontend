@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectIsLoggedIn, selectIsRegistered, selectUser } from 'redux/auth/auth-selector';
+import { selectIsRegistered, selectUser } from 'redux/auth/auth-selector';
 import { Container } from 'shared/components/Container/Container.styled';
 import { Wrap, UserDiv, Title} from './UserPage.styled';
 import UserData from 'components/UserData';
