@@ -30,7 +30,7 @@ export const ContainerButton = styled.div`
 
   .svg {
     fill: none;
-    stroke: v '#FFFFFF';
+    stroke: '#FFFFFF';
   }
 
   // прибрати ці стилі якщо вони зєявиться в блакитній та жовтій кнопках
