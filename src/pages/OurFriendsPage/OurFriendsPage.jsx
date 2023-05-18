@@ -103,6 +103,7 @@ import ModalNotice from 'components/ModalNotice';
 
 
 const OurFriendsPage = () => {
+  console.log("ghgjhjh")
   const { isOpen, open, close } = useToggle();
 
   return (
