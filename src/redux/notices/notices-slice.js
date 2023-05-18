@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  addNotices,
   getNoticeByCategory,
   getOneNotice,
   addToFavorites,
@@ -28,26 +27,14 @@ const initialState = {
 
 const noticesSlice = createSlice({
   name: 'notices',
-
   initialState,
+  reducers: {
+    changeIsNoticeAdded(state) {
+      state.isNoticeAdded = false;
+    },
+  },
   extraReducers: builder => {
     builder
-      .addCase(addNotices.pending, state => {
-        state.isLoading = true;
-        // state.addedNotice = false;
-      })
-      .addCase(addNotices.fulfilled, (state, { payload }) => {
-        console.log(payload)
-        state.notices.push(payload);
-        state.isError = null;
-        state.isLoading = false;
-        // state.addedNotice = true;
-      })
-      .addCase(addNotices.rejected, (state, { payload }) => {
-        state.isError = payload;
-        state.isLoading = false;
-      })
-
       .addCase(getNoticeByCategory.pending, state => {
         state.isLoading = true;
         state.isError = null;
@@ -95,11 +82,11 @@ const noticesSlice = createSlice({
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
         state.noticesByCategory = payload.notices;
-         state.totalPages = payload.totalPages;
+        state.totalPages = payload.totalPages;
         state.isLoading = false;
         state.isError = null;
-  })
-  
+      })
+
       .addCase(getFavorites.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
@@ -132,8 +119,9 @@ const noticesSlice = createSlice({
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(createNotice.fulfilled, (state, _) => {
+      .addCase(createNotice.fulfilled, (state, { payload }) => {
         state.isNoticeAdded = true;
+        state.noticesByCategory.push(payload);
         state.isLoading = false;
         state.isError = null;
       })
@@ -144,7 +132,7 @@ const noticesSlice = createSlice({
       })
       .addCase(getUserNotices.pending, state => {
         state.isLoading = true;
-        state.isError = null
+        state.isError = null;
       })
       .addCase(getUserNotices.fulfilled, (state, { payload }) => {
         state.noticesByCategory = payload.notices;
@@ -161,6 +149,7 @@ const noticesSlice = createSlice({
 });
 
 export default noticesSlice.reducer;
+export const { changeIsNoticeAdded } = noticesSlice.actions;
 
 //  .addCase(addPets.fulfilled, (state, { payload }) => {
 //         state.items.push(payload);
