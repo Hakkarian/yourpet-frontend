@@ -34,27 +34,28 @@ import { selectOneNoticeMoreInfo } from 'redux/notices/notices-selector';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalNotice = ({ onClose, children, title, sex, location}) => {
+const ModalNotice = ({ onClose, children, noticeDeteils, userDeteils }) => {
   
-
-  const dispatch = useDispatch();
+console.log(noticeDeteils)
+console.log(userDeteils)
+  // const dispatch = useDispatch();
 //  console.log("helo")
   
 
   
  
   // const [notice, setNotice] = useState(null);
-  const { id } = useParams();
-  console.log(id)
+  // const { id } = useParams();
+  // console.log(id)
 
-  useEffect(() => {
-    dispatch(getOneNotice(id));
+  // useEffect(() => {
+  //   dispatch(getOneNotice(id));
 
-    // getOneNotice().then(setNotice);
-   }, [id]);
+  //   // getOneNotice().then(setNotice);
+  //  }, [id]);
 
   // const{ title, sex, location} = notice;
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     const handleKeyDowm = e => {
@@ -78,37 +79,37 @@ const ModalNotice = ({ onClose, children, title, sex, location}) => {
         <CrossButton type="button" onClick={onClose} />
         <Container>
          <ContainerImg>
-         <Img src={defaultImage} alt="User" />
+         <Img src={noticeDeteils.photo} alt="User" />
             <ContainerList>
-            <Title>Title:{title}</Title>
+            <Title>Title:{noticeDeteils.title}</Title>
               <List>
                 <Item>
-                  <Text>Name:</Text>
+                  <Text>Name:{noticeDeteils.name}</Text>
                 </Item>
                 <Item>
-                  <Text>Birthday:</Text>
+                  <Text>Birthday:{noticeDeteils.birthday}</Text>
                 </Item>
                 <Item>
-                  <Text>Breed:</Text>
+                  <Text>Breed:{noticeDeteils.breed}</Text>
                 </Item>
                 <Item>
-                  <Text>Place:{location}</Text>
+                  <Text>Place:{noticeDeteils.location}</Text>
                 </Item>
                 <Item>
-                  <Text>The sex:{sex}</Text>
+                  <Text>The sex:{noticeDeteils.sex}</Text>
                 </Item>
                 <Item>
-                  <Text>Email:</Text>
+                  <Text>Email:{noticeDeteils.owner.email}</Text>
                 </Item>
                 <Item>
-                  <Text>Phone:</Text>
+                  <Text>Phone:{noticeDeteils.owner.phone}</Text>
                 </Item>
               </List>
             </ContainerList>
          </ContainerImg>
             
          <ContainerDiv>
-         <Coments>Coments:</Coments>
+         <Coments>Coments:{noticeDeteils.coments}</Coments>
 
 <BtnContainer>
   <Button className="btn" type="button" color="blue" width="256px">

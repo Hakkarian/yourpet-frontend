@@ -47,8 +47,10 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, onClick  }) => {
+const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user }) => {
   const { photo, birthday, sex, location, title, id, category } = notice;
+  
+ 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const { isOpen, open, close } = useToggle();
@@ -178,8 +180,8 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, onClick
         <Title>{title}</Title>
         <ButtonTag
         type="button"
-        onClick={() => onClick(open)}
-        // onClick={open}
+        // onClick={() => onClick(open)}
+        onClick={open}
           // onClick={onChangeOpenModal}
           margin="20px 16px 24px 16px"
           width="248px"
@@ -190,7 +192,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, onClick
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice onClose={close} />}
+        {isOpen && <ModalNotice userDeteils={user} noticeDeteils={notice} onClose={close} />}
 
         {isOwner && (
           <>

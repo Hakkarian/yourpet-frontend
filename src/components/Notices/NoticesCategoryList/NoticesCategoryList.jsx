@@ -105,6 +105,7 @@ const NoticesCategoryList = ({onClick}) => {
                     isFavorite={isFavorite}
                     isOwner={isOwner}
                     categoryPet={category}
+                    
                   />
                 );
               })}
