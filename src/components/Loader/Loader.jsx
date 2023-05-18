@@ -12,15 +12,11 @@ export const LoaderColor = () => (
       marginRight: 'auto',
     }}
     wrapperClass="blocks-wrapper"
-    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    colors={['#54ADFF', '#CCE4FB', '#54ADFF', '#CCE4FB', '#54ADFF']}
   />
 );
-
-export const Loader = ({
-  size = 40,
-  color = '##54ADFF',
-  marginTop = '30px',
-}) => {
+// ['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']
+export const Loader = ({ size = 40, color = '#54ADFF', marginTop }) => {
   return (
     <div
       style={{
@@ -31,7 +27,6 @@ export const Loader = ({
     >
       <ClipLoader
         display="block"
-        margin="0 auto"
         color={color}
         size={size}
         aria-label="Loading Spinner"

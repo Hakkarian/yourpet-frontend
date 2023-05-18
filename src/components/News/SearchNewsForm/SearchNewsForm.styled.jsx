@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 export const FormSearch = styled.form`
   position: relative;
   width: 280px;
-  margin-bottom: 24px;
+  margin-bottom: 44px;
   margin-right: auto;
   margin-left: auto;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
+    margin-bottom: 62px;
     width: 492px;
   }
   @media screen and (min-width: 1024px) {
@@ -56,6 +56,13 @@ export const ButtonIcon = styled.button`
   border: none;
   transition: color 250ms linear;
   cursor: pointer;
+  color: '#757575';
+  svg {
+    color: ${({ color }) => color ?? color};
+  }
+  svg:hover {
+    color: ${({ hoverColor }) => hoverColor ?? hoverColor};
+  }
 
   @media screen and (min-width: 768px) {
     right: 20px;
