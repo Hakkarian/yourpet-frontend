@@ -10,25 +10,25 @@ import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
 import ModalLogOut from 'components/ModalLogOut';
-import ModalCongrats from 'components/ModalCongrats';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
+import ModalCongrats from 'components/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  // const { userId } = user;
+  const { userId } = user;
   const { name, birthday, email, phone, city } = user;
 
-  // useEffect(() => {
-  //   const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
-  //   if (!visitedBefore) {
-  //     setShowModal(true);
-  //     localStorage.setItem(`visitedBefore_${userId}`, true)
-  //   }
-  // }, [])
+  useEffect(() => {
+    const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
+    if (!visitedBefore) {
+      setShowModal(true);
+      localStorage.setItem(`visitedBefore_${userId}`, true)
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
@@ -36,7 +36,7 @@ const UserPage = () => {
 
   return (
     <>
-      {/* {showModal && <ModalCongrats setShowModal={setShowModal} />} */}
+      {showModal && <ModalCongrats setShowModal={setShowModal} />}
       <Container>
         <UserDiv>
           <Title>My information:</Title>

@@ -6,8 +6,8 @@ import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
 import { Loader } from 'components/Loader';
-import PrivateView from 'views/PrivateView';
-import RestrictedView from 'views/RestrictedView';
+// import PrivateView from 'views/PrivateView';
+// import RestrictedView from 'views/RestrictedView';
 import { Toaster } from 'react-hot-toast';
 
 const MainPage = lazy(() => import('pages/MainPage'));
