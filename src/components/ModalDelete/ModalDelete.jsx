@@ -1,6 +1,7 @@
 import { ContainerButton, ModalTitle, ModalText, ColorSpan, Container  } from './ModalDelete.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
+import PropTypes from 'prop-types';
 
 const ModalDelete = ({ onClose }) => {
   return (
@@ -14,15 +15,19 @@ const ModalDelete = ({ onClose }) => {
             <br></br>You can`t undo this action.
           </ModalText>
       <ContainerButton>
-        <Button className="btn" type="button" color="white" width="129px" onClick={onClose}>
+        <Button className="btn" type="button" color="white" width="256px" onClick={onClose}>
           Cancel
         </Button>
-        <Button className="btn" type="button" color="blue" width="129px">
+        <Button className="btn" type="button" color="blue" width="256px">
           Yes <DeleteIcon className="svg" stroke="white" width="24px" height="24px" />
         </Button>
       </ContainerButton>
     </Container>
   );
+};
+
+ModalDelete.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ModalDelete;

@@ -1,7 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { getNoticeDetails } from 'shared/services/pets-api';
+import { getNoticeById } from 'shared/services/notices-api';
+import { getOneNotice } from 'redux/notices/notices-operations';
 
 import {
   Backdrop,
@@ -22,16 +25,28 @@ import CrossButton from 'shared/components/CrossButton/CrossButton';
 
 import Button from 'shared/components/Button/Button';
 import defaultImage from '../../images/default-user-img.jpg';
+// import { getOneNotice } from 'redux/notices/notices-operations';
+// import { selectOneNoticeMoreInfo } from 'redux/notices/notices-selector';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalNotice = ({ onClose, children }) => {
-  const [details, setDetails] = useState(null);
-  const { id } = useParams();
+const ModalNotice = ({ onClose, children, title, sex, location}) => {
 
-  useEffect(() => {
-    getNoticeDetails(id).then(setDetails);
-  }, [id]);
+  // const dispatch = useDispatch();
+
+  // const notice = useSelector(selectOneNoticeMoreInfo);
+  // console.log(notice);
+  
+ 
+  // const [notice, setNotice] = useState(null);
+  // const { id } = useParams();
+
+  // useEffect(() => {
+  //   getOneNotice().then(setNotice);
+  // }, [id]);
+
+  // const{ title, sex, location} = notice;
+  // console.log(notice);
 
   useEffect(() => {
     const handleKeyDowm = e => {
@@ -57,10 +72,10 @@ const ModalNotice = ({ onClose, children }) => {
           <Container>
             <Img src={defaultImage} alt="User" />
             <div>
-              <Title>Title</Title>
+              <Title>Title:{title}</Title>
               <List>
                 <Item>
-                  <Text>Name:{details.name}</Text>
+                  <Text>Name:</Text>
                 </Item>
                 <Item>
                   <Text>Birthday:</Text>
@@ -69,10 +84,10 @@ const ModalNotice = ({ onClose, children }) => {
                   <Text>Breed:</Text>
                 </Item>
                 <Item>
-                  <Text>Place:</Text>
+                  <Text>Place:{location}</Text>
                 </Item>
                 <Item>
-                  <Text>The sex:</Text>
+                  <Text>The sex:{sex}</Text>
                 </Item>
                 <Item>
                   <Text>Email:</Text>

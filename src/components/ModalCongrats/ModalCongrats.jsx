@@ -1,6 +1,7 @@
 import Button from 'shared/components/Button/Button';
 import { Title, Text, Container } from './ModalCongrats.styled';
 import { ReactComponent as Paw } from '../../icons/paw.svg';
+import PropTypes from 'prop-types';
 
 const ModalCongrats = ({ onClose }) => {
   return (
@@ -12,6 +13,10 @@ const ModalCongrats = ({ onClose }) => {
       </Button>
     </Container>
   );
+};
+
+ModalCongrats.propTypes = {
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ModalCongrats;
