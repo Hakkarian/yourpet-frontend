@@ -90,7 +90,7 @@ const MoreInfoForm = ({
         </Wrapper>
       </Container>
       <BtnWrapper>
-        <Button type="submit" width={248}>
+        <Button type="submit" width="248px">
           Done
           <PawIcon />
         </Button>
