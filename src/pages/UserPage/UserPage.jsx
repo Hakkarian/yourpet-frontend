@@ -28,7 +28,7 @@ const UserPage = () => {
       setShowModal(true);
       localStorage.setItem(`visitedBefore_${userId}`, true)
     }
-  }, [])
+  }, [userId])
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
