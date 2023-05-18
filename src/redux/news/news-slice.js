@@ -20,9 +20,12 @@ const newsSlice = createSlice({
         store.isLoading = false;
         store.error = null;
         store.items = action.payload.news;
+        console.log(store.items.length);
         store.totalPage = Math.ceil(
-          action.payload.total / action.payload.per_page
+          action.payload.total / action.payload.news.length
         );
+
+        console.log(store.totalPage);
       })
       .addCase(fetchNews.rejected, (store, action) => {
         store.isLoading = false;
