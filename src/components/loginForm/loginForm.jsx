@@ -72,7 +72,7 @@ const LoginForm = () => {
                   </AbsDivCss>
                 )}
               </AnchorCss>
-              <AnchorCss style={{position: 'relative'}}>
+              <AnchorCss>
                 <Field
                   className={errors.password ? 'input-error' : 'input-valid'}
                   name="password"
@@ -83,7 +83,7 @@ const LoginForm = () => {
                 </ErrorText>
 
                 {open ? (
-                  <ButtonEye className='eye-button'
+                  <ButtonEye
                     type="button"
                     onClick={() => setOpen(false)}
                   >

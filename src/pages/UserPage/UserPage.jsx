@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectUser } from 'redux/auth/auth-selector';
+import { selectIsLoggedIn, selectIsRegistered, selectUser } from 'redux/auth/auth-selector';
 import { Container } from 'shared/components/Container/Container.styled';
 import { Wrap, UserDiv, Title} from './UserPage.styled';
 import UserData from 'components/UserData';
@@ -10,14 +10,18 @@ import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal'
 import ModalLogOut from 'components/ModalLogOut';
+import ModalCongrats from 'components/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
 
   const user = useSelector(selectUser);
+  const isRegister = useSelector(selectIsRegistered);
   const { name, birthday, email, phone, city } = user;
   
   return (
+  <>
+    { isRegister && (<ModalCongrats />)}
     <Container>
     <UserDiv>
       <Title>My information:</Title>
@@ -37,7 +41,8 @@ const UserPage = () => {
       </Wrap>
       <PetsData />
     </UserDiv>
-    </Container>
+      </Container>
+      </>
   );
 };
 

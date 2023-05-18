@@ -7,6 +7,7 @@ const authSlice = createSlice({
     user: {},
     token: null,
     isLogin: false,
+    isRegister: false,
     isRefreshing: false,
     isLoading: false,
     error: null,
@@ -52,7 +53,7 @@ const authSlice = createSlice({
         const { user } = payload;
         state.isLoading = false;
         state.user = user;
-        state.isLogin = true;
+        state.isRegister = true;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         const { user, token } = payload;

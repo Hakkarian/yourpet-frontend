@@ -44,13 +44,24 @@ import styled from "@emotion/styled";
 // `
 
 export const Container = styled.div`
+position: fixed;
+top: 25%;
+left: 35%;
+width: 500px;
+height: 400px;
+
 display: flex;
 align-items: center;
 text-align: center;
 flex-direction: column;
 margin-bottom: 60px;
+
+background-color: white;
+border-radius: 30px;
+
+box-shadow: ${({theme}) => theme.shadow.default}
 }
-`
+`;
 // перевірити чи додали стилі для ховеру на кнопки
 
 

@@ -2,5 +2,6 @@
 export const selectAuth = ({ auth }) => auth;
 export const selectUser = state => state.auth.user;
 export const selectIsLoggedIn = state => state.auth.isLogin;
+export const selectIsRegistered = state => state.auth.isRegister;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectError = state => state.auth.error;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { register } from "redux/auth/auth-operations";
+import { login, register } from "redux/auth/auth-operations";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Formik } from 'formik';
 
@@ -40,7 +40,7 @@ const RegisterForm = () => {
       const { email, password } = values;
       const payload = { email, password };
       dispatch(register(payload));
-      
+      dispatch(login(payload));
       actions.resetForm();
     };
     return (
