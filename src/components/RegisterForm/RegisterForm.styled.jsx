@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import { Form } from "formik";
-import ReusableButton from "shared/components/ReusableButton";
-import ReusableTitle from "shared/components/ReusableTitle";
-import { color, font } from "shared/utils/mixin.styled";
+import styled from '@emotion/styled';
+import { Form } from 'formik';
+import ReusableButton from 'shared/components/ReusableButton';
+import ReusableTitle from 'shared/components/ReusableTitle';
+import { color, font } from 'shared/utils/mixin.styled';
 
 export const FlexDivCss = styled.div`
   margin-top: 40px;
@@ -116,12 +116,12 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   margin-bottom: 30px;
 
   text-align: center;
-  font-size: ${({ theme }) => theme.spacing(6)}px;
+  font-size: ${({ theme }) => theme.spacing(6)};
   font-weight: 500;
   line-height: 1.375;
 
   @media screen and (min-width: 768px) {
-    font-size: ${({ theme }) => theme.spacing(9)}px;
+    font-size: ${({ theme }) => theme.spacing(9)};
     line-height: 1.361;
   }
 `;
