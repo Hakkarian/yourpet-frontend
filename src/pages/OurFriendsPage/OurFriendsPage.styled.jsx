@@ -3,12 +3,12 @@ import styled from "@emotion/styled";
 export const Cointainer = styled.div`
 font-family: 'Manrope';
 font-style: normal;
-padding:40px 20px 75px;
+padding:40px 0 75px;
 @media screen and (min-width: 768px) {
-   padding:80px 32px 204px;
+   padding:80px 0 204px;
   }
   @media screen and (min-width: 1280px) {
-   padding:80px 16px 81px;
+   padding:80px 0 81px;
   }
 `;
 export const OurFriend = styled.h2`
