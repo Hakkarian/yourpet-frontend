@@ -24,7 +24,7 @@ const categoryShelf = {
   'for-free': 'for-free',
 };
 
-const NoticesCategoryList = () => {
+const NoticesCategoryList = ({onClick}) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -34,11 +34,13 @@ const NoticesCategoryList = () => {
   const isNoticeAdded = useSelector(selectIsNoticeAdded);
   const user = useSelector(selectUser);
   const category = location.pathname.split('/')[2];
-  const [search, setSearch] = useSearchParams();
+  const [search] = useSearchParams();
   const query = search.get('query');
   const page = search.get('page');
 
   let isFavorite = false;
+
+  // console.log(notices)
 
   useEffect(() => {
     if (category) {
@@ -83,6 +85,7 @@ const NoticesCategoryList = () => {
                   key={notice._id}
                   notice={notice}
                   page={page}
+                  onClick={() => onClick(notice._id)}
                 />
               ))}
 

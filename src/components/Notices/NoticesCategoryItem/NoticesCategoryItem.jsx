@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
 
 import {
-  addNotices,
   getNoticeByCategory,
   getOneNotice,
   addToFavorites,
@@ -14,6 +12,7 @@ import {
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
+
 import {
   Item,
   ImageWrapper,
@@ -48,10 +47,11 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
+const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, onClick  }) => {
   const { photo, birthday, sex, location, title, id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const { isOpen, open, close } = useToggle();
   // const [isModalOpen, setIsModalOpen] = useState(false);
   let query = null;
 
@@ -63,7 +63,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
     const convertedDate = [day, month, year].join('.');
     return convertedDate;
   };
-  const dateOfBirth = getAge(birthday);
+  getAge(birthday);
   const difOfAge = dateOfBirth => {
     return Math.trunc(
       (new Date().getTime() - new Date(birthday)) / (24 * 3600 * 365.25 * 1000)
@@ -177,7 +177,10 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         </CardContainer>
         <Title>{title}</Title>
         <ButtonTag
-          onClick={onChangeOpenModal}
+        type="button"
+        onClick={() => onClick(open)}
+        // onClick={open}
+          // onClick={onChangeOpenModal}
           margin="20px 16px 24px 16px"
           width="248px"
         >
@@ -187,7 +190,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice onCloseModal={close} />}
+        {isOpen && <ModalNotice onClose={close} />}
 
         {isOwner && (
           <>

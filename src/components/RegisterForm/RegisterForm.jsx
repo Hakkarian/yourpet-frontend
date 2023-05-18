@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { register } from "redux/auth/auth-operations";
+import { login, register } from "redux/auth/auth-operations";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Formik } from 'formik';
 
@@ -40,7 +40,7 @@ const RegisterForm = () => {
       const { email, password } = values;
       const payload = { email, password };
       dispatch(register(payload));
-      
+      dispatch(login(payload));
       actions.resetForm();
     };
     return (
@@ -54,7 +54,7 @@ const RegisterForm = () => {
           {({ errors, values, touched }) => {
             return (
               <FormCss>
-                <div>
+                <AnchorCss>
                   <Field
                     name="email"
                     type="email"
@@ -68,8 +68,8 @@ const RegisterForm = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
-                <div>
+                </AnchorCss>
+                <AnchorCss>
                   <Field
                     className={errors.password ? 'input-error' : 'input-valid'}
                     name="password"
@@ -99,7 +99,7 @@ const RegisterForm = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
+                </AnchorCss>
                 <AnchorCss>
                   <Field
                     className={

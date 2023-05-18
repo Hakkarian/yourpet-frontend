@@ -84,7 +84,8 @@ export const ToggleBtn = styled.button`
 export const ButtonEye = styled.button`
   min-width: 0;
   position: absolute;
-  top: 0;
+  top: 17%;
+  right: 2%;
   background-color: transparent;
   border: none;
 `;

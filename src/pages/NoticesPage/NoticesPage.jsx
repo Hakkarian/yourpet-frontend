@@ -6,10 +6,19 @@ import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesC
 import { GlobalBox, Wrapper } from './NoticesPage.styled';
 import { useState } from 'react';
 
+
 const NoticesPage = () => {
   const [input, setInput] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [, setSearchParams] = useSearchParams();
+  const [noticeId, setNoticeId] = useState(null)
+
+  const oneNoticeClick = id => {
+    // console.log(id)
+    setNoticeId(id);
+  }
+
+  // console.log(noticeId)
 
   const handlerSubmit = e => {
     e.preventDefault();
@@ -28,6 +37,8 @@ const NoticesPage = () => {
     setInput(e.target.value);
   };
 
+
+
   return (
     <GlobalBox>
       <Container>
@@ -39,7 +50,7 @@ const NoticesPage = () => {
             onReset={handlerReset}
             searchValue={searchValue.trim()}
           />
-          <NoticesCategoryList />
+          <NoticesCategoryList onClick={oneNoticeClick} />
         </Wrapper>
         <Outlet />
       </Container>

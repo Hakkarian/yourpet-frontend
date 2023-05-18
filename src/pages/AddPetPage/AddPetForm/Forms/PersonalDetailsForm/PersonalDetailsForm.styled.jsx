@@ -1,9 +1,11 @@
-// import styled from '@emotion/styled';
+import styled from '@emotion/styled';
 
-// export const BtnWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   gap: ${({ theme }) => theme.spacing(2.5)}px;
-// `;
+export const Wrapper = styled.div`
+  margin-bottom: ${({ theme, category }) =>
+    category === 'my pet' ? theme.spacing(15.5) : theme.spacing(6)}px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${({ theme, category }) =>
+      category === 'my pet' ? theme.spacing(15) : theme.spacing(8)}px;
+  }
+`;

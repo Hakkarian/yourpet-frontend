@@ -24,7 +24,6 @@ export const RadioInput = styled(Field)`
 `;
 
 export const RadioLabel = styled.label`
-  /* display: inline-block; */
   display: flex;
   align-items: center;
   gap: 12px;
@@ -42,8 +41,19 @@ export const RadioLabel = styled.label`
   }};
   padding-top: ${({ theme }) => theme.spacing(2)}px;
   padding-bottom: ${({ theme }) => theme.spacing(2)}px;
-  padding-left: ${({ theme }) => theme.spacing(4)}px;
-  padding-right: ${({ theme }) => theme.spacing(4)}px;
+  padding-left: ${({ padding }) => {
+    if (padding) {
+      return padding;
+    }
+    return 0;
+  }}px;
+
+  padding-right: ${({ padding }) => {
+    if (padding) {
+      return padding;
+    }
+    return 0;
+  }}px;
   font-family: inherit;
   font-size: ${({ theme, name }) => {
     if (name === 'category') {

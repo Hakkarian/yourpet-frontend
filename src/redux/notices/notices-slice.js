@@ -68,6 +68,7 @@ const noticesSlice = createSlice({
       })
       .addCase(getOneNotice.fulfilled, (state, { payload }) => {
         state.oneNoticeMoreInfo = payload;
+        console.log(payload);
         state.isLoading = false;
         state.isError = null;
       })

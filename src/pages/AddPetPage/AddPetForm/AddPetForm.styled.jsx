@@ -12,19 +12,46 @@ export const StyledForm = styled(Form)`
 
 export const ContainerCss = styled.div`
   width: ${({ theme }) => theme.spacing(70)}px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: white;
   padding-top: ${({ theme }) => theme.spacing(5)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(5)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(2)}px;
   padding-left: ${({ theme }) => theme.spacing(2)}px;
   padding-right: ${({ theme }) => theme.spacing(2)}px;
   border-radius: 40px;
   margin: 0 auto;
 
-  /* @media screen and (min-width: 768px) {
-    width: ${({ theme }) => theme.spacing(114.5)}px;
+  @media screen and (min-width: 768px) {
+    width: ${({ theme, currentStep, category }) => {
+      if (currentStep === 2 && category !== 'my pet') {
+        return theme.spacing(176);
+      }
+      return theme.spacing(114.5);
+    }}px;
     padding-left: ${({ theme }) => theme.spacing(8)}px;
     padding-right: ${({ theme }) => theme.spacing(8)}px;
-  } */
+    padding-bottom: ${({ theme }) => theme.spacing(5)}px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: ${({ theme, currentStep, category }) => {
+      if (currentStep === 2 && category !== 'my pet') {
+        return theme.spacing(205.5);
+      }
+      return theme.spacing(114.5);
+    }}px;
+    padding-left: ${({ theme, currentStep, category }) => {
+      if (currentStep === 2 && category !== 'my pet') {
+        return theme.spacing(18.75);
+      }
+      return theme.spacing(8);
+    }}px;
+    padding-right: ${({ theme, currentStep, category }) => {
+      if (currentStep === 2 && category !== 'my pet') {
+        return theme.spacing(18.25);
+      }
+      return theme.spacing(8);
+    }}px;
+  }
 `;
 
 export const PawIcon = styled(Paw)`
@@ -46,16 +73,13 @@ export const BtnWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing(6)}px;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
   gap: ${({ theme }) => theme.spacing(3)}px;
 
-  /* @media screen and (min-width: 768px) {
-    margin-top: ${({ theme }) => theme.spacing(4)}px;
-  } */
+  @media screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    gap: ${({ theme }) => theme.spacing(4)}px;
+  }
 `;
-
-// @media screen and (min-width: 768px) {
-//     padding: 60px 75px;
-//   }

@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 export const StyledButton = styled.button`
-  min-width: ${props => {
+  width: ${props => {
+    console.log(props.width);
     if (props?.width) {
-      return props?.width;
+      return props.width;
     }
     return props.theme.spacing(41);
   }}px;

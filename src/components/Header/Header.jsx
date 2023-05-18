@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import{ useMediaQuery } from 'react-responsive';
+import MediaQuery from 'react-responsive';
 
 import AuthNav from 'components/AuthNav'
 import Nav from 'components/Nav/Nav'
@@ -13,58 +13,44 @@ import logo from '../../images/logo1x.png';
 
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
-import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+import { selectIsLoggedIn, selectUser } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
 
 
+
 const Header = () => {
-  // const [isAuth, setIsAuth] = useState(true);
-
+  
   const isLogin = useSelector(selectIsLoggedIn)
-
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 1280px)',
-  });
-  const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
-  });
-  const isMobile = useMediaQuery({
-    query: '(max-width: 1279px)',
-  });
-
+  
+  const { email } = useSelector(selectUser);
 
   return (
     <>
       <HeaderCss>
         <AdaptiveLogo />
+        <MediaQuery minWidth={1280}>
+          <Nav />
+        </MediaQuery>
         <AuthWrapCss>
           {isLogin ? (
-            <>
-              {isDesktop && <Nav />}
-              <UserWrapCss>
-                <Link to="/user">
-                  <User width="28" height="28" />
-                </Link>
-                {isTablet && <InfoCss>Anna</InfoCss>}
-              </UserWrapCss>
-              {isMobile && (
-                <Link>
-                  <BurgerMenu width="24" height="24" />
-                </Link>
-              )}
-            </>
+            <UserWrapCss>
+              <Link to="/user">
+                <User width="28" height="28" />
+              </Link>
+              <MediaQuery minWidth={768}>
+                <InfoCss>{email.split('@')[0]}</InfoCss>
+              </MediaQuery>
+            </UserWrapCss>
           ) : (
-            <>
-              {' '}
-              {isDesktop && <Nav />}
-              {isTablet && <AuthNav />}
-              {isMobile && (
-                <Link>
-                  <BurgerMenu width="24" height="24" />
-                </Link>
-              )}
-            </>
+            <MediaQuery minWidth={768}>
+              <AuthNav />
+            </MediaQuery>
           )}
+          <MediaQuery maxWidth={1279}>
+            <Link>
+              <BurgerMenu width="24" height="24" />
+            </Link>
+          </MediaQuery>
         </AuthWrapCss>
       </HeaderCss>
     </>
