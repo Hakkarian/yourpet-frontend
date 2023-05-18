@@ -59,7 +59,7 @@ display: flex;
 flex-direction: column;
 `
 
-export const ContainerImg = styled.div`
+export const ContainerBox = styled.div`
 
 @media (min-width: 767px) {
   display: flex;
@@ -67,19 +67,10 @@ export const ContainerImg = styled.div`
 }
 `
 
-// export const CloseModalBtn = styled.button`
-// padding: 0;
-// width: 20px;
-// height: 20px;
-// position: absolute;
-// top: 29px;
-// right: 29px;
-// background: none;
-// border: none;
-// `
-
 export const Img = styled.img`
-margin-bottom: 12px;
+width: 100%;
+// margin-bottom: 12px;
+border-radius: 0px 0px 40px 40px;
 `
 
 export const Title = styled.h2`
@@ -91,8 +82,8 @@ margin-bottom: 20px;
   font-size: 28px;
 }`
 
-export const List = styled.ul`
-`
+// export const List = styled.ul`
+// `
 export const Text = styled.ul`
 font-weight: 600;
 font-size: 14px;
@@ -102,11 +93,12 @@ font-size: 14px;
 }
 `
 
-export const Item = styled.li`
-margin-bottom: 8px;
-:last-child {
-  margin-bottom: 0;
-}`
+// export const Item = styled.li`
+// margin-bottom: 8px;
+
+// :last-child {
+//   margin-bottom: 0;
+// }`
 
 export const Coments = styled.p`
 font-weight: 600;
@@ -186,21 +178,62 @@ letter-spacing: 0.04em;
   }
 `;
 
-// export const AddToBtn = styled.button`
-// font-weight: 700;
-// font-size: 16px;
-// width: 129px;
-// height: 40px;
-// background: ${({ theme }) => theme.colors.blue};
-// color: ${({ theme }) => theme.colors.white};
+export const Link = styled.a`
+color: ${({theme}) => theme.colors.yellow};
+font-weight: 500;
+font-size: 16px;
+text-decoration-line: underline;
+`
 
-// border-radius: 40px;
-// border: none;
+export const ColumOne = styled.td`
+font-weight: 600;
+font-size: 14px;
+padding-bottom: 8px;
 
-// &:focus,
-//   &:hover {
-//     background: ${({ theme }) => theme.colors.lightblue};
-//     border: 2px solid ${({ theme }) => theme.colors.blue};
-//     color: ${({ theme }) => theme.colors.blue};
-// `
+@media (min-width: 767px) {
+  font-size: 16px;
+}
+`
 
+export const ColumTwo = styled.td`
+font-weight: 500;
+font-size: 14px;
+padding-left: 20px;
+
+@media (min-width: 767px) {
+  font-size: 16px;
+  padding-left: 51px;
+}
+`
+
+export const CategoryBox = styled.div`
+position: absolute;
+left: 0;
+top: 20px;
+padding: 6px 20px;
+width: 158px;
+border-top-right-radius: 14px;
+border-bottom-right-radius: 14px;
+
+color: black;
+background: #CCE4FB;
+backdrop-filter: blur(50px);
+
+p {
+  font-weight: 500;
+font-size: 14px;
+}
+`
+export const ImgBox = styled.div`
+position: relative;
+margin-bottom: 16px;
+overflow: hidden;
+
+
+  @media (min-width: 767px){
+    width: 262px;
+    height: 298px;
+    margin-right: 20px;
+  }
+}
+`

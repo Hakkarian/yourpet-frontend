@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 import {
   getNoticeByCategory,
-  getOneNotice,
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
@@ -113,10 +112,10 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user })
     toast.success('Pet removed from favorites.');
   };
 
-  const onChangeOpenModal = () => {
-    dispatch(getOneNotice(id));
-    open();
-  };
+  // const onChangeOpenModal = () => {
+  //   dispatch(getOneNotice(id));
+  //   open();
+  // };
 
   // const toggleModal = () => {
   //   setIsModalOpen(prev => !prev);

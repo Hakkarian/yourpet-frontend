@@ -1,10 +1,14 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
-// import { getNoticeById } from 'shared/services/notices-api';
-import { getOneNotice } from 'redux/notices/notices-operations';
+// import { toast } from 'react-toastify';
+// import {
+//   addToFavorites,
+//   deleteFromFavorites,
+// } from 'redux/notices/notices-operations';
+
+// import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 
 import {
   Backdrop,
@@ -12,50 +16,33 @@ import {
   Container,
   Img,
   Title,
-  List,
-  Item,
-  Text,
   BtnContainer,
   ContainerList,
   Coments,
   ContainerDiv,
-  ContainerImg,
+  ContainerBox,
+  Link,
+  ColumTwo,
+  ColumOne,
+  CategoryBox,
+  ImgBox,
 } from './ModalNotice.styled';
-// import CrossButton from 'shared/components/CrossButton/CrossButton';
-// import { ReactComponent as CrossIcon } from '../../icons/cross-small.svg';
+
 import { ReactComponent as HeartIcon } from '../../icons/heart.svg';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
 
 import Button from 'shared/components/Button/Button';
-import defaultImage from '../../images/default-user-img.jpg';
-// import { getOneNotice } from 'redux/notices/notices-operations';
-import { selectOneNoticeMoreInfo } from 'redux/notices/notices-selector';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalNotice = ({ onClose, children, noticeDeteils, userDeteils }) => {
-  
-console.log(noticeDeteils)
-console.log(userDeteils)
+const ModalNotice = ({ onClose, noticeDeteils }) => {
+  console.log(noticeDeteils);
+  const { photo, birthday, sex, location, title, owner, breed, name, category } = noticeDeteils;
+
+
   // const dispatch = useDispatch();
-//  console.log("helo")
-  
-
-  
- 
-  // const [notice, setNotice] = useState(null);
-  // const { id } = useParams();
-  // console.log(id)
-
-  // useEffect(() => {
-  //   dispatch(getOneNotice(id));
-
-  //   // getOneNotice().then(setNotice);
-  //  }, [id]);
-
-  // const{ title, sex, location} = notice;
-  // console.log(id);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     const handleKeyDowm = e => {
@@ -73,56 +60,100 @@ console.log(userDeteils)
     }
   };
 
+  // const addToFavorite = async () => {
+  //   if (!isLoggedIn) {
+  //     return toast.error(
+  //       'You need to authorize before adding pets to favorites.'
+  //     );
+  //   }
+  //   dispatch(addToFavorites(id)).then(() => {
+  //     refreshingPage(category);
+  //   });
+
+  //   toast.success('Pet added to favorites.');
+  // };
+
+  // const removeFromFavorite = async () => {
+  //   if (!isLoggedIn) {
+  //     return toast.error(
+  //       'You need to authorize before removing pets from favorites.'
+  //     );
+  //   }
+  //   dispatch(deleteFromFavorites(id)).then(() => {
+  //     refreshingPage(categoryPet);
+  //   });
+
+  //   toast.success('Pet removed from favorites.');
+  // };
+
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
         <CrossButton type="button" onClick={onClose} />
         <Container>
-         <ContainerImg>
-         <Img src={noticeDeteils.photo} alt="User" />
+          <ContainerBox>
+<ImgBox>
+<Img src={photo} alt="pet photo" />
+            <CategoryBox>
+              <p>{category}</p>
+            </CategoryBox>
+</ImgBox>
+           
             <ContainerList>
-            <Title>Title:{noticeDeteils.title}</Title>
-              <List>
-                <Item>
-                  <Text>Name:{noticeDeteils.name}</Text>
-                </Item>
-                <Item>
-                  <Text>Birthday:{noticeDeteils.birthday}</Text>
-                </Item>
-                <Item>
-                  <Text>Breed:{noticeDeteils.breed}</Text>
-                </Item>
-                <Item>
-                  <Text>Place:{noticeDeteils.location}</Text>
-                </Item>
-                <Item>
-                  <Text>The sex:{noticeDeteils.sex}</Text>
-                </Item>
-                <Item>
-                  <Text>Email:{noticeDeteils.owner.email}</Text>
-                </Item>
-                <Item>
-                  <Text>Phone:{noticeDeteils.owner.phone}</Text>
-                </Item>
-              </List>
+              <Title>{title}</Title>
+              <table>
+                <tbody>
+                  <tr>
+                    <ColumOne>Name:</ColumOne>
+                    <ColumTwo>{name}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Birthday:</ColumOne>
+                    <ColumTwo>{birthday}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Breed:</ColumOne>
+                    <ColumTwo>{breed}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Place:</ColumOne>
+                    <ColumTwo>{location}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>The sex:</ColumOne>
+                    <ColumTwo>{sex}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Email:</ColumOne>
+                    <ColumTwo>
+                      <Link>{owner.email}</Link>
+                    </ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Phone:</ColumOne>
+                    <ColumTwo>
+                      <Link href="tel:{owner.phone}">{owner.phone}</Link>
+                    </ColumTwo>
+                  </tr>
+                </tbody>
+              </table>
             </ContainerList>
-         </ContainerImg>
-            
-         <ContainerDiv>
-         <Coments>Coments:{noticeDeteils.coments}</Coments>
+          </ContainerBox>
 
-<BtnContainer>
-  <Button className="btn" type="button" color="blue" width="256px">
-    Add to <HeartIcon width="24px" height="24px" />
-  </Button>
-  <Button className="btn" type="button" color="white" width="256px">
-    <a href="tel:+380961111111">Contacts</a>
-  </Button>
+          <ContainerDiv>
+            <Coments>Coments:{noticeDeteils.coments}</Coments>
 
-  {/* <ContactsLink>Contacts</ContactsLink> */}
-</BtnContainer>
-          </ContainerDiv>   
-         
+            <BtnContainer>
+              
+              <Button className="btn" type="button" color="blue" width="256px">
+                Add to <HeartIcon width="24px" height="24px" />
+              </Button>
+              
+              <Button className="btn" type="button" color="white" width="256px">
+                <a href="tel:{noticeDeteils.owner.phone}">Contacts</a>
+              </Button>
+            </BtnContainer>
+          </ContainerDiv>
         </Container>
       </Wrapper>
     </Backdrop>,
