@@ -39,8 +39,8 @@ export const RadioLabel = styled.label`
     }
     return '#888888';
   }};
-  padding-top: ${({ theme }) => theme.spacing(2)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(2)}px;
+  padding-top: ${({ theme }) => theme.spacing(2)};
+  padding-bottom: ${({ theme }) => theme.spacing(2)};
   padding-left: ${({ padding }) => {
     if (padding) {
       return padding;
@@ -60,7 +60,7 @@ export const RadioLabel = styled.label`
       return theme.spacing(3.5);
     }
     return theme.spacing(4);
-  }}px;
+  }};
   font-weight: ${({ name }) => {
     if (name === 'category') {
       return 500;

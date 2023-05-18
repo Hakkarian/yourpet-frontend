@@ -56,7 +56,7 @@ const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
 
       <BtnWrapper>
         <Button
-          width={248}
+          width="248px"
           onClick={evt => {
             handleNextClick(evt);
           }}
@@ -65,7 +65,7 @@ const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
           <PawIcon />
         </Button>
         <Button
-          width={134}
+          width="134px"
           transparent={true}
           onClick={() => changeStep('back')}
         >

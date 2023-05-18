@@ -1,11 +1,11 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const HeaderCss = styled.header`
-    height: ${({theme}) => theme.spacing(15)}px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
+  height: ${({ theme }) => theme.spacing(15)};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 
 export const AuthWrapCss = styled.div`
   display: flex;
@@ -16,7 +16,6 @@ export const AuthWrapCss = styled.div`
   @media screen and (min-width: 768px) {
     gap: 42px;
   }
-
 `;
 
 export const UserWrapCss = styled.div`
@@ -28,7 +27,6 @@ export const UserWrapCss = styled.div`
 `;
 
 export const InfoCss = styled.p`
-
   @media screen and (min-width: 768px) {
     display: inline-block;
   }

@@ -1,5 +1,4 @@
-
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 // export const Backdrop = styled.div`
 //   position: fixed;
@@ -44,43 +43,40 @@ import styled from "@emotion/styled";
 // `
 
 export const Container = styled.div`
-position: fixed;
-top: 25%;
-left: 35%;
-width: 500px;
-height: 400px;
+  position: fixed;
+  top: 25%;
+  left: 35%;
+  width: 500px;
+  height: 400px;
 
-display: flex;
-align-items: center;
-text-align: center;
-flex-direction: column;
-margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 60px;
 
-background-color: white;
-border-radius: 30px;
+  background-color: white;
+  border-radius: 30px;
 
-box-shadow: ${({theme}) => theme.shadow.default}
-}
+  box-shadow: ${({ theme }) => theme.shadow.default};
 `;
 // перевірити чи додали стилі для ховеру на кнопки
 
-
-
 export const Text = styled.p`
-margin-bottom: 60px;
-font-weight: 500;
-font-size: 24px;
-letter-spacing: 0.04em;
-`
+  margin-bottom: 60px;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.04em;
+`;
 
 export const Title = styled.h2`
-margin-top: 60px;
-margin-bottom: 52px;
-font-weight: 500;
-font-size: 36px;
-letter-spacing: 0.04em;
-color: #111111;
-`
+  margin-top: 60px;
+  margin-bottom: 52px;
+  font-weight: 500;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+  color: #111111;
+`;
 
 // export const GoToBtn = styled.div`
 // margin-bottom: 60px;
