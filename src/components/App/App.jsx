@@ -9,6 +9,8 @@ import { Loader } from 'components/Loader';
 // import PrivateView from 'views/PrivateView';
 // import RestrictedView from 'views/RestrictedView';
 import { Toaster } from 'react-hot-toast';
+import PrivateView from 'views/PrivateView';
+import RestrictedView from 'views/RestrictedView';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -35,8 +37,10 @@ const App = () => {
   return isRefreshing ? (
     <Loader />
   ) : (
-      <>
-        <div><Toaster /></div>
+    <>
+      <div>
+        <Toaster />
+      </div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
@@ -48,9 +52,13 @@ const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/add-pet" element={<AddPetPage />} />
+          <Route element={<RestrictedView />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
+          </Route>
+          <Route element={<PrivateView />}>
             <Route path="/user" element={<UserPage />} />
+          </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

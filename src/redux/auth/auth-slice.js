@@ -43,10 +43,13 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(info.rejected, (state, { payload }) => {
+        console.log('info rejected')
+        console.log(payload)
         state.isLoading = false;
         state.error = payload;
       })
       .addCase(refreshUser.rejected, state => {
+        console.log('here rejected refresh')
         state.isRefreshing = false;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
@@ -57,6 +60,7 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         const { user, token } = payload;
+        console.log(payload);
         state.isLoading = false;
         state.user = user;
         state.token = token;
@@ -69,10 +73,14 @@ const authSlice = createSlice({
         state.isLogin = false;
       })
       .addCase(info.fulfilled, (state, { payload }) => {
+        console.log('here info')
+        console.log(payload)
         state.isLoading = false;
         state.user = payload;
       })
-      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+      .addCase(refreshUser.fulfilled, (state, {payload}) => {
+        console.log('here refresh slice')
+        console.log('refresh', payload)
         state.user = payload.user;
         state.isLogin = true;
         state.isRefreshing = false;

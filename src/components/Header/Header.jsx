@@ -38,7 +38,7 @@ const Header = () => {
                 <User width="28" height="28" />
               </Link>
               <MediaQuery minWidth={768}>
-                <InfoCss>{email.split('@')[0]}</InfoCss>
+                <InfoCss>Anna</InfoCss>
               </MediaQuery>
             </UserWrapCss>
           ) : (

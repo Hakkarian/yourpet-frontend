@@ -43,8 +43,8 @@ const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     const { email, password } = values;
     const payload = { email, password };
-    dispatch(login(payload));
     navigate('/user');
+    dispatch(login(payload));
     actions.resetForm();
   };
   return (

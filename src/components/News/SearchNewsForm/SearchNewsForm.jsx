@@ -68,6 +68,7 @@ export const SearchNewsForm = ({ onSubmit }) => {
           </ButtonIcon>
         )}
       </Wrap>
+      <Wrap searchQuery={searchQuery} />
     </FormSearch>
   );
 };
