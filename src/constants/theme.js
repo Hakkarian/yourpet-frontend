@@ -1,4 +1,6 @@
-export const theme = {
+import { createTheme } from '@mui/material';
+
+export const theme = createTheme({
   //styles from the UI Kit Palette
   colors: {
     yellow: '#FFC107',
@@ -20,4 +22,4 @@ export const theme = {
     cubicBezier: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
   },
   spacing: value => 4 * value,
-};
+});

@@ -7,16 +7,15 @@ export const StyledButton = styled.button`
       return props.width;
     }
     return props.theme.spacing(41);
-  }}px;
+  }};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: ${({ theme }) => theme.spacing(4)}px;
+  font-size: ${({ theme }) => theme.spacing(4)};
   font-weight: 700;
-  padding: ${({ theme }) => theme.spacing(2)}px
-    ${({ theme }) => theme.spacing(5)}px;
+  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(5)};
 
   background: ${({ theme, transparent }) => {
     if (transparent) {
@@ -34,7 +33,7 @@ export const StyledButton = styled.button`
   }};
 
   border: none;
-  border-radius: ${({ theme }) => theme.spacing(10)}px;
+  border-radius: ${({ theme }) => theme.spacing(10)};
 
   transition: background-color 2000ms ${({ theme }) => theme.utils.cubicBezier};
   cursor: pointer;

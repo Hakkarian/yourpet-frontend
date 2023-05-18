@@ -5,7 +5,7 @@ import * as api from 'shared/services/notices-api';
 // import { instance } from 'shared/services/auth-api';
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 // отримання оголошень по категоріях
@@ -113,13 +113,12 @@ export const deleteUserNotice = createAsyncThunk(
 // post додавання оголошень відповідно до обраної категорії
 export const createNotice = createAsyncThunk(
   'notices/createNotice',
-  async (credentials, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post('/notices', credentials);
-
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+      const result = await api.addNotice(data);
+      return result.notice;
+    } catch ({ response }) {
+      return rejectWithValue(response.data.message);
     }
   }
 );
@@ -146,17 +145,14 @@ export const getUserNotices = createAsyncThunk(
   }
 );
 
-
-export const addNotices = createAsyncThunk(
-  'notices/addNotice',
-  async (data, { rejectWithValue }) => {
-    try {
-      const result = await api.addNotice(data);
-      return result.notice;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
-    }
-  }
-);
-
-
+// export const addNotices = createAsyncThunk(
+//   'notices/addNotice',
+//   async (data, { rejectWithValue }) => {
+//     try {
+//       const result = await api.addNotice(data);
+//       return result.notice;
+//     } catch ({ response }) {
+//       return rejectWithValue(response.data.message);
+//     }
+//   }
+// );

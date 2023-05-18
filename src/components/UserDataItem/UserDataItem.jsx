@@ -1,6 +1,8 @@
 import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 //import PropTypes from 'prop-types';
+
 import { useField } from 'formik';
 import {useMemo} from "react";
 import { nanoid } from "nanoid";
@@ -9,7 +11,9 @@ import { info } from 'redux/auth/auth-operations';
 import {Edit, EditButton, Input, Wrapper, Label, InputWrap, ErrorBox, Error, CheckIcon} from './UserDataItem.styled';
 
 const UserDataItem = ({label, errors, ...props}) => {
+
    const dispatch = useDispatch();
+
    const [isEdit, setIsEdit] = useState(false);
    const [isCheck, setIsCheck] = useState(false);
   //  const [data, setData] = useState()
@@ -27,7 +31,9 @@ const UserDataItem = ({label, errors, ...props}) => {
 
     const checkData = () => {
       console.log(meta.value);
+
       dispatch(info(token, meta.value));
+
     };
  
     return (

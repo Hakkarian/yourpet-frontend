@@ -5,13 +5,13 @@ import { ReactComponent as Paw } from '../../icons/paw.svg';
 // import { useSelector } from 'react-redux';
 // import { selectIsRegistered } from 'redux/auth/auth-selector';
 
-const ModalCongrats = ({ onClose }) => {
+const ModalCongrats = ({ setShowModal }) => {
 
   return (
     <Container>
       <Title>Congrats!</Title>
       <Text>Youre registration is success</Text>
-      <Button className="btn" type="button" color="blue" width="248px">
+      <Button className="btn" type="button" color="blue" width="248px" onClick={() => setShowModal(false)}>
         Go to profile <Paw stroke="#FFFFFF" fill="none" width="24px" height="24px" />
       </Button>
     </Container>

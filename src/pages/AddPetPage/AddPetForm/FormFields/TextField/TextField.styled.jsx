@@ -3,13 +3,13 @@ import { Field } from 'formik';
 
 export const Label = styled.label`
   display: block;
-  font-size: ${({ theme }) => theme.spacing(3.5)}px;
+  font-size: ${({ theme }) => theme.spacing(3.5)};
   font-weight: 500;
-  margin-bottom: ${({ theme }) => theme.spacing(1)}px;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
 
   @media screen and (min-width: 768px) {
-    font-size: ${({ theme }) => theme.spacing(5)}px;
-    margin-bottom: ${({ theme }) => theme.spacing(2)}px;
+    font-size: ${({ theme }) => theme.spacing(5)};
+    margin-bottom: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
@@ -19,10 +19,10 @@ export const Input = styled(Field)`
     if (as === 'textarea') {
       return theme.spacing(23);
     }
-  }}px;
-  padding-left: ${({ theme }) => theme.spacing(4)}px;
-  padding-top: ${({ theme }) => theme.spacing(2.375)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(2.375)}px;
+  }};
+  padding-left: ${({ theme }) => theme.spacing(4)};
+  padding-top: ${({ theme }) => theme.spacing(2.375)};
+  padding-bottom: ${({ theme }) => theme.spacing(2.375)};
   border: 1px solid
     ${({ name, errors, touched, theme }) => {
       return errors[name] && touched[name]
@@ -34,8 +34,8 @@ export const Input = styled(Field)`
       return theme.spacing(5);
     }
     return theme.spacing(10);
-  }}px;
-  font-size: ${({ theme }) => theme.spacing(3.5)}px;
+  }};
+  font-size: ${({ theme }) => theme.spacing(3.5)};
   ${({ as }) => {
     if (as === 'textarea') {
       return 'resize: none;';
@@ -43,9 +43,9 @@ export const Input = styled(Field)`
   }}
 
   @media screen and (min-width: 768px) {
-    padding-top: ${({ theme }) => theme.spacing(3)}px;
-    padding-bottom: ${({ theme }) => theme.spacing(3)}px;
-    font-size: ${({ theme }) => theme.spacing(4)}px;
+    padding-top: ${({ theme }) => theme.spacing(3)};
+    padding-bottom: ${({ theme }) => theme.spacing(3)};
+    font-size: ${({ theme }) => theme.spacing(4)};
 
     height: ${({ theme, as, category }) => {
       if (as === 'textarea') {
@@ -58,7 +58,7 @@ export const Input = styled(Field)`
             return theme.spacing(45.5);
         }
       }
-    }}px;
+    }};
   }
 
   &::-webkit-calendar-picker-indicator {
@@ -68,8 +68,8 @@ export const Input = styled(Field)`
 
 export const TextErrorCss = styled.span`
   color: ${({ theme }) => theme.red};
-  font-size: ${({ theme }) => theme.spacing(3)}px;
-  margin-top: ${({ theme }) => theme.spacing(2)}px;
+  font-size: ${({ theme }) => theme.spacing(3)};
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
 export const Wrapper = styled.div`
@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
       return 0;
     }
     return theme.spacing(5);
-  }}px;
+  }};
 
   @media screen and (min-width: 768px) {
     margin-bottom: ${({ theme, field }) => {
@@ -86,6 +86,6 @@ export const Wrapper = styled.div`
         return 0;
       }
       return theme.spacing(6);
-    }}px;
+    }};
   }
 `;
