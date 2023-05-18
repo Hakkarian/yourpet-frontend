@@ -1,13 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import {
   registere,
   logine,
   logoute,
-  setToken,
   infoService,
-  refreshUserService,
   instance,
   setAuthHeader,
 } from 'shared/services/auth-api';

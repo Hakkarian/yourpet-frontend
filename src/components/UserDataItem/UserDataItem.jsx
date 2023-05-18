@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import {useMemo} from "react";
 import { nanoid } from "nanoid";

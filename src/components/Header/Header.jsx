@@ -13,7 +13,7 @@ import logo from '../../images/logo1x.png';
 
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
-import { selectIsLoggedIn, selectUser } from 'redux/auth/auth-selector';
+import { selectIsLoggedIn  } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
 
 
@@ -21,8 +21,6 @@ import { useSelector } from 'react-redux';
 const Header = () => {
   
   const isLogin = useSelector(selectIsLoggedIn)
-  
-  const { email } = useSelector(selectUser);
 
   return (
     <>
