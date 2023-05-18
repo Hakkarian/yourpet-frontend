@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
+import MediaQuery from 'react-responsive';
 
 import { fetchNews } from 'redux/news/news-operations';
 import {
@@ -21,7 +22,6 @@ import { NewsList } from 'components/News/NewsList/NewsList';
 import { Box, Pagination, Stack } from '@mui/material';
 
 const NewsPage = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
@@ -35,19 +35,6 @@ const NewsPage = () => {
   useEffect(() => {
     dispatch(fetchNews({ page, search }));
   }, [dispatch, page, search]);
-
-  // для вычисления ширины дивайса
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const handleNewsSearchSubmit = value => {
     const nextParams = value !== '' ? { search: value } : {};
@@ -63,36 +50,52 @@ const NewsPage = () => {
         <>
           <NewsList news={newsItems} />
 
-          {/* <Box
-            display="flex"
-            justifyContent="center"
-            pb={windowWidth < 768 ? '20px' : '60px'}
-          >
-            <Stack spacing={2}>
-              {!!pageQty && (
-                <Pagination
-                  count={pageQty}
-                  page={page}
-                  onChange={(_, num) => {
-                    setSearchParams({ page: num, search });
-                  }}
-                  showFirstButton={windowWidth < 768 ? false : true}
-                  showLastButton={windowWidth < 768 ? false : true}
-                  hidePrevButton={windowWidth < 768 ? true : false}
-                  hideNextButton={windowWidth < 768 ? true : false}
-                  color="primary"
-                />
-              )}
-            </Stack>
-          </Box> */}
+          {/* Пагінація */}
+          <MediaQuery maxWidth={767}>
+            <Box display="flex" justifyContent="center" pb="30px" pt="60px">
+              <Stack spacing={2}>
+                {!!pageQty && (
+                  <Pagination
+                    count={pageQty}
+                    page={page}
+                    onChange={(_, num) => {
+                      setSearchParams({ page: num, search });
+                    }}
+                    showFirstButton={false}
+                    showLastButton={false}
+                    hidePrevButton={true}
+                    hideNextButton={true}
+                    color="primary"
+                  />
+                )}
+              </Stack>
+            </Box>
+          </MediaQuery>
 
-          {/* <Stack spacing={2}>
-            <Pagination count={10} size="small" />
-            <Pagination count={10} />
-            <Pagination count={10} size="large" />
-          </Stack> */}
+          <MediaQuery minWidth={768}>
+            <Box display="flex" justifyContent="center" pb="60px" pt="60px">
+              <Stack spacing={2}>
+                {!!pageQty && (
+                  <Pagination
+                    count={pageQty}
+                    page={page}
+                    onChange={(_, num) => {
+                      setSearchParams({ page: num, search });
+                    }}
+                    showFirstButton={true}
+                    showLastButton={true}
+                    hidePrevButton={false}
+                    hideNextButton={false}
+                    color="primary"
+                  />
+                )}
+              </Stack>
+            </Box>
+          </MediaQuery>
+          {/* Кінець пагінації */}
         </>
       )}
+
       {!isLoading && newsItems.length === 0 && <p> Such news wasn't found </p>}
     </>
   );
