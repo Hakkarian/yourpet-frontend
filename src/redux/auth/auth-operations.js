@@ -162,6 +162,14 @@ export const refreshUser = createAsyncThunk(
     try {
       setToken(persistedToken);
       const res = await refreshUserService();
+      toast('Checking updates...', {
+        icon: '⏳',
+        style: {
+          borderRadius: '10px',
+          background: 'darkorange',
+          color: '#fff',
+        },
+      });
       return res.data;
     } catch (error) {
       state.auth.isLogin = false;
