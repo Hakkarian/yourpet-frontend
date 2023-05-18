@@ -1,12 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../../FormFields/Button/Button';
-// import Button from 'shared/components/Button/Button';
 
 import RadioButtonField from '../../FormFields/RadioButtonField/RadioButtonField';
 import formFields from '../../FormModel/formFields';
 
-import { ToolBar, FormWrap } from './ChooseOptionForm.styled';
+import { ToolBar } from './ChooseOptionForm.styled';
 import { PawIcon, ArrowIcon, BtnWrapper } from '../../AddPetForm.styled';
 
 const ChooseOptionForm = ({ helpers, setCategory, changeStep, location }) => {
@@ -19,22 +18,30 @@ const ChooseOptionForm = ({ helpers, setCategory, changeStep, location }) => {
   };
 
   return (
-    <FormWrap>
+    <div>
       <ToolBar>
         <RadioButtonField
           value="my pet"
           label="Your pet"
+          padding={16}
           {...formFields.category}
         />
-        <RadioButtonField value="sell" label="Sell" {...formFields.category} />
+        <RadioButtonField
+          value="sell"
+          label="Sell"
+          padding={16}
+          {...formFields.category}
+        />
         <RadioButtonField
           value="lost-found"
           label="Lost / found"
+          padding={16}
           {...formFields.category}
         />
         <RadioButtonField
           value="for-free"
           label="In good hands"
+          padding={16}
           {...formFields.category}
         />
       </ToolBar>
@@ -47,13 +54,13 @@ const ChooseOptionForm = ({ helpers, setCategory, changeStep, location }) => {
           type="button"
           transparent
           onClick={() => navigate(location)}
-          width={248}
+          width={134}
         >
           <ArrowIcon />
           Cancel
         </Button>
       </BtnWrapper>
-    </FormWrap>
+    </div>
   );
 };
 

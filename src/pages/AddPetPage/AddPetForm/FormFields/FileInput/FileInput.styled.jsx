@@ -18,6 +18,12 @@ export const PlusIcon = styled(Plus)`
   height: ${({ theme }) => theme.spacing(6)}px;
   fill: ${({ theme }) => theme.colors.blue};
   transform: scale(2) translate(-25%, -25%);
+
+  @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(9.6)}px;
+    height: ${({ theme }) => theme.spacing(9.6)}px;
+    transform: scale(3.2) translate(5%, 5%);
+  }
 `;
 
 export const FilePreview = styled.img`
@@ -29,6 +35,12 @@ export const FilePreview = styled.img`
   height: ${({ theme }) => theme.spacing(28)}px;
   object-fit: cover;
   border-radius: ${({ theme }) => theme.spacing(5)}px;
+
+  @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(45.5)}px;
+    height: ${({ theme }) => theme.spacing(45.5)}px;
+    border-radius: ${({ theme }) => theme.spacing(10)}px;
+  }
 `;
 
 export const CustomLabel = styled.label`
@@ -38,4 +50,11 @@ export const CustomLabel = styled.label`
   height: ${({ theme }) => theme.spacing(28)}px;
   background-color: ${({ theme }) => theme.colors.lightblue};
   border-radius: ${({ theme }) => theme.spacing(5)}px;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(45.5)}px;
+    height: ${({ theme }) => theme.spacing(45.5)}px;
+    border-radius: ${({ theme }) => theme.spacing(10)}px;
+  }
 `;

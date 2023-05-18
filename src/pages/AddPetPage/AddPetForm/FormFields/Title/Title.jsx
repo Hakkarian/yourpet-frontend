@@ -6,10 +6,10 @@ const Title = ({ category, currentStep }) => {
     case 'sell':
       title = 'Add pet for sell';
       break;
-    case 'lostFound':
+    case 'lost-found':
       title = 'Add lost pet';
       break;
-    case 'inGoodHands':
+    case 'for-free':
       title = 'Add pet in good hands';
       break;
     default:
@@ -18,7 +18,11 @@ const Title = ({ category, currentStep }) => {
   if (currentStep === 0) {
     title = 'Add pet';
   }
-  return <StyledTitle>{title}</StyledTitle>;
+  return (
+    <StyledTitle category={category} currentStep={currentStep}>
+      {title}
+    </StyledTitle>
+  );
 };
 
 export default Title;

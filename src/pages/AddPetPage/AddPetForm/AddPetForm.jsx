@@ -86,9 +86,9 @@ const AddPetForm = () => {
   };
 
   return (
-    <ContainerCss>
+    <ContainerCss category={category} currentStep={currentStep}>
       <Title category={category} currentStep={currentStep} />
-      <Stepper currentStep={currentStep} />
+      <Stepper category={category} currentStep={currentStep} />
       <Formik
         initialValues={{ ...initialValues }}
         validationSchema={validationSchema}

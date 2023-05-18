@@ -5,6 +5,7 @@ import TextField from '../../FormFields/TextField/TextField';
 import Button from '../../FormFields/Button/Button';
 
 import { PawIcon, ArrowIcon, BtnWrapper } from '../../AddPetForm.styled';
+import { Wrapper } from './PersonalDetailsForm.styled';
 
 const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
   const { errors, setErrors, touched, values, setFieldTouched } = helpers;
@@ -44,12 +45,14 @@ const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
   };
   return (
     <div>
-      {category !== 'my pet' && (
-        <TextField errors={errors} touched={touched} {...formFields.title} />
-      )}
-      <TextField errors={errors} touched={touched} {...formFields.name} />
-      <TextField errors={errors} touched={touched} {...formFields.birthday} />
-      <TextField errors={errors} touched={touched} {...formFields.breed} />
+      <Wrapper category={category}>
+        {category !== 'my pet' && (
+          <TextField errors={errors} touched={touched} {...formFields.title} />
+        )}
+        <TextField errors={errors} touched={touched} {...formFields.name} />
+        <TextField errors={errors} touched={touched} {...formFields.birthday} />
+        <TextField errors={errors} touched={touched} {...formFields.breed} />
+      </Wrapper>
 
       <BtnWrapper>
         <Button
@@ -62,7 +65,7 @@ const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
           <PawIcon />
         </Button>
         <Button
-          width={248}
+          width={134}
           transparent={true}
           onClick={() => changeStep('back')}
         >
