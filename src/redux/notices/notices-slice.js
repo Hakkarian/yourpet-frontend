@@ -37,6 +37,7 @@ const noticesSlice = createSlice({
         // state.addedNotice = false;
       })
       .addCase(addNotices.fulfilled, (state, { payload }) => {
+        console.log(payload)
         state.notices.push(payload);
         state.isError = null;
         state.isLoading = false;
