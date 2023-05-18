@@ -155,16 +155,16 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.token;
+    const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
-    try {
+try {
       setToken(persistedToken);
-      const res = await refreshUserService();
-      toast('Checking updates...', {
+      const { data } = await instance.get('/user/current');
+        toast('Checking updates...', {
         icon: '⏳',
         style: {
           borderRadius: '10px',
@@ -172,11 +172,10 @@ export const refreshUser = createAsyncThunk(
           color: '#fff',
         },
       });
-      return res.data;
+      return data;
     } catch (error) {
-      state.auth.isLogin = false;
-      state.auth.token = null;
       return thunkAPI.rejectWithValue(error.message);
     }
+  }
   }
 );
