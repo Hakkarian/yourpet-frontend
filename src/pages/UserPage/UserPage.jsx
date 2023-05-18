@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectIsRegistered, selectUser } from 'redux/auth/auth-selector';
@@ -14,14 +14,23 @@ import ModalCongrats from 'components/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
+  const [showModal, setShowModal] = useState(false);
 
   const user = useSelector(selectUser);
-  const isRegister = useSelector(selectIsRegistered);
+  const { userId } = user;
   const { name, birthday, email, phone, city } = user;
+
+  useEffect(() => {
+    const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
+    if (!visitedBefore) {
+      setShowModal(true);
+      localStorage.setItem(`visitedBefore_${userId}`, true)
+    }
+  }, [])
   
   return (
   <>
-    { isRegister && (<ModalCongrats />)}
+    { showModal && (<ModalCongrats setShowModal={setShowModal} />)}
     <Container>
     <UserDiv>
       <Title>My information:</Title>

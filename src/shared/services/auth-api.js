@@ -19,6 +19,7 @@ export const registere = async thing => {
 
 export const logine = async data => {
   const { data: result } = await instance.post('/auth/login', data);
+  console.log('log api', result)
   setToken(result.token);
   return result;
 };

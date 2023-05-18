@@ -48,13 +48,9 @@ const App = () => {
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
           <Route path="/add-pet" element={<AddPetPage />} />
-          <Route element={<RestrictedView />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
-          </Route>
-          <Route element={<PrivateView />}>
             <Route path="/user" element={<UserPage />} />
-          </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

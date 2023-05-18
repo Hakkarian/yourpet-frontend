@@ -60,6 +60,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (data, { rejectWithValue }) => {
     try {
+      console.log('log operation before')
       const result = await logine(data);
       toast('Long time no see!', {
         icon: '😉',
@@ -72,6 +73,7 @@ export const login = createAsyncThunk(
       return result;
     } catch ({ response }) {
       if (response.status === 400) {
+              console.log('log operation error');
         toast(
           'Please enter the correct value. For example, "email: apple@gmail.com, password: 123apple"',
           {
