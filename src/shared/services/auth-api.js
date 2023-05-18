@@ -37,7 +37,7 @@ export const infoService = async data => {
 };
 
 export const refreshUserService = async data => {
-  const { data: result } = await instance.get('/user/current', data);
-  setToken(result.token);
+  setToken(data);
+  const { data: result } = await instance.get('/user/current');;
   return result;
 };
