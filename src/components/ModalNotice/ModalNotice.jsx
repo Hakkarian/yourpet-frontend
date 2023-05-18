@@ -16,6 +16,10 @@ import {
   Item,
   Text,
   BtnContainer,
+  ContainerList,
+  Coments,
+  ContainerDiv,
+  ContainerImg,
 } from './ModalNotice.styled';
 // import CrossButton from 'shared/components/CrossButton/CrossButton';
 // import { ReactComponent as CrossIcon } from '../../icons/cross-small.svg';
@@ -68,11 +72,11 @@ const ModalNotice = ({ onClose, children, title, sex, location}) => {
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
         <CrossButton type="button" onClick={onClose} />
-        <div>
-          <Container>
-            <Img src={defaultImage} alt="User" />
-            <div>
-              <Title>Title:{title}</Title>
+        <Container>
+         <ContainerImg>
+         <Img src={defaultImage} alt="User" />
+            <ContainerList>
+            <Title>Title:{title}</Title>
               <List>
                 <Item>
                   <Text>Name:</Text>
@@ -96,22 +100,25 @@ const ModalNotice = ({ onClose, children, title, sex, location}) => {
                   <Text>Phone:</Text>
                 </Item>
               </List>
-            </div>
-          </Container>
+            </ContainerList>
+         </ContainerImg>
+            
+         <ContainerDiv>
+         <Coments>Coments:</Coments>
 
-          <Text>Coments:</Text>
+<BtnContainer>
+  <Button className="btn" type="button" color="blue" width="256px">
+    Add to <HeartIcon width="24px" height="24px" />
+  </Button>
+  <Button className="btn" type="button" color="white" width="256px">
+    <a href="tel:+380961111111">Contacts</a>
+  </Button>
 
-          <BtnContainer>
-            <Button className="btn" type="button" color="blue" width="129px">
-              Add to <HeartIcon width="24px" height="24px" />
-            </Button>
-            <Button className="btn" type="button" color="white" width="129px">
-              <a href="tel:+380961111111">Contacts</a>
-            </Button>
-
-            {/* <ContactsLink>Contacts</ContactsLink> */}
-          </BtnContainer>
-        </div>
+  {/* <ContactsLink>Contacts</ContactsLink> */}
+</BtnContainer>
+          </ContainerDiv>   
+         
+        </Container>
       </Wrapper>
     </Backdrop>,
     modalRoot

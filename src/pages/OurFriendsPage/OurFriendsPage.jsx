@@ -93,13 +93,14 @@
 
 // не видяляйте це, я тут відкриваю модалку
 
-import Modal from 'shared/components/Modal/Modal';
+// import Modal from 'shared/components/Modal/Modal';
 // import ModalDelete from 'components/ModalDelete';
 // import ModalCongrats from 'components/ModalCongrats';
-import ModalLogOut from 'components/ModalLogOut';
+// import ModalLogOut from 'components/ModalLogOut';
 
 import { useToggle } from 'shared/hooks/useToggle';
-// import ModalNotice from 'components/ModalNotice';
+import ModalNotice from 'components/ModalNotice';
+
 
 const OurFriendsPage = () => {
   const { isOpen, open, close } = useToggle();
@@ -111,19 +112,8 @@ const OurFriendsPage = () => {
     <button type="button" onClick={open}>
   open modal
 </button>
- {isOpen && (
-    <Modal onClose={close} >
-          
-   {/* <ModalCongrats onClose={close}/> */}
+{isOpen && (<ModalNotice onClose={close}/>)}
 
-         
-     {/* <ModalDelete onClose={close} /> */}
-
-     <ModalLogOut onClose={close}/>
-
-
-    </Modal>
-    )}
 </div>
   );
 };
@@ -136,5 +126,19 @@ export default OurFriendsPage;
 // {isOpen &&         (<ModalNotice onClose={close}/>
 
 //         )}
+
+// {isOpen && (
+//   <Modal onClose={close} >
+        
+//  {/* <ModalCongrats onClose={close}/> */}
+
+       
+//    {/* <ModalDelete onClose={close} /> */}
+
+//    <ModalLogOut onClose={close}/>
+
+
+//   </Modal>
+//   )}
 
 
