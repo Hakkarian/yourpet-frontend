@@ -104,7 +104,8 @@ export const ToggleBtn = styled.button`
 export const ButtonEye = styled.button`
   min-width: 0;
   position: absolute;
-  top: 0;
+  top: 17%;
+  right: 0;
   background-color: transparent;
   border: none;
 `;
@@ -127,6 +128,8 @@ export const ReusableButtonCss = styled(ReusableButton)`
 `;
 export const AbsDivCss = styled.span`
   position: absolute;
+  top: 17%;
+  right: 7%;
 `;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
@@ -187,7 +190,7 @@ const LoginPage = () => {
           {({ errors, values, touched }) => {
             return (
               <FormCss>
-                <div>
+                <AnchorCss>
                   <Field
                     name="email"
                     type="email"
@@ -201,8 +204,8 @@ const LoginPage = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
-                <div style={{ position: 'relative' }}>
+                </AnchorCss>
+                <AnchorCss>
                   <Field
                     className={errors.password ? 'input-error' : 'input-valid'}
                     name="password"
@@ -230,7 +233,7 @@ const LoginPage = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
+                </AnchorCss>
                 <Button className="form-button" type="submit">
                   Submit
                 </Button>
