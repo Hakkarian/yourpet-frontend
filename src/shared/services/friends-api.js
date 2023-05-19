@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: 'https://barkend.onrender.com/api',
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export const getAllFriend =async()=>{
-   const {data}= await instance.get('/friends')
+  const { data } = await instance.get('/friends')
+  console.log('friends api', data);
    return data
   
  }

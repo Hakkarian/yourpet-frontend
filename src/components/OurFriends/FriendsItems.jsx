@@ -16,6 +16,7 @@ const FriendsItems = () => {
    const allFriends = useSelector(selectAllFriends)
    console.log("Запит на бекенд all friend----->", allFriends)
 
+
    useEffect(() => {
       dispatch(fetchFriends());
    }, [dispatch]);
@@ -26,7 +27,7 @@ const FriendsItems = () => {
       setVisible(!visible)
    }
 
-   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, time, url, email, emailUrl, phoneUrl }) =>
+   const contactList = allFriends.map(({ _id, title, imageUrl, address, addressUrl, phone, time, url, email, emailUrl, phoneUrl }) =>
       <WrapperOurFriends key={_id}>
 
          <NameCompany href={url} target="_ blank" >{title}</NameCompany>
