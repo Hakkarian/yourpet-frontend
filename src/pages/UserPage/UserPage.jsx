@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
 import { Container } from 'shared/components/Container/Container.styled';
-
-import { Wrap, UserDiv, Title, MainBox} from './UserPage.styled';
-
+import { Wrap, UserDiv, Title } from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
@@ -41,7 +39,6 @@ const UserPage = () => {
     { showModal && (<ModalCongrats setShowModal={setShowModal} />)}
     <Container>
     <UserDiv>
-      <MainBox>
       <Title>My information:</Title>
       <Wrap>
         <UserData 
@@ -57,7 +54,6 @@ const UserPage = () => {
           </Modal>
         )}
       </Wrap>
-      </MainBox>
       <PetsData />
     </UserDiv>
       </Container>

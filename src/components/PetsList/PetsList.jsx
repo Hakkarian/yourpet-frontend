@@ -1,16 +1,15 @@
 import React from "react";
-// import { useEffect, useState } from "react";
-// import { useDispatch } from "react-redux";
+//import { useSelector } from "react-redux";
 
 import {List} from './PetsList.styled';
+// import { selectAllPets } from "redux/pets/pets-selector";
 import PetsItem from "components/PetsItem";
-//import { getAllPets } from "redux/pets/pets-operations";
 
 const pets = [
     { "_id": "1",
       "petOwnerId": "1",
       "category": "my pet",
-      "photo": "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg",
+      "avatarURL": "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg",
       "name": "Jack",
       "birthday": "22.04.2018",
       "breed": "Persian cat",
@@ -20,7 +19,7 @@ const pets = [
         "_id": "2",
         "petOwnerId": "2",
         "category": "my pet",
-        "photo": "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg",
+        "avatarURL": "https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg",
         "name": "Jack",
         "birthday": "22.04.2018",
         "breed": "Persian cat",
@@ -29,13 +28,7 @@ const pets = [
   ];
 
 const PetsList = () => {
-    //
-    // const [pets, setPets] = useState([]);
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //  setPets(dispatch(getAllPets()));
-    // }, [dispatch]);
+    //const pets = useSelector(selectAllPets);
  
     return (
         <List>
