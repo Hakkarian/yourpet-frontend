@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 export const FormSearch = styled.form`
   position: relative;
   width: 280px;
-  margin-bottom: 44px;
+  margin-bottom: 24px;
   margin-right: auto;
   margin-left: auto;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 62px;
+    margin-bottom: 40px;
     width: 492px;
   }
   @media screen and (min-width: 1024px) {
@@ -18,27 +18,25 @@ export const FormSearch = styled.form`
 
 export const InputSearch = styled.input`
   width: 100%;
-  height: 44px;
+   height: 44px;
   box-shadow: ${({ theme }) => theme.shadow.default};
+  &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 40px;
-  border: 1px solid transparent;
-  padding: 8px 20px;
-  box-sizing: border-box;
-  outline: none;
-  &::placeholder {
-    font-size: 14px;
-  }
+   border: 1px solid transparent;
+  padding:8px 20px;
+   box-sizing: border-box;
+   outline:none;
+   &:: placeholder {font-size: 14px}
 
-  @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
     width: 492px;
+    
   }
 
   @media screen and (min-width: 1024px) {
     width: 608px;
-
-    &:: placeholder {
-      font-size: 20px;
-    }
+  
+    &:: placeholder {font-size: 20px}
   }
 `;
 export const Wrap = styled.div`
@@ -58,13 +56,6 @@ export const ButtonIcon = styled.button`
   border: none;
   transition: color 250ms linear;
   cursor: pointer;
-  color: '#757575';
-  svg {
-    color: ${({ color }) => color ?? color};
-  }
-  svg:hover {
-    color: ${({ hoverColor }) => hoverColor ?? hoverColor};
-  }
 
   @media screen and (min-width: 768px) {
     right: 20px;

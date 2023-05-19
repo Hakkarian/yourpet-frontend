@@ -1,30 +1,19 @@
 import styled from '@emotion/styled';
 
 export const Item = styled.li`
-  width: 100%;
+  margin: 0 auto;
+  height: 100%;
 
-  position: relative;
-  border-radius: ${({ theme }) => theme.spacing(5)};
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.shadow.default};
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -${({ theme }) => theme.spacing(5)};
-    left: 0;
-
+  @media screen and (min-width: 480px) {
+    font-size: 1em;
+  }
+  @media screen and (min-width: 480px) {
     width: 100%;
-    height: ${({ theme }) => theme.spacing(2)};
-    border-radius: ${({ theme }) => theme.spacing(1)};
-    background-color: ${({ theme }) => theme.colors.blue};
-    background: ${({ theme }) => theme.background.azure};
-
-    @media screen and (min-width: 768px) {
-      top: -${({ theme }) => theme.spacing(5.5)};
-    }
   }
 
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 32px) / 2);
   }
@@ -33,10 +22,23 @@ export const Item = styled.li`
   }
 `;
 
+export const Line = styled.div`
+  margin-bottom: 12px;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.colors.blue};
+  background: ${({ theme }) => theme.background.azure};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 14px;
+  }
+`;
+
 export const WrapImg = styled.div`
   overflow: hidden;
-  margin-bottom: ${({ theme }) => theme.spacing(4)};
-  border-radius: ${({ theme }) => theme.spacing(5)};
+  margin-bottom: 16px;
+  border-radius: 20px;
 `;
 
 export const Img = styled.img`
@@ -46,60 +48,64 @@ export const Img = styled.img`
 `;
 
 export const Wrap = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing(10)};
-  padding-left: ${({ theme }) => theme.spacing(2)};
-  padding-right: ${({ theme }) => theme.spacing(2)};
+  padding: 0 12px;
+  margin-bottom: 12px;
 `;
 export const Title = styled.h2`
   margin-left: 0;
-  margin-bottom: ${({ theme }) => theme.spacing(4)};
-  height: ${({ theme }) => theme.spacing(16.5)};
+  margin-bottom: 16px;
+  font-family: 'Manrope';
+  font-style: normal;
   font-weight: 700;
-  font-size: ${({ theme }) => theme.spacing(6)};
-  line-height: 1.37;
+  font-size: 24px;
+  line-height: 33px;
   letter-spacing: -0.01em;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  @media screen and (min-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 export const Decsr = styled.p`
+  margin-bottom: 40px;
+  font-family: 'Manrope';
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.37;
-  height: ${({ theme }) => theme.spacing(27.5)};
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
+  font-size: 16px;
+  line-height: 22px;
+  pading: 0, 12px;
+  @media screen and (min-width: 480px) {
+    font-size: 1em;
+  }
 `;
 
 export const WrapBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: ${({ theme }) => theme.spacing(3)};
-  padding-left: ${({ theme }) => theme.spacing(2)};
-  padding-right: ${({ theme }) => theme.spacing(2)};
+  padding: 0 12px;
 `;
 export const Date = styled.p`
+  font-family: 'Manrope';
+  font-style: normal;
   font-weight: 400;
-  line-height: 1.37;
-  color: ${({ theme }) => theme.colors.blue};
+  font-size: 16px;
+  line-height: 22px;
+  color: #888888;
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
+  @media screen and (min-width: 480px) {
+    font-size: 1em;
+  }
 `;
 
 export const Link = styled.a`
-  padding: 0;
-  line-height: 1.37;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
   color: ${({ theme }) => theme.colors.blue};
+
+  @media screen and (min-width: 480px) {
+    font-size: 1em;
+  }
 `;

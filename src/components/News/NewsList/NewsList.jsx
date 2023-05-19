@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import NewsItem from './NewsItem/NewsItem';
 import { List } from './NewsList.styled';
@@ -22,12 +21,4 @@ export const NewsList = ({ news }) => {
       ))}
     </List>
   );
-};
-
-NewsItem.propTypes = {
-  imgUrl: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
 };
