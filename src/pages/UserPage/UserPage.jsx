@@ -21,13 +21,24 @@ const UserPage = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  const isRegister = useSelector(selectIsRegistered);
-  const {name, birthday, email, phone, city } = user;
-  //const name = email.split("@")[0];
+  const { userId } = user;
+  const { name, birthday, email, phone, city } = user;
+
+  useEffect(() => {
+    const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
+    if (!visitedBefore) {
+      setShowModal(true);
+      localStorage.setItem(`visitedBefore_${userId}`, true);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    dispatch(changeIsPetAdded());
+  }, [dispatch]);
   
   return (
   <>
-    { isRegister && (<ModalCongrats />)}
+    { showModal && (<ModalCongrats setShowModal={setShowModal} />)}
     <Container>
     <UserDiv>
       <MainBox>
