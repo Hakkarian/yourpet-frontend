@@ -129,7 +129,7 @@ export const ReusableButtonCss = styled(ReusableButton)`
 export const AbsDivCss = styled.span`
   position: absolute;
   top: 17%;
-  right: 7%;
+  right: 10%;
 `;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
@@ -142,6 +142,7 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   line-height: 1.375;
 
   @media screen and (min-width: 768px) {
+    margin-top: 0;
     line-height: 1.361;
   }
 `;

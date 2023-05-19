@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 
 import err_mobile from '../../images/bg_img/error/404_mobile_origin.png';
-import err_mobile_2x from '../../images/bg_img/error/404_mobile_2x_origin.png';
+// import err_mobile_2x from '../../images/bg_img/error/404_mobile_2x_origin.png';
 import err_tab from '../../images/bg_img/error/404_tab_origin.png';
-import err_tab_2x from '../../images/bg_img/error/404_tab_2x_origin.png';
+// import err_tab_2x from '../../images/bg_img/error/404_tab_2x_origin.png';
 import err_desc from '../../images/bg_img/error/404_desc_origin.png';
-import err_desc_2x from '../../images/bg_img/error/404_desc_2x_origin.png';
+// import err_desc_2x from '../../images/bg_img/error/404_desc_2x_origin.png';
 
 export const DivTag = styled.div`
     display:flex;
@@ -35,12 +35,7 @@ export const DivTag = styled.div`
         // background-repeat: no-repeat;
 
         background-image: url(${err_mobile});
-        @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image:
-                url(${err_mobile_2x});
-            }
+
     }
     button {
         font-weight: 700;
@@ -66,12 +61,6 @@ export const DivTag = styled.div`
             margin-bottom:70px;
 
             background-image: url(${err_tab});
-            @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                background-image:
-                    url(${err_tab_2x});
-                }
         }
     }
     
@@ -94,12 +83,7 @@ export const DivTag = styled.div`
             margin-bottom:18px;
 
             background-image: url(${err_desc});
-            @media (min-device-pixel-ratio: 2),
-                (min-resolution: 192dpi),
-                (min-resolution: 2dppx) {
-                background-image:
-                    url(${err_desc_2x});
-                }
+
         }
         .yellow_round_div {
             position: absolute;;
