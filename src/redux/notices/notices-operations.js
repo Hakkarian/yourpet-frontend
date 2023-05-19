@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import * as api from 'shared/services/notices-api';
 
 // import { instance } from 'shared/services/auth-api';
@@ -31,10 +32,13 @@ export const getNoticeByCategory = createAsyncThunk(
 );
 
 // get отримання одного оголошення
+// ______ instance.get -> getNoticeById
+// _______ `/notices/card/${id}` id 
 export const getOneNotice = createAsyncThunk(
   'notices/getOneNotice',
   async (id, { rejectWithValue }) => {
     try {
+      console.log(id)
       const { data } = await instance.get(`/notices/card/${id}`);
 
       return data;
@@ -49,8 +53,15 @@ export const addToFavorites = createAsyncThunk(
   'notices/addToFavorites',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post(`/notices/${id}/favorite`);
-console.log(data);
+      const { data } = await instance.post(`/notices/${id}/favorite/`);
+      toast('This notice is now your favorite!', {
+        icon: '🌈',
+        style: {
+          borderRadius: '10px',
+          background: 'orange',
+          color: '#fff',
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -88,7 +99,14 @@ export const deleteFromFavorites = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/notices/${id}/favorite`);
-
+      toast('This notice now is not your favorite.', {
+        icon: '🌪️',
+        style: {
+          borderRadius: '10px',
+          background: 'black',
+          color: '#fff',
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -102,7 +120,14 @@ export const deleteUserNotice = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await instance.delete(`/notices/${id}`);
-
+      toast('This notice has been succesfully deleted.', {
+        icon: '🔨',
+        style: {
+          borderRadius: '10px',
+          background: 'darkred',
+          color: '#fff',
+        },
+      });
       return id;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -116,6 +141,14 @@ export const createNotice = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await api.addNotice(data);
+      toast('This notice has been created succesfully!', {
+        icon: '🏷️',
+        style: {
+          borderRadius: '10px',
+          background: 'white',
+          color: '#000',
+        },
+      });
       return result.notice;
     } catch (error) {
       return rejectWithValue(error.message);

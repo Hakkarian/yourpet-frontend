@@ -13,6 +13,7 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
 import ModalNotice from '../../ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
+
 import {
   Item,
   ImageWrapper,
@@ -58,6 +59,7 @@ const NoticesCategoryItem = ({
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
   let query = null;
 
   const getAge = utcDate => {
@@ -191,14 +193,7 @@ const NoticesCategoryItem = ({
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && (
-          <ModalNotice
-            userDeteils={user}
-            noticeDeteils={notice}
-            onClose={close}
-          />
-        )}
-
+        {isOpen && <ModalNotice userDeteils={user} noticeDeteils={notice} onClose={close} />}
         {isOwner && (
           <>
             <Button onClick={toggle} delete Notice={handleDeleteClick}>

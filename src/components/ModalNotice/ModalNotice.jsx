@@ -6,25 +6,42 @@ import {
   Backdrop,
   Wrapper,
   Container,
-  Img,
   Title,
-  List,
-  Item,
-  Text,
   BtnContainer,
+  ContainerList,
+  Coments,
+  ContainerDiv,
+  ContainerBox,
+  Link,
+  ColumTwo,
+  ColumOne,
+  CategoryBox,
+  ImgBox,
 } from './ModalNotice.styled';
-// import CrossButton from 'shared/components/CrossButton/CrossButton';
-// import { ReactComponent as CrossIcon } from '../../icons/cross-small.svg';
+
 import { ReactComponent as HeartIcon } from '../../icons/heart.svg';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
 
 import Button from 'shared/components/Button/Button';
-import defaultImage from '../../images/default-user-img.jpg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalNotice = ({ onClose, children }) => {
+const ModalNotice = ({ onClose, noticeDeteils }) => {
+  console.log(noticeDeteils);
+  const {
+    photo,
+    birthday,
+    sex,
+    location,
+    title,
+    owner,
+    breed,
+    name,
+    category,
+  } = noticeDeteils;
+
+
   useEffect(() => {
     const handleKeyDowm = e => {
       if (e.code === 'Escape') onClose();
@@ -45,50 +62,70 @@ const ModalNotice = ({ onClose, children }) => {
     <Backdrop onClick={handleBackdropClick}>
       <Wrapper>
         <CrossButton type="button" onClick={onClose} />
-        <div>
-          <Container>
-            <Img src={defaultImage} alt="User" />
-            <div>
-              <Title>Title</Title>
-              <List>
-                <Item>
-                  <Text>Name:</Text>
-                </Item>
-                <Item>
-                  <Text>Birthday:</Text>
-                </Item>
-                <Item>
-                  <Text>Breed:</Text>
-                </Item>
-                <Item>
-                  <Text>Place:</Text>
-                </Item>
-                <Item>
-                  <Text>The sex:</Text>
-                </Item>
-                <Item>
-                  <Text>Email:</Text>
-                </Item>
-                <Item>
-                  <Text>Phone:</Text>
-                </Item>
-              </List>
-            </div>
-          </Container>
+        <Container>
+          <ContainerBox>
+            <ImgBox>
+              <img src={photo} alt={name}/>
+              <CategoryBox>
+                <p>{category}</p>
+              </CategoryBox>
+            </ImgBox>
 
-          <Text>Coments:</Text>
+            <ContainerList>
+              <Title>{title}</Title>
+              <table>
+                <tbody>
+                  <tr>
+                    <ColumOne>Name:</ColumOne>
+                    <ColumTwo>{name}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Birthday:</ColumOne>
+                    <ColumTwo>{birthday}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Breed:</ColumOne>
+                    <ColumTwo>{breed}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Place:</ColumOne>
+                    <ColumTwo>{location}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>The sex:</ColumOne>
+                    <ColumTwo>{sex}</ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Email:</ColumOne>
+                    <ColumTwo>
+                      <Link>{owner.email}</Link>
+                    </ColumTwo>
+                  </tr>
+                  <tr>
+                    <ColumOne>Phone:</ColumOne>
+                    <ColumTwo>
+                      <Link href="tel:{owner.phone}">{owner.phone}</Link>
+                    </ColumTwo>
+                  </tr>
+                </tbody>
+              </table>
+            </ContainerList>
+          </ContainerBox>
 
-          <BtnContainer>
-            <Button className="btn" type="button" color="blue" width="129px">
-              Add to <HeartIcon width="24px" height="24px" />
-            </Button>
-            <Button className="btn" type="button" color="white" width="129px">
-              <a href="tel:+380961111111">Contacts</a>
-            </Button>
+          <ContainerDiv>
+            <Coments>Coments:{noticeDeteils.coments}</Coments>
 
-            {/* <ContactsLink>Contacts</ContactsLink> */}
-          </BtnContainer>
-        </div>
+            <BtnContainer>
+              <Button className="btn" type="button" color="blue" width="256px">
+                Add to <HeartIcon fill="none" width="24px" height="24px" />
+              </Button>
+
+              <Button className="btn" type="button" color="white" width="256px">
+                <a href="tel:{noticeDeteils.owner.phone}">Contacts</a>
+              </Button>
+            </BtnContainer>
+          </ContainerDiv>
+        </Container>
       </Wrapper>
     </Backdrop>,
     modalRoot

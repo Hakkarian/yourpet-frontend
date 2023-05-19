@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import {
   Backdrop,
@@ -46,6 +47,11 @@ const Modal = ({ onClose, children, shouModal }) => {
     </Backdrop>,
     modalRoot
   );
+};
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

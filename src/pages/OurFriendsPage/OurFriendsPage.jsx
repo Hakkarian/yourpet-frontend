@@ -2,7 +2,6 @@ import FriendsItems from '../../components/OurFriends/FriendsItems';
 import { OurFriend, Cointainer, ListOurFriends } from "./OurFriendsPage.styled"
 
 const OurFriendsPage = () => {
-
   return (
     <>
       <Cointainer>

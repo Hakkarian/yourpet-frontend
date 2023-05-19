@@ -6,8 +6,6 @@ import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
 import { Loader } from 'components/Loader';
-// import PrivateView from 'views/PrivateView';
-// import RestrictedView from 'views/RestrictedView';
 import { Toaster } from 'react-hot-toast';
 import PrivateView from 'views/PrivateView';
 import RestrictedView from 'views/RestrictedView';
@@ -25,8 +23,6 @@ const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
-
-  // const isLogin = useSelector(selectIsLoggedIn)
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -57,7 +53,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateView />}>
-            <Route path="/user" element={<UserPage />} />
+          <Route path="/user" element={<UserPage />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>

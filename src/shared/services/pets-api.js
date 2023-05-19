@@ -6,3 +6,4 @@ export const addPet = async data => {
   const { data: result } = await instance.post('/pets', data);
   return result;
 };
+

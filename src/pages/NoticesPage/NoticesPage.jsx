@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { Box, Pagination, Stack } from '@mui/material';
 import MediaQuery from 'react-responsive';
 
+
 const NoticesPage = () => {
   const [input, setInput] = useState('');
   const [searchValue, setSearchValue] = useState('');

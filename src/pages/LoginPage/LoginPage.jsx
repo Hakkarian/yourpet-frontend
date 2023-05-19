@@ -13,7 +13,7 @@ import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 
 import { login } from 'redux/auth/auth-operations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormCss } from 'components/RegisterForm/RegisterForm.styled';
 import styled from '@emotion/styled';
 import ReusableButton from 'shared/components/ReusableButton';
@@ -104,7 +104,8 @@ export const ToggleBtn = styled.button`
 export const ButtonEye = styled.button`
   min-width: 0;
   position: absolute;
-  top: 0;
+  top: 17%;
+  right: 0;
   background-color: transparent;
   border: none;
 `;
@@ -127,6 +128,8 @@ export const ReusableButtonCss = styled(ReusableButton)`
 `;
 export const AbsDivCss = styled.span`
   position: absolute;
+  top: 17%;
+  right: 7%;
 `;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
@@ -167,12 +170,14 @@ export const ErrorText = styled.div`
 const LoginPage = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     const { email, password } = values;
     const payload = { email, password };
     console.log('submit');
     dispatch(login(payload));
+    navigate('/user');
     actions.resetForm();
   };
   return (
@@ -187,7 +192,7 @@ const LoginPage = () => {
           {({ errors, values, touched }) => {
             return (
               <FormCss>
-                <div>
+                <AnchorCss>
                   <Field
                     name="email"
                     type="email"
@@ -201,8 +206,8 @@ const LoginPage = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
-                <div style={{ position: 'relative' }}>
+                </AnchorCss>
+                <AnchorCss>
                   <Field
                     className={errors.password ? 'input-error' : 'input-valid'}
                     name="password"
@@ -230,7 +235,7 @@ const LoginPage = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </div>
+                </AnchorCss>
                 <Button className="form-button" type="submit">
                   Submit
                 </Button>

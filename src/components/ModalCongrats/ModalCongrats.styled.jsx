@@ -49,51 +49,38 @@ export const Container = styled.div`
   width: 500px;
   height: 400px;
 
-  display: flex;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-  margin-bottom: 60px;
+display: flex;
+align-items: center;
+text-align: center;
+flex-direction: column;
+margin-bottom: 60px;
+}
+`
 
-  background-color: white;
-  border-radius: 30px;
-
-  box-shadow: ${({ theme }) => theme.shadow.default};
-`;
 // перевірити чи додали стилі для ховеру на кнопки
+// :hover {
+//     background: ${({ theme }) => theme.background.azure};
+//     border: none;
+//   }
 
 export const Text = styled.p`
   margin-bottom: 60px;
   font-weight: 500;
-  font-size: 24px;
-  letter-spacing: 0.04em;
+  font-size: 16px;
+
+  @media (min-width: 767px) {
+    font-size: 24px;
+  }
 `;
 
 export const Title = styled.h2`
   margin-top: 60px;
   margin-bottom: 52px;
   font-weight: 500;
-  font-size: 36px;
-  letter-spacing: 0.04em;
-  color: #111111;
-`;
+  font-size: 24px;
 
-// export const GoToBtn = styled.div`
-// margin-bottom: 60px;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-// font-weight: 700;
-// font-size: 16px;
-// width: 248px;
-// height: 40px;
-// letter-spacing: 0.04em;
-// background: ${({ theme }) => theme.colors.blue};
-// color: ${({ theme }) => theme.colors.white};
-// border-radius: 40px;
-// border: none;
+  @media (min-width: 767px) {
+    font-size: 36px;
+  }
+`
 
-// &:focus,
-//   &:hover {
-//     background: ${({ theme }) => theme.background.azure};
-// `
