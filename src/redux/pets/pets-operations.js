@@ -21,8 +21,8 @@ export const addPets = createAsyncThunk(
     try {
       const result = await api.addPet(data);
       return result.newPet;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

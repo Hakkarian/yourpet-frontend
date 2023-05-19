@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const ModalText = styled.p`
 margin-bottom: 48px;
@@ -20,9 +20,10 @@ color: ${({theme}) => theme.colors.black};
   font-size: 28px;
 `
 
+
 export const ColorSpan = styled.span`
-font-weight: 700;
-`
+  font-weight: 700;
+`;
 
 export const ContainerButton = styled.div`
 display: flex;
@@ -37,10 +38,11 @@ width: 250px;
   flex-direction: row;
 }
 
-.svg {
-  fill: none;
-  stroke="#FFFFFF"
-}
+
+  .svg {
+    fill: none;
+    stroke: '#FFFFFF';
+  }
 
 // прибрати ці стилі якщо вони зєявиться в блакитній та жовтій кнопках
 .btn {
@@ -52,12 +54,13 @@ width: 250px;
 
 
 
- //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
-  :hover {
-    background: ${({theme}) => theme.background.azure};
-    border: none;
-  }
 
+    //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+    :hover {
+      background: ${({ theme }) => theme.background.azure};
+      border: none;
+    }
+  }
   @media (min-width: 767px) {
     width: 129px;
     margin-right: 17px;

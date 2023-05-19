@@ -1,9 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
-import { OurFriend, Cointainer, WrapperOurFriends, WrapperImage, LogoCompanyImg, WrapperInformation, NameCompany, WrapperForImgAndInformation, ListInformation, ItemInformation, NameTextinformation, Textinformation, ListOurFriends, LinKForInformation, ModalPosition, ModalNameDay, ModalTimeWork , ModalList , ModalItem } from "./OurFriendsPage.styled"
-import friends from "./friends"
+import FriendsItems from '../../components/OurFriends/FriendsItems';
+import { OurFriend, Cointainer, ListOurFriends } from "./OurFriendsPage.styled"
 
 const OurFriendsPage = () => {
+
   const [visible, setVisible] = useState(false);
   console.log(visible)
   //  const date = new Date().toDateString().slice(0,-12)
@@ -76,43 +75,17 @@ const OurFriendsPage = () => {
     </WrapperOurFriends>
   )
 
+
   return (
     <>
       <Cointainer>
-
         <OurFriend>Our Friend</OurFriend>
-
-        <ListOurFriends> {contactList}</ListOurFriends>
-
+        <ListOurFriends>
+          <FriendsItems />
+        </ListOurFriends>
       </Cointainer>
     </>
   )
 }
 
 export default OurFriendsPage;
-
-// не видяляйте це, я тут відкриваю модалку
-
-// import Modal from 'shared/components/Modal/Modal';
-// import ModalDelete from 'components/ModalDelete';
-// import ModalCongrats from 'components/ModalCongrats';
-// import ModalLogOut from 'components/ModalLogOut';
-
-// import { useToggle } from 'shared/hooks/useToggle';
-// import ModalNotice from 'components/ModalNotice';
-
-// const OurFriendsPage = () => {
-//   const { isOpen, open, close } = useToggle();
-
-//   return (
-//     <div>
-//       OurFriendsPage
-//       <button type="button" onClick={open}>
-//         open modal
-//       </button>
-//       {isOpen && (<ModalNotice onClose={close}/>)}
-//     </div>
-//   );
-// };
-
-// export default OurFriendsPage;

@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+
+import { Navigate } from 'react-router-dom';
+import { selectIsNoticeAdded } from 'redux/notices/notices-selector';
+import { selectIsPetAdded } from 'redux/pets/pets-selector';
 
 import { addPets } from 'redux/pets/pets-operations';
-import { addNotices } from 'redux/notices/notices-operations';
+import { createNotice } from 'redux/notices/notices-operations';
 
 import { Formik, Form } from 'formik';
 import Title from 'pages/AddPetPage/AddPetForm/FormFields/Title/Title';
@@ -19,22 +21,18 @@ import ChooseOptionForm from './Forms/ChooseOptionForm/ChooseOptionForm';
 import PersonalDetailsForm from './Forms/PersonalDetailsForm/PersonalDetailsForm';
 import MoreInfoForm from './Forms/MoreInfoForm/MoreInfoForm';
 
-// import {
-//   selectShouldNoticeRedirect,
-// } from 'redux/notices/notices-selector';
-
 const AddPetForm = () => {
   const [category, setCategory] = useState('my pet');
   const [photo, setPhoto] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const location = useLocation();
   const prevLocation = location?.state?.from || '/';
 
-  // const shouldRedirect = useSelector(selectAddedNotice);
+  const isNoticeAdded = useSelector(selectIsNoticeAdded);
+  const isPetAdded = useSelector(selectIsPetAdded);
 
   const changeStep = direction => {
     if (direction === 'next') {
@@ -80,10 +78,16 @@ const AddPetForm = () => {
     if (category === 'my pet') {
       dispatch(addPets(formData));
     } else {
-      dispatch(addNotices(formData));
-      // console.log('shoul not redirect', shouldRedirect);
+      dispatch(createNotice(formData));
     }
   };
+
+  if (isNoticeAdded) {
+    return <Navigate to={`/notices/${category}`} />;
+  }
+  if (isPetAdded) {
+    return <Navigate to="/user" />;
+  }
 
   return (
     <ContainerCss category={category} currentStep={currentStep}>
@@ -130,10 +134,3 @@ const AddPetForm = () => {
 };
 
 export default AddPetForm;
-
-// import { useLocation } from 'react-router-dom';
-// const location = useLocation();
-
-// <Link to="/add-pet" state={{ from: location }}>
-//   Add Pet
-// </Link>;
