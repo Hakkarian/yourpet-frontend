@@ -49,8 +49,8 @@ export const addToFavorites = createAsyncThunk(
   'notices/addToFavorites',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post(`/notices/${id}/favorite/`);
-
+      const { data } = await instance.post(`/notices/${id}/favorite`);
+console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -67,11 +67,11 @@ export const getFavorites = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page },
         });
-
+console.log(data);
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/user/favorite?query=${query}`
+          `/notices/title/favorite?query=${query}`
         );
 
         return data;
@@ -132,11 +132,11 @@ export const getUserNotices = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page },
         });
-
-        return data;
+console.log(data.data);
+        return data.data;
       } else {
-        const { data } = await instance.get(`/notices/user/own?query=${query}`);
-
+        const { data } = await instance.get(`/notices/title/own?query=${query}`);
+console.log(data);
         return data;
       }
     } catch (error) {

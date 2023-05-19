@@ -36,7 +36,7 @@ const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
               alt="delete"
               width="24"
               height="24"
-            />{' '}
+            />
           </ButtonIcon>
         )}
       </FormSearch>

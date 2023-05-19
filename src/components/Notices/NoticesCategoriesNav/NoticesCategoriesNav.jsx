@@ -12,6 +12,7 @@ import {
   IconAddPet, AddPetButtonWrp
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+// import { changeIsNoticeAdded, setPage } from 'redux/notices/notices-slice';
 import plus from '../../../icons/plus.svg';
 
 import { useToggle } from 'shared/hooks/useToggle';
@@ -45,7 +46,8 @@ const authButtons = [
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-    const {open} = useToggle();
+  const { open } = useToggle();
+  //  const dispatch = useDispatch();
 
   const openAddPet = () => {
       if (isLoggedIn) {
@@ -61,7 +63,11 @@ const NoticesCategoriesNav = () => {
           <ContainerNav>
             {buttons.map((button, index) => (
               <ItemNav key={index}>
-                <ButtonNav to={'/notices/' + button.link} name={button.link}>
+                <ButtonNav
+                  // onClick={() => dispatch(setPage(1))}
+                  to={'/notices/' + button.link}
+                  name={button.link}
+                >
                   {button.btn}
                 </ButtonNav>
               </ItemNav>
@@ -71,16 +77,21 @@ const NoticesCategoriesNav = () => {
             {isLoggedIn &&
               authButtons.map((button, index) => (
                 <ItemNav key={index}>
-                  <ButtonNav to={'/notices/' + button.link} name={button.link}>
+                  <ButtonNav
+                    // onClick={() => dispatch(changeIsNoticeAdded())}
+                    to={'/notices/' + button.link}
+                    name={button.link}
+                  >
                     {button.btn}
                   </ButtonNav>
                 </ItemNav>
               ))}
           </WrapperNav>
-          <BoxNav><AddPetButtonWrp onClick={openAddPet}>
-            <AddPetButton to={'/add-pet'} ></AddPetButton >
+          <BoxNav>
+            <AddPetButtonWrp onClick={openAddPet}>
+              <AddPetButton to={'/add-pet'}></AddPetButton>
               <Span>Add pet</Span>
-              <IconAddPet src={plus} alt="add-pet"/>
+              <IconAddPet src={plus} alt="add-pet" />
             </AddPetButtonWrp>
           </BoxNav>
         </ListNav>

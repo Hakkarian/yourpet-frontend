@@ -110,7 +110,8 @@ export const AddPetButtonWrp = styled.button`
 
   transition: normal;
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};  
+  svg puth{stroke: ${({ theme }) => theme.colors.white};
 
   &:hover,
   &:focus {
@@ -135,8 +136,8 @@ export const IconAddPet = styled.img`
   height: 21px;
   top: 20px;
   right: 29px;
-  fill: ${({ theme }) => theme.colors.white};
 
+} 
   @media screen and (min-width: 768px) {
     position: none;
     width: 17.49px;

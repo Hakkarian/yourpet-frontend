@@ -1,20 +1,18 @@
 import styled from '@emotion/styled';
-// import heart from '../../../icons/heart.svg';
 
 export const Item = styled.li`
   position: relative;
   width: 280px;
+  height: 456px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 606px;
   }
   @media screen and (min-width: 1024px) {
     width: 288px;
-    height: 606px;
   }
 `;
 
@@ -132,6 +130,7 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 20px;
   margin-left: 20px;
+  margin-top: 20px;
   width: 231px;
   height: 76px;
   overflow: hidden;
@@ -153,22 +152,20 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const DescriptionInner = styled.div`
-  width: 280px;
-  height: 456px;
 `;
 
 export const DescriptionTextContainer = styled.div`
   display: flex;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  width: 80px;
-  height: 28px;
+  justify-content: start;
+  //  height: 100%;
+   width: 100%;
   background: ${({ theme }) => theme.colors.lightblue};
   border-radius: 16px;
 `;
 
 export const DescriptionText = styled.p`
   display: flex;
+  flex-direction: row;
   align-items: center;
   font-weight: 600;
   font-size: 12px;
@@ -187,7 +184,11 @@ export const ButtonDiv = styled.div`
 `;
 
 export const IconItem = styled.img`
-  fill: transparent;
+  fill: ${({ theme }) => theme.colors.blue};
+  colors: ${({ theme }) => theme.colors.blue};
+   puth {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
 `;
 
 export const IconItemPaw = styled.img`
