@@ -117,8 +117,8 @@ export const createNotice = createAsyncThunk(
     try {
       const result = await api.addNotice(data);
       return result.notice;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );

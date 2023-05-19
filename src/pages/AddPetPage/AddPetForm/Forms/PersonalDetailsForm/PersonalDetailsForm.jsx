@@ -2,6 +2,7 @@ import formFields from '../../FormModel/formFields';
 import validationSchema from '../../FormModel/validationSchema';
 
 import TextField from '../../FormFields/TextField/TextField';
+import DateField from '../../FormFields/DateField/DateField';
 import Button from '../../FormFields/Button/Button';
 
 import { PawIcon, ArrowIcon, BtnWrapper } from '../../AddPetForm.styled';
@@ -50,7 +51,7 @@ const PersonalDetailsForm = ({ helpers, changeStep, category }) => {
           <TextField errors={errors} touched={touched} {...formFields.title} />
         )}
         <TextField errors={errors} touched={touched} {...formFields.name} />
-        <TextField errors={errors} touched={touched} {...formFields.birthday} />
+        <DateField errors={errors} touched={touched} {...formFields.birthday} />
         <TextField errors={errors} touched={touched} {...formFields.breed} />
       </Wrapper>
 

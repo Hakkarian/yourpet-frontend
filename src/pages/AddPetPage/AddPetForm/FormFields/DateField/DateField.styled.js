@@ -3,18 +3,18 @@ import { Field } from 'formik';
 
 export const Label = styled.label`
   display: block;
-  font-size: ${({ theme }) => theme.spacing(4)};
-  /* font-weight: 500; */
+  font-size: ${({ theme }) => theme.spacing(3.5)};
+  font-weight: 500;
   margin-bottom: ${({ theme }) => theme.spacing(1)};
+
+  @media screen and (min-width: 768px) {
+    font-size: ${({ theme }) => theme.spacing(5)};
+    margin-bottom: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 export const Input = styled(Field)`
-  width: ${({ theme }) => theme.spacing(66)};
-  height: ${({ theme, as }) => {
-    if (as === 'textarea') {
-      return theme.spacing(23);
-    }
-  }};
+  width: 100%;
   padding-left: ${({ theme }) => theme.spacing(4)};
   padding-top: ${({ theme }) => theme.spacing(2.375)};
   padding-bottom: ${({ theme }) => theme.spacing(2.375)};
@@ -24,18 +24,14 @@ export const Input = styled(Field)`
         ? theme.colors.red
         : theme.colors.blue;
     }};
-  border-radius: ${({ theme, as }) => {
-    if (as === 'textarea') {
-      return theme.spacing(5);
-    }
-    return theme.spacing(10);
-  }};
+  border-radius: ${({ theme }) => theme.spacing(10)};
   font-size: ${({ theme }) => theme.spacing(3.5)};
-  ${({ as }) => {
-    if (as === 'textarea') {
-      return 'resize: none;';
-    }
-  }}
+
+  @media screen and (min-width: 768px) {
+    padding-top: ${({ theme }) => theme.spacing(3)};
+    padding-bottom: ${({ theme }) => theme.spacing(3)};
+    font-size: ${({ theme }) => theme.spacing(4)};
+  }
 
   &::-webkit-calendar-picker-indicator {
     margin-right: 20px;
@@ -49,5 +45,19 @@ export const TextErrorCss = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing(5)};
+  margin-bottom: ${({ theme, field }) => {
+    if (field === 'textarea') {
+      return 0;
+    }
+    return theme.spacing(5);
+  }};
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${({ theme, field }) => {
+      if (field === 'textarea') {
+        return 0;
+      }
+      return theme.spacing(6);
+    }};
+  }
 `;
