@@ -13,7 +13,7 @@ import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 
 import { login } from 'redux/auth/auth-operations';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormCss } from 'components/RegisterForm/RegisterForm.styled';
 import styled from '@emotion/styled';
 import ReusableButton from 'shared/components/ReusableButton';
@@ -170,12 +170,14 @@ export const ErrorText = styled.div`
 const LoginPage = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     const { email, password } = values;
     const payload = { email, password };
     console.log('submit');
     dispatch(login(payload));
+    navigate('/user');
     actions.resetForm();
   };
   return (
