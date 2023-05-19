@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 // import { toast } from 'react-toastify';
 
-import { ImSearch } from 'react-icons/im';
-import { RxCross1 } from 'react-icons/rx';
+// import { ImSearch } from 'react-icons/im';
+// import { RxCross1 } from 'react-icons/rx';
 
-import { iconSize } from 'shared/utils/icon.size';
+import { ButtonIconForm } from 'shared/services/ButtonIconForm/ButtonIconForm';
 import {
   FormSearch,
   InputSearch,
-  ButtonIcon,
-  Wrap,
+  // ButtonIcon,
+  // Wrap,
 } from './SearchNewsForm.styled';
 
 export const SearchNewsForm = ({ onSubmit }) => {
@@ -47,28 +48,22 @@ export const SearchNewsForm = ({ onSubmit }) => {
         value={searchQuery}
         onChange={e => handleChange(e)}
       />
-      {/* style={{ right: '10px' }} */}
-      <Wrap>
-        <ButtonIcon type="submit" style={{ marginRight: '10px' }}>
-          <ImSearch
-            size={iconSize.md}
-            style={{
-              fill: '#54ADFF',
-            }}
-          />
+      <ButtonIconForm searchQuery={searchQuery} />
+      {/* <Wrap>
+        <ButtonIcon
+          type="submit"
+          color={'#757575'}
+          hoverColor={'#54ADFF'}
+          style={{ marginRight: '10px' }}
+        >
+          <ImSearch size={24} hoverColor={'#54ADFF'} />
         </ButtonIcon>
         {searchQuery !== '' && (
-          <ButtonIcon type="reset">
-            <RxCross1
-              size={iconSize.md}
-              style={{
-                color: '#F43F5E',
-              }}
-            />
+          <ButtonIcon type="reset" color="#757575" hoverColor="#F43F5E">
+            <RxCross1 size={24} hoverColor={'#F43F5E'} />
           </ButtonIcon>
         )}
-      </Wrap>
-      <Wrap searchQuery={searchQuery} />
+      </Wrap> */}
     </FormSearch>
   );
 };
