@@ -30,6 +30,7 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
+ 
 } from './NoticesCategoryItem.styled';
 import { ButtonTag } from 'shared/components/Button/button.styled';
 import clock from '../../../icons/clock.svg';
@@ -187,7 +188,8 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user })
         >
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
-        </ButtonTag>{' '}
+        </ButtonTag>
+        {' '}
       </DescriptionInner>
 
       <ButtonDiv>
