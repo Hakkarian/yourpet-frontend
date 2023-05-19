@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const StyledButton = styled.button`
   width: ${props => {
-    console.log(props.width);
     if (props?.width) {
       return props.width;
     }

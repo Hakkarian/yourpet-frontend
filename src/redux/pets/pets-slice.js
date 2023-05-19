@@ -47,6 +47,7 @@ export const petsSlice = createSlice({
       })
       .addCase(deletePets.pending, state => {
         state.isLoading = true;
+        // state.error = null;
       })
       .addCase(deletePets.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(item => item.id === payload);

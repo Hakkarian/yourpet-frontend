@@ -18,7 +18,9 @@ export const ContainerCss = styled.div`
   padding-left: ${({ theme }) => theme.spacing(2)};
   padding-right: ${({ theme }) => theme.spacing(2)};
   border-radius: 40px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: ${({ theme }) => theme.spacing(6)};
 
   @media screen and (min-width: 768px) {
     width: ${({ theme, currentStep, category }) => {
@@ -30,6 +32,7 @@ export const ContainerCss = styled.div`
     padding-left: ${({ theme }) => theme.spacing(8)};
     padding-right: ${({ theme }) => theme.spacing(8)};
     padding-bottom: ${({ theme }) => theme.spacing(5)};
+    margin-top: ${({ theme }) => theme.spacing(17)};
   }
 
   @media screen and (min-width: 1280px) {
@@ -51,6 +54,7 @@ export const ContainerCss = styled.div`
       }
       return theme.spacing(8);
     }};
+    margin-top: ${({ theme }) => theme.spacing(12.5)};
   }
 `;
 

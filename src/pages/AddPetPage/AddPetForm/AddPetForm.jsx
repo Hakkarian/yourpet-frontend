@@ -134,10 +134,3 @@ const AddPetForm = () => {
 };
 
 export default AddPetForm;
-
-// import { useLocation } from 'react-router-dom';
-// const location = useLocation();
-
-// <Link to="/add-pet" state={{ from: location }}>
-//   Add Pet
-// </Link>;
