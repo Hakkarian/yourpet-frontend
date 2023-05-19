@@ -6,9 +6,6 @@ import { selectAuth, selectIsLoggedIn } from 'redux/auth/auth-selector'
 const PrivateView = () => {
     const isLogin = useSelector(selectIsLoggedIn);
   const auth = useSelector(selectAuth);
-    if (!isLogin && auth.token) {
-      return <div>Loading...</div>
-  }
     if (!isLogin && !auth.token) {
         return <Navigate to='/login' />
   }
