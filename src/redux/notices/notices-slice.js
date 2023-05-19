@@ -47,7 +47,7 @@ const noticesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getNoticeByCategory.pending, state => {
-        state.isLoading = true;
+          state.isLoading = true;
         state.isError = null;
       })
       .addCase(getNoticeByCategory.fulfilled, (state, { payload }) => {

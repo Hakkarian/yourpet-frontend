@@ -9,7 +9,8 @@ import {
   BoxNav,
   AddPetButton,
   Span,
-  IconAddPet, AddPetButtonWrp
+  IconAddPet,
+  AddPetButtonWrp,
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 // import { changeIsNoticeAdded, setPage } from 'redux/notices/notices-slice';
@@ -50,11 +51,10 @@ const NoticesCategoriesNav = () => {
   //  const dispatch = useDispatch();
 
   const openAddPet = () => {
-      if (isLoggedIn) {
-        open();
-      } else   
-  toast.error('You need to authorize in to access this page');
-}
+    if (isLoggedIn) {
+      open();
+    } else toast.error('You need to authorize in to access this page');
+  };
 
   return (
     <>
@@ -77,11 +77,7 @@ const NoticesCategoriesNav = () => {
             {isLoggedIn &&
               authButtons.map((button, index) => (
                 <ItemNav key={index}>
-                  <ButtonNav
-                    // onClick={() => dispatch(changeIsNoticeAdded())}
-                    to={'/notices/' + button.link}
-                    name={button.link}
-                  >
+                  <ButtonNav to={'/notices/' + button.link} name={button.link}>
                     {button.btn}
                   </ButtonNav>
                 </ItemNav>

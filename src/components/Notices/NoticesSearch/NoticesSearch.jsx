@@ -1,8 +1,9 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import search from '../../../icons/search.svg';
-import deleteQuery from '../../../icons/cross-small.svg';
+// import search from '../../../icons/search.svg';
+// import deleteQuery from '../../../icons/cross-small.svg';
+import {ButtonIconForm } from 'shared/components/ButtonIconForm/ButtonIconForm';
 import {
   TitleSearch,
   FormSearch,
@@ -24,7 +25,9 @@ const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
           value={value}
           type="text"
         />
-        {!searchValue && (
+
+        <ButtonIconForm searchQuery={searchValue} onClick={onReset} />
+        {/* {!searchValue && (
           <ButtonIcon type="submit">
             <IconSearch src={search} alt="search" width="24" height="24" />
           </ButtonIcon>
@@ -38,7 +41,7 @@ const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
               height="24"
             />
           </ButtonIcon>
-        )}
+        )} */}
       </FormSearch>
       <NoticesCategoriesNav />
       <Outlet />

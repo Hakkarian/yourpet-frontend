@@ -91,8 +91,8 @@ export const BoxNav = styled.div`
   }
 `;
 
-
-export const AddPetButton = styled(NavLink)``
+export const AddPetButton = styled(NavLink)`
+`;
 
 export const AddPetButtonWrp = styled.button`
   position: fixed;
@@ -106,27 +106,34 @@ export const AddPetButtonWrp = styled.button`
   background: ${({ theme }) => theme.colors.blue};
   min-width: 44px;
   transform: translateX(217%) translateY(-55%);
-  bottom: 15vh;
+  bottom: 2vh;
 
   transition: normal;
 
-  color: ${({ theme }) => theme.colors.white};  
-  svg puth{stroke: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
+  svg puth {
+    stroke: ${({ theme }) => theme.colors.white};
 
-  &:hover,
-  &:focus {
-    background: ${({ theme }) => theme.colors.lightblue};
-  }
+    &:hover,
+    &:focus {
+      background: ${({ theme }) => theme.colors.lightblue};
+      color: ${({ theme }) => theme.colors.blue};
+    }
 
-  @media screen and (min-width: 768px) {
-    position: static;
+    @media screen and (min-width: 768px) {
+      position: absolute;
 
-    width: 44px;
-    height: 44px;
-    padding-top: 2px;
-    margin-left: 12px;
-
-    transform: none;
+      font-size: 20px;
+      border-radius: 40px;
+      transition: color 250ms linear, background-color 250ms linear;
+      padding: 10px 28px;
+      text-decoration: none;
+      border: none;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.35;
+      align-items: center;
+    }
   }
 `;
 
@@ -145,7 +152,7 @@ export const IconAddPet = styled.img`
     position: static;
   }
 `;
-  
+
 export const Span = styled.span`
   position: absolute;
   left: 10px;
@@ -157,7 +164,6 @@ export const Span = styled.span`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    left: -60px;
-    color: #000;
-  }
+    left: 5px;
+     }
 `;

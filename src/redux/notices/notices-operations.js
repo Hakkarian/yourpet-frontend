@@ -62,6 +62,7 @@ export const addToFavorites = createAsyncThunk(
           color: '#fff',
         },
       });
+                console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -165,8 +166,8 @@ export const getUserNotices = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page },
         });
-console.log(data.data);
-        return data.data;
+console.log(data);
+        return data;
       } else {
         const { data } = await instance.get(`/notices/title/own?query=${query}`);
 console.log(data);
