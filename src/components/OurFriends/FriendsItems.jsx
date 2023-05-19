@@ -1,4 +1,4 @@
-import friends from "./friends"
+// import friends from "./friends"
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFriends } from 'redux/friends/friends-operations';
@@ -10,7 +10,7 @@ import {
 } from "./FriendsItems.styled"
 
 const FriendsItems = () => {
-   const [friendsState] = useState(friends)
+   // const [friendsState] = useState(friends)
    const [visible, setVisible] = useState(false);
    const dispatch = useDispatch();
    const allFriends = useSelector(selectAllFriends)
