@@ -10,12 +10,15 @@ height: 24px;
 
 export const EditButton = styled.button`
 position: absolute;
-right: 8px;
-top: 4px;
+right: 16px;
+top: 2px;
 border: none;
 background-color: transparent;
 margin: 0;
 padding: 0;
+@media screen and (min-width: 1280px) {
+   right: 68px;
+}
 `;
 
 export const Edit = styled(EditIcon)`
@@ -53,6 +56,7 @@ font-size: 14px;
 line-height: 1.35;
 letter-spacing: 0.04em;   
 color: #111111;
+margin-right: 20px;
 `;
 
 export const InputWrap = styled.div`

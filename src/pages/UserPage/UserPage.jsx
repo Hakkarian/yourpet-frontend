@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
 import { Container } from 'shared/components/Container/Container.styled';
-import { Wrap, UserDiv, Title } from './UserPage.styled';
+
+import { Wrap, UserDiv, Title, MainBox} from './UserPage.styled';
+
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
@@ -19,44 +21,34 @@ const UserPage = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
-  const { userId } = user;
-  const { name, birthday, email, phone, city } = user;
-
-  useEffect(() => {
-    const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
-    if (!visitedBefore) {
-      setShowModal(true);
-      localStorage.setItem(`visitedBefore_${userId}`, true)
-    }
-  }, [userId])
-
-  useEffect(() => {
-    dispatch(changeIsPetAdded());
-  }, [dispatch]);
-
+  const isRegister = useSelector(selectIsRegistered);
+  const {name, birthday, email, phone, city } = user;
+  //const name = email.split("@")[0];
+  
   return (
-    <>
-      {showModal && <ModalCongrats setShowModal={setShowModal} />}
-      <Container>
-        <UserDiv>
-          <Title>My information:</Title>
-          <Wrap>
-            <UserData
-              name={name}
-              birthday={birthday}
-              email={email}
-              phone={phone}
-              city={city}
-            />
-            <Logout onClick={open} />
-            {isOpen && (
-              <Modal onClose={close}>
-                <ModalLogOut onClose={close} />
-              </Modal>
-            )}
-          </Wrap>
-          <PetsData />
-        </UserDiv>
+  <>
+    { isRegister && (<ModalCongrats />)}
+    <Container>
+    <UserDiv>
+      <MainBox>
+      <Title>My information:</Title>
+      <Wrap>
+        <UserData 
+           name={name}
+           birthday={birthday}
+           email={email}
+           phone={phone}
+           city={city}/>
+        <Logout onClick={open} />
+        {isOpen && (
+          <Modal onClose={close}>
+            <ModalLogOut onClose={close}/>
+          </Modal>
+        )}
+      </Wrap>
+      </MainBox>
+      <PetsData />
+    </UserDiv>
       </Container>
     </>
   );

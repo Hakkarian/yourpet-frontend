@@ -5,7 +5,6 @@ margin-bottom: 14px;
 width: 182px;
 height: 182px;
 border-radius: 40px;
-overflow: hidden;
 `;
 
 export const Image = styled.img`

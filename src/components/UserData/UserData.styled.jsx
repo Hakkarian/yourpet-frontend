@@ -32,15 +32,14 @@ export const FormThumb = styled(Form)`
   @media screen and (min-width: 768px) {
     flex-direction: row-reverse;
     padding: 20px 76px 20px 20px;
-    gap: 71px;
+    
     border-radius: 40px;
   }
 
   @media screen and (min-width: 1280px) {
     flex-direction: column;
-    padding: 20px 24px 20px 16px;
+    padding: 20px 16px 20px 16px;
     border-radius: 40px;
-    width: 395px;
     gap: 0;
   }
 `;
@@ -116,4 +115,14 @@ export const CameraIcon = styled(Camera)`
   fill: none;
 `;
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+`;
+
+export const ItemWrap = styled.div`
+display: flex;
+justify-content: space-between;
+`;
+

@@ -2,9 +2,8 @@ import styled from "@emotion/styled";
 import {ReactComponent as AddIcon} from '../../icons/plus-small.svg';
 
 export const PlusIcon = styled(AddIcon)`
-width: 10px;
-height: 10px;
-fill: #FFFFFF;
+fill: none;
+stroke="#FFFFFF"
 `;
 
 export const Button = styled.button`
@@ -12,13 +11,20 @@ export const Button = styled.button`
 `;
 
 export const PetsWrap = styled.div`
-margin-top: 40px;
-
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 `;
 
 export const BtnWrap = styled.div`
 display: flex;
-align-items: center;
+align-items: flex-start;
 justify-content: space-between;
-margin-bottom: 40px;
+margin-top: 40px;
+
+@media screen and (min-width: 1280px) {
+  margin: 0;
+}
 `;
