@@ -121,6 +121,7 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   line-height: 1.375;
 
   @media screen and (min-width: 768px) {
+    margin-top: 0;
     font-size: ${({ theme }) => theme.spacing(9)};
     line-height: 1.361;
   }

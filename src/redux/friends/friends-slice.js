@@ -17,6 +17,7 @@ const friendsSlice = createSlice({
         store.error = null;
       })
       .addCase(fetchFriends.fulfilled, (store, action) => {
+        console.log('friends payload', action.payload)
         store.isLoading = false;
         store.error = null;
         store.items = action.payload;

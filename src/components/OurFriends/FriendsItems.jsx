@@ -1,4 +1,4 @@
-import friends from "./friends"
+// import friends from "./friends"
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchFriends } from 'redux/friends/friends-operations';
@@ -10,11 +10,12 @@ import {
 } from "./FriendsItems.styled"
 
 const FriendsItems = () => {
-   const [friendsState] = useState(friends)
+   // const [friendsState] = useState(friends)
    const [visible, setVisible] = useState(false);
    const dispatch = useDispatch();
    const allFriends = useSelector(selectAllFriends)
    console.log("Запит на бекенд all friend----->", allFriends)
+
 
    useEffect(() => {
       dispatch(fetchFriends());
@@ -26,7 +27,7 @@ const FriendsItems = () => {
       setVisible(!visible)
    }
 
-   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, time, url, email, emailUrl, phoneUrl }) =>
+   const contactList = allFriends.map(({ _id, title, imageUrl, address, addressUrl, phone, time, url, email, emailUrl, phoneUrl }) =>
       <WrapperOurFriends key={_id}>
 
          <NameCompany href={url} target="_ blank" >{title}</NameCompany>
