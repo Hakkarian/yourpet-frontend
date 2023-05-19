@@ -9,7 +9,7 @@ import {
   getUserNotices,
 } from 'redux/notices/notices-operations';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import ModalNotice from '../../ModalNotice/ModalNotice';
+import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
 
 import {

@@ -69,6 +69,7 @@ export const ContainerBox = styled.div`
 
 @media (min-width: 767px) {
   display: flex;
+  margin-bottom: 28px;
   flex-direction: row;
 }
 `
