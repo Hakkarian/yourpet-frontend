@@ -1,7 +1,7 @@
 import SharedLayout from 'components/SharedLayout';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
@@ -9,7 +9,6 @@ import { Loader } from 'components/Loader';
 import { Toaster } from 'react-hot-toast';
 import PrivateView from 'views/PrivateView';
 import RestrictedView from 'views/RestrictedView';
-import { selectAuth } from 'redux/auth/auth-selector';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -23,10 +22,7 @@ const ErrorPage = lazy(() => import('pages/ErrorPage'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { isRefreshing } = useAuth();
-
-  const {token} = useSelector(selectAuth)
 
   useEffect(() => {
     dispatch(refreshUser());
