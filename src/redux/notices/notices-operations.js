@@ -31,10 +31,13 @@ export const getNoticeByCategory = createAsyncThunk(
 );
 
 // get отримання одного оголошення
+// ______ instance.get -> getNoticeById
+// _______ `/notices/card/${id}` id 
 export const getOneNotice = createAsyncThunk(
   'notices/getOneNotice',
   async (id, { rejectWithValue }) => {
     try {
+      console.log(id)
       const { data } = await instance.get(`/notices/card/${id}`);
 
       return data;

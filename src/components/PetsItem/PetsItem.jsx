@@ -19,7 +19,7 @@ const PetsItem = ({pet }) => {
             <DeleteBtn type="button" onClick={onDeleteBtn}>
                 <Icon />
             </DeleteBtn>
-            {isModalOpen && <ModalDelete/> }
+            {isModalOpen && <ModalDelete onClick={onDeleteBtn}/> }
             </BtnWrap>
             <p>Date of birth: <Span>{pet.birthday}</Span></p>
             <p>Breed: <Span>{pet.breed}</Span></p>

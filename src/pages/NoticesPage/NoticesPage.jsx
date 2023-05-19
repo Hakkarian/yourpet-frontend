@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
 import { useDispatch } from 'react-redux';
 
+
 const NoticesPage = () => {
   const [input, setInput] = useState('');
   const [searchValue, setSearchValue] = useState('');
