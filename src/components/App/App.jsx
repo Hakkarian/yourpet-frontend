@@ -31,7 +31,7 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUser());
     token && navigate('/user')
-  }, [dispatch, token, navigate]);
+  }, [dispatch]);
 
   // const shouldRedirect = !isLoggedIn && !isRefreshing;
 
