@@ -3,7 +3,7 @@ import Button from 'shared/components/Button/Button';
 import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
 import PropTypes from 'prop-types';
 
-const ModalDelete = ({ onClose }) => {
+const ModalDelete = ({ onClose, onClick }) => {
   return (
     <Container>
        <ModalTitle>Delete adverstiment?</ModalTitle>
@@ -18,7 +18,7 @@ const ModalDelete = ({ onClose }) => {
         <Button className="btn" type="button" color="white" width="256px" onClick={onClose}>
           Cancel
         </Button>
-        <Button className="btn" type="button" color="blue" width="256px">
+        <Button className="btn" type="button" onClick={onClick} color="blue" width="256px">
           Yes <DeleteIcon className="svg" stroke="white" width="24px" height="24px" />
         </Button>
       </ContainerButton>
