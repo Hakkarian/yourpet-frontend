@@ -46,17 +46,5 @@ export const getNoticesByCategory = async (category, page, query) => {
   }
 };
 
-// _________
-export const getNoticeById = async id => {
-  try {
-    const response = await instance.get(`/notices/card/${id}`);
-    return response;
-  } catch (error) {
-    console.log(error);
-    return error.response;
-  }
-};
-
-// ____________
 
 

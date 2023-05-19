@@ -1,14 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
-// import { toast } from 'react-toastify';
-// import {
-//   addToFavorites,
-//   deleteFromFavorites,
-// } from 'redux/notices/notices-operations';
-
-// import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 
 import {
   Backdrop,
@@ -49,8 +41,6 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
     category,
   } = noticeDeteils;
 
-  // const dispatch = useDispatch();
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     const handleKeyDowm = e => {
@@ -67,32 +57,6 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
       onClose();
     }
   };
-
-  // const addToFavorite = async () => {
-  //   if (!isLoggedIn) {
-  //     return toast.error(
-  //       'You need to authorize before adding pets to favorites.'
-  //     );
-  //   }
-  //   dispatch(addToFavorites(id)).then(() => {
-  //     refreshingPage(category);
-  //   });
-
-  //   toast.success('Pet added to favorites.');
-  // };
-
-  // const removeFromFavorite = async () => {
-  //   if (!isLoggedIn) {
-  //     return toast.error(
-  //       'You need to authorize before removing pets from favorites.'
-  //     );
-  //   }
-  //   dispatch(deleteFromFavorites(id)).then(() => {
-  //     refreshingPage(categoryPet);
-  //   });
-
-  //   toast.success('Pet removed from favorites.');
-  // };
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
