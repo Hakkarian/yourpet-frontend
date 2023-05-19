@@ -10,7 +10,7 @@ import {
 } from "./FriendsItems.styled"
 
 const FriendsItems = () => {
-   const [friendsState, setFriendState] = useState(friends)
+   const [friendsState] = useState(friends)
    const [visible, setVisible] = useState(false);
    const dispatch = useDispatch();
    const allFriends = useSelector(selectAllFriends)
