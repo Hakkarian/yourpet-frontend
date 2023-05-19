@@ -41,11 +41,11 @@ export const deletePets = createAsyncThunk(
   async (petsId, { rejectWithValue }) => {
     try {
       const result = await axios.delete(`/pets/${petsId}`);
-      toast('Your pet has been deleted.', {
-        icon: '🐶',
+      toast('Your pet has been deleted succesfully.', {
+        icon: '🙈',
         style: {
           borderRadius: '10px',
-          background: 'darkgreen',
+          background: 'darkred',
           color: '#fff',
         },
       });
