@@ -90,7 +90,7 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
       );
     }
     dispatch(addToFavorites(id)).then(() => {
-      refreshingPage(category);
+      refreshingPage(categoryPet);
     });
 
     toast.success('Pet added to favorites.');
