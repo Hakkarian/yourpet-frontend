@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Item, DeleteBtn, Span, BtnWrap, Icon, PetImg, InfoTitle, InfoWrap} from './PetsItem.styled';
+import {Item, DeleteBtn, Span, BtnWrap, Icon} from './PetsItem.styled';
 import ModalDelete from "components/ModalDelete";
 
 const PetsItem = ({pet }) => {
@@ -13,19 +13,17 @@ const PetsItem = ({pet }) => {
     return (
         <>
          <Item> 
-           <PetImg src={pet.photo} alt="pet's avatar" width="240" height="240" />
-           <InfoWrap>
+           <img src={pet.avatarURL} alt="pet's avatar" width="240" height="240" />
             <BtnWrap>
-            <InfoTitle>Name: <Span>{pet.name}</Span></InfoTitle>
+            <p>Name: <Span>{pet.name}</Span></p>
             <DeleteBtn type="button" onClick={onDeleteBtn}>
                 <Icon />
             </DeleteBtn>
             {isModalOpen && <ModalDelete/> }
             </BtnWrap>
-            <InfoTitle>Date of birth: <Span>{pet.birthday}</Span></InfoTitle>
-            <InfoTitle>Breed: <Span>{pet.breed}</Span></InfoTitle>
-            <InfoTitle>Comments: <Span>{pet.comments}</Span></InfoTitle>
-            </InfoWrap>
+            <p>Date of birth: <Span>{pet.birthday}</Span></p>
+            <p>Breed: <Span>{pet.breed}</Span></p>
+            <p>Comments: <Span>{pet.comments}</Span></p>
          </Item>
         </>
     )

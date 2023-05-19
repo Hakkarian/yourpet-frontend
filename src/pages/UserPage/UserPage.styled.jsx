@@ -1,12 +1,5 @@
 import styled from "@emotion/styled";
 
-export const MainBox = styled.div`
-@media screen and (min-width: 1280px) {
-  display: flex;
-  flex-direction: column;
-}
-`;
-
 export const Wrap = styled.div`
 padding-top: 20px;
 padding-bottom: 25px;
@@ -16,7 +9,7 @@ background: #FFFFFF;
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 20px;
 
-@media screen and (min-width: 768px and max-width: 1200px) {
+@media screen and (min-width: 768px) {
   flex-direction: row-reverse;
   padding: 20px 76px 20px 20px;
   gap: 71px;
@@ -25,6 +18,7 @@ border-radius: 20px;
 
 @media screen and (min-width: 1280px) {
   flex-direction: column;
+  padding: 20px 24px 20px 16px;
   border-radius: 40px;
   width: 395px;
   gap: 0;
@@ -47,13 +41,8 @@ margin-bottom:18px;
 `;
 
 export const UserDiv = styled.div`
-  background-color: #FEF9F9;  margin-top: 40px;
-  margin-bottom: 137px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 121px;
-  }
-  @media screen and (min-width: 1280px) {
-    display: flex;
+
+  background-color: #FEF9F9;
 `;
 
 
