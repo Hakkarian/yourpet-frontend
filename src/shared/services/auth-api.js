@@ -9,10 +9,10 @@ export const instance = axios.create({
 });
 
 export const setToken = token => {
-  if (token) {
+  // if (token) {
     return (instance.defaults.headers.authorization = `Bearer ${token}`);
-  }
-  return (instance.defaults.headers.authorization = '');
+  // }
+  // return (instance.defaults.headers.authorization = '');
 };
 
 export const setAuthHeader = token => {
