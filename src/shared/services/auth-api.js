@@ -48,7 +48,7 @@ export const infoService = async data => {
 
 export const refreshUserService = async data => {
   setToken(data);
-  const { data: result } = await instance.get('/user/current');
+  const { data: result } = await instance.get('/user/current');;
   console.log('here refresh api')
   console.log('refresh api', result)
   return result;
