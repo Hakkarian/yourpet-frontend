@@ -12,6 +12,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
 
   background-color: rgba(43, 43, 43, 0.6);
   backdrop-filter: blur(10px);
@@ -20,7 +21,7 @@ export const Backdrop = styled.div`
 export const Wrapper = styled.div`
 position: absolute;
 overflow-y: auto;
-padding: 40px 20px 16px 20px;
+padding: 44px 12px 16px 12px;
 top: 50%;
 left: 50%;
 background-color: white;
@@ -34,6 +35,7 @@ box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 40px;
 
 @media (min-width: 767px) {
+  padding: 40px 20px 16px 20px;
   min-height: 540px;
   max-width: 681px;
 }
@@ -42,14 +44,18 @@ border-radius: 40px;
 export const Container = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 28px;
+
+
+@media (min-width: 767px){
+  
+}
 `
 
 export const ContainerList = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-margin-bottom: 12px;
+margin-left: 0;
 @media (min-width: 767px){
   margin-left: 24px;
 }
@@ -67,12 +73,6 @@ export const ContainerBox = styled.div`
 }
 `
 
-export const Img = styled.img`
-width: 100%;
-// margin-bottom: 12px;
-border-radius: 0px 0px 40px 40px;
-`
-
 export const Title = styled.h2`
 font-weight: 700;
 font-size: 24px;
@@ -80,10 +80,11 @@ letter-spacing: -0.01em;
 margin-bottom: 20px;
 @media (min-width: 767px) {
   font-size: 28px;
+  width: 321px;
+height: 76px;
 }`
 
-// export const List = styled.ul`
-// `
+
 export const Text = styled.ul`
 font-weight: 600;
 font-size: 14px;
@@ -92,13 +93,6 @@ font-size: 14px;
   font-size: 16px;
 }
 `
-
-// export const Item = styled.li`
-// margin-bottom: 8px;
-
-// :last-child {
-//   margin-bottom: 0;
-// }`
 
 export const Coments = styled.p`
 font-weight: 600;
@@ -109,7 +103,6 @@ margin-bottom: 16px;
   margin-bottom: 28px;
 }
 `
-
 export const BtnContainer = styled.div`
 display: flex;
 align-items: center;
@@ -130,7 +123,7 @@ margin: 0 auto;
   height: 40px;
   font-weight: 700;
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
    :hover {
      background: ${({theme}) => theme.background.azure};
@@ -139,6 +132,7 @@ margin: 0 auto;
    :last-child {
     margin-bottom: 0;
    }
+
 
    @media (min-width: 767px) {
     width: 129px;
@@ -173,6 +167,10 @@ justify-content: center;
 align-items: center;
 letter-spacing: 0.04em;
 
+@media (min-width: 767px) {
+  
+}
+
   &.active {
     color: ${({theme}) => theme.colors.blue};
   }
@@ -181,14 +179,22 @@ letter-spacing: 0.04em;
 export const Link = styled.a`
 color: ${({theme}) => theme.colors.yellow};
 font-weight: 500;
-font-size: 16px;
+font-size: 12px;
 text-decoration-line: underline;
+@media (min-width: 767px) {
+  font-size: 16px;
+}
+
+
 `
 
 export const ColumOne = styled.td`
 font-weight: 600;
 font-size: 14px;
 padding-bottom: 8px;
+:last-child {
+  padding-bottom: 0;
+}
 
 @media (min-width: 767px) {
   font-size: 16px;
@@ -197,13 +203,37 @@ padding-bottom: 8px;
 
 export const ColumTwo = styled.td`
 font-weight: 500;
-font-size: 14px;
+font-size: 12px;
 padding-left: 20px;
 
 @media (min-width: 767px) {
   font-size: 16px;
   padding-left: 51px;
 }
+`
+
+
+export const ImgBox = styled.div`
+position: relative;
+overflow: hidden;
+margin-bottom: 12px;
+
+
+img {
+  margin-right: 0px;
+  border-radius: 0px 0px 40px 40px;
+  width: 240px;
+  height: 240px;
+}
+
+
+@media (min-width: 767px){
+  img {
+    width: 262px;
+    height: 298px;
+    margin-bottom: 0;
+  }
+ }
 `
 
 export const CategoryBox = styled.div`
@@ -215,25 +245,12 @@ width: 158px;
 border-top-right-radius: 14px;
 border-bottom-right-radius: 14px;
 
-color: black;
+
 background: #CCE4FB;
 backdrop-filter: blur(50px);
 
 p {
   font-weight: 500;
 font-size: 14px;
-}
-`
-export const ImgBox = styled.div`
-position: relative;
-margin-bottom: 16px;
-overflow: hidden;
-
-
-  @media (min-width: 767px){
-    width: 262px;
-    height: 298px;
-    margin-right: 20px;
-  }
 }
 `

@@ -14,7 +14,6 @@ import {
   Backdrop,
   Wrapper,
   Container,
-  Img,
   Title,
   BtnContainer,
   ContainerList,
@@ -38,8 +37,17 @@ const modalRoot = document.querySelector('#modal-root');
 
 const ModalNotice = ({ onClose, noticeDeteils }) => {
   console.log(noticeDeteils);
-  const { photo, birthday, sex, location, title, owner, breed, name, category } = noticeDeteils;
-
+  const {
+    photo,
+    birthday,
+    sex,
+    location,
+    title,
+    owner,
+    breed,
+    name,
+    category,
+  } = noticeDeteils;
 
   // const dispatch = useDispatch();
   // const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -92,13 +100,13 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
         <CrossButton type="button" onClick={onClose} />
         <Container>
           <ContainerBox>
-<ImgBox>
-<Img src={photo} alt="pet photo" />
-            <CategoryBox>
-              <p>{category}</p>
-            </CategoryBox>
-</ImgBox>
-           
+            <ImgBox>
+              <img src={photo} alt={name}/>
+              <CategoryBox>
+                <p>{category}</p>
+              </CategoryBox>
+            </ImgBox>
+
             <ContainerList>
               <Title>{title}</Title>
               <table>
@@ -144,11 +152,10 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
             <Coments>Coments:{noticeDeteils.coments}</Coments>
 
             <BtnContainer>
-              
               <Button className="btn" type="button" color="blue" width="256px">
-                Add to <HeartIcon width="24px" height="24px" />
+                Add to <HeartIcon fill="none" width="24px" height="24px" />
               </Button>
-              
+
               <Button className="btn" type="button" color="white" width="256px">
                 <a href="tel:{noticeDeteils.owner.phone}">Contacts</a>
               </Button>
