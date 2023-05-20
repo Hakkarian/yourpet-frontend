@@ -1,4 +1,4 @@
-import { ContainerButton, ModalTitle, ModalText, ColorSpan, Container  } from './ModalDelete.styled';
+import { ContainerButton, ModalTitle, Container  } from './ModalAddPet.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as PlusIcon} from '../../../icons/plus.svg';
 import PropTypes from 'prop-types';
@@ -19,7 +19,7 @@ const ModalAddPet = ({ onClose, onClick }) => {
   );
 };
 
-ModalDelete.propTypes = {
+ModalAddPet.propTypes = {
   onClose: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
 };
