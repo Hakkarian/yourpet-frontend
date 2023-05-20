@@ -47,13 +47,13 @@ const App = () => {
             <Route index element={<Navigate to="/notices/sell" />} />
             <Route path=":categoryName" element={<NoticesPage />} />
           </Route>
-          <Route path="/add-pet" element={<AddPetPage />} />
           <Route element={<RestrictedView />}>
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateView />}>
-          <Route path="/user" element={<UserPage />} />
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/add-pet" element={<AddPetPage />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>

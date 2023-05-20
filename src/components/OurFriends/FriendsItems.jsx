@@ -1,142 +1,88 @@
-// import friends from "./friends"
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFriends } from 'redux/friends/friends-operations';
-import { selectAllFriends } from 'redux/friends/friends-selector';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectAllFriends } from "redux/friends/friends-selector"
 import {
-  WrapperOurFriends,
-  NameCompany,
-  WrapperForImgAndInformation,
-  WrapperImage,
-  LogoCompanyImg,
-  WrapperInformation,
-  ListInformation,
-  ItemInformation,
-  LinKForInformation,
-  NameTextinformation,
-  Textinformation,
-  ModalPosition,
-  ModalList,
-  ModalItem,
-  ModalNameDay,
-  ModalTimeWork,
-} from './FriendsItems.styled';
+   WrapperOurFriends, NameCompany, WrapperForImgAndInformation, WrapperImage,
+   LogoCompanyImg, WrapperInformation, ListInformation, ItemInformation, LinKForInformation,
+   NameTextinformation, Textinformation, ModalPosition, ModalList, ModalItem, ModalNameDay, ModalTimeWork,
 
-const FriendsItems = () => {
-  // const [friendsState] = useState(friends)
-  const [visible, setVisible] = useState(false);
-  const dispatch = useDispatch();
-  const allFriends = useSelector(selectAllFriends);
-  console.log('Запит на бекенд all friend----->', allFriends);
+} from "./FriendsItems.styled"
 
-  useEffect(() => {
-    dispatch(fetchFriends());
-  }, [dispatch]);
+const FriendsItems = ({friend}) => {
+   const [friendsState, setFriendState] = useState([...friend])
+   const [visible, setVisible] = useState(false);
+   // console.log("allFriends", friendsState)
 
-  const onClickStart = (_id, event) => {
-    const userName = event.currentTarget.name;
-    console.log('time?.isOnline', _id, userName);
-    setVisible(!visible);
-  };
+   onkeydown = (evt) => {
+      if (evt.key === "Escape") {
+         setVisible(false)
+       }
+   }
 
-  const contactList = allFriends.map(
-    ({
-      _id,
-      title,
-      url,
-      addressUrl,
-      imageUrl,
-      address,
-      workDays,
-      phone,
-      email,
-      time,
-    }) => (
+   const onShowModal = (id, event) => {
+      setVisible(!visible)
+      // const all = friendsState.filter(friends=>friends._id===id)
+   }
+
+   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
       <WrapperOurFriends key={_id}>
-        <NameCompany href={url} target="_ blank">
-          {title}
-        </NameCompany>
+         <NameCompany href={url} target="_ blank">{title.length < 15 ? title : "Company"}</NameCompany>
 
-        <WrapperForImgAndInformation>
-          <WrapperImage>
-            <LogoCompanyImg src={imageUrl} alt="Logo company" />
-          </WrapperImage>
-          <WrapperInformation>
-            <ListInformation>
-              <ItemInformation>
-                <LinKForInformation
-                  name={title}
-                  onClick={event => onClickStart(_id, event)}
-                >
-                  {/* {time?.isOnline && <ModalPosition></ModalPosition>} */}
-                  {visible && time?.isOnline && (
-                    <ModalPosition>
-                      <ModalList>
-                        <ModalItem>
-                          <ModalNameDay>MN</ModalNameDay>
-                          <ModalTimeWork>{time?.monday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>TU</ModalNameDay>
-                          <ModalTimeWork>{time?.tuesday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>WE</ModalNameDay>
-                          <ModalTimeWork>{time?.wednesday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>TH</ModalNameDay>
-                          <ModalTimeWork>{time?.thursday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>FR</ModalNameDay>
-                          <ModalTimeWork>{time?.friday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>SA</ModalNameDay>
-                          <ModalTimeWork>{time?.saturday}</ModalTimeWork>
-                        </ModalItem>
-                        <ModalItem>
-                          <ModalNameDay>SU</ModalNameDay>
-                          <ModalTimeWork>{time?.sunday}</ModalTimeWork>
-                        </ModalItem>
-                      </ModalList>
-                    </ModalPosition>
-                  )}
+         <WrapperForImgAndInformation>
+            <WrapperImage>
+               <LogoCompanyImg src={imageUrl?imageUrl:"https://pixabay.com/get/ga9915c0f9b273695afa50b8563c6d2c99a76618cec35dae8a92bfbf7ac69cdeeef55de817ed2b60db7f43e3182ae530a_640.jpg"} alt="Logo company" />
+            </WrapperImage>
+            <WrapperInformation>
+               <ListInformation>
 
-                  <NameTextinformation>Time:</NameTextinformation>
-                  <Textinformation>{time?.times}</Textinformation>
-                </LinKForInformation>
-              </ItemInformation>
+                  <ItemInformation>
+                     <LinKForInformation onClick={(event) => onShowModal(_id, event)}>
 
-              <ItemInformation>
-                <LinKForInformation href={addressUrl} target="_ blank">
-                  <NameTextinformation>Address:</NameTextinformation>
-                  <Textinformation>{address}</Textinformation>
-                </LinKForInformation>
-              </ItemInformation>
+                        {visible &&workDays!== null && < ModalPosition >
+                           <ModalList> {workDays !== null && workDays.map(days =>
+                              <ModalItem key={days._id}>
+                                 <ModalNameDay ></ModalNameDay ><ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
+                              </ModalItem>)}
+                           </ModalList>
+                           
+                        </ModalPosition>}
 
-              <ItemInformation>
-                <LinKForInformation href={email}>
-                  <NameTextinformation>Email:</NameTextinformation>
-                  <Textinformation>{email}</Textinformation>
-                </LinKForInformation>
-              </ItemInformation>
+                        <NameTextinformation>Time:</NameTextinformation>
+                        <Textinformation>{workDays !== null && workDays !== [] ? '10:00-18:00' : 'day and night'}</Textinformation>
+                     </LinKForInformation>
+                  </ItemInformation>
 
-              <ItemInformation>
-                <LinKForInformation href={`tel: ${phone}`} target="_blank">
-                  Phone:
-                  {/* <NameTextinformation>Phone:</NameTextinformation> */}
-                  <Textinformation>{phone}</Textinformation>
-                </LinKForInformation>
-              </ItemInformation>
-            </ListInformation>
-          </WrapperInformation>
-        </WrapperForImgAndInformation>
-      </WrapperOurFriends>
-    )
-  );
-  return <>{contactList}</>;
-};
+                  <ItemInformation>
+                     <LinKForInformation href={addressUrl} target="_ blank">
+                        <NameTextinformation>Address:</NameTextinformation>
+                        <Textinformation>{address !== null ? address : "website only"}</Textinformation>
+                     </LinKForInformation>
+                  </ItemInformation>
+
+                  <ItemInformation>
+                     <LinKForInformation href={emailUrl} >
+                        <NameTextinformation>Email:</NameTextinformation>
+                        <Textinformation>{email ? email : "website only"}</Textinformation>
+                     </LinKForInformation>
+                  </ItemInformation>
+
+                  <ItemInformation>
+                     <LinKForInformation href={phoneUrl}>
+                        <NameTextinformation>Phone:</NameTextinformation>
+                        <Textinformation>{phone !== null ? phone : "email only"}</Textinformation>
+                     </LinKForInformation>
+                  </ItemInformation>
+
+               </ListInformation>
+            </WrapperInformation>
+
+         </WrapperForImgAndInformation>
+
+      </WrapperOurFriends>)
+   return (
+      <>{contactList}</>
+   )
+}
 
 export default FriendsItems;
+

@@ -3,6 +3,7 @@ import { Form } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { color, font } from 'shared/utils/mixin.styled';
+import { Link } from 'react-router-dom';
 
 export const FlexDivCss = styled.div`
   margin-top: 40px;
@@ -17,6 +18,10 @@ export const FlexDivCss = styled.div`
   @media screen and (min-width: 768px) {
     padding: 60px 75px;
   }
+`;
+
+export const RelativeDiv = styled.div`
+  position: relative;
 `;
 
 export const FormCss = styled(Form)`
@@ -82,6 +87,11 @@ export const ErrorText = styled.div`
 
 export const AnchorCss = styled.div`
   position: relative;
+  width: ${({ theme }) => theme.spacing(64)};
+
+  @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(114.5)};
+  }
 `;
 
 export const LabelCss = styled.label`
@@ -104,11 +114,17 @@ export const ButtonEye = styled(ReusableButton)`
   right: 0;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 export const AbsDivCss = styled.span`
   position: absolute;
   top: 20%;
-  right: 10%;
+  right: 14%;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    right: 8%;
+  }
 `;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
@@ -127,7 +143,7 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   }
 `;
 
-export const TextWrapCss = styled.p`
+export const TextWrapCss = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -143,4 +159,9 @@ export const TextCss = styled.p`
   font-family: 'Manrope';
   font-size: 12px;
   font-weight: 400;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.blue};
+  text-decoration: underline;
 `;

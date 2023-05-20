@@ -10,7 +10,7 @@ export const yellowBtnStyles = ({ colors }) => `
     :hover, :focus {
         padding: 10px 22px;
         color:${colors.white};
-        background-color: ${colors.yellow};
+        background: ${colors.yellow};
         border:none;
     }
 `;
