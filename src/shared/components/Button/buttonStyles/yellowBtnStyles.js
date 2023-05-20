@@ -1,18 +1,16 @@
 // тут прописуються стилі для ЖОВТОЇ кнопки!
 
-export const yellowBtnStylesFunc = (width, { colors }) => `
-    width: ${width};
+
+export const yellowBtnStyles = ({ colors }) => `
     padding: 8px 20px;
     border: 2px solid ${colors.yellow};
     color:${colors.yellow};
     background: ${colors.white};
 
-    transition: background-color 250ms ${({ theme }) =>
-      theme.utils.cubicBezier}, color 250ms ${({ theme }) =>
-  theme.utils.cubicBezier};
-
     :hover, :focus {
+        padding: 10px 22px;
         color:${colors.white};
         background-color: ${colors.yellow};
+        border:none;
     }
 `;
