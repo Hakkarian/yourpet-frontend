@@ -9,7 +9,7 @@ import {
   getUserNotices,
 } from 'redux/notices/notices-operations';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import ModalNotice from '../../ModalNotice/ModalNotice';
+import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
 
 import {
@@ -30,6 +30,7 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
+ 
 } from './NoticesCategoryItem.styled';
 import { ButtonTag } from 'shared/components/Button/button.styled';
 import clock from '../../../icons/clock.svg';
@@ -187,7 +188,8 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user })
         >
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
-        </ButtonTag>{' '}
+        </ButtonTag>
+        {' '}
       </DescriptionInner>
 
       <ButtonDiv>

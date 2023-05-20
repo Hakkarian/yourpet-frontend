@@ -79,6 +79,7 @@ export const Image = styled.img`
   @media screen and (min-width: 1024px) {
     width: 288px;
     height: 288px;
+    
   }
 `;
 
@@ -130,10 +131,13 @@ export const Title = styled.h3`
   font-size: 28;
   line-height: 1.35;
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 20px;
-  margin-left: 20px;
-  width: 231px;
-  height: 76px;
+
+  // _____________________________
+  // margin-bottom: 20px;
+  margin: 20px;
+  // margin-left: 20px;
+  // width: 231px;
+  // height: 76px;
   overflow: hidden;
 `;
 
@@ -155,6 +159,16 @@ export const DescriptionWrapper = styled.div`
 export const DescriptionInner = styled.div`
   width: 280px;
   height: 456px;
+  // _____________________________________________
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  button {
+    font-weight: 600;
+font-size: 16px;
+  }
 `;
 
 export const DescriptionTextContainer = styled.div`
@@ -185,6 +199,7 @@ export const ButtonDiv = styled.div`
   /* display: flex;
  flex-direction: column; */
 `;
+
 
 export const IconItem = styled.img`
   fill: transparent;

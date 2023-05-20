@@ -7,12 +7,12 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
+  overflow-y: skroll;
 
   background-color: rgba(43, 43, 43, 0.6);
   backdrop-filter: blur(10px);
@@ -46,6 +46,7 @@ display: flex;
 flex-direction: column;
 
 
+
 @media (min-width: 767px){
   
 }
@@ -69,6 +70,7 @@ export const ContainerBox = styled.div`
 
 @media (min-width: 767px) {
   display: flex;
+  margin-bottom: 28px;
   flex-direction: row;
 }
 `
@@ -220,7 +222,6 @@ margin-bottom: 12px;
 
 
 img {
-  margin-right: 0px;
   border-radius: 0px 0px 40px 40px;
   width: 240px;
   height: 240px;

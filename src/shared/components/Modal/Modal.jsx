@@ -24,8 +24,10 @@ const Modal = ({ onClose, children, shouModal }) => {
       if (e.code === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDowm);
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', handleKeyDowm);
+      document.body.style.overflow = '';
     };
   }, [onClose]);
 

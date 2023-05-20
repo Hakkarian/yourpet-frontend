@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import {
   Backdrop,
@@ -19,7 +20,7 @@ import {
   ImgBox,
 } from './ModalNotice.styled';
 
-import { ReactComponent as HeartIcon } from '../../icons/heart.svg';
+import { ReactComponent as HeartIcon } from '../../../icons/heart.svg';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
 
@@ -35,10 +36,11 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
     sex,
     location,
     title,
-    owner,
+    owner: {phone, email},
     breed,
     name,
     category,
+    comments
   } = noticeDeteils;
 
 
@@ -47,8 +49,11 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
       if (e.code === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDowm);
+    // body noscroll
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', handleKeyDowm);
+      document.body.style.overflow = '';
     };
   }, [onClose]);
 
@@ -98,13 +103,13 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
                   <tr>
                     <ColumOne>Email:</ColumOne>
                     <ColumTwo>
-                      <Link>{owner.email}</Link>
+                      <Link>{email}</Link>
                     </ColumTwo>
                   </tr>
                   <tr>
                     <ColumOne>Phone:</ColumOne>
                     <ColumTwo>
-                      <Link href="tel:{owner.phone}">{owner.phone}</Link>
+                      <Link href="tel:{owner.phone}">{phone}</Link>
                     </ColumTwo>
                   </tr>
                 </tbody>
@@ -113,7 +118,7 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
           </ContainerBox>
 
           <ContainerDiv>
-            <Coments>Coments:{noticeDeteils.coments}</Coments>
+            <Coments>Comments:{comments}</Coments>
 
             <BtnContainer>
               <Button className="btn" type="button" color="blue" width="256px">
@@ -131,5 +136,23 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
     modalRoot
   );
 };
+
+ModalNotice.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  noticeDeteils: PropTypes.shape({
+    category: PropTypes.string,
+    photo: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    sex: PropTypes.string.isRequired,
+    owner: PropTypes.shape({
+      phone: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+    }).isRequired,
+    comments: PropTypes.string.isRequired,
+    
+})};
 
 export default ModalNotice;

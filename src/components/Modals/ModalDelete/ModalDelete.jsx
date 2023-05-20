@@ -1,6 +1,6 @@
 import { ContainerButton, ModalTitle, ModalText, ColorSpan, Container  } from './ModalDelete.styled';
 import Button from 'shared/components/Button/Button';
-import {ReactComponent as DeleteIcon} from '../../icons/trash.svg';
+import {ReactComponent as DeleteIcon} from '../../../icons/trash.svg';
 import PropTypes from 'prop-types';
 
 const ModalDelete = ({ onClose, onClick }) => {
@@ -28,6 +28,7 @@ const ModalDelete = ({ onClose, onClick }) => {
 
 ModalDelete.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ModalDelete;
