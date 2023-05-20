@@ -1,18 +1,30 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from 'react-router-dom';
-import { login, register } from "redux/auth/auth-operations";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, register } from 'redux/auth/auth-operations';
 import * as Yup from 'yup';
-import { ErrorMessage, Field, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 
-import { AbsDivCss, AnchorCss, ButtonEye, ErrorText, FlexDivCss, FormCss, ReusableTitleCss, TextCss, TextWrapCss } from "./RegisterForm.styled";
+import FormError from 'pages/AddPetPage/AddPetForm/FormFields/FormError/FormError';
+
+import {
+  AbsDivCss,
+  AnchorCss,
+  ButtonEye,
+  FlexDivCss,
+  FormCss,
+  ReusableTitleCss,
+  TextCss,
+  TextWrapCss,
+  RelativeDiv,
+  StyledLink,
+} from './RegisterForm.styled';
 import Button from 'shared/components/Button/Button';
 
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 // import GoogleAuthentication from "components/GoogleAuthentication";
-
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
@@ -29,142 +41,173 @@ const validationSchema = Yup.object().shape({
     .required('Required'),
 });
 
-
 const RegisterForm = () => {
-    const [open, setOpen] = useState({
-      passwordEye: false,
-      confirmPasswordEye: false,
-    });
+  const [open, setOpen] = useState({
+    passwordEye: false,
+    confirmPasswordEye: false,
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-    const handleSubmit = (values, actions) => {
-      const { email, password } = values;
-      const payload = { email, password };
-      dispatch(register(payload)).then(() => {
+  const handleSubmit = (values, actions) => {
+    const { email, password } = values;
+    const payload = { email, password };
+    dispatch(register(payload))
+      .then(() => {
         dispatch(login(payload));
-        console.log('before')
+        console.log('before');
         navigate('/user');
         console.log('after');
-      }).catch(err => console.log(err))
+      })
+      .catch(err => console.log(err));
 
-      actions.resetForm();
-    };
-    return (
-      <FlexDivCss>
-        <ReusableTitleCss>Register</ReusableTitleCss>
-        <Formik
-          initialValues={{ email: '', password: '', confirmPassword: '' }}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, values, touched }) => {
-            return (
-              <FormCss>
-                <AnchorCss>
+    actions.resetForm();
+  };
+
+  return (
+    <FlexDivCss>
+      <ReusableTitleCss>Registration</ReusableTitleCss>
+      <Formik
+        initialValues={{ email: '', password: '', confirmPassword: '' }}
+        validationSchema={validationSchema}
+        validateOnBlur={false}
+        validateOnMount={false}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, values, touched, setFieldValue }) => {
+          return (
+            <FormCss>
+              <AnchorCss>
+                <RelativeDiv>
                   <Field
                     name="email"
                     type="email"
-                    className={errors.email ? 'input-error' : 'input-valid'}
+                    placeholder="Email"
+                    className={
+                      errors.email && touched.email
+                        ? 'input-error'
+                        : 'input-valid'
+                    }
                   />
-                  <ErrorText>
-                    <ErrorMessage name="email" />
-                  </ErrorText>
-                  {errors.email && (
-                    <AbsDivCss>
+                  {errors.email && values.email && (
+                    <AbsDivCss
+                      onClick={() => {
+                        setFieldValue('email', '');
+                      }}
+                    >
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </AnchorCss>
-                <AnchorCss>
-                  <Field
-                    className={errors.password ? 'input-error' : 'input-valid'}
-                    name="password"
-                    type={open.passwordEye ? 'text' : 'password'}
-                  />
-                  <ErrorText>
-                    <ErrorMessage name="password" />
-                  </ErrorText>
+                </RelativeDiv>
+                <FormError name="email" />
+              </AnchorCss>
 
-                  {open.passwordEye ? (
-                    <ButtonEye
-                      type="button"
-                      onClick={() => setOpen({ ...open, passwordEye: false })}
-                    >
-                      <EyeOpen width="24" height="24" />
-                    </ButtonEye>
-                  ) : (
-                    <ButtonEye
-                      type="button"
-                      onClick={() => setOpen({ ...open, passwordEye: true })}
-                    >
-                      <EyeClosed width="24" height="24" />
-                    </ButtonEye>
-                  )}
-                  {errors.password && (
-                    <AbsDivCss>
-                      <Cross width="24" height="24" stroke="#F43F5E" />
-                    </AbsDivCss>
-                  )}
-                </AnchorCss>
-                <AnchorCss>
+              <AnchorCss>
+                <RelativeDiv>
                   <Field
                     className={
-                      errors.confirmPassword ? 'input-error' : 'input-valid'
+                      errors.password && touched.password
+                        ? 'input-error'
+                        : 'input-valid'
+                    }
+                    name="password"
+                    placeholder="Password"
+                    type={open.passwordEye ? 'text' : 'password'}
+                  />
+                  {errors.password && values.password && (
+                    <AbsDivCss
+                      onClick={() => {
+                        setFieldValue('password', '');
+                      }}
+                    >
+                      <Cross width="24" height="24" stroke="#F43F5E" />
+                    </AbsDivCss>
+                  )}
+                </RelativeDiv>
+                <FormError name="password" />
+
+                {open.passwordEye ? (
+                  <ButtonEye
+                    type="button"
+                    onClick={() => setOpen({ ...open, passwordEye: false })}
+                  >
+                    <EyeOpen width="24" height="24" />
+                  </ButtonEye>
+                ) : (
+                  <ButtonEye
+                    type="button"
+                    onClick={() => setOpen({ ...open, passwordEye: true })}
+                  >
+                    <EyeClosed width="24" height="24" />
+                  </ButtonEye>
+                )}
+              </AnchorCss>
+
+              <AnchorCss>
+                <RelativeDiv>
+                  <Field
+                    className={
+                      errors.confirmPassword && touched.confirmPassword
+                        ? 'input-error'
+                        : 'input-valid'
                     }
                     name="confirmPassword"
                     type={open.confirmPasswordEye ? 'text' : 'password'}
+                    placeholder="Confirm password"
                   />
-                  <ErrorText>
-                    <ErrorMessage className="form-div" name="confirmPassword" />
-                  </ErrorText>
-                  {open.confirmPasswordEye ? (
-                    <ButtonEye
-                      type="button"
-                      onClick={() =>
-                        setOpen({ ...open, confirmPasswordEye: false })
-                      }
+                  {errors.confirmPassword && values.confirmPassword && (
+                    <AbsDivCss
+                      onClick={() => {
+                        setFieldValue('confirmPassword', '');
+                      }}
                     >
-                      <EyeOpen width="24" height="24" fill="none" />
-                    </ButtonEye>
-                  ) : (
-                    <ButtonEye
-                      type="button"
-                      onClick={() =>
-                        setOpen({ ...open, confirmPasswordEye: true })
-                      }
-                    >
-                      <EyeClosed
-                        width="24"
-                        height="24"
-                        stroke="#54ADFF"
-                        fill="none"
-                      />
-                    </ButtonEye>
-                  )}
-                  {errors.confirmPassword && (
-                    <AbsDivCss>
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
-                </AnchorCss>
-                <Button className="form-button" type="submit">
-                  Submit
-                </Button>
-                <TextWrapCss>
-                  <TextCss>Already have an account?</TextCss>
-                  <Link to="/login">Login</Link>
-                </TextWrapCss>
-                {/* <TextWrapCss>
+                </RelativeDiv>
+                <FormError name="confirmPassword" />
+                {open.confirmPasswordEye ? (
+                  <ButtonEye
+                    type="button"
+                    onClick={() =>
+                      setOpen({ ...open, confirmPasswordEye: false })
+                    }
+                  >
+                    <EyeOpen width="24" height="24" fill="none" />
+                  </ButtonEye>
+                ) : (
+                  <ButtonEye
+                    type="button"
+                    onClick={() =>
+                      setOpen({ ...open, confirmPasswordEye: true })
+                    }
+                  >
+                    <EyeClosed
+                      width="24"
+                      height="24"
+                      stroke="#54ADFF"
+                      fill="none"
+                    />
+                  </ButtonEye>
+                )}
+              </AnchorCss>
+              <Button className="form-button" type="submit">
+                Submit
+              </Button>
+              <TextWrapCss>
+                <TextCss>Already have an account?</TextCss>
+                <StyledLink to="/login">Login</StyledLink>
+              </TextWrapCss>
+              {/* <TextWrapCss>
                   <TextCss>Or sign in with Google!</TextCss>
                   <GoogleAuthentication />
                 </TextWrapCss> */}
-              </FormCss>
-            );
-          }}
-        </Formik>
-      </FlexDivCss>
-    );
-}
+            </FormCss>
+          );
+        }}
+      </Formik>
+    </FlexDivCss>
+  );
+};
 
 export default RegisterForm;
