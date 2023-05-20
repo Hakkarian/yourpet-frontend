@@ -7,8 +7,7 @@ import plus from '../../../icons/plus.svg';
 
 const AddNoticePetButton = () => {
   // const isLogined = useSelector(selectIsLoggedIn);
-
-    
+ 
   return (
     <>
     
