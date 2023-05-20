@@ -116,12 +116,12 @@ const isLoggedIn = useSelector(selectIsLoggedIn);
                   </ItemNav>
                 ))}
           </WrapperNav>
-          <MediaQuery minWidth={767}>
+          <MediaQuery minWidth={768}>
             <AddNoticePetButton />
           </MediaQuery>
      
     
-          <MediaQuery maxWidth={768}>
+          <MediaQuery maxWidth={767}>
             <AddPetButtonMobile />
           </MediaQuery>
     

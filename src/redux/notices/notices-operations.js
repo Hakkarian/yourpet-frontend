@@ -21,7 +21,7 @@ export const getNoticeByCategory = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/search/${category}?query=${query}`
+          `/notices/title/search/${category}?search=${query}`
         );
         return data;
       }
@@ -83,7 +83,7 @@ console.log(data);
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/favorite?query=${query}`
+          `/notices/title/favorite?search=${query}`
         );
 
         return data;
@@ -169,7 +169,7 @@ export const getUserNotices = createAsyncThunk(
 console.log(data);
         return data;
       } else {
-        const { data } = await instance.get(`/notices/title/own?query=${query}`);
+        const { data } = await instance.get(`/notices/title/own?search=${query}`);
 console.log(data);
         return data;
       }
@@ -179,14 +179,4 @@ console.log(data);
   }
 );
 
-// export const addNotices = createAsyncThunk(
-//   'notices/addNotice',
-//   async (data, { rejectWithValue }) => {
-//     try {
-//       const result = await api.addNotice(data);
-//       return result.notice;
-//     } catch ({ response }) {
-//       return rejectWithValue(response.data.message);
-//     }
-//   }
-// );
+

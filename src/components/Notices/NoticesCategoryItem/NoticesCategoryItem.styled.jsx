@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import { ReactComponent as Heart } from 'icons/heart.svg';
+import { ReactComponent as Trash } from 'icons/trash.svg';
+
 
 export const Item = styled.li`
   position: relative;
@@ -168,15 +171,34 @@ font-size: 16px;
   }
 `;
 
-export const DescriptionTextContainer = styled.div`
+// export const DescriptionTextContainer = styled.div`
+//   display: flex;
+//   justify-content: start;
+//   //  height: 100%;
+//   width: 100%;
+//   background: ${({ theme }) => theme.colors.lightblue};
+//   border-radius: 16px;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   svg path {
+//     stroke: ${({ theme }) => theme.colors.yellow};
+//   }
+  export const DescriptionTextContainer = styled.div`
   display: flex;
-  justify-content: start;
-  //  height: 100%;
-   width: 100%;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 80px;
+  height: 28px;
   background: ${({ theme }) => theme.colors.lightblue};
-  border-radius: 16px; 
-  svg path {
-    stroke: ${({ theme }) => theme.colors.yellow};
+  border-radius: 16px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
 
@@ -190,32 +212,66 @@ export const DescriptionText = styled.p`
   letter-spacing: 0.04em;
   line-height: 1.37;
   color: ${({ theme }) => theme.colors.black};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  [data-tooltip] {
+    position: relative; 
+  }
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position:absolute;
+    width: 100px; 
+    left: 0; top: 0; 
+    background: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.white};
+    padding: 0.5em; 
+       pointer-events: none; 
+    opacity: 0; 
+    transition: 1s; 
+   } 
+   [data-tooltip]:hover::after {
+    opacity: 1; 
+    top: 2em; 
+   }
 `;
 
 export const ButtonDiv = styled.div`
   position: absolute;
   bottom: 0;
   display: block;
-  /* display: flex;
+   /* display: flex;
  flex-direction: column; */
 `;
 
+export const Span = styled.span`
+`;
 
-export const IconItem = styled.img`
+export const HeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
   fill: transparent;
+
   path {
     stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
 
-export const IconItemPaw = styled.img`
-  opacity: 0;
-  &:hover,
-  &:focus {
-    fill: ${({ theme }) => theme.colors.white};
-    visibility: hidden;
-    background: ${({ theme }) => theme.colors.blue};
+export const FilledHeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
+  fill: ${({ theme }) => theme.colors.blue};
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
 
-export const Span = styled.span``;
+export const TrashIcon = styled(Trash)`
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
+`;
