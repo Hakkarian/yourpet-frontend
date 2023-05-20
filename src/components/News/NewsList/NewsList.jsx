@@ -5,6 +5,7 @@ import { NewsItem } from './NewsItem/NewsItem';
 import { List } from './NewsList.styled';
 
 export const NewsList = ({ news }) => {
+  console.log('news-->', news);
   const sortedNews = [...news].sort(
     (a, b) => Date.parse(b.date) - Date.parse(a.date)
   );

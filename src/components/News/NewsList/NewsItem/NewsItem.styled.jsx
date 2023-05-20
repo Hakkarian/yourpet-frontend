@@ -30,6 +30,9 @@ export const Item = styled.li`
 `;
 
 export const WrapImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   margin-bottom: ${({ theme }) => theme.spacing(4)};
   border-radius: ${({ theme }) => theme.spacing(5)};
@@ -41,9 +44,11 @@ export const Img = styled.img`
   object-fit: cover;
 `;
 export const Plug = styled(Notify)`
+  margin: 0 auto;
   width: 280px;
-  height: 280px;
+  height: 252px;
   fill: #54adff;
+  object-fit: cover;
 `;
 
 export const Wrap = styled.div`
