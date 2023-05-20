@@ -24,6 +24,7 @@ import AddPetButtonMobile  from '../AddPetButton/AddPetBtnMobile'
 // import { useToggle } from 'shared/hooks/useToggle';
 // import { toast } from 'react-toastify';
 // import ModalAddPet from 'components/Modals/ModalAddPet';
+// import Modal from 'shared/components/Modal';
 import MediaQuery from 'react-responsive';
 // import { useState } from 'react';
 // import { getFavorites } from 'redux/notices/notices-operations';
@@ -58,6 +59,7 @@ const authButtons = [
 const NoticesCategoriesNav = () => {
   // const { categoryName } = useParams();
 const isLoggedIn = useSelector(selectIsLoggedIn);
+// const { isOpen, open, close } = useToggle();
   // const [open1, setOpen1] = useState(false);
   // const error = useSelector(selectIsError);
 
@@ -90,7 +92,6 @@ const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <>
-      {/* {open1 && <ModalAddPet />} */}
       <NavStyle>
         <ListNav>
           <ContainerNav>
