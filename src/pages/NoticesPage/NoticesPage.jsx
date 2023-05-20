@@ -6,8 +6,8 @@ import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesC
 import { GlobalBox } from './NoticesPage.styled';
 import { useState, useEffect } from 'react';
 import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
-import { getNoticeByCategory } from 'redux/notices/notices-operations';
-import { selectTotalPages, selectIsError, selectIsLoading, selectNoticesByCategory } from 'redux/notices/notices-selector';
+// import { getNoticeByCategory } from 'redux/notices/notices-operations';
+import { selectTotalPages } from 'redux/notices/notices-selector';
 import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
@@ -15,59 +15,58 @@ import { PaginateComponent } from 'shared/components/Pagination/Pagination';
 const initialState = { search: '', page: 1 };
 
 const NoticesPage = () => {
-   const [searchValue, setSearchValue] = useState('');
-   const [, setSearchParams] = useSearchParams();
+  const [input, setInput] = useState('');
+  const [state, setState] = useState({ ...initialState });
+  const [searchValue, setSearchValue] = useState('');
+  const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-    const [state, setState] = useState({ ...initialState });
-    const { search, page } = state;
-    // const noticesItems = useSelector(selectNoticesByCategory);
-    // const isLoading = useSelector(selectIsLoading);
-    // const error = useSelector(selectIsError);
-    const pageQty = useSelector(selectTotalPages);
 
-   useEffect(() => {
-     dispatch(changeIsNoticeAdded());
-   }, [dispatch]);
+  const { search, page } = state;
+  const pageQty = useSelector(selectTotalPages);
 
-   const handlerSubmit = e => {
-     e.preventDefault();
-     setSearchParams({ query: state });
-     setSearchValue(state);
-   };
+  useEffect(() => {
+    dispatch(changeIsNoticeAdded());
+  }, [dispatch]);
 
-   const handlerReset = e => {
-     e.preventDefault();
-     setState('');
-     setSearchValue('');
-     setSearchParams({ query: '' });
-   };
+  const handlerSubmit = e => {
+    e.preventDefault();
+    setSearchParams({ query: input });
+    setSearchValue(input);
+  };
 
-   const handlerInput = e => {
-     setState(e.target.value);
-   };
+  const handlerReset = e => {
+    e.preventDefault();
+    setInput('');
+    setSearchValue('');
+    setSearchParams({ query: '' });
+  };
 
-return (
-  <GlobalBox>
-    <ReusableTitle>Find your favorite pet</ReusableTitle>
-    <NoticesSearch
-      value={state}
-      onChange={handlerInput}
-      onSubmit={handlerSubmit}
-      onReset={handlerReset}
-      searchValue={searchValue.trim()}
-    />
-    <NoticesCategoryList />
-    <Outlet />
+  const handlerInput = e => {
+    setInput(e.target.value);
+  };
 
-    <PaginateComponent
-      count={pageQty}
-      page={page}
-      onChange={(_, num) => {
-        setState({ search: search, page: num });
-      }}
-    />
-  </GlobalBox>
-);
+  return (
+    <GlobalBox>
+      <ReusableTitle>Find your favorite pet</ReusableTitle>
+      <NoticesSearch
+        value={input}
+        onChange={handlerInput}
+        onSubmit={handlerSubmit}
+        onReset={handlerReset}
+        searchValue={searchValue.trim()}
+      />
+      <NoticesCategoryList onUpdateStatus={handlerSubmit} />
+      <Outlet />
+
+      <PaginateComponent
+        count={pageQty}
+        page={page}
+        onChange={(_, num) => {
+          setState({ search: search, page: num });
+        }}
+      />
+    </GlobalBox>
+  );
 };
 
 export default NoticesPage;

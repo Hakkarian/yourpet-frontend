@@ -31,18 +31,17 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
- 
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
 // import { ReactComponent as Clock } from '../../../icons/clock.svg';
-import clock from '../../../icons/clock.svg';
-import female from '../../../icons/female.svg';
-import locationPet from '../../../icons/location-pet.svg';
-import male from '../../../icons/male.svg';
-import trash from '../../../icons/trash.svg';
+import clock from '../../../icons/Icons/clock.svg';
+import female from '../../../icons/Icons/female.svg';
+import locationPet from '../../../icons/Icons/locationPet.svg';
+import male from '../../../icons/Icons/male.svg';
+import trash from '../../../icons/Icons/trash.svg';
 import paw from '../../../icons/paw.svg';
-import heart from '../../../icons/heart.svg';
-import heartFill from '../../../icons/heartFill.svg';
+import heart from '../../../icons/Icons/heart.svg';
+import heartFill from '../../../icons/Icons/heartFill.svg';
 
 const categoryShelf = {
   sell: 'sell',
@@ -56,11 +55,11 @@ const NoticesCategoryItem = ({
   isOwner,
   categoryPet,
   user,
+  onUpdateStatus
 }) => {
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const isFavorites = useSelector(selectIsFavorite)
 
   let query = null;
 
@@ -108,22 +107,24 @@ const NoticesCategoryItem = ({
     }
     dispatch(addToFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
+      onUpdateStatus()
     });
 
     toast.success('Pet added to favorites.');
+   };
+
+  const removeFromFavorite = async () => {
+    if (!isLoggedIn) {
+      return toast.error(
+        'You need to authorize before removing pets from favorites.'
+      );
+    }
     dispatch(deleteFromFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-    })
-    toast.success('Pet removed from favorites.');   toggle();
-  };   
-
-  // const removeFromFavorite = async () => {
-  //   if (!isLoggedIn) {
-  //     return toast.error(
-  //       'You need to authorize before removing pets from favorites.'
-  //     );
-  //   }
-   
+      onUpdateStatus()
+    });
+    toast.success('Pet removed from favorites.');
+   };
 
   return (
     <Item key={_id}>
@@ -134,21 +135,21 @@ const NoticesCategoryItem = ({
           </ImageWrapper>
           <CategoryName>{category}</CategoryName>
 
-          {/* {!isFavorite && (
-            <SvgWrapper> */}
+          {!isFavorite && (
+            <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
-                
-   
-            {/* </SvgWrapper>
-          )} */}
-          {isFavorite ? (<IconItem src={heart} alt="heart" width="24" height="24" />) : (<IconItem src={heartFill} alt="heart" width="24" height="24" />)}
-            {/* <SvgWrapper> */}
-              {/* <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
-          
-            </RemoveFromFavoriteBtn> */}
-          </AddToFavoriteBtn>
-            {/* </SvgWrapper>
-          )} */}
+                       <IconItem src={heart} alt="heart" width="24" height="24" />
+              </AddToFavoriteBtn>
+            </SvgWrapper>
+          )}
+          {isFavorite && (
+            <SvgWrapper>
+              {' '}
+              <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
+                <IconItem src={heartFill} alt="heart" width="24" height="24" />
+              </RemoveFromFavoriteBtn>
+            </SvgWrapper>
+          )}
 
           <DescriptionWrapper>
             <DescriptionTextContainer>
@@ -161,8 +162,7 @@ const NoticesCategoryItem = ({
               <DescriptionText>{location}</DescriptionText>
             </DescriptionTextContainer>
             <DescriptionTextContainer>
-              {/* <Clock/> */}
-              <IconItem src={clock} alt="clock" width="24" height="24" />
+                        <IconItem src={clock} alt="clock" width="24" height="24" />
               <DescriptionText>
                 {age === 0 && 'less than 1 year'}
                 {age === 1 && `${age} year`}
@@ -187,7 +187,6 @@ const NoticesCategoryItem = ({
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
         </Button>
-
       </DescriptionInner>
 
       <ButtonDiv>
@@ -200,7 +199,7 @@ const NoticesCategoryItem = ({
         )}
         {isOwner && (
           <>
-            <Button onClick={toggle} delete Notice={handleDeleteClick}>
+            <Button onClick={toggle} deleteNotice={handleDeleteClick}>
               <IconItem src={trash} alt="trash" width="24" height="24" />
             </Button>
           </>
