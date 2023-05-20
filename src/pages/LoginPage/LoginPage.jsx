@@ -20,18 +20,6 @@ import ReusableButton from 'shared/components/ReusableButton';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { color, font } from 'shared/utils/mixin.styled';
 
-const validateShecma = Yup.object().shape({
-  email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string()
-    .min(6, 'Password must be at least 6 characters')
-    .max(16, 'Password must be less than 16 characters')
-    .matches(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,16}$/,
-      'Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
-    )
-    .required('Required'),
-});
-
 export const FlexDivCss = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
@@ -167,6 +155,19 @@ export const ErrorText = styled.div`
   font-size: 12px;
   ${font(null, 1.3, 500, '0.03em', 'red')}
 `;
+
+
+const validateShecma = Yup.object().shape({
+  email: Yup.string().email('Invalid email address').required('Required'),
+  password: Yup.string()
+    .min(6, 'Password must be at least 6 characters')
+    .max(16, 'Password must be less than 16 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,16})/,
+      'Password must contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
+    )
+    .required('Required'),
+});
 
 const LoginPage = () => {
   const [open, setOpen] = useState(false);
