@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import jwt_decode from 'jwt-decode';
-import { register } from 'redux/auth/auth-operations';
-import { useDispatch } from 'react-redux';
+// import React, { useEffect } from 'react'
+// import jwt_decode from 'jwt-decode';
+// import { register } from 'redux/auth/auth-operations';
+// import { useDispatch } from 'react-redux';
 
 const GoogleAuthentication = () => {
   //  const dispatch = useDispatch();

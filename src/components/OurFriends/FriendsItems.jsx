@@ -28,10 +28,6 @@ const FriendsItems = () => {
 
    const contactList = allFriends.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
       <WrapperOurFriends key={_id}>
-        <NameCompany href={url} target="_ blank">
-          {title}
-        </NameCompany>
-
          <NameCompany href={url} target="_ blank">{title.length < 15 ? title : "Company"}</NameCompany>
 
          <WrapperForImgAndInformation>
