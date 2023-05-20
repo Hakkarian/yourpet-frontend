@@ -10,8 +10,7 @@ import {
 } from 'redux/notices/notices-operations';
 import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-// import { selectIsFavorite } from 'redux/notices/notices-selector';
-import ModalNotice from '../../ModalNotice/ModalNotice';
+import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
 
 import {
@@ -32,6 +31,7 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
+ 
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
 // import { ReactComponent as Clock } from '../../../icons/clock.svg';
@@ -187,6 +187,7 @@ const NoticesCategoryItem = ({
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
         </Button>
+
       </DescriptionInner>
 
       <ButtonDiv>

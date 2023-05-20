@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ReactComponent as Notify } from '../../../../icons/plugnews.svg';
 
 export const Item = styled.li`
   width: 100%;
@@ -38,6 +39,11 @@ export const Img = styled.img`
   display: block;
   width: 100%;
   object-fit: cover;
+`;
+export const Plug = styled(Notify)`
+  width: 280px;
+  height: 280px;
+  fill: #54adff;
 `;
 
 export const Wrap = styled.div`
@@ -82,7 +88,7 @@ export const WrapBottom = styled.div`
 export const Date = styled.p`
   font-weight: 400;
   line-height: 1.37;
-  color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.grey};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -94,4 +100,9 @@ export const Link = styled.a`
   padding: 0;
   line-height: 1.37;
   color: ${({ theme }) => theme.colors.blue};
+  transition: transform 250ms ease-in-out, border 250ms ease-in-out;
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.grey};
+  }
 `;

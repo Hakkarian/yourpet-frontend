@@ -77,6 +77,7 @@ export const Image = styled.img`
   @media screen and (min-width: 1024px) {
     width: 288px;
     height: 288px;
+    
   }
 `;
 
@@ -154,6 +155,17 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const DescriptionInner = styled.div`
+  width: 280px;
+  height: 456px;
+   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  button {
+    font-weight: 600;
+font-size: 16px;
+  }
 `;
 
 export const DescriptionTextContainer = styled.div`
@@ -187,6 +199,7 @@ export const ButtonDiv = styled.div`
   /* display: flex;
  flex-direction: column; */
 `;
+
 
 export const IconItem = styled.img`
   fill: transparent;

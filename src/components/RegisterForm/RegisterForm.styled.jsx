@@ -140,4 +140,7 @@ export const TextWrapCss = styled.p`
 
 export const TextCss = styled.p`
   margin: 0;
+  font-family: 'Manrope';
+  font-size: 12px;
+  font-weight: 400;
 `;

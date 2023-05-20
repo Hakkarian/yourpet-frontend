@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
@@ -9,13 +9,12 @@ import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
-import ModalLogOut from 'components/ModalLogOut';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
-import ModalCongrats from 'components/ModalCongrats';
+import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -25,10 +24,11 @@ const UserPage = () => {
   useEffect(() => {
     const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
     if (!visitedBefore) {
-      setShowModal(true);
+      // setShowModal(true);
+      open();
       localStorage.setItem(`visitedBefore_${userId}`, true);
     }
-  }, [userId]);
+  }, [userId, open]);
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
@@ -36,7 +36,10 @@ const UserPage = () => {
   
   return (
   <>
-    { showModal && (<ModalCongrats setShowModal={setShowModal} />)}
+    {/* { showModal && (<ModalCongrats setShowModal={setShowModal} />)} */}
+    {isOpen && <Modal onClose={close}>
+            <ModalCongrats onClose={close}/>
+            </Modal>}
     <Container>
     <UserDiv>
       <Title>My information:</Title>
@@ -47,12 +50,12 @@ const UserPage = () => {
            email={email}
            phone={phone}
            city={city}/>
-        <Logout onClick={open} />
-        {isOpen && (
+        <Logout/>
+        {/* {isOpen && (
           <Modal onClose={close}>
             <ModalLogOut onClose={close}/>
           </Modal>
-        )}
+        )} */}
       </Wrap>
       <PetsData />
     </UserDiv>

@@ -17,7 +17,9 @@ import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import plus from '../../../icons/plus.svg';
 
 import { useToggle } from 'shared/hooks/useToggle';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
+import ModalAddPet from 'components/Modals/ModalAddPet';
+import { useState } from 'react';
 
 const buttons = [
   {
@@ -47,17 +49,20 @@ const authButtons = [
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const { open } = useToggle();
-  //  const dispatch = useDispatch();
+  const [open1, setOpen1] = useState(false);
+  
+    const {open} = useToggle();
 
   const openAddPet = () => {
-    if (isLoggedIn) {
-      open();
-    } else toast.error('You need to authorize in to access this page');
-  };
+      if (isLoggedIn) {
+        open();
+      } else   
+setOpen1(true)
+}
 
   return (
     <>
+      {open1 && <ModalAddPet />}
       <NavStyle>
         <ListNav>
           <ContainerNav>

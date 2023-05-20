@@ -5,6 +5,7 @@ import {
   Wrap,
   WrapImg,
   Img,
+  Plug,
   Title,
   Decsr,
   WrapBottom,
@@ -19,9 +20,18 @@ export const NewsItem = ({ imgUrl, title, text, date, url }) => {
   return (
     <Item>
       <WrapImg>
-        <Img src={imgUrl} alt={title} loading="lazy" width="280" height="252" />
+        {{ imgUrl } !== '' ? (
+          <Img
+            src={imgUrl}
+            alt={title}
+            loading="lazy"
+            width="280"
+            height="252"
+          />
+        ) : (
+          <Plug />
+        )}
       </WrapImg>
-
       <Wrap>
         <Title>{title}</Title>
 
