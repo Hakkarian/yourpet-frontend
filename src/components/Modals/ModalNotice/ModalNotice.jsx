@@ -49,8 +49,11 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
       if (e.code === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDowm);
+    // body noscroll
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', handleKeyDowm);
+      document.body.style.overflow = '';
     };
   }, [onClose]);
 
