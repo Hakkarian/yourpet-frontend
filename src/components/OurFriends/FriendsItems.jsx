@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectAllFriends } from "redux/friends/friends-selector"
+// import { useSelector } from 'react-redux';
+// import { selectAllFriends } from "redux/friends/friends-selector"
 import {
    WrapperOurFriends, NameCompany, WrapperForImgAndInformation, WrapperImage,
    LogoCompanyImg, WrapperInformation, ListInformation, ItemInformation, LinKForInformation,
@@ -9,7 +9,7 @@ import {
 } from "./FriendsItems.styled"
 
 const FriendsItems = ({friend}) => {
-   const [friendsState, setFriendState] = useState([...friend])
+   const [friendsState] = useState([...friend])
    const [visible, setVisible] = useState(false);
    // console.log("allFriends", friendsState)
 
