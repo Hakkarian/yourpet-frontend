@@ -9,11 +9,10 @@ import {
 
 } from "./FriendsItems.styled"
 
-const FriendsItems = () => {
-   // const [friendsState, setFriendState] = useState([])
+const FriendsItems = ({friend}) => {
+   const [friendsState, setFriendState] = useState([...friend])
    const [visible, setVisible] = useState(false);
-   const allFriends = useSelector(selectAllFriends)
-   // console.log("allFriends", allFriends)
+   // console.log("allFriends", friendsState)
 
    onkeydown = (evt) => {
       if (evt.key === "Escape") {
@@ -22,12 +21,11 @@ const FriendsItems = () => {
    }
 
    const onShowModal = (id, event) => {
-      console.log(event.currentTarget)
       setVisible(!visible)
+      // const all = friendsState.filter(friends=>friends._id===id)
    }
 
-
-   const contactList = allFriends.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
+   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
       <WrapperOurFriends key={_id}>
 
          <NameCompany href={url} target="_ blank">{title.length < 15 ? title : "Company"}</NameCompany>
@@ -45,7 +43,7 @@ const FriendsItems = () => {
                         {visible &&workDays!== null && < ModalPosition >
                            <ModalList> {workDays !== null && workDays.map(days =>
                               <ModalItem key={days._id}>
-                                 <ModalNameDay >TU</ModalNameDay ><ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
+                                 <ModalNameDay ></ModalNameDay ><ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
                               </ModalItem>)}
                            </ModalList>
                            
