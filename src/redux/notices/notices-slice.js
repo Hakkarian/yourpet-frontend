@@ -32,11 +32,22 @@ const noticesSlice = createSlice({
     changeIsNoticeAdded(state) {
       state.isNoticeAdded = false;
     },
+    setPage(state, action) {
+      state.page = action.payload;
+    },
+    setFavNotices(state, { payload }) {
+      state.favNotices = state.favNotices.filter(
+        notice => notice._id !== payload
+      );
+    },
+    setNotices(state, { payload }) {
+      state.items = state.items.filter(item => item._id !== payload);
+    },
   },
   extraReducers: builder => {
     builder
       .addCase(getNoticeByCategory.pending, state => {
-        state.isLoading = true;
+          state.isLoading = true;
         state.isError = null;
       })
       .addCase(getNoticeByCategory.fulfilled, (state, { payload }) => {
@@ -150,7 +161,7 @@ const noticesSlice = createSlice({
 });
 
 export default noticesSlice.reducer;
-export const { changeIsNoticeAdded } = noticesSlice.actions;
+export const {setPage, changeIsNoticeAdded, setNotices, setFavNotices } = noticesSlice.actions;
 
 //  .addCase(addPets.fulfilled, (state, { payload }) => {
 //         state.items.push(payload);

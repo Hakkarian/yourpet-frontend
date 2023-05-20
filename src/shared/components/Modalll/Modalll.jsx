@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { useEffect } from "react";
 
-import { BackdropDiv, ModalDiv } from "./modal.styled";
+import { BackdropDiv, ModalDiv } from "./modalll.styled";
 
 
 const modalRoot = document.querySelector('#modal-root');
@@ -13,7 +13,11 @@ const Modal = (props) => {
         if (e.code === 'Escape') toggleModal();
     };
         window.addEventListener('keydown', hendleKeydown);
-        return ()=> window.removeEventListener('keydown', hendleKeydown);
+        document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', hendleKeydown);
+      document.body.style.overflow = '';
+    };
     },[toggleModal]);
 
 

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import responsiveMixin from 'shared/utils/responsiveDesign';
 
 export const TitleSearch = styled.h2`
   font-style: normal;
@@ -10,47 +9,86 @@ export const TitleSearch = styled.h2`
   margin-top: 70px;
   margin-bottom: 28px;
   color: ${({ theme }) => theme.colors.black};
-  ${responsiveMixin('font-size', { xl: '48px' })}
-  ${responsiveMixin('margin-bottom', { xl: '40px' })}
-}
-  `;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 48px;
+    margin-bottom: 40px;
+  }
+`;
 
 export const FormSearch = styled.form`
   position: relative;
   margin-top: 42px;
   margin-right: auto;
   margin-left: auto;
- ${responsiveMixin('width', { sm: '280px', md: '492px', xl: '608px' })}
+  width: 280px;
+  @media screen and (min-width: 768px) {
+    width: 492px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 608px;
   }
 `;
 
 export const InputSearch = styled.input`
-  width: 100%;
+  // width: 100%;
+  // box-shadow: ${({ theme }) => theme.shadow.default};
+  // &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
+  // border-radius: 40px;
+  // border: 1px solid transparent;
+  // padding:8px 20px;
+  // box-sizing: border-box;
+  // outline:none;
+
+  //   @media screen and (min-width: 768px) {
+  //   width:492px;
+  //   height:40px;}
+
+  //   @media screen and (min-width: 1024px) {
+  //   width:608px;
+  //   height:44px;}
+
+
+ width: 100%;
+  height: 44px;
   box-shadow: ${({ theme }) => theme.shadow.default};
-  &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 40px;
   border: 1px solid transparent;
-  padding:8px 20px;
+  padding: 8px 20px;
   box-sizing: border-box;
-  outline:none;
-
-  ${responsiveMixin('width', { md: '492px', xl: '608px' })}
-  ${responsiveMixin('height', { sm: '40px', md: '44px', xl: '44px' })}
+  outline: none;
+  &::placeholder {
+    font-size: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 492px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 608px;
+    &:: placeholder {
+      font-size: 20px;
     }
-`;
+  }`;
 
 export const ButtonIcon = styled.button`
   position: absolute;
   padding: 12px 14px;
-  top: 84px;
+  top: 54px;
   right: 12px;
   background-color: transparent;
   border: none;
   transition: color 250ms linear;
   cursor: pointer;
 
-  ${responsiveMixin('top', { md: '57px', xl: '105px' })}
-  ${responsiveMixin('right', { md: '15px' })}
+  @media screen and (min-width: 768px) {
+    top: 57px;
+    right: 15px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: 105px;
+  }
 `;
 
 export const IconSearch = styled.img`
@@ -58,5 +96,5 @@ export const IconSearch = styled.img`
 `;
 
 export const IconSearchDelete = styled.img`
-  fill: ${({ theme }) => theme.colors.blue};
+  fill: ${({ theme }) => theme.colors.yellow};
 `;
