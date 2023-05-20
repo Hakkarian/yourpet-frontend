@@ -32,23 +32,44 @@ export const FormSearch = styled.form`
 `;
 
 export const InputSearch = styled.input`
-  width: 100%;
+  // width: 100%;
+  // box-shadow: ${({ theme }) => theme.shadow.default};
+  // &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
+  // border-radius: 40px;
+  // border: 1px solid transparent;
+  // padding:8px 20px;
+  // box-sizing: border-box;
+  // outline:none;
+
+  //   @media screen and (min-width: 768px) {
+  //   width:492px;
+  //   height:40px;}
+
+  //   @media screen and (min-width: 1024px) {
+  //   width:608px;
+  //   height:44px;}
+
+
+ width: 100%;
+  height: 44px;
   box-shadow: ${({ theme }) => theme.shadow.default};
-  &: focus:  box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 40px;
   border: 1px solid transparent;
-  padding:8px 20px;
+  padding: 8px 20px;
   box-sizing: border-box;
-  outline:none;
-
-    @media screen and (min-width: 768px) {
-    width:492px;
-    height:40px;}
-
-    @media screen and (min-width: 1024px) {
-    width:608px;
-    height:44px;}
-`;
+  outline: none;
+  &::placeholder {
+    font-size: 14px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 492px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 608px;
+    &:: placeholder {
+      font-size: 20px;
+    }
+  }`;
 
 export const ButtonIcon = styled.button`
   position: absolute;

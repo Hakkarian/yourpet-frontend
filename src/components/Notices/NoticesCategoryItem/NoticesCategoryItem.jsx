@@ -31,9 +31,10 @@ import {
   Span,
   CardContainer,
   IconItemPaw,
-  DescriptionInner
+  DescriptionInner,
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
+// import { ReactComponent as Clock } from '../../../icons/clock.svg';
 import clock from '../../../icons/clock.svg';
 import female from '../../../icons/female.svg';
 import locationPet from '../../../icons/location-pet.svg';
@@ -59,6 +60,7 @@ const NoticesCategoryItem = ({
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isFavorites = useSelector(selectIsFavorite)
 
   let query = null;
 
@@ -109,20 +111,19 @@ const NoticesCategoryItem = ({
     });
 
     toast.success('Pet added to favorites.');
-  };
-
-  const removeFromFavorite = async () => {
-    if (!isLoggedIn) {
-      return toast.error(
-        'You need to authorize before removing pets from favorites.'
-      );
-    }
     dispatch(deleteFromFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-    });
+    })
+    toast.success('Pet removed from favorites.');   toggle();
+  };   
 
-    toast.success('Pet removed from favorites.');
-  };
+  // const removeFromFavorite = async () => {
+  //   if (!isLoggedIn) {
+  //     return toast.error(
+  //       'You need to authorize before removing pets from favorites.'
+  //     );
+  //   }
+   
 
   return (
     <Item key={_id}>
@@ -133,21 +134,21 @@ const NoticesCategoryItem = ({
           </ImageWrapper>
           <CategoryName>{category}</CategoryName>
 
-          {!isFavorite && (
-            <SvgWrapper>
+          {/* {!isFavorite && (
+            <SvgWrapper> */}
               <AddToFavoriteBtn onClick={addToFavorite}>
-                <IconItem src={heart} alt="heart" width="24" height="24" />
-              </AddToFavoriteBtn>
-            </SvgWrapper>
-          )}
-          {isFavorite && (
-            <SvgWrapper>
-              <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
-                {' '}
-                <IconItem src={heartFill} alt="heart" width="24" height="24" />
-              </RemoveFromFavoriteBtn>
-            </SvgWrapper>
-          )}
+                
+   
+            {/* </SvgWrapper>
+          )} */}
+          {isFavorite ? (<IconItem src={heart} alt="heart" width="24" height="24" />) : (<IconItem src={heartFill} alt="heart" width="24" height="24" />)}
+            {/* <SvgWrapper> */}
+              {/* <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
+          
+            </RemoveFromFavoriteBtn> */}
+          </AddToFavoriteBtn>
+            {/* </SvgWrapper>
+          )} */}
 
           <DescriptionWrapper>
             <DescriptionTextContainer>
@@ -160,6 +161,7 @@ const NoticesCategoryItem = ({
               <DescriptionText>{location}</DescriptionText>
             </DescriptionTextContainer>
             <DescriptionTextContainer>
+              {/* <Clock/> */}
               <IconItem src={clock} alt="clock" width="24" height="24" />
               <DescriptionText>
                 {age === 0 && 'less than 1 year'}
@@ -181,19 +183,20 @@ const NoticesCategoryItem = ({
         </CardContainer>
         <Title>{title}</Title>
 
-        <Button
-          type="button"
-          onClick={open}
-          margin="0 16px 24px 16px"
-          width="248px"
-        >
+        <Button type="button" onClick={open} width="248px">
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
         </Button>
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice userDeteils={user} noticeDeteils={notice} onClose={close} />}
+        {isOpen && (
+          <ModalNotice
+            userDeteils={user}
+            noticeDeteils={notice}
+            onClose={close}
+          />
+        )}
         {isOwner && (
           <>
             <Button onClick={toggle} delete Notice={handleDeleteClick}>

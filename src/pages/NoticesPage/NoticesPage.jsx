@@ -1,109 +1,73 @@
 import React from 'react';
 import { Outlet, useSearchParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Container } from 'shared/components/Container/Container.styled';
 import NoticesSearch from 'components/Notices/NoticesSearch';
 import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesCategoryList';
-import { GlobalBox, Wrapper } from './NoticesPage.styled';
+import { GlobalBox } from './NoticesPage.styled';
 import { useState, useEffect } from 'react';
 import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
-import { selectTotalPages } from 'redux/notices/notices-selector';
+import { getNoticeByCategory } from 'redux/notices/notices-operations';
+import { selectTotalPages, selectIsError, selectIsLoading, selectNoticesByCategory } from 'redux/notices/notices-selector';
 import { useDispatch } from 'react-redux';
-import { Box, Pagination, Stack } from '@mui/material';
-import MediaQuery from 'react-responsive';
+import ReusableTitle from 'shared/components/ReusableTitle';
+import { PaginateComponent } from 'shared/components/Pagination/Pagination';
 
+const initialState = { search: '', page: 1 };
 
 const NoticesPage = () => {
-  const [input, setInput] = useState('');
-  const [searchValue, setSearchValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+   const [searchValue, setSearchValue] = useState('');
+   const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
+    const [state, setState] = useState({ ...initialState });
+    const { search, page } = state;
+    // const noticesItems = useSelector(selectNoticesByCategory);
+    // const isLoading = useSelector(selectIsLoading);
+    // const error = useSelector(selectIsError);
+    const pageQty = useSelector(selectTotalPages);
 
-  const page = Number(searchParams.get('page')) || 1;
-  const search = searchParams.get('search') ?? '';
-  const pageQty = useSelector(selectTotalPages);
+   useEffect(() => {
+     dispatch(changeIsNoticeAdded());
+   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(changeIsNoticeAdded({ page, search }));
-  }, [dispatch, page, search]);
+   const handlerSubmit = e => {
+     e.preventDefault();
+     setSearchParams({ query: state });
+     setSearchValue(state);
+   };
 
-  const handlerSubmit = e => {
-    e.preventDefault();
-    setSearchParams({ query: input });
-    setSearchValue(input);
-  };
+   const handlerReset = e => {
+     e.preventDefault();
+     setState('');
+     setSearchValue('');
+     setSearchParams({ query: '' });
+   };
 
-  const handlerReset = e => {
-    e.preventDefault();
-    setInput('');
-    setSearchValue('');
-    setSearchParams({ query: '' });
-  };
+   const handlerInput = e => {
+     setState(e.target.value);
+   };
 
-  const handlerInput = e => {
-    setInput(e.target.value);
-  };
+return (
+  <GlobalBox>
+    <ReusableTitle>Find your favorite pet</ReusableTitle>
+    <NoticesSearch
+      value={state}
+      onChange={handlerInput}
+      onSubmit={handlerSubmit}
+      onReset={handlerReset}
+      searchValue={searchValue.trim()}
+    />
+    <NoticesCategoryList />
+    <Outlet />
 
-  return (
-    <GlobalBox>
-      <Container>
-        <Wrapper>
-          <NoticesSearch
-            value={input}
-            onChange={handlerInput}
-            onSubmit={handlerSubmit}
-            onReset={handlerReset}
-            searchValue={searchValue.trim()}
-          />
-          <NoticesCategoryList />
-        </Wrapper>
-        <Outlet />
-
-           <MediaQuery maxWidth={767}>
-            <Box display="flex" justifyContent="center" pb="20px" pt="30px">
-              <Stack spacing={2}>
-                {!!pageQty && (
-                  <Pagination
-                    count={pageQty}
-                    page={page}
-                    onChange={(_, num) => {
-                      setSearchParams({ page: num, search });
-                    }}
-                    showFirstButton={false}
-                    showLastButton={false}
-                    hidePrevButton={true}
-                    hideNextButton={true}
-                    color="primary"
-                  />
-                )}
-              </Stack>
-            </Box>
-          </MediaQuery>
-
-          <MediaQuery minWidth={768}>
-            <Box display="flex" justifyContent="center" pb="60px" pt="60px">
-              <Stack spacing={2}>
-                {!!pageQty && (
-                  <Pagination
-                    count={pageQty}
-                    page={page}
-                    onChange={(_, num) => {
-                      setSearchParams({ page: num, search });
-                    }}
-                    showFirstButton={true}
-                    showLastButton={true}
-                    hidePrevButton={false}
-                    hideNextButton={false}
-                    color="primary"
-                  />
-                )}
-              </Stack>
-            </Box>
-          </MediaQuery>
-
-      </Container>
-    </GlobalBox>
-  );
+    <PaginateComponent
+      count={pageQty}
+      page={page}
+      onChange={(_, num) => {
+        setState({ search: search, page: num });
+      }}
+    />
+  </GlobalBox>
+);
 };
 
 export default NoticesPage;

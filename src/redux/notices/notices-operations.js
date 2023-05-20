@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import * as api from 'shared/services/notices-api';
 
-// import { instance } from 'shared/services/auth-api';
+import { instance } from 'shared/services/auth-api';
 
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
+// const instance = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL,
+// });
 
 // отримання оголошень по категоріях
 export const getNoticeByCategory = createAsyncThunk(

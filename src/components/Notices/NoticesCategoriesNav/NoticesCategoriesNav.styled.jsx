@@ -78,7 +78,7 @@ export const WrapperNav = styled.div`
 `;
 
 export const BoxNav = styled.div`
-  position: relative;
+  // position: relative;
 
   padding-top: 28px;
 
@@ -96,6 +96,9 @@ export const AddPetButton = styled(NavLink)`
 
 export const AddPetButtonWrp = styled.button`
   position: fixed;
+  right:0;
+  // bottom:5px;
+  top:0;
   z-index: 1;
 
   width: 80px;
@@ -105,13 +108,13 @@ export const AddPetButtonWrp = styled.button`
   padding: 0;
   background: ${({ theme }) => theme.colors.blue};
   min-width: 44px;
-  transform: translateX(217%) translateY(-55%);
-  bottom: 2vh;
+  // transform: translateX(217%) translateY(-55%);
+  // bottom: 2vh;
 
   transition: normal;
 
   color: ${({ theme }) => theme.colors.white};
-  svg puth {
+  svg path {
     stroke: ${({ theme }) => theme.colors.white};
 
     &:hover,

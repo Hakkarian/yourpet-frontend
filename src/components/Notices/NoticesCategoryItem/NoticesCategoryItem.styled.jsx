@@ -149,6 +149,8 @@ export const DescriptionWrapper = styled.div`
   align-items: center;
   padding: 2px 4px;
   gap: 4px;
+ 
+
 `;
 
 export const DescriptionInner = styled.div`
@@ -160,7 +162,10 @@ export const DescriptionTextContainer = styled.div`
   //  height: 100%;
    width: 100%;
   background: ${({ theme }) => theme.colors.lightblue};
-  border-radius: 16px;
+  border-radius: 16px; 
+  svg path {
+    stroke: ${({ theme }) => theme.colors.yellow};
+  }
 `;
 
 export const DescriptionText = styled.p`
@@ -184,9 +189,8 @@ export const ButtonDiv = styled.div`
 `;
 
 export const IconItem = styled.img`
-  fill: ${({ theme }) => theme.colors.blue};
-  colors: ${({ theme }) => theme.colors.blue};
-   puth {
+  fill: transparent;
+  path {
     stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
