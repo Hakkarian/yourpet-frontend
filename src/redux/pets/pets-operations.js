@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 import * as api from 'shared/services/pets-api';
 
@@ -20,9 +21,17 @@ export const addPets = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await api.addPet(data);
+      toast('Your little cutie has been added succesfully :3', {
+        icon: '🐶',
+        style: {
+          borderRadius: '10px',
+          background: 'darkgreen',
+          color: '#fff',
+        },
+      });
       return result.newPet;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -32,6 +41,14 @@ export const deletePets = createAsyncThunk(
   async (petsId, { rejectWithValue }) => {
     try {
       const result = await axios.delete(`/pets/${petsId}`);
+      toast('Your pet has been deleted succesfully.', {
+        icon: '🙈',
+        style: {
+          borderRadius: '10px',
+          background: 'darkred',
+          color: '#fff',
+        },
+      });
       return result.data;
     } catch ({ response }) {
       return rejectWithValue(response.data.message);

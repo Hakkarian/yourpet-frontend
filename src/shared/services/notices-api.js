@@ -45,4 +45,6 @@ export const getNoticesByCategory = async (category, page, query) => {
     toast.error(error.message);
   }
 };
- 
+
+
+

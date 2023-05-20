@@ -7,4 +7,5 @@ export const useToggle = () => {
     const toggle = () => setIsOpen(isOpen => !isOpen);
   
     return { isOpen, open, close, toggle };
+    // return { isOpen, setIsOpen, close, toggle}
   };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login, register } from "redux/auth/auth-operations";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Formik } from 'formik';
@@ -11,6 +11,7 @@ import Button from 'shared/components/Button/Button';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+// import GoogleAuthentication from "components/GoogleAuthentication";
 
 
 const validationSchema = Yup.object().shape({
@@ -34,13 +35,19 @@ const RegisterForm = () => {
       passwordEye: false,
       confirmPasswordEye: false,
     });
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
     const handleSubmit = (values, actions) => {
       const { email, password } = values;
       const payload = { email, password };
-      dispatch(register(payload));
-      dispatch(login(payload));
+      dispatch(register(payload)).then(() => {
+        dispatch(login(payload));
+        console.log('before')
+        navigate('/user');
+        console.log('after');
+      }).catch(err => console.log(err))
+
       actions.resetForm();
     };
     return (
@@ -127,7 +134,12 @@ const RegisterForm = () => {
                         setOpen({ ...open, confirmPasswordEye: true })
                       }
                     >
-                      <EyeClosed width="24" height="24" stroke="#54ADFF" fill="none" />
+                      <EyeClosed
+                        width="24"
+                        height="24"
+                        stroke="#54ADFF"
+                        fill="none"
+                      />
                     </ButtonEye>
                   )}
                   {errors.confirmPassword && (
@@ -143,6 +155,10 @@ const RegisterForm = () => {
                   <TextCss>Already have an account?</TextCss>
                   <Link to="/login">Login</Link>
                 </TextWrapCss>
+                {/* <TextWrapCss>
+                  <TextCss>Or sign in with Google!</TextCss>
+                  <GoogleAuthentication />
+                </TextWrapCss> */}
               </FormCss>
             );
           }}

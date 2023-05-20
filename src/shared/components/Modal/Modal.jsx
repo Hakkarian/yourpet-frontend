@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 import {
   Backdrop,
@@ -23,8 +24,10 @@ const Modal = ({ onClose, children, shouModal }) => {
       if (e.code === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDowm);
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', handleKeyDowm);
+      document.body.style.overflow = '';
     };
   }, [onClose]);
 
@@ -46,6 +49,11 @@ const Modal = ({ onClose, children, shouModal }) => {
     </Backdrop>,
     modalRoot
   );
+};
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Modal;

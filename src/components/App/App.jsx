@@ -6,9 +6,9 @@ import { useAuth } from 'shared/hooks/useAuth';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { lazy, useEffect } from 'react';
 import { Loader } from 'components/Loader';
+import { Toaster } from 'react-hot-toast';
 import PrivateView from 'views/PrivateView';
 import RestrictedView from 'views/RestrictedView';
-import { Toaster } from 'react-hot-toast';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -24,8 +24,6 @@ const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
 
-  // const isLogin = useSelector(selectIsLoggedIn)
-
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
@@ -35,8 +33,10 @@ const App = () => {
   return isRefreshing ? (
     <Loader />
   ) : (
-      <>
-        <div><Toaster /></div>
+    <>
+      <div>
+        <Toaster />
+      </div>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
@@ -53,7 +53,7 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
           </Route>
           <Route element={<PrivateView />}>
-            <Route path="/user" element={<UserPage />} />
+          <Route path="/user" element={<UserPage />} />
           </Route>
           <Route path="*" element={<ErrorPage />} />
         </Route>

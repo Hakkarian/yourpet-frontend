@@ -5,11 +5,12 @@ import FriendsItems from '../../components/OurFriends/FriendsItems';
 import { OurFriend, Cointainer, ListOurFriends } from "./OurFriendsPage.styled"
 
 const OurFriendsPage = () => {
-
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchFriends());
    }, [dispatch]);
+
 
   return (
     <>

@@ -3,15 +3,15 @@ import { toast } from 'react-toastify';
 
 import {
   getNoticeByCategory,
-  getOneNotice,
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
   getUserNotices,
 } from 'redux/notices/notices-operations';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import ModalNotice from '../../ModalNotice/ModalNotice';
+import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
+
 import {
   Item,
   ImageWrapper,
@@ -30,6 +30,7 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
+ 
 } from './NoticesCategoryItem.styled';
 import { ButtonTag } from 'shared/components/Button/button.styled';
 import clock from '../../../icons/clock.svg';
@@ -46,10 +47,13 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
+const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user }) => {
   const { photo, birthday, sex, location, title, id, category } = notice;
+  
+ 
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const { isOpen, open, close } = useToggle();
   // const [isModalOpen, setIsModalOpen] = useState(false);
   let query = null;
 
@@ -109,10 +113,10 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
     toast.success('Pet removed from favorites.');
   };
 
-  const onChangeOpenModal = () => {
-    dispatch(getOneNotice(id));
-    open();
-  };
+  // const onChangeOpenModal = () => {
+  //   dispatch(getOneNotice(id));
+  //   open();
+  // };
 
   // const toggleModal = () => {
   //   setIsModalOpen(prev => !prev);
@@ -175,17 +179,21 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         </CardContainer>
         <Title>{title}</Title>
         <ButtonTag
-          onClick={onChangeOpenModal}
+        type="button"
+        // onClick={() => onClick(open)}
+        onClick={open}
+          // onClick={onChangeOpenModal}
           margin="20px 16px 24px 16px"
           width="248px"
         >
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
-        </ButtonTag>{' '}
+        </ButtonTag>
+        {' '}
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice onCloseModal={close} />}
+        {isOpen && <ModalNotice userDeteils={user} noticeDeteils={notice} onClose={close} />}
 
         {isOwner && (
           <>
