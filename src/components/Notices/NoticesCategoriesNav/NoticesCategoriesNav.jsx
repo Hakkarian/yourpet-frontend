@@ -9,15 +9,15 @@ import {
   BoxNav,
   AddPetButton,
   Span,
-  IconAddPet, AddPetButtonWrp
+  IconAddPet,
+  AddPetButtonWrp,
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import plus from '../../../icons/plus.svg';
 
-import { useToggle } from 'shared/hooks/useToggle';
+
 // import { toast } from 'react-toastify';
-import ModalAddPet from 'components/Modals/ModalAddPet';
-import { useState } from 'react';
+
 
 const buttons = [
   {
@@ -47,20 +47,9 @@ const authButtons = [
 
 const NoticesCategoriesNav = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const [open1, setOpen1] = useState(false);
-  
-    const {open} = useToggle();
-
-  const openAddPet = () => {
-      if (isLoggedIn) {
-        open();
-      } else   
-setOpen1(true)
-}
 
   return (
     <>
-      {open1 && <ModalAddPet />}
       <NavStyle>
         <ListNav>
           <ContainerNav>
@@ -82,10 +71,11 @@ setOpen1(true)
                 </ItemNav>
               ))}
           </WrapperNav>
-          <BoxNav><AddPetButtonWrp onClick={openAddPet}>
-            <AddPetButton to={'/add-pet'} ></AddPetButton >
-              <Span>Add pet</Span>
-              <IconAddPet src={plus} alt="add-pet"/>
+          <BoxNav>
+            <AddPetButtonWrp>
+            <AddPetButton to={'/add-pet'}></AddPetButton >
+            <Span>Add pet</Span>
+            <IconAddPet src={plus} alt="add-pet"/>
             </AddPetButtonWrp>
           </BoxNav>
         </ListNav>
@@ -95,3 +85,5 @@ setOpen1(true)
 };
 
 export default NoticesCategoriesNav;
+
+

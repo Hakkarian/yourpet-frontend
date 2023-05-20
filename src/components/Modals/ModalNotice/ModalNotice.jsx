@@ -103,13 +103,13 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
                   <tr>
                     <ColumOne>Email:</ColumOne>
                     <ColumTwo>
-                      <Link>{email}</Link>
+                      <Link href="mailto:{email}">{email}</Link>
                     </ColumTwo>
                   </tr>
                   <tr>
                     <ColumOne>Phone:</ColumOne>
                     <ColumTwo>
-                      <Link href="tel:{owner.phone}">{phone}</Link>
+                      <Link href="tel:{phone}">{phone}</Link>
                     </ColumTwo>
                   </tr>
                 </tbody>

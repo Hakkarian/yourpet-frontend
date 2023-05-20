@@ -255,3 +255,12 @@ p {
 font-size: 14px;
 }
 `
+
+// export const PawIcon = styled(Paw)`
+//   width: ${({ theme }) => theme.spacing(6)};
+//   height: ${({ theme }) => theme.spacing(6)};
+//   fill: ${({ theme }) => theme.colors.white};
+//   margin-left: ${({ theme }) => theme.spacing(3)};
+// `;
+
+// перед цим import { ReactComponent as Paw } from 'icons/paw.svg';

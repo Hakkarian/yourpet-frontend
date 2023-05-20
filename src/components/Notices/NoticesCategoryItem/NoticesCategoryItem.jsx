@@ -30,7 +30,6 @@ import {
   CardContainer,
   IconItemPaw,
   DescriptionInner,
- 
 } from './NoticesCategoryItem.styled';
 import { ButtonTag } from 'shared/components/Button/button.styled';
 import clock from '../../../icons/clock.svg';
@@ -47,14 +46,11 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user }) => {
+const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
   const { photo, birthday, sex, location, title, id, category } = notice;
-  
- 
+
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const { isOpen, open, close } = useToggle();
-  // const [isModalOpen, setIsModalOpen] = useState(false);
   let query = null;
 
   const getAge = utcDate => {
@@ -113,15 +109,6 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user })
     toast.success('Pet removed from favorites.');
   };
 
-  // const onChangeOpenModal = () => {
-  //   dispatch(getOneNotice(id));
-  //   open();
-  // };
-
-  // const toggleModal = () => {
-  //   setIsModalOpen(prev => !prev);
-  // };
-
   return (
     <Item key={id}>
       <DescriptionInner>
@@ -179,21 +166,18 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet, user })
         </CardContainer>
         <Title>{title}</Title>
         <ButtonTag
-        type="button"
-        // onClick={() => onClick(open)}
-        onClick={open}
-          // onClick={onChangeOpenModal}
+          type="button"
+          onClick={open}
           margin="20px 16px 24px 16px"
           width="248px"
         >
           <Span> Learn more </Span>
           <IconItemPaw src={paw} alt="paw" width="24" height="24" />
-        </ButtonTag>
-        {' '}
+        </ButtonTag>{' '}
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice userDeteils={user} noticeDeteils={notice} onClose={close} />}
+        {isOpen && <ModalNotice noticeDeteils={notice} onClose={close} />}
 
         {isOwner && (
           <>
