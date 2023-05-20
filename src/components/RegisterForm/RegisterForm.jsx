@@ -11,6 +11,7 @@ import Button from 'shared/components/Button/Button';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
+// import GoogleAuthentication from "components/GoogleAuthentication";
 
 
 const validationSchema = Yup.object().shape({
@@ -133,7 +134,12 @@ const RegisterForm = () => {
                         setOpen({ ...open, confirmPasswordEye: true })
                       }
                     >
-                      <EyeClosed width="24" height="24" stroke="#54ADFF" fill="none" />
+                      <EyeClosed
+                        width="24"
+                        height="24"
+                        stroke="#54ADFF"
+                        fill="none"
+                      />
                     </ButtonEye>
                   )}
                   {errors.confirmPassword && (
@@ -149,6 +155,10 @@ const RegisterForm = () => {
                   <TextCss>Already have an account?</TextCss>
                   <Link to="/login">Login</Link>
                 </TextWrapCss>
+                {/* <TextWrapCss>
+                  <TextCss>Or sign in with Google!</TextCss>
+                  <GoogleAuthentication />
+                </TextWrapCss> */}
               </FormCss>
             );
           }}
