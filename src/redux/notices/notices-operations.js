@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import * as api from 'shared/services/notices-api';
 
-// import { instance } from 'shared/services/auth-api';
+import { instance } from 'shared/services/auth-api';
 
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-});
+// const instance = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL,
+// });
 
 // отримання оголошень по категоріях
 export const getNoticeByCategory = createAsyncThunk(
@@ -62,6 +62,7 @@ export const addToFavorites = createAsyncThunk(
           color: '#fff',
         },
       });
+                console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -78,11 +79,11 @@ export const getFavorites = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page },
         });
-
+console.log(data);
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/user/favorite?query=${query}`
+          `/notices/title/favorite?query=${query}`
         );
 
         return data;
@@ -165,11 +166,11 @@ export const getUserNotices = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page },
         });
-
+console.log(data);
         return data;
       } else {
-        const { data } = await instance.get(`/notices/user/own?query=${query}`);
-
+        const { data } = await instance.get(`/notices/title/own?query=${query}`);
+console.log(data);
         return data;
       }
     } catch (error) {
