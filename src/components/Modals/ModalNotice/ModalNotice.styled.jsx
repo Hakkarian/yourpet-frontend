@@ -1,8 +1,29 @@
 
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
+import { ReactComponent as Heart } from 'icons/heart.svg';
 // import styled from 'styled-components';
 // import { ReactComponent as Heart } from '../ModalNotice/heart.svg';
+
+export const HeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+export const FilledHeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.white};
+  }
+`;
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -121,12 +142,17 @@ margin: 0 auto;
   top: 476px;
 }
 
+.svg {
+  fill: red;
+}
+
 .btn {
   padding: 0;
   height: 40px;
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 8px;
+  
   //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
    :hover {
      background: ${({theme}) => theme.background.azure};

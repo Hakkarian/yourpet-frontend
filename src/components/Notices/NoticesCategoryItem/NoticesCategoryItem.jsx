@@ -133,7 +133,8 @@ const NoticesCategoryItem = ({
           </ImageWrapper>
           <CategoryName>{category}</CategoryName>
 
-          {!isFavorite && (
+
+            {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
                 <HeartIcon alt="heart" width="24" height="24" />
@@ -147,6 +148,8 @@ const NoticesCategoryItem = ({
               </RemoveFromFavoriteBtn>
             </SvgWrapper>
           )}
+
+
 
           <DescriptionWrapper>
             <DescriptionTextContainer>

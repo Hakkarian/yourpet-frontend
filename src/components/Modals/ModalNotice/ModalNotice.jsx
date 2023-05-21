@@ -25,12 +25,13 @@ import {
   ColumOne,
   CategoryBox,
   ImgBox,
+  HeartIcon,
  
 } from './ModalNotice.styled';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
 
-import { ReactComponent as HeartIcon } from '../../../icons/heart.svg';
+// import { ReactComponent as HeartIcon } from '../../../icons/heart.svg';
 
 
 import Button from 'shared/components/Button/Button';
@@ -134,7 +135,7 @@ const ModalNotice = ({ onClose, noticeDeteils, removeFromFavorite, addToFavorite
 
             <BtnContainer>
               <Button className="btn" type="button" color="blue" width="256px">
-                Add to <HeartIcon width="24" height="24"/>
+                Add to <HeartIcon alt="heart" width="24" height="24"/>
               </Button>
 
               <Button className="btn" type="button" color="white" width="256px">
@@ -168,3 +169,6 @@ ModalNotice.propTypes = {
 })};
 
 export default ModalNotice;
+
+
+{/* <HeartIcon className="svg" width="24" height="24"/> */}
