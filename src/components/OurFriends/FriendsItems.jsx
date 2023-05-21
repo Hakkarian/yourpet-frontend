@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import { titleName, worksTime } from './friends'
+
 import {
    WrapperOurFriends, NameCompany, WrapperForImgAndInformation, WrapperImage,
    LogoCompanyImg, WrapperInformation, ListInformation, ItemInformation, LinKForInformation,
@@ -7,8 +9,10 @@ import {
 
 } from "./FriendsItems.styled"
 
+
 const FriendsItems = ({ friend }) => {
    const [friendsState, setFriendState] = useState([...friend])
+
    const [visible, setVisible] = useState(false);
 
    onkeydown = (evt) => {
@@ -27,6 +31,7 @@ const FriendsItems = ({ friend }) => {
 
          <NameCompany href={url} target="_ blank">{title.length < 15 ? title : titleName(title)}
          </NameCompany>
+
 
          <WrapperForImgAndInformation>
             <WrapperImage>
@@ -85,3 +90,4 @@ const FriendsItems = ({ friend }) => {
 }
 
 export default FriendsItems;
+

@@ -6,16 +6,29 @@ import {
   ItemNav,
   WrapperNav,
   ContainerNav,
-  BoxNav,
-  AddPetButton,
-  Span,
-  IconAddPet, AddPetButtonWrp
+  // BoxNav,
+  // AddPetButton,
+  // Span,
+  // IconAddPet,
+  // AddPetButtonWrp,
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import plus from '../../../icons/plus.svg';
-
-import { useToggle } from 'shared/hooks/useToggle';
-import { toast } from 'react-toastify';
+// import { selectIsError } from 'redux/notices/notices-selector';
+// import { useParams } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { changeIsNoticeAdded, setPage } from 'redux/notices/notices-slice';
+// import plus from '../../../icons/plus.svg';
+import AddNoticePetButton from '../AddPetButton/AddPetBtn';
+import AddPetButtonMobile  from '../AddPetButton/AddPetBtnMobile'
+// import { useToggle } from 'shared/hooks/useToggle';
+// import { toast } from 'react-toastify';
+// import ModalAddPet from 'components/Modals/ModalAddPet';
+// import Modal from 'shared/components/Modal';
+import MediaQuery from 'react-responsive';
+// import { useState } from 'react';
+// import { getFavorites } from 'redux/notices/notices-operations';
+// import { getUserNotices } from 'redux/notices/notices-operations';
 
 const buttons = [
   {
@@ -44,45 +57,75 @@ const authButtons = [
 ];
 
 const NoticesCategoriesNav = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-    const {open} = useToggle();
+  // const { categoryName } = useParams();
+const isLoggedIn = useSelector(selectIsLoggedIn);
+// const { isOpen, open, close } = useToggle();
+  // const [open1, setOpen1] = useState(false);
+  // const error = useSelector(selectIsError);
 
-  const openAddPet = () => {
-      if (isLoggedIn) {
-        open();
-      } else   
-  toast.error('You need to authorize in to access this page');
-}
+  // const [matches, setMatches] = useState(
+  //   window.matchMedia('(min-width: 768px)').matches
+  // );
+
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(getFavorites());
+  //     dispatch(getUserNotices());
+  //   }
+
+  //   window
+  //     .matchMedia('(min-width: 768px)')
+  //     .addEventListener('change', e => setMatches(e.matches));
+  // }, [dispatch, categoryName, isLoggedIn]);
+
+  
+//     const {open} = useToggle();
+
+//   const openAddPet = () => {
+//       if (isLoggedIn) {
+//         open();
+//       } else   
+// setOpen1(true)
+// }
 
   return (
     <>
       <NavStyle>
         <ListNav>
           <ContainerNav>
-            {buttons.map((button, index) => (
-              <ItemNav key={index}>
-                <ButtonNav to={'/notices/' + button.link} name={button.link}>
-                  {button.btn}
-                </ButtonNav>
-              </ItemNav>
-            ))}
-          </ContainerNav>
-          <WrapperNav>
-            {isLoggedIn &&
-              authButtons.map((button, index) => (
+              {buttons.map((button, index) => (
                 <ItemNav key={index}>
                   <ButtonNav to={'/notices/' + button.link} name={button.link}>
                     {button.btn}
                   </ButtonNav>
                 </ItemNav>
               ))}
+          </ContainerNav>
+          
+            <WrapperNav>
+              {isLoggedIn &&
+                authButtons.map((button, index) => (
+                  <ItemNav key={index}>
+                    <ButtonNav
+                      to={'/notices/' + button.link}
+                      name={button.link}
+                    >
+                      {button.btn}
+                    </ButtonNav>
+                  </ItemNav>
+                ))}
           </WrapperNav>
-          <BoxNav><AddPetButtonWrp onClick={openAddPet}>
-            <AddPetButton to={'/add-pet'} ></AddPetButton >
-              <Span>Add pet</Span>
-              <IconAddPet src={plus} alt="add-pet"/>
-            </AddPetButtonWrp>
-          </BoxNav>
+          <MediaQuery minWidth={767}>
+            <AddNoticePetButton />
+          </MediaQuery>
+     
+    
+          <MediaQuery maxWidth={768}>
+            <AddPetButtonMobile />
+          </MediaQuery>
+    
         </ListNav>
       </NavStyle>
     </>

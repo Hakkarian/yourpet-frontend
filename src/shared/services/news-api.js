@@ -7,9 +7,8 @@ export const instance = axios.create({
 
 export const getNews = async params => {
   try {
-    const response = await instance.get('/news/title', { params });
+    const response = await instance.get('/news', { params });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     toast.error(error.message);

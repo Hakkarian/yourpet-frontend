@@ -5,7 +5,6 @@ import ReusableButton from 'shared/components/ReusableButton';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { color, font } from 'shared/utils/mixin.styled';
 
-
 export const FlexDivCss = styled.div`
   margin-top: 40px;
   margin-bottom: 40px;
@@ -15,11 +14,10 @@ export const FlexDivCss = styled.div`
 
   border-radius: 20px;
 
-
   @media screen and (min-width: 768px) {
     padding: 60px 75px;
   }
-`; 
+`;
 
 export const InputEmail = styled(Field)`
   width: 100%;
@@ -38,7 +36,6 @@ export const InputPassword = styled(Field)`
   border: 1px solid;
 
   ::placeholder {
-
   }
   :focus {
     outline: none;
@@ -53,16 +50,12 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 export const Text = styled.p`
-
   line-height: 16px;
 
   margin-top: 20px;
 `;
-export const StyledLink = styled(Link)`
-
-`;
+export const StyledLink = styled(Link)``;
 export const Error = styled.p`
-
   padding-left: 12px;
   margin-top: 4px;
 `;
@@ -120,12 +113,11 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   line-height: 1.375;
 
   @media screen and (min-width: 768px) {
-
     line-height: 1.361;
   }
 `;
 
-export const TextWrapCss = styled.p`
+export const TextWrapCss = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;

@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axios from 'axios';
+import { toast } from 'react-hot-toast';
 import * as api from 'shared/services/notices-api';
 
-// import { instance } from 'shared/services/auth-api';
+import { instance } from 'shared/services/auth-api';
 
-const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
-});
+// const instance = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL,
+// });
 
 // отримання оголошень по категоріях
 export const getNoticeByCategory = createAsyncThunk(
@@ -31,10 +32,13 @@ export const getNoticeByCategory = createAsyncThunk(
 );
 
 // get отримання одного оголошення
+// ______ instance.get -> getNoticeById
+// _______ `/notices/card/${id}` id 
 export const getOneNotice = createAsyncThunk(
   'notices/getOneNotice',
   async (id, { rejectWithValue }) => {
     try {
+      console.log(id)
       const { data } = await instance.get(`/notices/card/${id}`);
 
       return data;
@@ -50,7 +54,15 @@ export const addToFavorites = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.post(`/notices/${id}/favorite/`);
-
+      toast('This notice is now your favorite!', {
+        icon: '🌈',
+        style: {
+          borderRadius: '10px',
+          background: 'orange',
+          color: '#fff',
+        },
+      });
+                console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -67,11 +79,11 @@ export const getFavorites = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page },
         });
-
+console.log(data);
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/user/favorite?query=${query}`
+          `/notices/title/favorite?query=${query}`
         );
 
         return data;
@@ -88,7 +100,14 @@ export const deleteFromFavorites = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.delete(`/notices/${id}/favorite`);
-
+      toast('This notice now is not your favorite.', {
+        icon: '🌪️',
+        style: {
+          borderRadius: '10px',
+          background: 'black',
+          color: '#fff',
+        },
+      });
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -102,7 +121,14 @@ export const deleteUserNotice = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await instance.delete(`/notices/${id}`);
-
+      toast('This notice has been succesfully deleted.', {
+        icon: '🔨',
+        style: {
+          borderRadius: '10px',
+          background: 'darkred',
+          color: '#fff',
+        },
+      });
       return id;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -113,11 +139,18 @@ export const deleteUserNotice = createAsyncThunk(
 // post додавання оголошень відповідно до обраної категорії
 export const createNotice = createAsyncThunk(
   'notices/createNotice',
-  async (credentials, { rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { data } = await instance.post('/notices', credentials);
-
-      return data;
+      const result = await api.addNotice(data);
+      toast('This notice has been created succesfully!', {
+        icon: '🏷️',
+        style: {
+          borderRadius: '10px',
+          background: 'white',
+          color: '#000',
+        },
+      });
+      return result.notice;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -133,11 +166,11 @@ export const getUserNotices = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page },
         });
-
+console.log(data);
         return data;
       } else {
-        const { data } = await instance.get(`/notices/user/own?query=${query}`);
-
+        const { data } = await instance.get(`/notices/title/own?query=${query}`);
+console.log(data);
         return data;
       }
     } catch (error) {
@@ -146,17 +179,14 @@ export const getUserNotices = createAsyncThunk(
   }
 );
 
-
-export const addNotices = createAsyncThunk(
-  'notices/addNotice',
-  async (data, { rejectWithValue }) => {
-    try {
-      const result = await api.addNotice(data);
-      return result.notice;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
-    }
-  }
-);
-
-
+// export const addNotices = createAsyncThunk(
+//   'notices/addNotice',
+//   async (data, { rejectWithValue }) => {
+//     try {
+//       const result = await api.addNotice(data);
+//       return result.notice;
+//     } catch ({ response }) {
+//       return rejectWithValue(response.data.message);
+//     }
+//   }
+// );

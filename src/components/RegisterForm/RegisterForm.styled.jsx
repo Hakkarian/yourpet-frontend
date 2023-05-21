@@ -1,8 +1,9 @@
-import styled from "@emotion/styled";
-import { Form } from "formik";
-import ReusableButton from "shared/components/ReusableButton";
-import ReusableTitle from "shared/components/ReusableTitle";
-import { color, font } from "shared/utils/mixin.styled";
+import styled from '@emotion/styled';
+import { Form } from 'formik';
+import ReusableButton from 'shared/components/ReusableButton';
+import ReusableTitle from 'shared/components/ReusableTitle';
+import { color, font } from 'shared/utils/mixin.styled';
+import { Link } from 'react-router-dom';
 
 export const FlexDivCss = styled.div`
   margin-top: 40px;
@@ -17,6 +18,10 @@ export const FlexDivCss = styled.div`
   @media screen and (min-width: 768px) {
     padding: 60px 75px;
   }
+`;
+
+export const RelativeDiv = styled.div`
+  position: relative;
 `;
 
 export const FormCss = styled(Form)`
@@ -82,6 +87,11 @@ export const ErrorText = styled.div`
 
 export const AnchorCss = styled.div`
   position: relative;
+  width: ${({ theme }) => theme.spacing(64)};
+
+  @media screen and (min-width: 768px) {
+    width: ${({ theme }) => theme.spacing(114.5)};
+  }
 `;
 
 export const LabelCss = styled.label`
@@ -104,11 +114,17 @@ export const ButtonEye = styled(ReusableButton)`
   right: 0;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 export const AbsDivCss = styled.span`
   position: absolute;
   top: 20%;
-  right: 10%;
+  right: 14%;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    right: 8%;
+  }
 `;
 
 export const ReusableTitleCss = styled(ReusableTitle)`
@@ -116,17 +132,18 @@ export const ReusableTitleCss = styled(ReusableTitle)`
   margin-bottom: 30px;
 
   text-align: center;
-  font-size: ${({ theme }) => theme.spacing(6)}px;
+  font-size: ${({ theme }) => theme.spacing(6)};
   font-weight: 500;
   line-height: 1.375;
 
   @media screen and (min-width: 768px) {
-    font-size: ${({ theme }) => theme.spacing(9)}px;
+    margin-top: 0;
+    font-size: ${({ theme }) => theme.spacing(9)};
     line-height: 1.361;
   }
 `;
 
-export const TextWrapCss = styled.p`
+export const TextWrapCss = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
@@ -139,4 +156,12 @@ export const TextWrapCss = styled.p`
 
 export const TextCss = styled.p`
   margin: 0;
+  font-family: 'Manrope';
+  font-size: 12px;
+  font-weight: 400;
+`;
+
+export const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.blue};
+  text-decoration: underline;
 `;

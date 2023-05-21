@@ -1,20 +1,18 @@
 import styled from '@emotion/styled';
-// import heart from '../../../icons/heart.svg';
 
 export const Item = styled.li`
   position: relative;
   width: 280px;
+  height: 456px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 606px;
   }
   @media screen and (min-width: 1024px) {
     width: 288px;
-    height: 606px;
   }
 `;
 
@@ -62,16 +60,16 @@ export const Item = styled.li`
 // `;
 
 export const ImageWrapper = styled.div`
-// position: relative;
-//   width: 100%;
-//   margin-bottom: 20px;
+  // position: relative;
+  //   width: 100%;
+  //   margin-bottom: 20px;
 `;
 
 export const Image = styled.img`
   width: 288px;
   height: 288px;
   object-fit: cover;
-  
+
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 288px;
@@ -79,6 +77,7 @@ export const Image = styled.img`
   @media screen and (min-width: 1024px) {
     width: 288px;
     height: 288px;
+    
   }
 `;
 
@@ -117,7 +116,7 @@ export const SvgWrapper = styled.div`
 export const AddToFavoriteBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
-  border:none;
+  border: none;
 `;
 
 export const RemoveFromFavoriteBtn = styled.button`
@@ -132,14 +131,15 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 20px;
   margin-left: 20px;
+  margin-top: 20px;
   width: 231px;
   height: 76px;
   overflow: hidden;
 `;
 
 export const CardContainer = styled.div`
-position: relative;
-`
+  position: relative;
+`;
 
 export const DescriptionWrapper = styled.div`
   position: absolute;
@@ -150,33 +150,46 @@ export const DescriptionWrapper = styled.div`
   align-items: center;
   padding: 2px 4px;
   gap: 4px;
+ 
+
 `;
 
 export const DescriptionInner = styled.div`
   width: 280px;
   height: 456px;
+   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  button {
+    font-weight: 600;
+font-size: 16px;
+  }
 `;
 
 export const DescriptionTextContainer = styled.div`
   display: flex;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  width: 80px;
-  height: 28px;
+  justify-content: start;
+  //  height: 100%;
+   width: 100%;
   background: ${({ theme }) => theme.colors.lightblue};
-  border-radius: 16px;
+  border-radius: 16px; 
+  svg path {
+    stroke: ${({ theme }) => theme.colors.yellow};
+  }
 `;
 
 export const DescriptionText = styled.p`
-display: flex;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-    letter-spacing: 0.04em;
-    line-height: 1.37;
+  letter-spacing: 0.04em;
+  line-height: 1.37;
   color: ${({ theme }) => theme.colors.black};
-  }
 `;
 
 export const ButtonDiv = styled.div`
@@ -187,13 +200,18 @@ export const ButtonDiv = styled.div`
  flex-direction: column; */
 `;
 
+
 export const IconItem = styled.img`
-fill: transparent;
+  fill: transparent;
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
 `;
 
 export const IconItemPaw = styled.img`
-opacity:0;
-  &:hover, :focus: {
+  opacity: 0;
+  &:hover,
+  &:focus {
     fill: ${({ theme }) => theme.colors.white};
     visibility: hidden;
     background: ${({ theme }) => theme.colors.blue};

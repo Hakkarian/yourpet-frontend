@@ -7,8 +7,8 @@ export const fetchNews = createAsyncThunk(
   async (credential, thunkAPI) => {
     try {
       const data = await getNews(credential);
+      console.log('fetch news data--->', data);
 
-      console.log(data);
       return data;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data);

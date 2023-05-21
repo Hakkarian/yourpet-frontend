@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import {Item, DeleteBtn, Span, BtnWrap, Icon} from './PetsItem.styled';
-import ModalDelete from "components/ModalDelete";
+import ModalDelete from "components/Modals/ModalDelete";
 
 const PetsItem = ({pet }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const PetsItem = ({pet }) => {
             <DeleteBtn type="button" onClick={onDeleteBtn}>
                 <Icon />
             </DeleteBtn>
-            {isModalOpen && <ModalDelete/> }
+            {isModalOpen && <ModalDelete onClick={onDeleteBtn}/> }
             </BtnWrap>
             <p>Date of birth: <Span>{pet.birthday}</Span></p>
             <p>Breed: <Span>{pet.breed}</Span></p>

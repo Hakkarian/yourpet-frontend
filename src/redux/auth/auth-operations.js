@@ -4,9 +4,9 @@ import {
   registere,
   logine,
   logoute,
-  setToken,
   infoService,
-  refreshUserService,
+  instance,
+  setAuthHeader,
 } from 'shared/services/auth-api';
 
 export const register = createAsyncThunk(
@@ -60,6 +60,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (data, { rejectWithValue }) => {
     try {
+      console.log('log operation before')
       const result = await logine(data);
       toast('Long time no see!', {
         icon: '😉',
@@ -72,6 +73,7 @@ export const login = createAsyncThunk(
       return result;
     } catch ({ response }) {
       if (response.status === 400) {
+              console.log('log operation error');
         toast(
           'Please enter the correct value. For example, "email: apple@gmail.com, password: 123apple"',
           {
@@ -133,7 +135,10 @@ export const info = createAsyncThunk(
   '/user/info',
   async (data, { rejectWithValue }) => {
     try {
+      console.log('before info operation')
       const result = await infoService(data);
+      console.log('info operation', result);
+      console.log('after info operation');
       toast('Changed succesfully!', {
         icon: '😊',
         style: {
@@ -149,20 +154,52 @@ export const info = createAsyncThunk(
   }
 );
 
+// export const refreshUser = createAsyncThunk(
+//   'auth/refresh',
+//   async (_, thunkAPI) => {
+//     const state = thunkAPI.getState();
+//     console.log(state)
+//     const persistedToken = state.token;
+
+//     if (persistedToken === null) {
+//       return thunkAPI.rejectWithValue('Unable to fetch user');
+//     }
+
+//     try {
+//       const res = await refreshUserService(persistedToken);
+//       toast('Checking updates...', {
+//         icon: '⏳',
+//         style: {
+//           borderRadius: '10px',
+//           background: 'darkorange',
+//           color: '#fff',
+//         },
+//       });
+//       return res.data;
+//     } catch (error) {
+//       state.auth.isLogin = false;
+//       state.auth.token = null;
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.token;
+    // console.log('refresh token', state.auth.token)
+    const persistedToken = state.auth.token;
+    console.log('refresh operation', persistedToken)
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
-      setToken(persistedToken);
-      const res = await refreshUserService();
-      toast('Checking updates...', {
+      setAuthHeader(persistedToken);
+      const { data } = await instance.get('/user/current');
+       toast('Checking updates...', {
         icon: '⏳',
         style: {
           borderRadius: '10px',
@@ -170,10 +207,8 @@ export const refreshUser = createAsyncThunk(
           color: '#fff',
         },
       });
-      return res.data;
+      return data;
     } catch (error) {
-      state.auth.isLogin = false;
-      state.auth.token = null;
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -8,7 +8,7 @@ import { Loader } from 'components/Loader';
 
 
 const OurFriendsPage = () => {
-
+  
   const dispatch = useDispatch();
   const allFriends = useSelector(selectAllFriends)
   const isLoading = useSelector(selectIsLoading);
@@ -17,6 +17,7 @@ const OurFriendsPage = () => {
   useEffect(() => {
     dispatch(fetchFriends());
    }, [dispatch]);
+
 
   return (
     <>

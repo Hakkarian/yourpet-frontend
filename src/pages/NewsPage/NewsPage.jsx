@@ -1,49 +1,112 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
 
 import { fetchNews } from 'redux/news/news-operations';
 import {
   selectNews,
   selectIsLoading,
   selectError,
+  selectTotalPage,
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-
 // import { Container } from 'shared/components/Container/Container.styled';
 import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
-
 import { NewsList } from 'components/News/NewsList/NewsList';
+import { PaginateComponent } from 'shared/components/Pagination/Pagination';
+import { NotFound } from 'shared/components/NotFound/NotFound';
+
+const initialState = { search: '', page: 1 };
 
 const NewsPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [page] = useState(1); 
+  const [state, setState] = useState({ ...initialState });
+  const { search, page } = state;
 
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const pageQty = useSelector(selectTotalPage);
 
   useEffect(() => {
-    dispatch(fetchNews({ page, search: searchQuery }));
-  }, [dispatch, page, searchQuery]);
+    dispatch(fetchNews({ page: page, search: search }));
+  }, [dispatch, page, search]);
 
   const handleNewsSearchSubmit = value => {
-    console.log('отримуємо дані з форми у NewsPage--->', value);
+    setState(prevState => {
+      if (prevState.search !== value) {
+        setState({ search: value, page: 1 });
+      }
 
-    setSearchQuery(value);
+      return setState({ search: value });
+    });
   };
 
-  console.log('searchQuery(value)--->', searchQuery);
+  const showWarning = () => {
+    dispatch(fetchNews());
+    setState({ search: '' });
+  };
   return (
     <>
       <ReusableTitle>News</ReusableTitle>
-      <SearchNewsForm onSubmit={handleNewsSearchSubmit} />
+      <SearchNewsForm onSubmit={handleNewsSearchSubmit} onClick={showWarning} />
       {isLoading && !error && <Loader />}
-      {newsItems.length !== 0 && <NewsList news={newsItems} />}
-      {!isLoading && newsItems.length === 0 && <p> Such news wasn't found </p>}
+      {error && <p>Somthing wrong</p>}
+      {!isLoading && newsItems.length === 0 && <NotFound />}
+
+      {!isLoading && newsItems.length !== 0 && (
+        <>
+          <NewsList news={newsItems} />
+          <PaginateComponent
+            count={pageQty}
+            page={page}
+            onChange={(_, num) => {
+              setState({ search: search, page: num });
+            }}
+          />
+          {/* <MediaQuery maxWidth={767}>
+            <Box display="flex" justifyContent="center" pb="20px" pt="30px">
+              <Stack spacing={2}>
+                {!!pageQty && (
+                  <Pagination
+                    count={pageQty}
+                    page={page}
+                    onChange={(_, num) => {
+                      setState({ search: search, page: num });
+                    }}
+                    showFirstButton={false}
+                    showLastButton={false}
+                    hidePrevButton={true}
+                    hideNextButton={true}
+                    color="primary"
+                  />
+                )}
+              </Stack>
+            </Box>
+          </MediaQuery> */}
+          {/* <MediaQuery minWidth={768}>
+            <Box display="flex" justifyContent="center" pb="60px" pt="60px">
+              <Stack spacing={2}>
+                {!!pageQty && (
+                  <Pagination
+                    count={pageQty}
+                    page={page}
+                    onChange={(_, num) => {
+                      setState({ search: search, page: num });
+                    }}
+                    showFirstButton={true}
+                    showLastButton={true}
+                    hidePrevButton={false}
+                    hideNextButton={false}
+                    color="primary"
+                  />
+                )}
+              </Stack>
+            </Box>
+          </MediaQuery> */}
+        </>
+      )}
     </>
   );
 };
