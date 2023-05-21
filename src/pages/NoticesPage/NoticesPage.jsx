@@ -5,7 +5,7 @@ import NoticesSearch from 'components/Notices/NoticesSearch';
 import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesCategoryList';
 import { GlobalBox } from './NoticesPage.styled';
 import { useState, useEffect } from 'react';
-import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
+// import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
 import { getNoticeByCategory } from 'redux/notices/notices-operations';
 import {
   selectTotalPages,
@@ -15,13 +15,15 @@ import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
 
+const initialState = { search: '', page: 1 };
+
 const NoticesPage = () => {
   const [state, setState] = useState({ ...initialState });
-  const [category, setCategory] = useState('sell');
+  const [category] = useState('sell');
   const [searchValue, setSearchValue] = useState('');
   const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const { search, page } = input;
+  const { search, page } = state;
   const pageQty = useSelector(selectTotalPages);
   const noticesByCategory = useSelector(selectNoticesByCategory);
 
@@ -66,7 +68,7 @@ const NoticesPage = () => {
         count={pageQty}
         page={page}
         onChange={(_, num) => {
-          setInput({ search: search, page: num });
+          setState({ search: search, page: num });
         }}
       />
       <Outlet />

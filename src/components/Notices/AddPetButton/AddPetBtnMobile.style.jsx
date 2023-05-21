@@ -42,7 +42,7 @@ export const IconAdd = styled.img`
   height: 21px;
   top: 20px;
   right: 29px;
-fill: ${({ theme }) => theme.colors.white};
+  fill: ${({ theme }) => theme.colors.white};
 `;
 
 export const Text = styled.p`
