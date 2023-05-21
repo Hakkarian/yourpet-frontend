@@ -6,7 +6,7 @@ import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesC
 import { GlobalBox } from './NoticesPage.styled';
 import { useState, useEffect } from 'react';
 import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
-import { getNoticeByCategory } from 'redux/notices/notices-operations';
+// import { getNoticeByCategory } from 'redux/notices/notices-operations';
 import {
   selectTotalPages,
   selectNoticesByCategory,
