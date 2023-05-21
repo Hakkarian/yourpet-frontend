@@ -6,3 +6,12 @@ export const addPet = async data => {
   const { data: result } = await instance.post('/pets', data);
   return result;
 };
+
+export const fetchPets = async () => {
+  try {
+    const { data } = await instance.get('/pets');
+    return data;
+  } catch (error) {
+    console.error('Failed to get pets', error.message);
+  }
+};

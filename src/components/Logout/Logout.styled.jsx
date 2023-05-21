@@ -19,6 +19,10 @@ export const OutWrap = styled.div`
  margin-top: 30px;
  display: flex;
  align-items: center;
+
+ @media screen and (min-width: 768px){
+    margin: 13px 0px 0px;
+   };
 `;
 
 export const OutText = styled.p`

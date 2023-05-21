@@ -13,7 +13,7 @@ export const Container = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
-    padding: 0 16px;
+    padding: 0 20px;
 
     background-image: url(${bg_mobile_paws});
     ${background('no-repeat', 'center', 'cover')};
