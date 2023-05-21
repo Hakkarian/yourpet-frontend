@@ -5,7 +5,7 @@ import NoticesSearch from 'components/Notices/NoticesSearch';
 import NoticesCategoryList from 'components/Notices/NoticesCategoryList/NoticesCategoryList';
 import { GlobalBox } from './NoticesPage.styled';
 import { useState, useEffect } from 'react';
-// import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
+import { changeIsNoticeAdded } from 'redux/notices/notices-slice';
 import { getNoticeByCategory } from 'redux/notices/notices-operations';
 import {
   selectTotalPages,
@@ -19,7 +19,7 @@ const initialState = { search: '', page: 1 };
 
 const NoticesPage = () => {
   const [state, setState] = useState({ ...initialState });
-  const [category] = useState('sell');
+  const [category] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const NoticesPage = () => {
 
   useEffect(() => {
     dispatch(
-      getNoticeByCategory({
+      changeIsNoticeAdded({
         category: category,
         page: page,
         query: searchValue,
