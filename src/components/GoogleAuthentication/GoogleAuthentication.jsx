@@ -1,6 +1,5 @@
 // import React, { useEffect } from 'react'
 // import jwt_decode from 'jwt-decode';
-// import { register } from 'redux/auth/auth-operations';
 // import { useDispatch } from 'react-redux';
 // import { googleAuth } from 'redux/auth/auth-slice';
 
@@ -28,11 +27,10 @@ const GoogleAuthentication = () => {
   //      token: response.credential,
   //      user: {
   //        email: info.email,
-  //        userId: info.sub
+  //        sub: info.sub
   //      }
   //   }
   //   // const password = `HASH${Math.floor(Math.random(100))}hm`
-  //   console.log(info)
   //   console.log(payload)
   //   dispatch(googleAuth(payload))
     

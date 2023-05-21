@@ -2,9 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import PetsList from "components/PetsList";
-import { Title } from "pages/UserPage/UserPage.styled";
-import {PetsWrap, BtnWrap, PlusIcon } from './PetsData.styled';
-import Button from 'shared/components/Button/Button';
+import {PetsWrap, BtnWrap, PlusIcon,Title, Button } from './PetsData.styled';
 
 const PetsData = () => {
     const location = useLocation();
@@ -14,7 +12,7 @@ const PetsData = () => {
             <BtnWrap>
             <Title>My pets:</Title>
                 <Link to="/add-pet" state={{from: location}}>
-                    <Button type="button" color="blue" width="129px">Add Pet
+                    <Button type="button">Add Pet
                  <PlusIcon />
                     </Button>
                 </Link>

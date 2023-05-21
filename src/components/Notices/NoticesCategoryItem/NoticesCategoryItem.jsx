@@ -40,6 +40,8 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import {  FilledHeartIcon } from './NoticesCategoryItem.styled';
 import { TrashIcon } from './NoticesCategoryItem.styled';
+import { selectUserNotices } from 'redux/notices/notices-selector';
+// import { selectIsFavorite } from 'redux/notices/notices-selector';
 
 const categoryShelf = {
   sell: 'sell',
@@ -58,7 +60,8 @@ const NoticesCategoryItem = ({
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-
+  // const isFavorite = useSelector(selectIsFavorite);
+  const isOwnerNotices = useSelector(selectUserNotices);
   let query = null;
 
   const getAge = utcDate => {
@@ -107,11 +110,10 @@ const NoticesCategoryItem = ({
       refreshingPage(categoryPet);
       onUpdateStatus()
     });
+     toast.success('Pet add to favorites.');
+  };
 
-    toast.success('Pet added to favorites.');
-   };
-
-  const removeFromFavorite = async () => {
+   const removeFromFavorite = async () => {
     if (!isLoggedIn) {
       return toast.error(
         'You need to authorize before removing pets from favorites.'
@@ -122,7 +124,7 @@ const NoticesCategoryItem = ({
       onUpdateStatus()
     });
     toast.success('Pet removed from favorites.');
-   };
+  };
 
   return (
     <Item key={_id}>
@@ -193,12 +195,10 @@ const NoticesCategoryItem = ({
             onClose={close}
           />
         )}
-        {isOwner && (
-          <>
+        {isOwner === isOwnerNotices && (
             <Button onClick={open} deleteNotice={handleDeleteClick}>
               <TrashIcon alt="trash" width="24" height="24" />
             </Button>
-          </>
         )}
       </ButtonDiv>
     </Item>
