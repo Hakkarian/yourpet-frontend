@@ -34,7 +34,8 @@ const GoogleAuthentication = () => {
   //   // const password = `HASH${Math.floor(Math.random(100))}hm`
   //   console.log(info)
   //   console.log(payload)
-  //    dispatch(googleAuth(payload))
+  //   dispatch(googleAuth(payload))
+    
   //    }
   //  return (
   //    <div onClick={handleCallbackResponse} id='signInDiv'></div>
