@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { selectAllFriends } from "redux/friends/friends-selector"
+
+import { titleName, worksTime } from './friends'
+
 import {
    WrapperOurFriends, NameCompany, WrapperForImgAndInformation, WrapperImage,
    LogoCompanyImg, WrapperInformation, ListInformation, ItemInformation, LinKForInformation,
@@ -8,15 +9,16 @@ import {
 
 } from "./FriendsItems.styled"
 
-const FriendsItems = ({friend}) => {
-   const [friendsState] = useState([...friend])
+
+const FriendsItems = ({ friend }) => {
+   const [friendsState, setFriendState] = useState([...friend])
+
    const [visible, setVisible] = useState(false);
-   // console.log("allFriends", friendsState)
 
    onkeydown = (evt) => {
       if (evt.key === "Escape") {
          setVisible(false)
-       }
+      }
    }
 
    const onShowModal = (id, event) => {
@@ -26,11 +28,14 @@ const FriendsItems = ({friend}) => {
 
    const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
       <WrapperOurFriends key={_id}>
-         <NameCompany href={url} target="_ blank">{title.length < 15 ? title : "Company"}</NameCompany>
+
+         <NameCompany href={url} target="_ blank">{title.length < 15 ? title : titleName(title)}
+         </NameCompany>
+
 
          <WrapperForImgAndInformation>
             <WrapperImage>
-               <LogoCompanyImg src={imageUrl?imageUrl:"https://pixabay.com/get/ga9915c0f9b273695afa50b8563c6d2c99a76618cec35dae8a92bfbf7ac69cdeeef55de817ed2b60db7f43e3182ae530a_640.jpg"} alt="Logo company" />
+               <LogoCompanyImg src={imageUrl ? imageUrl : "https://i.ibb.co/kqpsyG0/cat-baby-787084-640.jpg"} alt="Logo company" />
             </WrapperImage>
             <WrapperInformation>
                <ListInformation>
@@ -38,17 +43,17 @@ const FriendsItems = ({friend}) => {
                   <ItemInformation>
                      <LinKForInformation onClick={(event) => onShowModal(_id, event)}>
 
-                        {visible &&workDays!== null && < ModalPosition >
+                        {visible && workDays !== null && < ModalPosition >
                            <ModalList> {workDays !== null && workDays.map(days =>
                               <ModalItem key={days._id}>
-                                 <ModalNameDay ></ModalNameDay ><ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
+                                 <ModalNameDay>MO</ModalNameDay> <ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
                               </ModalItem>)}
                            </ModalList>
-                           
+
                         </ModalPosition>}
 
                         <NameTextinformation>Time:</NameTextinformation>
-                        <Textinformation>{workDays !== null && workDays !== [] ? '10:00-18:00' : 'day and night'}</Textinformation>
+                        <Textinformation>{workDays !== null && workDays !== [] ? worksTime(_id) : 'day and night'}</Textinformation>
                      </LinKForInformation>
                   </ItemInformation>
 
