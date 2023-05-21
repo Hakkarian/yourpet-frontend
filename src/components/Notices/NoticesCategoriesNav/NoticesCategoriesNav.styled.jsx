@@ -25,6 +25,7 @@ export const ListNav = styled.ul`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
+
   @media screen and (min-width: 1024px) {
     flex-wrap: nowrap;
     flex-direction: row;

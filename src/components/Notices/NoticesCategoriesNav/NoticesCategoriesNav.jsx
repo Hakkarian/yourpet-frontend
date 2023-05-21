@@ -63,7 +63,6 @@ const NoticesCategoriesNav = () => {
   return (
     <>
       {' '}
-
       <NavStyle>
         <ListNav>
           <ContainerNav>
@@ -86,14 +85,14 @@ const NoticesCategoriesNav = () => {
                 </ItemNav>
               ))}
           </WrapperNav>
-          <MediaQuery minWidth={768}>
-            <AddNoticePetButton />
-          </MediaQuery>
 
           <MediaQuery maxWidth={767}>
             <AddPetButtonMobile />
           </MediaQuery>
         </ListNav>
+        <MediaQuery minWidth={768}>
+          <AddNoticePetButton />
+        </MediaQuery>
       </NavStyle>
     </>
   );

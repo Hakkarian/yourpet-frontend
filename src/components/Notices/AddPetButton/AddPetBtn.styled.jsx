@@ -1,28 +1,9 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import { ReactComponent as AddIcon } from '../../../icons/Icons/plus-small.svg';
+import ReusableButton from 'shared/components/ReusableButton';
+import { ReactComponent as Add } from '../../../icons/plus.svg';
 
-export const Wrapper = styled.div`
-   @media screen and (max-width: 768px) {
-     width: 129px;
-     position: fixed;
-     top: 70%;
-     right: 0px;
-     display: flex;
-     -webkit-box-align: center;
-     align-items: center;
-     gap: 12px;
-     z-index: 10;
-   }
 
-    display: flex;
-    align-items: flex-end;
-justify-content:flex-end;
-    position: relative;
-    // top: 0;
-     right: 0;
-  }
-`;
 
 export const Text = styled.p`
   display: inline-block;
@@ -34,58 +15,43 @@ export const Text = styled.p`
     line-height: 22px;
     align-items: center;
     letter-spacing: 0.04em;
-      margin-right: 40px;
+      margin-right: 12px;
     margin-bottom: 0;
   }
 `;
 
-export const AddBtn = styled.button`
-  background-color: ${({ theme }) => theme.colors.blue};
-  transition: color 250ms linear, background-color 250ms linear;
-  padding: 10px 28px;
-  text-decoration: none;
-  border: none;
-  displey: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 40px;
-  padding: 9px 8px 9px 16px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.35;
-
-  width: 129px;
-  height: 50px;
-  top: -19px;
-  right: 70px;
-
-  background: ${({ theme }) => theme.colors.blue};
+export const AddBtn = styled(ReusableButton)`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 9px 16px;
+  background-color: ${({ theme }) => theme.colors.blue};
+  color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.lightblue};
 
-  &:hover,  &:focus: {
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 1px solid ease-in-out stroke 250ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
     color: ${({ theme }) => theme.colors.blue};
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-  &.active {
+    border: 1px solid ${({ theme }) => theme.colors.blue};
+    svg path {
+    stroke: ${({ theme }) => theme.colors.blue};
+    }
   }
 
-  @media screen and (min-width: 1280px) {
-    position: absolute;
-    left: 600px;
+  svg path {
+    stroke: ${({ theme }) => theme.colors.white};
+  }
+
+  @media screen and (min-width: 768px) {
   }
 `;
 
-export const IconAdd = styled(AddIcon)`
-  fill: #FDF7F2
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 15px;
-  left: 95px;
-`;
+export const AddCss = styled(Add)`
+
+`
 
 export const AddPetButton = styled(NavLink)``;
