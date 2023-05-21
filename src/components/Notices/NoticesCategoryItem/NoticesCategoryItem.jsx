@@ -12,6 +12,7 @@ import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
+// import { Tooltip, IconButton } from '@mui/material';
 
 import {
   Item,
@@ -148,28 +149,26 @@ const NoticesCategoryItem = ({
 
           <DescriptionWrapper>
             <DescriptionTextContainer>
-              <LocationIcon
-                alt="location"
-                width="24"
-                height="24"
-              />
-              <DescriptionText data-tooltip={location}>{location}</DescriptionText>
+              <LocationIcon alt="location" width="24" height="24" />
+              <DescriptionText data-tooltip={location}>
+                {location}
+              </DescriptionText>
             </DescriptionTextContainer>
+
             <DescriptionTextContainer>
               <ClockIcon alt="clock" width="24" height="24" />
-              <DescriptionText data-tooltip="less than 1 year">
-                {age === 0 && 'less than 1 year'}
+              <DescriptionText>
+                {age === 0 && '\u2248 1 year'}
                 {age === 1 && `${age} year`}
                 {age !== 1 && age !== 0 && `${age} years`}
               </DescriptionText>
             </DescriptionTextContainer>
             <DescriptionTextContainer>
-              {'female' ? (
+              {sex.toLowerCase() === 'female' && (
                 <FemaleIcon alt="sex" width="24" height="24" />
-              ) : (
-                'male' && (
-                  <MaleIcon alt="sex" width="24" height="24" />
-                )
+              )}           
+              {sex.toLowerCase() === 'male' && (
+                <MaleIcon alt="sex" width="24" height="24" />
               )}
               <DescriptionText>{sex}</DescriptionText>
             </DescriptionTextContainer>
@@ -192,7 +191,7 @@ const NoticesCategoryItem = ({
         )}
         {isOwner && (
           <>
-            <Button onClick={toggle} deleteNotice={handleDeleteClick}>
+            <Button onClick={open} deleteNotice={handleDeleteClick}>
               <TrashIcon alt="trash" width="24" height="24" />
             </Button>
           </>

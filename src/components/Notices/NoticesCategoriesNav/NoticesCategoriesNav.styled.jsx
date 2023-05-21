@@ -28,7 +28,11 @@ export const ListNav = styled.ul`
     flex-wrap: nowrap;
     flex-direction: row;
     padding: 0px;
+    // height 35px;
+    // width:100%;
     gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
   }
 `;
 
@@ -43,7 +47,7 @@ export const ContainerNav = styled.div`
   }
   @media screen and (min-width: 1024px) {
     flex-direction: row;
-  }
+   }
 `;
 
 export const ItemNav = styled.li`
@@ -72,6 +76,7 @@ export const ButtonNav = styled(NavLink)`
   }
   @media screen and (min-width: 1024px) {
     font-size: 20px;
+    // height:35px;
   }
 `;
 export const WrapperNav = styled.div`
