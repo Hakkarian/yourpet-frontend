@@ -41,7 +41,7 @@ const Header = () => {
           {isLogin ? (
             <UserWrapCss>
               <Link to="/user">
-                <User width="28" height="28" />
+                <User width="30" height="30" />
               </Link>
               <MediaQuery minWidth={768}>
                 <InfoCss>{name || 'Stranger'}</InfoCss>

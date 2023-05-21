@@ -24,6 +24,15 @@ export const UserWrapCss = styled.div`
     align-items: center;
     gap: 10px;
   }
+
+  svg path {
+    transition: stroke 250ms linear;
+    
+    &:hover,
+    &:focus {
+      stroke: ${({ theme }) => theme.colors.blue};
+    }
+  }
 `;
 
 export const InfoCss = styled.p`
