@@ -139,7 +139,7 @@ const NoticesCategoryItem = ({
           {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
-                       <IconItem src={heart} alt="heart" width="24" height="24" />
+                <IconItem src={heart} alt="heart" width="24" height="24" />
               </AddToFavoriteBtn>
             </SvgWrapper>
           )}
@@ -193,7 +193,8 @@ const NoticesCategoryItem = ({
       <ButtonDiv>
         {isOpen && (
           <ModalNotice
-            userDeteils={user}
+          removeFromFavorite={removeFromFavorite}
+          addToFavorite={addToFavorite}
             noticeDeteils={notice}
             onClose={close}
           />

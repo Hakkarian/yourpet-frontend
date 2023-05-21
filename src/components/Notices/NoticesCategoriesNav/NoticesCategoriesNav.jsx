@@ -124,7 +124,7 @@ const isLoggedIn = useSelector(selectIsLoggedIn);
     
           <MediaQuery maxWidth={768}>
             <AddPetButtonMobile />
-          </MediaQuery>
+           </MediaQuery>
     
         </ListNav>
       </NavStyle>
