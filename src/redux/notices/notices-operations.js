@@ -83,7 +83,7 @@ export const getFavorites = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/favorite?query=${query}`
+          `/notices/title/favorite?search=${query}`
         );
 
         return data;
@@ -173,6 +173,7 @@ export const getUserNotices = createAsyncThunk(
           `/notices/title/own?query=${query}`
         );
         console.log(data);
+
         return data;
       }
     } catch (error) {
@@ -181,14 +182,4 @@ export const getUserNotices = createAsyncThunk(
   }
 );
 
-// export const addNotices = createAsyncThunk(
-//   'notices/addNotice',
-//   async (data, { rejectWithValue }) => {
-//     try {
-//       const result = await api.addNotice(data);
-//       return result.notice;
-//     } catch ({ response }) {
-//       return rejectWithValue(response.data.message);
-//     }
-//   }
-// );
+

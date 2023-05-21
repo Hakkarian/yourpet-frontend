@@ -15,16 +15,13 @@ import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
 
-const initialState = { search: '', page: 1 };
-
 const NoticesPage = () => {
   const [state, setState] = useState({ ...initialState });
   const [category, setCategory] = useState('sell');
   const [searchValue, setSearchValue] = useState('');
   const [, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-
-  const { search, page } = state;
+  const { search, page } = input;
   const pageQty = useSelector(selectTotalPages);
   const noticesByCategory = useSelector(selectNoticesByCategory);
 
@@ -69,9 +66,10 @@ const NoticesPage = () => {
         count={pageQty}
         page={page}
         onChange={(_, num) => {
-          setState({ search: search, page: num });
+          setInput({ search: search, page: num });
         }}
       />
+      <Outlet />
     </GlobalBox>
   );
 };

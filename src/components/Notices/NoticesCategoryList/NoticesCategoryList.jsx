@@ -13,7 +13,7 @@ import {
   selectNoticesByCategory,
   selectIsLoading,
   selectIsNoticeAdded,
-  selectIsFavorite
+  selectIsFavorite, 
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { Wrapper, List } from './NoticesCategoryList.styled';
@@ -28,14 +28,13 @@ const categoryShelf = {
 const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const dispatch = useDispatch();
   const location = useLocation();
-
   const notices = useSelector(selectNoticesByCategory);
   const isLoading = useSelector(selectIsLoading);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isNoticeAdded = useSelector(selectIsNoticeAdded);
   const user = useSelector(selectUser);
  let favoriteNotice = useSelector(selectIsFavorite);
-  const category = location.pathname.split('/')[2];
+  const category  = location.pathname.split('/')[2];
   const [search] = useSearchParams();
   const query = search.get('query');
   const page = search.get('page');
