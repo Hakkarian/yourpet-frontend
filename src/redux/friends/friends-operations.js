@@ -7,7 +7,7 @@ export const fetchFriends = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const data = await getAllFriend();
-      console.log('friends operation', data);
+
       return data.friends;
     } catch ({ response }) {
       return thunkAPI.rejectWithValue(response.data);

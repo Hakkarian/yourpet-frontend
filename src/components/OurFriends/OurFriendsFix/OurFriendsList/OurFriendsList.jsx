@@ -4,7 +4,6 @@ import { OurFriendsItem } from '../OurFriendsItem/OurFriendsItem';
 import { List } from './OurFriendsList.styled';
 
 export const OurFriendsList = ({ friends }) => {
-  console.log('friendslist--->', friends);
   return (
     <List>
       {friends.map(

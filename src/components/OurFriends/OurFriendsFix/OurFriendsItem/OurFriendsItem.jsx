@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 
+import { Schedule } from '../Schedule/Schedule';
 import {
   Item,
   Title,
@@ -18,7 +19,6 @@ export const OurFriendsItem = ({
   workDays,
   phone,
   email,
-  onClick,
 }) => {
   return (
     <Item>
@@ -35,18 +35,20 @@ export const OurFriendsItem = ({
         </WrapImg>
         <WrapInfo>
           <p>Time:</p>
-          {{ workDays } ? (
-            <a
-              color={'#54adff'}
-              hovercolor={'#000000'}
-              href={url}
-              target="_blank"
-              rel="noreferrer noopener"
-              onClick={url}
-            >
-              From-To
-            </a>
+
+          {workDays?.length ? (
+            <Schedule workDays={workDays} />
           ) : (
+            // <button
+            //   color={'#54adff'}
+            //   hovercolor={'#000000'}
+            //   // href="#"
+            //   // target="_blank"
+            //   // rel="noreferrer noopener"
+            //   onClick={workDays => Schedule(workDays)}
+            // >
+            //   From-To
+            // </button>
             <a href={url} target="_blank" rel="noreferrer noopener">
               day and night
             </a>

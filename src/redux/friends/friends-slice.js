@@ -8,7 +8,6 @@ const friendsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
- 
   },
   extraReducers: builder => {
     builder
@@ -17,11 +16,9 @@ const friendsSlice = createSlice({
         store.error = null;
       })
       .addCase(fetchFriends.fulfilled, (store, action) => {
-        console.log('friends payload', action.payload)
         store.isLoading = false;
         store.error = null;
         store.items = action.payload;
-       
       })
       .addCase(fetchFriends.rejected, (store, action) => {
         store.isLoading = false;

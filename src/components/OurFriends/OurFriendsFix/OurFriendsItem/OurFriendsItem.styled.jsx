@@ -76,7 +76,8 @@ export const WrapInfo = styled.div`
     line-height: 1.33;
     color: ${({ theme }) => theme.colors.black};
   }
-  a {
+  a,
+  button {
     display: block;
     margin-bottom: 16px;
     font-weight: 400;

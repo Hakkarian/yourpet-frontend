@@ -26,7 +26,7 @@ const OurFriendsPage = () => {
   useEffect(() => {
     dispatch(fetchFriends());
   }, [dispatch]);
-  console.log('friendsPage--->', friendsItems);
+
   return (
     <>
       <Container>
