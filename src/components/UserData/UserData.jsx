@@ -1,9 +1,9 @@
 import React, {useRef, useState} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import { useDispatch} from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
 // import { selectIsLoggedIn, selectUser } from "redux/auth/auth-selector";
-import { ImageDef, InputP, SelectWrap, Confirm, ConfirmBtn, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CrossIcon, Wrapper, MainWrap, ErrorWrap} from "./UserData.styled";
+import { ImageDef, InputP, SelectWrap, Confirm, ConfirmBtn, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CrossIcon, Wrapper, MainWrap} from "./UserData.styled";
 import { info } from "redux/auth/auth-operations";
 import UserDataItem from "components/UserDataItem";
 

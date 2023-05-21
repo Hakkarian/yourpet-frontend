@@ -1,10 +1,10 @@
-import React, {useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import React, {useEffect} from "react";
+// import { useDispatch, useSelector } from "react-redux";
 
 import {List} from './PetsList.styled';
-import { Item } from "components/PetsItem/PetsItem.styled";
-import { selectAllPets } from "redux/pets/pets-selector";
-import { getAllPets } from "redux/pets/pets-operations";
+// import { Item } from "components/PetsItem/PetsItem.styled";
+// import { selectAllPets } from "redux/pets/pets-selector";
+// import { getAllPets } from "redux/pets/pets-operations";
 import PetsItem from "components/PetsItem";
 
 const pets = [
@@ -30,12 +30,12 @@ const pets = [
   ];
 
 const PetsList = () => {
-    const dispatch = useDispatch();
-    const pets = useSelector(selectAllPets);
+    // const dispatch = useDispatch();
+    // const pets = useSelector(selectAllPets);
 
-    useEffect(() => {
-       dispatch(getAllPets());
-    }, [dispatch]);
+    // useEffect(() => {
+    //    dispatch(getAllPets());
+    // }, [dispatch]);
  
     return (
         <List>
