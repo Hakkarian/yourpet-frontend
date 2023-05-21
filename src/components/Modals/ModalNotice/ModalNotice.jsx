@@ -1,7 +1,14 @@
 import React from 'react';
 import { useEffect } from 'react';
+// import { useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
+
+
 import PropTypes from 'prop-types';
+
+// import {
+//   selectIsFavorite
+// } from 'redux/notices/notices-selector';
 
 import {
   Backdrop,
@@ -18,16 +25,19 @@ import {
   ColumOne,
   CategoryBox,
   ImgBox,
-  HeartIcon,
+ 
 } from './ModalNotice.styled';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
+
+import { ReactComponent as HeartIcon } from '../../../icons/heart.svg';
+
 
 import Button from 'shared/components/Button/Button';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalNotice = ({ onClose, noticeDeteils }) => {
+const ModalNotice = ({ onClose, noticeDeteils, removeFromFavorite, addToFavorite }) => {
   console.log(noticeDeteils);
   const {
     photo,
@@ -42,13 +52,14 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
     comments
   } = noticeDeteils;
 
-
+  // let isFavorite = useSelector(selectIsFavorite);
+  
   useEffect(() => {
     const handleKeyDowm = e => {
       if (e.code === 'Escape') onClose();
     };
     window.addEventListener('keydown', handleKeyDowm);
-    // body noscroll
+    
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', handleKeyDowm);
@@ -61,6 +72,8 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
       onClose();
     }
   };
+
+
 
   return createPortal(
     <Backdrop onClick={handleBackdropClick}>
@@ -121,7 +134,7 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
 
             <BtnContainer>
               <Button className="btn" type="button" color="blue" width="256px">
-                Add to <HeartIcon/>
+                Add to <HeartIcon width="24" height="24"/>
               </Button>
 
               <Button className="btn" type="button" color="white" width="256px">

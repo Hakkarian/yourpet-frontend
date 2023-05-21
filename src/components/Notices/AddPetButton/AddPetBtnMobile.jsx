@@ -1,8 +1,8 @@
 import { AddBtn } from './AddPetBtnMobile.style';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import { useState } from 'react';
-// import { useToggle } from 'shared/hooks/useToggle';
+import { useToggle } from 'shared/hooks/useToggle';
+import Modal from 'shared/components/Modal';
 import ModalAddPet from 'components/Modals/ModalAddPet';
 import { AddCss } from './AddPetBtn.styled';
 import { useNavigate } from 'react-router-dom';
@@ -15,11 +15,6 @@ const AddPetButtonMobile = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const openAddPet = () => {
-    if (isLogined) {
-      navigate('/add-pet');
-    } else setOpen1(true);
-  };
 
   return (
     <>
@@ -33,3 +28,4 @@ const AddPetButtonMobile = () => {
 };
 
 export default AddPetButtonMobile;
+
