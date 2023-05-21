@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ReactComponent as Paw } from 'icons/paw.svg';
 
 
 export const Container = styled.div`
@@ -47,4 +48,9 @@ export const Title = styled.h2`
     font-size: 36px;
   }
 `
-
+export const PawIcon = styled(Paw)`
+  width: ${({ theme }) => theme.spacing(6)};
+  height: ${({ theme }) => theme.spacing(6)};
+  fill: ${({ theme }) => theme.colors.white};
+  margin-left: ${({ theme }) => theme.spacing(3)};
+`;
