@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Loader } from 'components/Loader';
@@ -8,13 +8,12 @@ import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
-import ModalLogOut from 'components/ModalLogOut';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
-import ModalCongrats from 'components/ModalCongrats';
+import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
  // const user = useSelector(selectUser);
@@ -33,6 +32,7 @@ const UserPage = () => {
   useEffect(() => {
     dispatch(changeIsPetAdded());
   }, [dispatch]);
+
 
   if(isLoading) {
     return <Loader />;

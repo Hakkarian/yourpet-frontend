@@ -1,20 +1,22 @@
 import styled from "@emotion/styled";
 
-import { whiteBtnStylesFunc, blueBtnStylesFunc, yellowBtnStylesFunc } from "./index";
+import { whiteBtnStyles, blueBtnStyles, yellowBtnStyles, closeBtnStyles } from "./buttonStyles";
 
 
-const switchColor = ({color,width,theme}) => {
+const switchColor = ({color,theme}) => {
 
     switch (color) {
         case "white":
-            return whiteBtnStylesFunc(width, theme);
+            return whiteBtnStyles(theme);
         case "blue":
-            return blueBtnStylesFunc(width, theme);
+            return blueBtnStyles(theme);
         case "yellow":
-            return yellowBtnStylesFunc(width, theme);
+            return yellowBtnStyles(theme);
+        case "close":
+            return closeBtnStyles(theme);
     
         default:
-            return whiteBtnStylesFunc(width, theme);
+            return whiteBtnStyles(theme);
     };
 };
 
@@ -23,8 +25,10 @@ export const ButtonTag = styled.button`
     justify-content: center;
     align-items: center;
     border-radius: 40px;
+    width: ${({width})=>width};
 
-    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 300ms cubic-bezier(0.4, 0, 0.2, 1);
     ${switchColor}
 
     :active {

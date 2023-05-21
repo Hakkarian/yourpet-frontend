@@ -1,0 +1,20 @@
+[
+    {
+        "id":"1",
+        "name":"News",
+        "path": "news",
+        "className":"four"
+    },
+    {
+        "id":"2",
+        "name":"Find pet",
+        "path": "notices",
+        "className":"five"
+    },
+    {
+        "id":"3",
+        "name":"Our friends",
+        "path": "friends",
+        "className":"six"
+    }
+]

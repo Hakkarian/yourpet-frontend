@@ -12,14 +12,17 @@ export const LoaderColor = () => (
       marginRight: 'auto',
     }}
     wrapperClass="blocks-wrapper"
-    colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    colors={['#54ADFF', '#CCE4FB', '#54ADFF', '#CCE4FB', '#54ADFF']}
+
+    // ['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']
   />
 );
 
 export const Loader = ({
   size = 40,
-  color = '##54ADFF',
-  marginTop = '30px',
+  color = '#54ADFF',
+  marginTop = '-40px',
+  marginBottom = '40px',
 }) => {
   return (
     <div
@@ -27,6 +30,7 @@ export const Loader = ({
         display: 'flex',
         justifyContent: 'center',
         marginTop: marginTop,
+        marginBottom: marginBottom,
       }}
     >
       <ClipLoader
@@ -40,3 +44,29 @@ export const Loader = ({
     </div>
   );
 };
+
+// export const Loader = ({
+//   size = 40,
+//   color = '#54ADFF',
+//   marginTop,
+//   marginBottom,
+// }) => {
+//   return (
+//     <div
+//       style={{
+//         display: 'flex',
+//         justifyContent: 'center',
+//         marginTop: marginTop,
+//         marginBottom: marginBottom,
+//       }}
+//     >
+//       <ClipLoader
+//         display="block"
+//         color={color}
+//         size={size}
+//         aria-label="Loading Spinner"
+//         data-testid="loader"
+//       />
+//     </div>
+//   );
+// };

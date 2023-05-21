@@ -1,17 +1,20 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-
 import {
   getNoticeByCategory,
-  getOneNotice,
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
   getUserNotices,
+  deleteUserNotice,
 } from 'redux/notices/notices-operations';
+
+import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import ModalNotice from '../../ModalNotice/ModalNotice';
+import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
+// import { Tooltip, IconButton } from '@mui/material';
+
 import {
   Item,
   ImageWrapper,
@@ -25,20 +28,18 @@ import {
   RemoveFromFavoriteBtn,
   ButtonDiv,
   SvgWrapper,
-  IconItem,
   Span,
   CardContainer,
-  IconItemPaw,
   DescriptionInner,
 } from './NoticesCategoryItem.styled';
-import { ButtonTag } from 'shared/components/Button/button.styled';
-import clock from '../../../icons/clock.svg';
-import female from '../../../icons/female.svg';
-import locationPet from '../../../icons/location-pet.svg';
-import male from '../../../icons/male.svg';
-import trash from '../../../icons/trash.svg';
-import paw from '../../../icons/paw.svg';
-import heart from '../../../icons/heart.svg';
+import Button from 'shared/components/Button/Button';
+import { ReactComponent as FemaleIcon } from 'icons/female.svg';
+import { ReactComponent as MaleIcon } from 'icons/male.svg';
+import { ReactComponent as ClockIcon } from 'icons/clock.svg';
+import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
+import { HeartIcon } from './NoticesCategoryItem.styled';
+import {  FilledHeartIcon } from './NoticesCategoryItem.styled';
+import { TrashIcon } from './NoticesCategoryItem.styled';
 
 const categoryShelf = {
   sell: 'sell',
@@ -46,11 +47,18 @@ const categoryShelf = {
   'in-good-hands': 'in-good-hands',
 };
 
-const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
-  const { photo, birthday, sex, location, title, id, category } = notice;
+const NoticesCategoryItem = ({
+  notice,
+  isFavorite,
+  isOwner,
+  categoryPet,
+  user,
+  onUpdateStatus
+}) => {
+  const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+
   let query = null;
 
   const getAge = utcDate => {
@@ -72,8 +80,8 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
 
   const { isOpen, open, close, toggle } = useToggle();
 
-  const refreshingPage = category => {
-    if (categoryPet === categoryShelf[category])
+  const refreshingPage = categoryPet => {
+    if (categoryPet === categoryShelf[categoryPet])
       dispatch(getNoticeByCategory({ category, query }));
     if (categoryPet === 'favorites-ads') {
       dispatch(getFavorites({ query }));
@@ -83,18 +91,25 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
     }
   };
 
+  const handleDeleteClick = () => {
+    dispatch(deleteUserNotice(_id));
+    dispatch(setNotices(_id));
+    toggle();
+  };
+
   const addToFavorite = async () => {
     if (!isLoggedIn) {
       return toast.error(
         'You need to authorize before adding pets to favorites.'
       );
     }
-    dispatch(addToFavorites(id)).then(() => {
-      refreshingPage(category);
+    dispatch(addToFavorites(_id)).then(() => {
+      refreshingPage(categoryPet);
+      onUpdateStatus()
     });
 
     toast.success('Pet added to favorites.');
-  };
+   };
 
   const removeFromFavorite = async () => {
     if (!isLoggedIn) {
@@ -102,96 +117,84 @@ const NoticesCategoryItem = ({ notice, isFavorite, isOwner, categoryPet }) => {
         'You need to authorize before removing pets from favorites.'
       );
     }
-    dispatch(deleteFromFavorites(id)).then(() => {
+    dispatch(deleteFromFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
+      onUpdateStatus()
     });
-
     toast.success('Pet removed from favorites.');
-  };
-
-  const onChangeOpenModal = () => {
-    dispatch(getOneNotice(id));
-    open();
-  };
-
-  // const toggleModal = () => {
-  //   setIsModalOpen(prev => !prev);
-  // };
+   };
 
   return (
-    <Item key={id}>
+    <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
           <ImageWrapper>
             <Image src={photo} alt="Pet" loading="lazy" />
           </ImageWrapper>
-
           <CategoryName>{category}</CategoryName>
 
           {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
-                <IconItem src={heart} alt="heart" width="24" height="24" />
-              </AddToFavoriteBtn>{' '}
+                <HeartIcon alt="heart" width="24" height="24" />
+              </AddToFavoriteBtn>
             </SvgWrapper>
           )}
           {isFavorite && (
             <SvgWrapper>
               <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
-                <IconItem src={heart} alt="heart" width="24" height="24" />
+                <FilledHeartIcon alt="heart" width="24" height="24" />
               </RemoveFromFavoriteBtn>
             </SvgWrapper>
           )}
 
           <DescriptionWrapper>
             <DescriptionTextContainer>
-              <IconItem
-                src={locationPet}
-                alt="location"
-                width="24"
-                height="24"
-              />
-              <DescriptionText>{location}</DescriptionText>
+              <LocationIcon alt="location" width="24" height="24" />
+              <DescriptionText data-tooltip={location}>
+                {location}
+              </DescriptionText>
             </DescriptionTextContainer>
+
             <DescriptionTextContainer>
-              <IconItem src={clock} alt="clock" width="24" height="24" />
+              <ClockIcon alt="clock" width="24" height="24" />
               <DescriptionText>
-                {age === 0 && 'less than 1 year'}
+                {age === 0 && '\u2248 1 year'}
                 {age === 1 && `${age} year`}
                 {age !== 1 && age !== 0 && `${age} years`}
               </DescriptionText>
             </DescriptionTextContainer>
             <DescriptionTextContainer>
-              {'female' ? (
-                <IconItem src={female} alt="sex" width="24" height="24" />
-              ) : (
-                'male' && (
-                  <IconItem src={male} alt="sex" width="24" height="24" />
-                )
-              )}{' '}
+              {sex.toLowerCase() === 'female' && (
+                <FemaleIcon alt="sex" width="24" height="24" />
+              )}           
+              {sex.toLowerCase() === 'male' && (
+                <MaleIcon alt="sex" width="24" height="24" />
+              )}
               <DescriptionText>{sex}</DescriptionText>
             </DescriptionTextContainer>
           </DescriptionWrapper>
         </CardContainer>
         <Title>{title}</Title>
-        <ButtonTag
-          onClick={onChangeOpenModal}
-          margin="20px 16px 24px 16px"
-          width="248px"
-        >
+
+        <Button type="button" onClick={open} width="248px">
           <Span> Learn more </Span>
-          <IconItemPaw src={paw} alt="paw" width="24" height="24" />
-        </ButtonTag>{' '}
+        </Button>
       </DescriptionInner>
 
       <ButtonDiv>
-        {isOpen && <ModalNotice onCloseModal={close} />}
-
+        {isOpen && (
+          <ModalNotice
+            userDeteils={user}
+            noticeDeteils={notice}
+            onClose={close}
+          />
+        )}
         {isOwner && (
           <>
-            <ButtonTag onClick={toggle}>
-              <IconItem src={trash} alt="trash" width="24" height="24" />
-            </ButtonTag>
+            <Button onClick={open} deleteNotice={handleDeleteClick}>
+              <TrashIcon alt="trash" width="24" height="24" />
+            </Button>
           </>
         )}
       </ButtonDiv>

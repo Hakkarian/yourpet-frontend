@@ -6,16 +6,29 @@ import {
   ItemNav,
   WrapperNav,
   ContainerNav,
-  BoxNav,
-  AddPetButton,
-  Span,
-  IconAddPet, AddPetButtonWrp
+  // BoxNav,
+  // AddPetButton,
+  // Span,
+  // IconAddPet,
+  // AddPetButtonWrp,
 } from './NoticesCategoriesNav.styled';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import plus from '../../../icons/plus.svg';
-
-import { useToggle } from 'shared/hooks/useToggle';
-import { toast } from 'react-toastify';
+// import { selectIsError } from 'redux/notices/notices-selector';
+// import { useParams } from 'react-router-dom';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { changeIsNoticeAdded, setPage } from 'redux/notices/notices-slice';
+// import plus from '../../../icons/plus.svg';
+import AddNoticePetButton from '../AddPetButton/AddPetBtn';
+import AddPetButtonMobile from '../AddPetButton/AddPetBtnMobile';
+// import { useToggle } from 'shared/hooks/useToggle';
+// import { toast } from 'react-toastify';
+// import ModalAddPet from 'components/Modals/ModalAddPet';
+// import Modal from 'shared/components/Modal';
+import MediaQuery from 'react-responsive';
+// import { useState } from 'react';
+// import { getFavorites } from 'redux/notices/notices-operations';
+// import { getUserNotices } from 'redux/notices/notices-operations';
 
 const buttons = [
   {
@@ -44,18 +57,12 @@ const authButtons = [
 ];
 
 const NoticesCategoriesNav = () => {
+  // const { isOpen, open, close } = useToggle();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-    const {open} = useToggle();
-
-  const openAddPet = () => {
-      if (isLoggedIn) {
-        open();
-      } else   
-  toast.error('You need to authorize in to access this page');
-}
 
   return (
     <>
+      {' '}
       <NavStyle>
         <ListNav>
           <ContainerNav>
@@ -67,6 +74,7 @@ const NoticesCategoriesNav = () => {
               </ItemNav>
             ))}
           </ContainerNav>
+
           <WrapperNav>
             {isLoggedIn &&
               authButtons.map((button, index) => (
@@ -77,13 +85,14 @@ const NoticesCategoriesNav = () => {
                 </ItemNav>
               ))}
           </WrapperNav>
-          <BoxNav><AddPetButtonWrp onClick={openAddPet}>
-            <AddPetButton to={'/add-pet'} ></AddPetButton >
-              <Span>Add pet</Span>
-              <IconAddPet src={plus} alt="add-pet"/>
-            </AddPetButtonWrp>
-          </BoxNav>
+
+          <MediaQuery maxWidth={767}>
+            <AddPetButtonMobile />
+          </MediaQuery>
         </ListNav>
+        <MediaQuery minWidth={768}>
+          <AddNoticePetButton />
+        </MediaQuery>
       </NavStyle>
     </>
   );

@@ -1,44 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
-import search from '../../../icons/search.svg';
-import deleteQuery from '../../../icons/cross-small.svg';
-import {
-  TitleSearch,
-  FormSearch,
-  InputSearch,
-  ButtonIcon,
-  IconSearch,
-  IconSearchDelete,
-} from './NoticesSearch.styled';
+import { ButtonIconForm } from 'shared/components/ButtonIconForm/ButtonIconForm';
+import { FormSearch, InputSearch } from './NoticesSearch.styled';
 import NoticesCategoriesNav from '../NoticesCategoriesNav';
 
-const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
+const NoticesSearch = ({ onSubmit, onClick }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (searchQuery.trim() === '') {
+      return toast.error('Enter your request, please', {
+        icon: '😉',
+        style: {
+          position: 'top-center',
+          duration: 2000,
+          autoclose: 1000,
+          background: '#54ADFF',
+          color: '#fff',
+        },
+      });
+    }
+    onSubmit(searchQuery);
+  };
+
+  const handleChange = e => {
+    setSearchQuery(e.target.value.toLowerCase().trim());
+  };
+
+  const handleReset = () => {
+    setSearchQuery('');
+    onClick(searchQuery);
+  };
+
   return (
     <div>
-      <FormSearch onSubmit={onSubmit} onReset={onReset}>
-        <TitleSearch>Find your favorite pet</TitleSearch>
+      <FormSearch onSubmit={handleSubmit}>
         <InputSearch
           placeholder="Search"
-          onChange={onChange}
-          value={value}
+          onChange={e => handleChange(e)}
+          name="searchQuery"
+          value={searchQuery}
           type="text"
         />
-        {!searchValue && (
-          <ButtonIcon type="submit">
-            <IconSearch src={search} alt="search" width="24" height="24" />
-          </ButtonIcon>
-        )}
-        {searchValue && (
-          <ButtonIcon type="reset">
-            <IconSearchDelete
-              src={deleteQuery}
-              alt="delete"
-              width="24"
-              height="24"
-            />{' '}
-          </ButtonIcon>
-        )}
+        <ButtonIconForm searchQuery={searchQuery} onClick={handleReset} />
       </FormSearch>
       <NoticesCategoriesNav />
       <Outlet />
@@ -47,11 +53,8 @@ const NoticesSearch = ({ value, onChange, onSubmit, onReset, searchValue }) => {
 };
 
 NoticesSearch.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  onReset: PropTypes.func.isRequired,
-  searchValue: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default NoticesSearch;

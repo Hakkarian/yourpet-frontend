@@ -39,13 +39,6 @@ export const StyledButton = styled.button`
 
   &:hover,
   &:focus {
-    /* color: ${({ theme, transparent }) => {
-      if (transparent) {
-        return theme.colors.white;
-      } else {
-        return theme.colors.blue;
-      }
-    }}; */
     background: ${({ theme, transparent }) => {
       if (transparent) {
         return 'transparent';

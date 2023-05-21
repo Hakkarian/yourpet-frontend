@@ -1,56 +1,71 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { toast } from 'react-toastify';
 
 import { fetchNews } from 'redux/news/news-operations';
 import {
   selectNews,
   selectIsLoading,
   selectError,
+  selectTotalPage,
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-
 // import { Container } from 'shared/components/Container/Container.styled';
 import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
-
 import { NewsList } from 'components/News/NewsList/NewsList';
-import { useSearchParams } from 'react-router-dom';
-import { selectTotalPage } from 'redux/news/news-selector';
-import { Box, Pagination, Stack } from '@mui/material';
-import MediaQuery from 'react-responsive';
+import { PaginateComponent } from 'shared/components/Pagination/Pagination';
+import { NotFound } from 'shared/components/NotFound/NotFound';
+
+const initialState = { search: '', page: 1 };
 
 const NewsPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [state, setState] = useState({ ...initialState });
+  const { search, page } = state;
+
   const dispatch = useDispatch();
   const newsItems = useSelector(selectNews);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
-  const page = Number(searchParams.get('page')) || 1;
-  const search = searchParams.get('search') ?? '';
   const pageQty = useSelector(selectTotalPage);
 
   useEffect(() => {
-    dispatch(fetchNews({ page, search }));
+    dispatch(fetchNews({ page: page, search: search }));
   }, [dispatch, page, search]);
 
   const handleNewsSearchSubmit = value => {
-    const nextParams = value !== '' ? { search: value } : {};
-    setSearchParams(nextParams);
+    setState(prevState => {
+      if (prevState.search !== value) {
+        setState({ search: value, page: 1 });
+      }
+
+      return setState({ search: value });
+    });
   };
 
+  const showWarning = () => {
+    dispatch(fetchNews());
+    setState({ search: '' });
+  };
   return (
     <>
       <ReusableTitle>News</ReusableTitle>
-      <SearchNewsForm onSubmit={handleNewsSearchSubmit} />
+      <SearchNewsForm onSubmit={handleNewsSearchSubmit} onClick={showWarning} />
       {isLoading && !error && <Loader />}
-      {newsItems.length !== 0 && (
+      {error && <p>Somthing wrong</p>}
+      {!isLoading && newsItems.length === 0 && <NotFound />}
+
+      {!isLoading && newsItems.length !== 0 && (
         <>
           <NewsList news={newsItems} />
-
-          <MediaQuery maxWidth={767}>
+          <PaginateComponent
+            count={pageQty}
+            page={page}
+            onChange={(_, num) => {
+              setState({ search: search, page: num });
+            }}
+          />
+          {/* <MediaQuery maxWidth={767}>
             <Box display="flex" justifyContent="center" pb="20px" pt="30px">
               <Stack spacing={2}>
                 {!!pageQty && (
@@ -58,7 +73,7 @@ const NewsPage = () => {
                     count={pageQty}
                     page={page}
                     onChange={(_, num) => {
-                      setSearchParams({ page: num, search });
+                      setState({ search: search, page: num });
                     }}
                     showFirstButton={false}
                     showLastButton={false}
@@ -69,9 +84,8 @@ const NewsPage = () => {
                 )}
               </Stack>
             </Box>
-          </MediaQuery>
-
-          <MediaQuery minWidth={768}>
+          </MediaQuery> */}
+          {/* <MediaQuery minWidth={768}>
             <Box display="flex" justifyContent="center" pb="60px" pt="60px">
               <Stack spacing={2}>
                 {!!pageQty && (
@@ -79,7 +93,7 @@ const NewsPage = () => {
                     count={pageQty}
                     page={page}
                     onChange={(_, num) => {
-                      setSearchParams({ page: num, search });
+                      setState({ search: search, page: num });
                     }}
                     showFirstButton={true}
                     showLastButton={true}
@@ -90,10 +104,9 @@ const NewsPage = () => {
                 )}
               </Stack>
             </Box>
-          </MediaQuery>
+          </MediaQuery> */}
         </>
       )}
-      {!isLoading && newsItems.length === 0 && <p> Such news wasn't found </p>}
     </>
   );
 };

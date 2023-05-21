@@ -1,69 +1,26 @@
 import styled from '@emotion/styled';
-// import heart from '../../../icons/heart.svg';
+import { ReactComponent as Heart } from 'icons/heart.svg';
+import { ReactComponent as Trash } from 'icons/trash.svg';
 
 export const Item = styled.li`
   position: relative;
   width: 280px;
+  height: 456px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadow.hover};
   border-radius: 0px 0px 40px 40px;
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 606px;
   }
   @media screen and (min-width: 1024px) {
     width: 288px;
-    height: 606px;
   }
 `;
 
-// export const ButtonsWrapper = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-// `;
-
-// export const StyledButton = styled.div`
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   width: 248px;
-//   height: 38px;
-//   background: ${({ theme }) => theme.colors.white};
-//   border: none;
-//   border-radius: 40px;
-//   align-items: center;
-//   font-weight: 500;
-//   font-size: 16;
-//   line-height: 22px;
-//   letter-spacing: 0.04em;
-//   transition: color, border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-//   color: ${({ theme }) => theme.colors.lightblue};
-//   margin: auto 16px 12px 16px;
-
-//   &:only-of-type {
-//     margin-bottom: 32px;
-//   }
-
-//   &:hover,
-//   :focus {
-//     color: ${({ theme }) => theme.colors.blue};
-//   }
-
-//   @media screen and (min-width: 768px) {
-//     margin-right: 44px;
-//     margin-left: 44px;
-//   }
-
-//   @media screen and (min-width: 1024px) {
-//     margin-right: 20px;
-//     margin-left: 20px;
-//   }
-// `;
-
 export const ImageWrapper = styled.div`
   // position: relative;
-  //   width: 100%;
+  width: 100%;
   //   margin-bottom: 20px;
 `;
 
@@ -132,6 +89,7 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.black};
   margin-bottom: 20px;
   margin-left: 20px;
+  margin-top: 20px;
   width: 231px;
   height: 76px;
   overflow: hidden;
@@ -143,61 +101,135 @@ export const CardContainer = styled.div`
 
 export const DescriptionWrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 2px 4px;
-  gap: 4px;
+  gap: 10px;
+
+  [data-tooltip] {
+    position: relative;
+  }
+  [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    width: 100%;
+    hight: 200px;
+    font-size: 7px;
+    left: 0;
+    top: 0;
+    background: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.black};
+    padding: 2px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 2s;
+  }
+  [data-tooltip]:hover::after {
+    opacity: 1;
+    right: 2px;
+    transition-property: background-color;
+    transition-duration: 2s;
+  }
 `;
 
 export const DescriptionInner = styled.div`
   width: 280px;
   height: 456px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  button {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 288px;
+  }
 `;
 
 export const DescriptionTextContainer = styled.div`
   display: flex;
-  margin-left: 20px;
   margin-bottom: 20px;
   width: 80px;
   height: 28px;
   background: ${({ theme }) => theme.colors.lightblue};
   border-radius: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  // &:hover, :focus{
+  //     transition-duration: 2s;
+  // transform: scale(1.2);
+  
+
+ }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: transparent;
+  }
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
 `;
 
 export const DescriptionText = styled.p`
   display: flex;
+  flex-direction: row;
   align-items: center;
+  margin-left: 4px;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.04em;
-  line-height: 1.37;
+  line-height: 1.33;
   color: ${({ theme }) => theme.colors.black};
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ButtonDiv = styled.div`
   position: absolute;
   bottom: 0;
   display: block;
-  /* display: flex;
- flex-direction: column; */
-`;
-
-export const IconItem = styled.img`
-  fill: transparent;
-`;
-
-export const IconItemPaw = styled.img`
-  opacity: 0;
-  &:hover,
-  &:focus {
-    fill: ${({ theme }) => theme.colors.white};
-    visibility: hidden;
-    background: ${({ theme }) => theme.colors.blue};
-  }
 `;
 
 export const Span = styled.span``;
+
+export const HeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
+export const FilledHeartIcon = styled(Heart)`
+  width: 24px;
+  height: 24px;
+  fill: ${({ theme }) => theme.colors.blue};
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
+`;
+
+export const TrashIcon = styled(Trash)`
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+
+  path {
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
+`;

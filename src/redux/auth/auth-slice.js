@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { info, login, logout, register, refreshUser } from './auth-operations';
+import { setToken } from 'shared/services/auth-api';
 
 const authSlice = createSlice({
   name: 'auth',
@@ -11,6 +12,16 @@ const authSlice = createSlice({
     isRefreshing: false,
     isLoading: false,
     error: null,
+  },
+  reducers: {
+    googleAuth: (state, { payload }) => {
+      setToken(payload.token)
+      console.log(payload)
+      state.token = payload.token;
+      state.isLogin = true;
+      state.isLoading = false;
+      state.user = payload.user
+    }
   },
   extraReducers: builder => {
     builder
@@ -87,5 +98,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { googleAuth } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -7,7 +7,7 @@ export const instance = axios.create({
 
 export const getNews = async params => {
   try {
-    const response = await instance.get('/news/title', { params });
+    const response = await instance.get('/news', { params });
 
     return response.data;
   } catch (error) {

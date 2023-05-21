@@ -1,81 +1,80 @@
-import friends from "./friends"
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchFriends } from 'redux/friends/friends-operations';
-import { selectAllFriends } from "redux/friends/friends-selector"
+import React, { useState } from 'react';
+
+import { titleName, worksTime } from './friends'
+
 import {
    WrapperOurFriends, NameCompany, WrapperForImgAndInformation, WrapperImage,
    LogoCompanyImg, WrapperInformation, ListInformation, ItemInformation, LinKForInformation,
-   NameTextinformation, Textinformation, ModalPosition, ModalList, ModalItem, ModalNameDay, ModalTimeWork
+   NameTextinformation, Textinformation, ModalPosition, ModalList, ModalItem, ModalNameDay, ModalTimeWork,
+
 } from "./FriendsItems.styled"
 
-const FriendsItems = () => {
-   const [friendsState] = useState(friends)
+
+const FriendsItems = ({ friend }) => {
+   const [friendsState] = useState([...friend])
+
    const [visible, setVisible] = useState(false);
-   const dispatch = useDispatch();
-   const allFriends = useSelector(selectAllFriends)
-   console.log("Запит на бекенд all friend----->", allFriends)
 
-   useEffect(() => {
-      dispatch(fetchFriends());
-   }, [dispatch]);
-
-   const onClickStart = (_id, event) => {
-      const userName = event.currentTarget.name
-      console.log("time?.isOnline", _id, userName)
-      setVisible(!visible)
+   onkeydown = (evt) => {
+      if (evt.key === "Escape") {
+         setVisible(false)
+      }
    }
 
-   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, time, url, email, emailUrl, phoneUrl }) =>
+   const onShowModal = (id, event) => {
+      setVisible(!visible)
+      // const all = friendsState.filter(friends=>friends._id===id)
+   }
+
+   const contactList = friendsState.map(({ _id, title, imageUrl, address, addressUrl, phone, email, url, emailUrl, phoneUrl, workDays }) =>
       <WrapperOurFriends key={_id}>
 
-         <NameCompany href={url} target="_ blank" >{title}</NameCompany>
+         <NameCompany href={url} target="_ blank">{title.length < 15 ? title : titleName(title)}
+         </NameCompany>
+
 
          <WrapperForImgAndInformation>
             <WrapperImage>
-               <LogoCompanyImg src={imageUrl} alt="Logo company" />
+               <LogoCompanyImg src={imageUrl ? imageUrl : "https://i.ibb.co/kqpsyG0/cat-baby-787084-640.jpg"} alt="Logo company" />
             </WrapperImage>
             <WrapperInformation>
                <ListInformation>
 
                   <ItemInformation>
-                     <LinKForInformation name={title} onClick={(event) => onClickStart(_id, event)}>
-                        {/* {time?.isOnline && <ModalPosition></ModalPosition>} */}
-                        {visible && time?.isOnline && < ModalPosition  >
-                           <ModalList>
-                              <ModalItem><ModalNameDay >MN</ModalNameDay><ModalTimeWork>{time?.monday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >TU</ModalNameDay ><ModalTimeWork>{time?.tuesday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >WE</ModalNameDay ><ModalTimeWork>{time?.wednesday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >TH</ModalNameDay ><ModalTimeWork>{time?.thursday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >FR</ModalNameDay ><ModalTimeWork>{time?.friday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >SA</ModalNameDay ><ModalTimeWork>{time?.saturday}</ModalTimeWork></ModalItem>
-                              <ModalItem><ModalNameDay >SU</ModalNameDay ><ModalTimeWork>{time?.sunday}</ModalTimeWork></ModalItem>
+                     <LinKForInformation onClick={(event) => onShowModal(_id, event)}>
+
+                        {visible && workDays !== null && < ModalPosition >
+                           <ModalList> {workDays !== null && workDays.map(days =>
+                              <ModalItem key={days._id}>
+                                 <ModalNameDay>MO</ModalNameDay> <ModalTimeWork>{days.from}-{days.to}</ModalTimeWork>
+                              </ModalItem>)}
                            </ModalList>
+
                         </ModalPosition>}
 
                         <NameTextinformation>Time:</NameTextinformation>
-                        <Textinformation>{time?.times}</Textinformation>
+                        <Textinformation>{workDays !== null && workDays !== [] ? worksTime(_id) : 'day and night'}</Textinformation>
                      </LinKForInformation>
                   </ItemInformation>
 
                   <ItemInformation>
                      <LinKForInformation href={addressUrl} target="_ blank">
                         <NameTextinformation>Address:</NameTextinformation>
-                        <Textinformation>{address}</Textinformation>
+                        <Textinformation>{address !== null ? address : "website only"}</Textinformation>
                      </LinKForInformation>
                   </ItemInformation>
 
                   <ItemInformation>
                      <LinKForInformation href={emailUrl} >
                         <NameTextinformation>Email:</NameTextinformation>
-                        <Textinformation>{email}</Textinformation>
+                        <Textinformation>{email ? email : "website only"}</Textinformation>
                      </LinKForInformation>
                   </ItemInformation>
 
                   <ItemInformation>
                      <LinKForInformation href={phoneUrl}>
                         <NameTextinformation>Phone:</NameTextinformation>
-                        <Textinformation>{phone}</Textinformation>
+                        <Textinformation>{phone !== null ? phone : "email only"}</Textinformation>
                      </LinKForInformation>
                   </ItemInformation>
 
@@ -91,3 +90,4 @@ const FriendsItems = () => {
 }
 
 export default FriendsItems;
+
