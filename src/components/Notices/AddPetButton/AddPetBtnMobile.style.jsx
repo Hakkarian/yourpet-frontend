@@ -10,29 +10,40 @@ export const AddPetButton = styled(NavLink)``;
 
 export const AddBtn = styled.button`
   position: fixed;
+  bottom: 2%;
+  right: 5%;
   z-index: 1;
      width: 80px;
       height: 80px;
+      padding-bottom: 7px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       background: ${({ theme }) => theme.colors.blue};
       border-radius: 50%;
       border: none;
-      padding: 0;
+
+
         min-width: 44px;
-  transform: translateX(-68%) translateY(25%);
-//     @media screen and (min-width: 400px)(max-width:767px) {
-//    transform: translateX(217%) translateY(-55
-//    }
-  bottom: 15vh;
-  transition: normal;
+      
   color: ${({ theme }) => theme.colors.white};
  
   svg path {
     stroke: ${({ theme }) => theme.colors.white};
 
+    transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 1px solid ease-in-out stroke 250ms ease-in-out;
+
     &:hover,
     &:focus {
       background: ${({ theme }) => theme.colors.lightblue};
       color: ${({ theme }) => theme.colors.blue};
+      svg path {
+    stroke: ${({ theme }) => theme.colors.blue};
+    }
+
     }  
 `;
 

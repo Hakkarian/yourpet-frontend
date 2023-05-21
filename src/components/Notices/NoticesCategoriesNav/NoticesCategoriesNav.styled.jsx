@@ -24,16 +24,10 @@ export const ListNav = styled.ul`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-  @media screen and (min-width: 1024px) {
-    flex-wrap: nowrap;
-    flex-direction: row;
-    padding: 0px;
-    // height 35px;
-    // width:100%;
-    gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
+  @media screen and (min-width: 768px) {
+    
   }
+
 `;
 
 export const ContainerNav = styled.div`
