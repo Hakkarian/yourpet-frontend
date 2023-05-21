@@ -1,9 +1,35 @@
 import styled from '@emotion/styled';
 import { ReactComponent as Camera } from '../../icons/camera.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small-2.svg';
-import { Form, ErrorMessage } from 'formik';
+import {ReactComponent as ConfirmIcon} from '../../icons/check.svg';
 
-export const Error = styled(ErrorMessage)``;
+export const MainWrap = styled.div`
+
+ @media screen and (min-width: 768px) {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 71px;
+  };
+
+  @media screen and (min-width: 1280px){
+    display: block;
+  };
+`;
+
+export const Confirm = styled(ConfirmIcon)`
+fill: none;
+width: 24px;
+height: 24px;
+`;
+
+export const ConfirmBtn = styled.button`
+border: none;
+cursor: pointer;
+background-color: transparent;
+padding: 0;
+display: flex;
+align-items: center;
+`;
 
 export const ErrorWrap = styled.div`
   position: absolute;
@@ -21,28 +47,14 @@ export const CrossIcon = styled(Cross)`
   fill: none;
   width: 24px;
   height: 24px;
+  stroke: #bf342a;
 `;
 
-export const FormThumb = styled(Form)`
+export const FormThumb = styled.form`
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row-reverse;
-    padding: 20px 76px 20px 20px;
-    gap: 71px;
-    border-radius: 40px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    flex-direction: column;
-    padding: 20px 24px 20px 16px;
-    border-radius: 40px;
-    width: 395px;
-    gap: 0;
-  }
 `;
 
 export const CheckWrap = styled.div`
@@ -86,6 +98,24 @@ export const InputWrap = styled.div`
   align-items: center;
   text-align: center;
   margin-bottom: 22px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  };
+
+  @media screen and (min-width: 1280px){
+    margin-bottom: 25px;
+  };
+`;
+
+export const SelectWrap = styled.div`
+display: flex;
+flex-direction: column;
+width: 100%;
+position: relative;
+align-items: center;
+text-align: center;
+margin-bottom: 22px;
 `;
 
 export const InputText = styled.span`
@@ -93,6 +123,15 @@ export const InputText = styled.span`
   line-height: 1.83;
   letter-spacing: 0.04em;
   color: #111111;
+`;
+
+export const InputP = styled.p`
+font-family: "Manrope",sans-serif;
+font-size: 12px;
+line-height: 1.83;
+letter-spacing: 0.04em;
+color: #111111;
+font-weight: 500;
 `;
 
 export const IconWrap = styled.span`
@@ -108,6 +147,9 @@ export const Label = styled.label`
   justify-content: center;
   cursor: pointer;
   margin: 0 auto;
+
+  @media screen and (min-width: 768px){
+    font-size: 16px;};
 `;
 
 export const CameraIcon = styled(Camera)`
