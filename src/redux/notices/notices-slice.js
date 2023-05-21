@@ -18,6 +18,7 @@ import {
 const initialState = {
   noticesByCategory: [],
   oneNoticeMoreInfo: [],
+  favoritePets: [],
   totalPages: 1,
   isFavorite: false,
   isLoading: false,
@@ -47,7 +48,7 @@ const noticesSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getNoticeByCategory.pending, state => {
-          state.isLoading = true;
+        state.isLoading = true;
         state.isError = null;
       })
       .addCase(getNoticeByCategory.fulfilled, (state, { payload }) => {
@@ -93,8 +94,8 @@ const noticesSlice = createSlice({
         state.isError = null;
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
-        state.noticesByCategory = payload.notices;
         state.totalPages = payload.totalPages;
+        state.favoritePets = payload.notices;
         state.isLoading = false;
         state.isError = null;
       })
@@ -102,6 +103,7 @@ const noticesSlice = createSlice({
       .addCase(getFavorites.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
+        state.favoritePets = [];
       })
       .addCase(deleteFromFavorites.pending, state => {
         state.isLoading = true;
@@ -161,7 +163,8 @@ const noticesSlice = createSlice({
 });
 
 export default noticesSlice.reducer;
-export const {setPage, changeIsNoticeAdded, setNotices, setFavNotices } = noticesSlice.actions;
+export const { setPage, changeIsNoticeAdded, setNotices, setFavNotices } =
+  noticesSlice.actions;
 
 //  .addCase(addPets.fulfilled, (state, { payload }) => {
 //         state.items.push(payload);

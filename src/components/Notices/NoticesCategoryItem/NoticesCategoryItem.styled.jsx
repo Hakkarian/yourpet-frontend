@@ -78,8 +78,9 @@ export const AddToFavoriteBtn = styled.button`
 `;
 
 export const RemoveFromFavoriteBtn = styled.button`
-  fill: ${({ theme }) => theme.colors.blue};
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 `;
 
 export const Title = styled.h3`
