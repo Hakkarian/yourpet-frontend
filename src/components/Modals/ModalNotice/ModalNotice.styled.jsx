@@ -90,6 +90,7 @@ flex-direction: column;
 
 export const ContainerBox = styled.div`
 
+
 @media (min-width: 767px) {
   display: flex;
   margin-bottom: 28px;
@@ -240,7 +241,14 @@ padding-left: 20px;
   padding-left: 51px;
 }
 `
-
+// export const ImgBox = styled.div`
+// position: relative;
+// overflow: hidden;
+// margin-bottom: 12px;
+// margin: 0;
+// width: 240px;
+//   height: 240px;
+// `
 
 export const ImgBox = styled.div`
 position: relative;
@@ -263,6 +271,19 @@ img {
   }
  }
 `
+
+// export const Img = styled.img`
+//   border-radius: 0px 0px 40px 40px;
+//   width: 100%;
+//   margin: 0;
+
+//   @media (min-width: 767px) {
+//         width: 262px;
+//     height: 298px;
+//     margin-bottom: 0;
+//   }
+
+// `
 
 export const CategoryBox = styled.div`
 position: absolute;

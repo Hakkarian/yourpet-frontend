@@ -108,7 +108,7 @@ const NoticesCategoryItem = ({
     }
     dispatch(addToFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-      onUpdateStatus()
+      // onUpdateStatus()
     });
      toast.success('Pet add to favorites.');
   };
@@ -121,7 +121,7 @@ const NoticesCategoryItem = ({
     }
     dispatch(deleteFromFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-      onUpdateStatus()
+      // onUpdateStatus()
     });
     toast.success('Pet removed from favorites.');
   };
@@ -190,6 +190,8 @@ const NoticesCategoryItem = ({
       <ButtonDiv>
         {isOpen && (
           <ModalNotice
+          addToFavorite={addToFavorite}
+          removeFromFavorite={removeFromFavorite}
             userDeteils={user}
             noticeDeteils={notice}
             onClose={close}

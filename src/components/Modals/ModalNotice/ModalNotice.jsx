@@ -1,14 +1,16 @@
 import React from 'react';
 import { useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 
 
 import PropTypes from 'prop-types';
 
-// import {
-//   selectIsFavorite
-// } from 'redux/notices/notices-selector';
+import {
+  selectIsFavorite
+} from 'redux/notices/notices-selector';
+
+
 
 import {
   Backdrop,
@@ -53,6 +55,7 @@ const ModalNotice = ({ onClose, noticeDeteils, removeFromFavorite, addToFavorite
     comments
   } = noticeDeteils;
 
+  const isFavorite = useSelector(selectIsFavorite);
   // let isFavorite = useSelector(selectIsFavorite);
   
   useEffect(() => {
@@ -134,9 +137,12 @@ const ModalNotice = ({ onClose, noticeDeteils, removeFromFavorite, addToFavorite
             <Coments>Comments:{comments}</Coments>
 
             <BtnContainer>
-              <Button className="btn" type="button" color="blue" width="256px">
-                Add to <HeartIcon alt="heart" width="24" height="24"/>
-              </Button>
+              {isFavorite && (<Button onClick={ addToFavorite} className="btn" type="button" color="blue" width="256px">Your<HeartIcon alt="heart" width="24" height="24"/>
+              </Button>)}
+              {!isFavorite && (<Button onClick={removeFromFavorite} className="btn" type="button" color="blue" width="256px">Add to<HeartIcon alt="heart" width="24" height="24"/>
+              </Button>)}
+              {/* <Button className="btn" type="button" color="blue" width="256px">Add to<HeartIcon alt="heart" width="24" height="24"/>
+              </Button> */}
 
               <Button className="btn" type="button" color="white" width="256px">
                 <a href="tel:{noticeDeteils.owner.phone}">Contacts</a>
@@ -151,6 +157,8 @@ const ModalNotice = ({ onClose, noticeDeteils, removeFromFavorite, addToFavorite
 };
 
 ModalNotice.propTypes = {
+  addToFavorite: PropTypes.func.isRequired,
+  removeFromFavorite: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   noticeDeteils: PropTypes.shape({
     category: PropTypes.string,
@@ -161,7 +169,7 @@ ModalNotice.propTypes = {
     location: PropTypes.string.isRequired,
     sex: PropTypes.string.isRequired,
     owner: PropTypes.shape({
-      phone: PropTypes.string.isRequired,
+      phone: PropTypes.string,
       email: PropTypes.string.isRequired,
     }).isRequired,
     comments: PropTypes.string.isRequired,
@@ -170,5 +178,3 @@ ModalNotice.propTypes = {
 
 export default ModalNotice;
 
-
-{/* <HeartIcon className="svg" width="24" height="24"/> */}
