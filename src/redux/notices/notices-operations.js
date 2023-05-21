@@ -21,7 +21,7 @@ export const getNoticeByCategory = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/search/${category}?query=${query}`
+          `/notices/title/search/${category}?search=${query}`
         );
         return data;
       }
@@ -33,12 +33,12 @@ export const getNoticeByCategory = createAsyncThunk(
 
 // get отримання одного оголошення
 // ______ instance.get -> getNoticeById
-// _______ `/notices/card/${id}` id 
+// _______ `/notices/card/${id}` id
 export const getOneNotice = createAsyncThunk(
   'notices/getOneNotice',
   async (id, { rejectWithValue }) => {
     try {
-      console.log(id)
+      console.log(id);
       const { data } = await instance.get(`/notices/card/${id}`);
 
       return data;
@@ -62,7 +62,7 @@ export const addToFavorites = createAsyncThunk(
           color: '#fff',
         },
       });
-                console.log(data);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -79,11 +79,11 @@ export const getFavorites = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page },
         });
-console.log(data);
+        console.log(data);
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/favorite?query=${query}`
+          `/notices/title/favorite?search=${query}`
         );
 
         return data;
@@ -166,11 +166,14 @@ export const getUserNotices = createAsyncThunk(
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page },
         });
-console.log(data);
+        console.log(data);
         return data;
       } else {
-        const { data } = await instance.get(`/notices/title/own?query=${query}`);
-console.log(data);
+        const { data } = await instance.get(
+          `/notices/title/own?query=${query}`
+        );
+        console.log(data);
+
         return data;
       }
     } catch (error) {
@@ -179,14 +182,4 @@ console.log(data);
   }
 );
 
-// export const addNotices = createAsyncThunk(
-//   'notices/addNotice',
-//   async (data, { rejectWithValue }) => {
-//     try {
-//       const result = await api.addNotice(data);
-//       return result.notice;
-//     } catch ({ response }) {
-//       return rejectWithValue(response.data.message);
-//     }
-//   }
-// );
+
