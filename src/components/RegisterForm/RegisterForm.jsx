@@ -24,7 +24,8 @@ import Button from 'shared/components/Button/Button';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
-// import GoogleAuthentication from "components/GoogleAuthentication";
+// import GoogleAuthentication from 'components/GoogleAuthentication';
+
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),

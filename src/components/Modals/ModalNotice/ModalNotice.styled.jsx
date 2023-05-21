@@ -2,6 +2,7 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 // import styled from 'styled-components';
+import { ReactComponent as Heart } from 'icons/heart.svg';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -255,3 +256,13 @@ p {
 font-size: 14px;
 }
 `
+
+export const HeartIcon = styled(Heart)`
+  width: ${({ theme }) => theme.spacing(6)};
+  height: ${({ theme }) => theme.spacing(6)};
+  fill: red;
+  stroke: ${({ theme }) => theme.colors.white};
+  margin-left: ${({ theme }) => theme.spacing(3)};
+
+`;
+

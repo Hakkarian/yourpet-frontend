@@ -51,11 +51,6 @@ const UserPage = () => {
            phone={phone}
            city={city}/>
         <Logout/>
-        {/* {isOpen && (
-          <Modal onClose={close}>
-            <ModalLogOut onClose={close}/>
-          </Modal>
-        )} */}
       </Wrap>
       <PetsData />
     </UserDiv>

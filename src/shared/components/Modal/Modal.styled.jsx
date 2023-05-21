@@ -4,8 +4,8 @@ export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,6 @@ export const Backdrop = styled.div`
 `;
 
 export const Wrapper = styled.div`
-
-
 position: absolute;
 display: flex;
 align-items: center;
@@ -38,15 +36,3 @@ border-radius: 40px;
   max-width: 608px;
 }
 `;
-
-// export const CloseModalBtn = styled.button`
-// padding: 0;
-// width: 20px;
-// height: 20px;
-
-// position: absolute;
-// top: 29px;
-// right: 29px;
-// background: green;
-// border: none;
-// `

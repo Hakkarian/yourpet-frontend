@@ -2,6 +2,7 @@
 // import jwt_decode from 'jwt-decode';
 // import { register } from 'redux/auth/auth-operations';
 // import { useDispatch } from 'react-redux';
+// import { googleAuth } from 'redux/auth/auth-slice';
 
 const GoogleAuthentication = () => {
   //  const dispatch = useDispatch();
@@ -21,10 +22,20 @@ const GoogleAuthentication = () => {
   //      google.accounts.id.prompt()
   //    }, [])
 
-  //  const handleCallbackResponse = (response) => {
+  // const handleCallbackResponse = (response) => {
   //    const info = jwt_decode(response.credential);
-  //    console.log(info)
-  //    dispatch(register(response.operation))
+  //    const payload = {
+  //      token: response.credential,
+  //      user: {
+  //        email: info.email,
+  //        userId: info.sub
+  //      }
+  //   }
+  //   // const password = `HASH${Math.floor(Math.random(100))}hm`
+  //   console.log(info)
+  //   console.log(payload)
+  //   dispatch(googleAuth(payload))
+    
   //    }
   //  return (
   //    <div onClick={handleCallbackResponse} id='signInDiv'></div>

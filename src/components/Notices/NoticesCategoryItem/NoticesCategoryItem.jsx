@@ -8,6 +8,7 @@ import {
   getUserNotices,
   deleteUserNotice,
 } from 'redux/notices/notices-operations';
+
 import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../Modals/ModalNotice/ModalNotice';

@@ -18,9 +18,8 @@ import {
   ColumOne,
   CategoryBox,
   ImgBox,
+  HeartIcon,
 } from './ModalNotice.styled';
-
-import { ReactComponent as HeartIcon } from '../../../icons/heart.svg';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
 
@@ -103,13 +102,13 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
                   <tr>
                     <ColumOne>Email:</ColumOne>
                     <ColumTwo>
-                      <Link>{email}</Link>
+                      <Link href="mailto:{email}">{email}</Link>
                     </ColumTwo>
                   </tr>
                   <tr>
                     <ColumOne>Phone:</ColumOne>
                     <ColumTwo>
-                      <Link href="tel:{owner.phone}">{phone}</Link>
+                      <Link href="tel:{phone}">{phone}</Link>
                     </ColumTwo>
                   </tr>
                 </tbody>
@@ -122,7 +121,7 @@ const ModalNotice = ({ onClose, noticeDeteils }) => {
 
             <BtnContainer>
               <Button className="btn" type="button" color="blue" width="256px">
-                Add to <HeartIcon fill="none" width="24px" height="24px" />
+                Add to <HeartIcon/>
               </Button>
 
               <Button className="btn" type="button" color="white" width="256px">
