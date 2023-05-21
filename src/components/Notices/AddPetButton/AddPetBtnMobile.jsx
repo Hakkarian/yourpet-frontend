@@ -3,33 +3,30 @@ import {
 } from './AddPetBtnMobile.style';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import { useState } from 'react';
-// import { useToggle } from 'shared/hooks/useToggle';
+import { useToggle } from 'shared/hooks/useToggle';
+import Modal from 'shared/components/Modal';
 import ModalAddPet from 'components/Modals/ModalAddPet';
 import { AddCss } from './AddPetBtn.styled';
 import { useNavigate } from 'react-router-dom';
 
 const AddPetButtonMobile = () => {
-  const isLogined = useSelector(selectIsLoggedIn);
-  // const { open } = useToggle();
-  const [open1, setOpen1] = useState(false);
+  const { isOpen, open, close } = useToggle();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate()
 
-  const openAddPet = () => {
-    if (isLogined) {
-      navigate('/add-pet');
-    } else setOpen1(true);
-  };
-
   return (
-    <>
-      {open1 && <ModalAddPet />}
-        <AddBtn onClick={openAddPet}>
-          <AddCss width="24" height="24" />
-          Add pet
-        </AddBtn>
-    </>
+<>
+{isLoggedIn ? (
+  <AddBtn onClick={() => navigate('/add-pet')}>
+  <AddCss width='24' height='24'/>Add pet</AddBtn>
+) : (<AddBtn type='button' onClick={open}>
+<AddCss width='24' height='24'/>Add pet</AddBtn>
+
+)}
+{isOpen && (<Modal onClose={close}><ModalAddPet onClose={close}/></Modal>)}
+</>
   );
 };
 
 export default AddPetButtonMobile;
+
