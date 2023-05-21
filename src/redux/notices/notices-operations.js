@@ -168,7 +168,7 @@ export const getUserNotices = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/own?query=${query}`
+          `/notices/title/own?search=${query}`
         );
         console.log(data);
 

@@ -11,7 +11,7 @@ import friendsSlice from './friends/friends-slice'
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);

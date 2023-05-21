@@ -41,6 +41,8 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 import { TrashIcon } from './NoticesCategoryItem.styled';
+import { selectUserNotices } from 'redux/notices/notices-selector';
+// import { selectIsFavorite } from 'redux/notices/notices-selector';
 
 const categoryShelf = {
   sell: 'sell',
@@ -63,6 +65,7 @@ const NoticesCategoryItem = ({
   const isFavorite = useMemo(() => {
     return listOfFavorites.find(pet => pet._id === id);
   }, [id, listOfFavorites]);
+
 
   let query = null;
 
@@ -114,11 +117,15 @@ const NoticesCategoryItem = ({
       refreshingPage(categoryPet);
       // onUpdateStatus();
     });
+     toast.success('Pet add to favorites.');
+  };
+
 
     toast.success('Pet added to favorites.');
   };
 
   const removeFromFavorite = async () => {
+
     if (!isLoggedIn) {
       return toast.error(
         'You need to authorize before removing pets from favorites.'
@@ -199,12 +206,10 @@ const NoticesCategoryItem = ({
             removeFromFavorite={removeFromFavorite}
           />
         )}
-        {isOwner && (
-          <>
+        {isOwner === isOwnerNotices && (
             <Button onClick={open} deleteNotice={handleDeleteClick}>
               <TrashIcon alt="trash" width="24" height="24" />
             </Button>
-          </>
         )}
       </ButtonDiv>
     </Item>

@@ -14,7 +14,9 @@ import {
   selectIsLoading,
   selectIsNoticeAdded,
   selectIsFavorite,
+
   selectListOfFavoritesPets,
+
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { Wrapper, List } from './NoticesCategoryList.styled';
