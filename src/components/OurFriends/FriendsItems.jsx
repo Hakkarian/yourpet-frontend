@@ -11,7 +11,7 @@ import {
 
 
 const FriendsItems = ({ friend }) => {
-   const [friendsState, setFriendState] = useState([...friend])
+   const [friendsState] = useState([...friend])
 
    const [visible, setVisible] = useState(false);
 
