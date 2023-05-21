@@ -1,6 +1,6 @@
 import { AddBtn } from './AddPetBtn.styled';
 // import { selectIsLoggedIn } from 'redux/auth/auth-selector';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import { toast } from 'react-hot-toast';
 
 import { useLocation } from 'react-router-dom';
@@ -11,8 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const AddNoticePetButton = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { isOpen, open, close } = useToggle();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const { isOpen, open, close } = useToggle();
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   // const isLogined = useSelector(selectIsLoggedIn);
  
   return (
