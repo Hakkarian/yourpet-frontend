@@ -15,10 +15,17 @@ import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
 import { selectIsLoggedIn, selectUser  } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
+// --------------------------------------------| МОДАЛКА |--------------|
+import { useContext } from 'react';
+import ModalContext from 'shared/components/Modalll/utils/modalContext'; 
+import Modalll from 'shared/components/Modalll/Modalll';
+import BurgerMenuPage from 'components/BurgerMenu/BurgerMenuPage';
+// ---------------------------------------------------------------------|
 
 
 
 const Header = () => {
+  const {isOpenContext, toggleContext} = useContext(ModalContext);
   
   const isLogin = useSelector(selectIsLoggedIn)
   const { name } = useSelector(selectUser);
@@ -46,11 +53,17 @@ const Header = () => {
             </MediaQuery>
           )}
           <MediaQuery maxWidth={1279}>
-            <Link>
+            <Link onClick={toggleContext}>
               <BurgerMenu width="24" height="24" />
             </Link>
           </MediaQuery>
         </AuthWrapCss>
+
+        {isOpenContext &&
+          <Modalll toggleModal={toggleContext}>
+            <BurgerMenuPage onClick={toggleContext}/>
+          </Modalll>
+        }
       </HeaderCss>
     </>
   );

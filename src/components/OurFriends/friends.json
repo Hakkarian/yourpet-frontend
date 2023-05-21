@@ -10,6 +10,7 @@
     "addressUrl": "https://goo.gl/maps/u3mArxxHA49nBNNz8",
     "phone": "(032) 293-30-41",
     "phoneUrl": "tel:(032) 293-30-41",
+    "isOnline":false,
     "time": {
       "times": "8:00- 19:00",
       "monday": "8:00- 19:00",
@@ -18,8 +19,7 @@
       "thursday": "8:00- 19:00",
       "friday": "8:00- 19:00",
       "saturday": "8:00- 19:00",
-      "sunday": "8:00- 19:00",
-      "isOnline":true
+      "sunday": "8:00- 19:00"
     }
   },
   {
@@ -33,6 +33,7 @@
     "address": "Grigorenka Street, 25 ",
     "phone": "066 488 0480",
     "linkPhone": "tel:066 488 0480",
+    "isOnline":false,
     "time": {
       "times": "8:00- 20:00",
       "monday": "8:00- 20:00",
@@ -41,8 +42,8 @@
       "thursday": "8:00- 20:00",
       "friday": "8:00- 20:00",
       "saturday": "day off",
-      "sunday": "day off",
-      "isOnline":true
+      "sunday": "day off"
+      
     }
   },
   {
@@ -55,6 +56,7 @@
     "address": "website only",
     "phone": "0–800–500–155",
     "linkPhone": "tel:0–800–500–155",
+    "isOnline":false,
     "time": {
       "times": "8:00- 19:00",
       "monday": "8:00- 19:00",
@@ -63,8 +65,8 @@
       "thursday": "8:00- 19:00",
       "friday": "8:00- 19:00",
       "saturday": "8:00- 19:00",
-      "sunday": "8:00- 19:00",
-      "isOnline":true
+      "sunday": "8:00- 19:00"
+    
     }
   },
   {
@@ -78,6 +80,7 @@
     "address": "Chota Rystaveli Street, 44 ",
     "phone": "+380 44 290-03-29",
     "linkPhone": "tel:+380 44 290-03-29",
+    "isOnline":false,
     "time": {
       "times": "8:00- 19:00",
       "monday": "8:00- 19:00",
@@ -86,8 +89,7 @@
       "thursday": "8:00- 19:00",
       "friday": "8:00- 19:00",
       "saturday": "8:00- 19:00",
-      "sunday": "8:00- 19:00",
-      "isOnline":true
+      "sunday": "8:00- 19:00"
     }
   },
   {
@@ -115,6 +117,7 @@
     "addressUrl": "https://goo.gl/maps/Tok1tJinhqMfRH1n7",
     "phone": "+38 093 193 40 69",
     "linkPhone": "tel:+38 093 193 40 69",
+    "isOnline":false,
     "time": {
       "times": "11:00- 16:00",
       "monday": "8:00- 16:00",
@@ -123,8 +126,7 @@
       "thursday": "8:00- 16:00",
       "friday": "8:00- 16:00",
       "saturday": "8:00- 16:00",
-      "sunday": "day off",
-      "isOnline":true
+      "sunday": "day off"
     }
   },
   {
@@ -152,6 +154,7 @@
     "addressUrl": "https://goo.gl/maps/pnqMQMv6mdx4c6aCA",
     "phone": "+38 097 509 8005",
     "linkPhone": "tel:+38 097 509 8005",
+    "isOnline":false,
     "time": {
       "times": "9:00- 20:00",
       "monday": "8:00- 20:00",
@@ -160,8 +163,7 @@
       "thursday": "8:00- 20:00",
       "friday": "8:00- 20:00",
       "saturday": "day off",
-      "sunday": "day off",
-      "isOnline":true
+      "sunday": "day off"
     }
   },
   {
@@ -175,6 +177,7 @@
     "addressUrl": "https://goo.gl/maps/49TJKkd3CErX2i4R9",
     "phone": "+38 097 509 8005",
     "linkPhone": "tel:+38 097 509 8005",
+    "isOnline":false,
     "time": {
       "times": "9:00- 20:00",
       "monday": "8:00- 20:00",
@@ -183,8 +186,7 @@
       "thursday": "8:00- 20:00",
       "friday": "8:00- 20:00",
       "saturday": "day off",
-      "sunday": "day off",
-      "isOnline":true
+      "sunday": "day off"
     }
   }
 ]

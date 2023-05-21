@@ -98,6 +98,7 @@ font-style: normal;
 font-weight: 700;
 font-size: 20px;
 line-height: 27px;
+height: 27px;
 padding:0;
 display: flex;
 align-items: center;
@@ -111,8 +112,11 @@ color: #54ADFF;
  }
 `
 export const WrapperForImgAndInformation = styled.div`
-display:flex;
+display: grid;
+grid-template-columns: auto auto;
+justify-content: start;
 padding: 16px 0;
+
 `
 export const WrapperImage = styled.div`
 width: 100px;
@@ -132,8 +136,8 @@ align-items: center;
  }
 `
 export const LogoCompanyImg = styled.img`
-width: 100px;
-height: 68px;
+width: 100%;
+height: 100%;
 
 @media screen and (min-width: 768px) {
   width: 124px;
@@ -161,7 +165,14 @@ margin: 0;
 `
 export const ItemInformation = styled.li`
 margin:0;
-
+height: 32px;
+overflow: hidden;
+@media screen and (min-width: 768px) {
+  height: 38px;
+ }
+ @media screen and (min-width: 1280px) {
+  height: 44px;
+ }
 `
 export const LinKForInformation = styled.a`
 padding:0;
@@ -192,7 +203,7 @@ line-height: 19px;
 line-height: 22px;
  }
 `
-export const Textinformation = styled.p`
+export const Textinformation = styled.div`
 margin:0;
 // font-family: 'Manrope';
 font-family: system-ui;

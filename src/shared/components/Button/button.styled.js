@@ -27,7 +27,8 @@ export const ButtonTag = styled.button`
     border-radius: 40px;
     width: ${({width})=>width};
 
-    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    background 300ms cubic-bezier(0.4, 0, 0.2, 1);
     ${switchColor}
 
     :active {
