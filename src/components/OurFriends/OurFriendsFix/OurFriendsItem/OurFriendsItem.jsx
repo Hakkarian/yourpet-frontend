@@ -35,23 +35,10 @@ export const OurFriendsItem = ({
         </WrapImg>
         <WrapInfo>
           <p>Time:</p>
-
           {workDays?.length ? (
             <Schedule workDays={workDays} />
           ) : (
-            // <button
-            //   color={'#54adff'}
-            //   hovercolor={'#000000'}
-            //   // href="#"
-            //   // target="_blank"
-            //   // rel="noreferrer noopener"
-            //   onClick={workDays => Schedule(workDays)}
-            // >
-            //   From-To
-            // </button>
-            <a href={url} target="_blank" rel="noreferrer noopener">
-              day and night
-            </a>
+            <p className="time">day and night</p>
           )}
           <p>Address:</p>
           {address ? (

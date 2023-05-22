@@ -92,6 +92,12 @@ export const WrapInfo = styled.div`
       height: 48px;
     }
   }
+  .time {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 11px;
+    color: ${({ theme }) => theme.colors.black};
+  }
 `;
 
 //  svg {
