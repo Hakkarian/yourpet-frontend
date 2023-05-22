@@ -14,9 +14,7 @@ import {
   selectIsLoading,
   selectIsNoticeAdded,
   selectIsFavorite,
-
   selectListOfFavoritesPets,
-
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { Wrapper, List } from './NoticesCategoryList.styled';
@@ -76,6 +74,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
 
   const petsToShow =
     category === 'favorites-ads' ? [...favorites] : [...notices];
+
   return !isLoading && petsToShow.length === 0 ? (
     <Wrapper>
       <ErrorPage />
@@ -93,6 +92,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
                   page={page}
                   onClick={() => onClick(notice._id)}
                   onUpdateStatus={onUpdateStatus}
+                  id={notice._id}
                 />
               ))}
 

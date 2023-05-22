@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import {
   getNoticeByCategory,
   addToFavorites,
@@ -55,7 +55,7 @@ const NoticesCategoryItem = ({
   isOwner,
   categoryPet,
   user,
-  listOfFavorites,
+  listOfFavorites = [],
   id,
 }) => {
   const { photo, birthday, sex, location, title, _id, category } = notice;
@@ -65,7 +65,6 @@ const NoticesCategoryItem = ({
   const isFavorite = useMemo(() => {
     return listOfFavorites.find(pet => pet._id === id);
   }, [id, listOfFavorites]);
-
 
   let query = null;
 
@@ -109,19 +108,24 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      return toast.error(
-        'You need to authorize before adding pets to favorites.'
-      );
+      // toast.error('You need to authorize before adding pets to favorites.');
+      toast('You need to authorize before adding pets to favorites.', {
+        icon: '❕',
+        style: {
+          borderRadius: '10px',
+          background: '#B70404',
+          color: '#fff',
+        },
+      });
+      return;
     }
     dispatch(addToFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
       // onUpdateStatus();
     });
-     toast.success('Pet add to favorites.');
   };
 
   const removeFromFavorite = async () => {
-
     if (!isLoggedIn) {
       return toast.error(
         'You need to authorize before removing pets from favorites.'
@@ -131,7 +135,6 @@ const NoticesCategoryItem = ({
       refreshingPage(categoryPet);
       // onUpdateStatus();
     });
-
   };
 
   return (
