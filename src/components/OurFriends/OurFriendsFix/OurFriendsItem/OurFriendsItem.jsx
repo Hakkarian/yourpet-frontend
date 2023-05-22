@@ -6,7 +6,6 @@ import {
   Title,
   Wrap,
   WrapImg,
-  Plug,
   WrapInfo,
 } from './OurFriendsItem.styled';
 
