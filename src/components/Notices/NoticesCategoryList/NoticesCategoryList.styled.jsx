@@ -16,12 +16,15 @@ export const List = styled.ul`
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+    min-height: 574px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
+    min-height: 628px;
+  }
+
+  @media screen and (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 32px;
   }
 `;
-
-

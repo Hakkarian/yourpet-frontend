@@ -8,8 +8,6 @@ import {
   deleteUserNotice,
   createNotice,
   getUserNotices,
-  getAllFavorites,
-  getAllUserNotices,
 } from './notices-operations';
 
 const initialState = {
@@ -17,7 +15,7 @@ const initialState = {
   oneNoticeMoreInfo: [],
   allFavoritesPets: [],
   allOwnPets: [],
-  totalPages: 1,
+  totalPage: null,
   isFavorite: false,
   isLoading: false,
   isError: null,
@@ -49,9 +47,11 @@ const noticesSlice = createSlice({
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(getNoticeByCategory.fulfilled, (state, { payload }) => {
-        state.noticesByCategory = payload.notices;
-        state.totalPages = payload.totalPages;
+      .addCase(getNoticeByCategory.fulfilled, (state, action) => {
+        state.noticesByCategory = action.payload.notices;
+        state.totalPage = action.payload.total
+          ? Math.ceil(action.payload.total / action.payload.per_page)
+          : 0;
         state.isLoading = false;
         state.isError = null;
       })
@@ -93,7 +93,9 @@ const noticesSlice = createSlice({
         state.isError = null;
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
-        state.totalPages = payload.totalPages;
+        state.totalPage = payload.total
+          ? Math.ceil(payload.total / payload.per_page)
+          : 0;
         state.noticesByCategory = payload.notices;
         state.isLoading = false;
         state.isError = null;
@@ -102,20 +104,6 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.isError = payload;
         state.noticesByCategory = [];
-      })
-      .addCase(getAllFavorites.pending, state => {
-        state.isLoading = true;
-        state.isError = null;
-      })
-      .addCase(getAllFavorites.fulfilled, (state, { payload }) => {
-        state.allFavoritesPets = payload;
-        state.isLoading = false;
-        state.isError = null;
-      })
-      .addCase(getAllFavorites.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.isError = payload;
-        state.allFavoritesPets = [];
       })
       .addCase(deleteFromFavorites.pending, state => {
         state.isLoading = true;
@@ -171,26 +159,14 @@ const noticesSlice = createSlice({
       })
       .addCase(getUserNotices.fulfilled, (state, { payload }) => {
         state.noticesByCategory = payload.notices;
-        state.totalPages = payload.totalPages;
+        state.totalPage = payload.total
+          ? Math.ceil(payload.total / payload.per_page)
+          : 0;
         state.isLoading = false;
         state.isError = null;
       })
       .addCase(getUserNotices.rejected, (state, { payload }) => {
         state.noticesByCategory = [];
-        state.isLoading = false;
-        state.isError = payload;
-      })
-      .addCase(getAllUserNotices.pending, state => {
-        state.isLoading = true;
-        state.isError = null;
-      })
-      .addCase(getAllUserNotices.fulfilled, (state, { payload }) => {
-        state.allOwnPets = payload;
-        state.isLoading = false;
-        state.isError = null;
-      })
-      .addCase(getAllUserNotices.rejected, (state, { payload }) => {
-        state.allOwnPets = [];
         state.isLoading = false;
         state.isError = payload;
       });
