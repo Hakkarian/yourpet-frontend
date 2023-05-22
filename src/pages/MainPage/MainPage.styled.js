@@ -24,7 +24,7 @@ export const SectionTag = styled.section`
     min-height: calc(100vh - 168px);
     padding: 48px 20px 60px 20px;
 
-    // background-color: rgba(0,0,0,0);
+    background: inherit;
     background-image:url(${bg_mobile_paws});
     background-position: 0% 0%;
     @media (min-device-pixel-ratio: 2),
@@ -40,6 +40,7 @@ export const SectionTag = styled.section`
         font-family: 'Manrope', sans-serif;
         font-size: 32px;
         line-height: 44px;
+        color: ${({theme})=>theme.colors.black};
     }
     div {
         position: absolute;
@@ -63,10 +64,10 @@ export const SectionTag = styled.section`
     }
 
 
-    @media (min-width: 767px) {
+    @media (min-width: 768px) {
         min-height: calc(100vh - 148px);
-        margin-top: 88px;
-        padding: 0px 32px 0px 32px;
+        // margin-top: 88px;
+        padding: 88px 32px 0px 32px;
 
         
         background-image:url(${bg_tab_paws});
@@ -82,7 +83,7 @@ export const SectionTag = styled.section`
             line-height: calc(100 / 68);
         }
         div {
-            top: 225px;
+            top: calc(225px + 88px);
             min-height: 684px;
 
             // background-color: red;
@@ -99,7 +100,7 @@ export const SectionTag = styled.section`
     }
 
 
-    @media (min-width: 1279px) {
+    @media (min-width: 1280px) {
         // min-height: calc(100vh - 148px);
         max-width:1280px;
         margin-top: 0px;
@@ -142,3 +143,4 @@ export const SectionTag = styled.section`
         }
     }
 `;
+// background-color: ${({theme})=>theme.colors.white};

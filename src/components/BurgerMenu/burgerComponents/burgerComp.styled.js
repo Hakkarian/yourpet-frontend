@@ -81,12 +81,12 @@ export const BurgerNavStyled = styled.div`
     gap:20px;
 
     // margin-top: 40px;
-
+    
     // a:first-of-type {
     //     color: red;
     // }
     a {
-        color: #000000;
+        color: ${({theme})=>theme.colors.black};
         // text-transform: capitalize;
         font-weight: 500;
         font-size: 32px;
