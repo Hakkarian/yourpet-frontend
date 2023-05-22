@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
-
 import NoticeCategoryItem from '../NoticesCategoryItem/NoticesCategoryItem';
 import { Loader } from '../../Loader/Loader';
 import {
@@ -18,8 +17,9 @@ import {
   selectIsFavorite,
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
-import { Wrapper, List } from './NoticesCategoryList.styled';
+import { List } from './NoticesCategoryList.styled';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage';
+import { Container } from 'shared/components/Container/Container.styled';
 
 export const categoryShelf = {
   sell: 'sell',
@@ -68,11 +68,11 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   // }
 
   return !isLoading && notices.length === 0 ? (
-    <Wrapper>
+    <Container>
       <ErrorPage />
-    </Wrapper>
+    </Container>
   ) : (
-    <Wrapper>
+    <Container>
       {notices && notices.length > 0 ? (
         <>
           <List>
@@ -117,7 +117,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
       ) : (
         <Loader />
       )}
-    </Wrapper>
+    </Container>
   );
 };
 
