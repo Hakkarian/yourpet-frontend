@@ -13,7 +13,7 @@ export const BurgerDiv = styled.div`
         }
     }
     animation-name: openModal;
-    animation-duration: 400ms;
+    animation-duration: 300ms;
     animation-timing-function: linear;
 
     display: flex;
@@ -68,7 +68,7 @@ export const BurgerDiv = styled.div`
             }
         }
         animation-name: opacityCross;
-        animation-duration: 1400ms;
+        animation-duration: 1200ms;
         animation-timing-function: linear;
 
     @media (min-width: 768px) {
