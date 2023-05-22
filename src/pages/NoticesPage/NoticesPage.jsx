@@ -53,14 +53,10 @@ const NoticesPage = () => {
   //   setInput(e.target.value);
   // };
 
-  const showWarning = () => {
-    setState({ search: '' });
-  };
-
   return (
     <GlobalBox>
       <ReusableTitle>Find your favorite pet</ReusableTitle>
-      <NoticesSearch onSubmit={handlerSubmit} onClick={showWarning} />
+      <NoticesSearch onSubmit={handlerSubmit} />
       <NoticesCategoryList onUpdateStatus={noticesByCategory} />
       <Outlet />
 
