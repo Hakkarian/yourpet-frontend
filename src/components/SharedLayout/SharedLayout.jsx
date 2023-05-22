@@ -17,7 +17,7 @@ const SharedLayout = () => {
     <ThemeProvider theme={isLight ? theme : themeDark}>
       <ModalProvider>
         <div>
-          <Container colorsBox={isLight ? theme : themeDark}>
+          <Container>
             <Header />
             <Suspense fallback={<div>Loading...</div>}>
               <Outlet />
