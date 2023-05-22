@@ -8,17 +8,15 @@ import {
   deleteUserNotice,
   createNotice,
   getUserNotices,
+  getAllFavorites,
+  getAllUserNotices,
 } from './notices-operations';
-
-// const handlePending = state => {
-//   state.isLoading = true;
-//   state.isError = null;
-// };
 
 const initialState = {
   noticesByCategory: [],
   oneNoticeMoreInfo: [],
-  favoritePets: [],
+  allFavoritesPets: [],
+  allOwnPets: [],
   totalPages: 1,
   isFavorite: false,
   isLoading: false,
@@ -68,7 +66,6 @@ const noticesSlice = createSlice({
       })
       .addCase(getOneNotice.fulfilled, (state, { payload }) => {
         state.oneNoticeMoreInfo = payload;
-        console.log(payload);
         state.isLoading = false;
         state.isError = null;
       })
@@ -81,7 +78,9 @@ const noticesSlice = createSlice({
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(addToFavorites.fulfilled, (state, _) => {
+      .addCase(addToFavorites.fulfilled, (state, { payload }) => {
+        // console.log(payload);
+        state.allFavoritesPets.push(payload);
         state.isLoading = false;
         state.isError = null;
       })
@@ -95,21 +94,37 @@ const noticesSlice = createSlice({
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
         state.totalPages = payload.totalPages;
-        state.favoritePets = payload.notices;
+        state.noticesByCategory = payload.notices;
         state.isLoading = false;
         state.isError = null;
       })
-
       .addCase(getFavorites.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isError = payload;
-        state.favoritePets = [];
+        state.noticesByCategory = [];
+      })
+      .addCase(getAllFavorites.pending, state => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(getAllFavorites.fulfilled, (state, { payload }) => {
+        state.allFavoritesPets = payload;
+        state.isLoading = false;
+        state.isError = null;
+      })
+      .addCase(getAllFavorites.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
+        state.allFavoritesPets = [];
       })
       .addCase(deleteFromFavorites.pending, state => {
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(deleteFromFavorites.fulfilled, (state, _) => {
+      .addCase(deleteFromFavorites.fulfilled, (state, { payload }) => {
+        state.allFavoritesPets = state.allFavoritesPets.filter(
+          ({ _id }) => _id !== payload
+        );
         state.isLoading = false;
         state.isError = null;
       })
@@ -121,7 +136,13 @@ const noticesSlice = createSlice({
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(deleteUserNotice.fulfilled, (state, _) => {
+      .addCase(deleteUserNotice.fulfilled, (state, { payload }) => {
+        state.noticesByCategory = state.noticesByCategory.filter(({ _id }) => {
+          return _id !== payload;
+        });
+        state.allFavoritesPets = state.allFavoritesPets.filter(({ _id }) => {
+          return _id !== payload;
+        });
         state.isLoading = false;
         state.isError = null;
       })
@@ -135,7 +156,7 @@ const noticesSlice = createSlice({
       })
       .addCase(createNotice.fulfilled, (state, { payload }) => {
         state.isNoticeAdded = true;
-        state.noticesByCategory.push(payload);
+        state.allOwnPets.push(payload);
         state.isLoading = false;
         state.isError = null;
       })
@@ -158,6 +179,20 @@ const noticesSlice = createSlice({
         state.noticesByCategory = [];
         state.isLoading = false;
         state.isError = payload;
+      })
+      .addCase(getAllUserNotices.pending, state => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(getAllUserNotices.fulfilled, (state, { payload }) => {
+        state.allOwnPets = payload;
+        state.isLoading = false;
+        state.isError = null;
+      })
+      .addCase(getAllUserNotices.rejected, (state, { payload }) => {
+        state.allOwnPets = [];
+        state.isLoading = false;
+        state.isError = payload;
       });
   },
 });
@@ -165,9 +200,3 @@ const noticesSlice = createSlice({
 export default noticesSlice.reducer;
 export const { setPage, changeIsNoticeAdded, setNotices, setFavNotices } =
   noticesSlice.actions;
-
-//  .addCase(addPets.fulfilled, (state, { payload }) => {
-//         state.items.push(payload);
-//         state.error = null;
-//         state.isLoading = false;
-//       })
