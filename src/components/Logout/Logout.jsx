@@ -1,7 +1,7 @@
 
 import {OutBtn, OutWrap, OutText, Icon} from './Logout.styled';
 import ModalLogOut from "components/Modals/ModalLogOut";
-import Modal from "shared/components/Modal";
+import Modal from "shared/components/Modal/Modal";
 import { useToggle } from "shared/hooks/useToggle";
 
 

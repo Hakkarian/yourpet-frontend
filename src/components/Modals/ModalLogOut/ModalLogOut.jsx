@@ -1,9 +1,11 @@
-import { ContainerButton, ModalTitle, Container } from './ModalLogOut.styled';
+import { ContainerButton, ModalTitle} from './ModalLogOut.styled';
+import { Container } from 'shared/components/Modal/ContainerModal/ContainerModal.styled';
 import Button from 'shared/components/Button/Button';
 import {ReactComponent as LogOutIcon} from '../../../icons/logout.svg';
 import PropTypes from 'prop-types';
 import { logout } from 'redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
+// import Container from 'shared/components/Modal/ContainerModal/ContainerModal';
 
 
 const ModalLogOut = ({ onClose}) => {

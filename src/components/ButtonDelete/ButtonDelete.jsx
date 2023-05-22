@@ -1,6 +1,6 @@
 import { TrashIcon, SvgWrapper } from './ButtonDelete.styled';
 import Button from 'shared/components/Button/Button';
-import Modal from "shared/components/Modal";
+import Modal from "shared/components/Modal/Modal";
 import ModalDelete from 'components/Modals/ModalDelete';
 
 const ButtonDelete = () => {
