@@ -26,7 +26,16 @@ export const ListNav = styled.ul`
   flex-wrap: wrap;
   gap: 12px;
 
-
+  @media screen and (min-width: 1280px) {
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 0;
+    // width: 540px;
+    // height: 35px;
+    // gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+  }
 `;
 
 export const ContainerNav = styled.div`
@@ -38,7 +47,7 @@ export const ContainerNav = styled.div`
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     flex-direction: row;
   }
 `;
