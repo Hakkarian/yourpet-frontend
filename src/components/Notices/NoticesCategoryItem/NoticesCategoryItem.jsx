@@ -131,7 +131,9 @@ const NoticesCategoryItem = ({
 
   return (
   <>
-    {open1 && <Modal onClose={() => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
+ 
+    {/* {open1 && <Modal onClose={
+      () => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>} */}
     <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
