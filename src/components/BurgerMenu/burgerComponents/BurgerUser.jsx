@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as User } from '../img/user.svg';
 import { BurgerUserStyled } from './burgerComp.styled';
 
 const BurgerUser = ({userName}) => {
     return (
         <BurgerUserStyled>
-            <User/>
-            <p>{userName}</p>
+            <Link to="/user">
+                <User/>
+                <p>{userName}</p>
+            </Link>
         </BurgerUserStyled>
     )
 };
