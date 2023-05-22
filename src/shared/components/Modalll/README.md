@@ -28,11 +28,8 @@
 ## Також можна використати Context!
 
 1. В файл потрібного "батьківського" компонента(верхній компонент де
-   зберігаються данні) імпортуйте `ModalContext`та хук `useToggleModalContexst`.
-   А в самій функції компонента викличіть цей хук
-   `const { isOpenContext, open, close, toggleContext } = useToggleModalContexst(false)`.
-   Також обгорніть потрібний компонент "провайдером". Приклад:
-   `<ModalContext.Provider value={{ isOpenContext, open, close, toggleContext}}> <Container/> </ModalContext.Provider>`.
+   зберігаються данні) імпортуйте `ModalProvider`. Обгорніть потрібний компонент
+   "провайдером". Приклад: `<ModalProvider> <Container/> </ModalProvider>`.
 2. В файлі компонента, де потрібно викликати модалку, імпортуєте `useContext` та
    `ModalContext`. В функції компонента викличіть хук useContext наступним
    чином:

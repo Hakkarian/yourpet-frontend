@@ -8,8 +8,8 @@ import {
   getNoticeByCategory,
   getFavorites,
   getUserNotices,
-  // getAllFavorites,
-  // getAllUserNotices,
+  getAllFavorites,
+  getAllUserNotices,
 } from 'redux/notices/notices-operations';
 import {
   selectNoticesByCategory,
@@ -37,19 +37,39 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const user = useSelector(selectUser);
   let favoriteNotice = useSelector(selectIsFavorite);
   const category = location.pathname.split('/')[2];
+  // const [search] = useSearchParams();
+  // const query = search.get('query');
+  // const page = search.get('page');
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
   const search = searchParams.get('search') ?? '';
 
   useEffect(() => {
-    if (category === categoryShelf[category]) {
-      dispatch(getNoticeByCategory({ category: category, search, page }));
-    }
-    if (category === 'favorites-ads') {
-      dispatch(getFavorites({ search, page }));
-    }
-    if (category === 'my-ads') {
-      dispatch(getUserNotices({ search, page }));
+    dispatch(getAllFavorites());
+    dispatch(getAllUserNotices());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (category) {
+      if (category === categoryShelf[category] && search) {
+        dispatch(getNoticeByCategory({ category: category, search, page }));
+      }
+      if (category === 'favorites-ads' && search) {
+        dispatch(getFavorites({ search, page }));
+      }
+      if (category === 'my-ads' && search) {
+        dispatch(getUserNotices({ search, page }));
+      } else {
+        if (category === categoryShelf[category]) {
+          dispatch(getNoticeByCategory({ category: category, search, page }));
+        }
+        if (category === 'favorites-ads') {
+          dispatch(getFavorites({ search, page }));
+        }
+        if (category === 'my-ads') {
+          dispatch(getUserNotices({ search, page }));
+        }
+      }
     }
   }, [search, dispatch, category, isNoticeAdded, page]);
 
