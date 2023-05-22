@@ -2,11 +2,13 @@ import React, {useState} from "react";
 
 
 import {Item, DeleteBtn, Span, BtnWrap, Icon, Image, TextWrap, Text  } from './PetsItem.styled';
+
 import ModalDelete from "../Modals/ModalDelete/index";
 
 
+
 const PetsItem = ({pet }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [setIsModalOpen] = useState(false);
 
     const onDeleteBtn = () => {
        setIsModalOpen(true);
@@ -22,7 +24,7 @@ const PetsItem = ({pet }) => {
             <DeleteBtn type="button" onClick={onDeleteBtn}>
                 <Icon />
             </DeleteBtn>
-            {isModalOpen && <ModalDelete onClick={onDeleteBtn}/> }
+            {/* {isModalOpen && <ModalDelete onClick={onDeleteBtn}/> } */}
             </BtnWrap>
             <TextWrap><Text>Date of birth: <Span>{pet.birthday}</Span></Text></TextWrap>
             <TextWrap><Text>Breed: <Span>{pet.breed}</Span></Text></TextWrap>

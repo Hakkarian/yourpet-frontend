@@ -13,7 +13,8 @@ import {
   selectNoticesByCategory,
   selectIsLoading,
   selectIsNoticeAdded,
-  selectIsFavorite, 
+  selectIsFavorite,
+  selectListOfFavoritesPets,
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { Wrapper, List } from './NoticesCategoryList.styled';
@@ -33,11 +34,19 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isNoticeAdded = useSelector(selectIsNoticeAdded);
   const user = useSelector(selectUser);
- let favoriteNotice = useSelector(selectIsFavorite);
-  const category  = location.pathname.split('/')[2];
+  let favoriteNotice = useSelector(selectIsFavorite);
+  const category = location.pathname.split('/')[2];
   const [search] = useSearchParams();
   const query = search.get('query');
   const page = search.get('page');
+
+  useEffect(() => {
+    dispatch(getFavorites({ query: null }));
+  }, [dispatch]);
+  const favorites = useSelector(selectListOfFavoritesPets);
+
+  // setFavorites(useSelector(selectNoticesByCategory));
+  // console.log('favorites', favorites);
 
   useEffect(() => {
     if (category) {
@@ -63,28 +72,32 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
     }
   }, [query, dispatch, category, isNoticeAdded, page]);
 
-  return !isLoading && notices.length === 0 ? (
+  const petsToShow =
+    category === 'favorites-ads' ? [...favorites] : [...notices];
+
+  return !isLoading && petsToShow.length === 0 ? (
     <Wrapper>
       <ErrorPage />
     </Wrapper>
   ) : (
     <Wrapper>
-      {notices && notices.length > 0 ? (
+      {petsToShow && petsToShow.length > 0 ? (
         <>
           <List>
             {!isLoggedIn &&
-              notices.map(notice => (
+              petsToShow.map(notice => (
                 <NoticeCategoryItem
                   key={notice._id}
                   notice={notice}
                   page={page}
                   onClick={() => onClick(notice._id)}
-              onUpdateStatus={onUpdateStatus}
+                  onUpdateStatus={onUpdateStatus}
+                  id={notice._id}
                 />
               ))}
 
             {isLoggedIn &&
-              notices.map(notice => {
+              petsToShow.map(notice => {
                 const isOwner = notice.owner._id === user.id;
                 const index = notice.favorite.indexOf(user.id);
 
@@ -100,6 +113,8 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
                     isOwner={isOwner}
                     categoryPet={category}
                     onUpdateStatus={onUpdateStatus}
+                    listOfFavorites={favorites}
+                    id={notice._id}
                   />
                 );
               })}

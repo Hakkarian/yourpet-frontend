@@ -62,7 +62,6 @@ export const addToFavorites = createAsyncThunk(
           color: '#fff',
         },
       });
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -72,20 +71,19 @@ export const addToFavorites = createAsyncThunk(
 
 // get отримання оголошень авторизованого користувача доданих ним же в обрані
 export const getFavorites = createAsyncThunk(
-  '/notices/getFavorites',
+  'notices/getFavorites',
   async ({ query, page }, { rejectWithValue }) => {
     try {
       if (query === null) {
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page },
         });
-        console.log(data);
+
         return data;
       } else {
         const { data } = await instance.get(
           `/notices/title/favorite?search=${query}`
         );
-
         return data;
       }
     } catch (error) {
@@ -170,7 +168,7 @@ export const getUserNotices = createAsyncThunk(
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/own?query=${query}`
+          `/notices/title/own?search=${query}`
         );
         console.log(data);
 
@@ -181,5 +179,3 @@ export const getUserNotices = createAsyncThunk(
     }
   }
 );
-
-

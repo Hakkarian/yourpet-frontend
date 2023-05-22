@@ -10,6 +10,7 @@ import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
+
 import ModalCongrats from 'components/Modals/ModalCongrats';
 import ModalLogOut from 'components/Modals/ModalLogOut';
 import { getUserInfo } from 'redux/auth/auth-operations';
@@ -44,7 +45,7 @@ const UserPage = () => {
 
   return (
     <>
-      {showModal && <ModalCongrats setShowModal={setShowModal} />}
+      {/* {showModal && <ModalCongrats setShowModal={setShowModal} />} */}
         <UserDiv>
           <div>
           <Title>My information:</Title>
@@ -54,7 +55,7 @@ const UserPage = () => {
             <Logout onClick={open} />
             {isOpen && (
               <Modal onClose={close}>
-                <ModalLogOut onClose={close} />
+                {/* <ModalLogOut onClose={close} /> */}
               </Modal>
             )}
           </Wrap>

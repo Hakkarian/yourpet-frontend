@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import {
   getNoticeByCategory,
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
   getUserNotices,
-  deleteUserNotice,
+  // deleteUserNotice,
 } from 'redux/notices/notices-operations';
+import { useMemo } from 'react';
 
-import { setNotices } from 'redux/notices/notices-slice';
+// import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
 import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
@@ -38,8 +39,10 @@ import { ReactComponent as MaleIcon } from 'icons/male.svg';
 import { ReactComponent as ClockIcon } from 'icons/clock.svg';
 import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
-import {  FilledHeartIcon } from './NoticesCategoryItem.styled';
-import { TrashIcon } from './NoticesCategoryItem.styled';
+import { FilledHeartIcon } from './NoticesCategoryItem.styled';
+// import { TrashIcon } from './NoticesCategoryItem.styled';
+// import { selectUserNotices } from 'redux/notices/notices-selector';
+// import { selectIsFavorite } from 'redux/notices/notices-selector';
 
 const categoryShelf = {
   sell: 'sell',
@@ -49,15 +52,19 @@ const categoryShelf = {
 
 const NoticesCategoryItem = ({
   notice,
-  isFavorite,
   isOwner,
   categoryPet,
   user,
-  onUpdateStatus
+  listOfFavorites = [],
+  id,
 }) => {
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+
+  const isFavorite = useMemo(() => {
+    return listOfFavorites.find(pet => pet._id === id);
+  }, [id, listOfFavorites]);
 
   let query = null;
 
@@ -78,38 +85,45 @@ const NoticesCategoryItem = ({
 
   const age = difOfAge(birthday);
 
-  const { isOpen, open, close, toggle } = useToggle();
+  const { isOpen, open, close } = useToggle();
 
   const refreshingPage = categoryPet => {
     if (categoryPet === categoryShelf[categoryPet])
       dispatch(getNoticeByCategory({ category, query }));
+    dispatch(getFavorites({ query }));
     if (categoryPet === 'favorites-ads') {
       dispatch(getFavorites({ query }));
     }
     if (categoryPet === 'my-ads') {
       dispatch(getUserNotices({ query }));
+      dispatch(getFavorites({ query }));
     }
   };
 
-  const handleDeleteClick = () => {
-    dispatch(deleteUserNotice(_id));
-    dispatch(setNotices(_id));
-    toggle();
-  };
+  // const handleDeleteClick = () => {
+  //   dispatch(deleteUserNotice(_id));
+  //   dispatch(setNotices(_id));
+  //   toggle();
+  // };
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      return toast.error(
-        'You need to authorize before adding pets to favorites.'
-      );
+      // toast.error('You need to authorize before adding pets to favorites.');
+      toast('You need to authorize before adding pets to favorites.', {
+        icon: '❕',
+        style: {
+          borderRadius: '10px',
+          background: '#B70404',
+          color: '#fff',
+        },
+      });
+      return;
     }
     dispatch(addToFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-      onUpdateStatus()
+      // onUpdateStatus();
     });
-
-    toast.success('Pet added to favorites.');
-   };
+  };
 
   const removeFromFavorite = async () => {
     if (!isLoggedIn) {
@@ -119,10 +133,9 @@ const NoticesCategoryItem = ({
     }
     dispatch(deleteFromFavorites(_id)).then(() => {
       refreshingPage(categoryPet);
-      onUpdateStatus()
+      // onUpdateStatus();
     });
-    toast.success('Pet removed from favorites.');
-   };
+  };
 
   return (
     <Item key={_id}>
@@ -132,7 +145,6 @@ const NoticesCategoryItem = ({
             <Image src={photo} alt="Pet" loading="lazy" />
           </ImageWrapper>
           <CategoryName>{category}</CategoryName>
-
           {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
@@ -167,7 +179,7 @@ const NoticesCategoryItem = ({
             <DescriptionTextContainer>
               {sex.toLowerCase() === 'female' && (
                 <FemaleIcon alt="sex" width="24" height="24" />
-              )}           
+              )}
               {sex.toLowerCase() === 'male' && (
                 <MaleIcon alt="sex" width="24" height="24" />
               )}
@@ -188,15 +200,16 @@ const NoticesCategoryItem = ({
             userDeteils={user}
             noticeDeteils={notice}
             onClose={close}
+            isFavorite={isFavorite}
+            addToFavorite={addToFavorite}
+            removeFromFavorite={removeFromFavorite}
           />
         )}
-        {isOwner && (
-          <>
+        {/* {isOwner === isOwnerNotices && (
             <Button onClick={open} deleteNotice={handleDeleteClick}>
               <TrashIcon alt="trash" width="24" height="24" />
             </Button>
-          </>
-        )}
+        )} */}
       </ButtonDiv>
     </Item>
   );
