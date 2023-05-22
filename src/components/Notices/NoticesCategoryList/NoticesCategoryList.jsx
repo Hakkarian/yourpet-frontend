@@ -45,9 +45,11 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const search = searchParams.get('search') ?? '';
 
   useEffect(() => {
-    dispatch(getAllFavorites());
-    dispatch(getAllUserNotices());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(getAllFavorites());
+      dispatch(getAllUserNotices());
+    }
+  }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
     if (category) {
