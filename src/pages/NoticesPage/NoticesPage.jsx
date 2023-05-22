@@ -47,9 +47,9 @@ const NoticesPage = () => {
   // const handlerInput = e => {
   //   setInput(e.target.value);
   // };
-  const showWarning = () => {
-    setSearchParams({ search: '' });
-  };
+  // const showWarning = () => {
+  //   setSearchParams({ search: '' });
+  // };
 
 
   return (
