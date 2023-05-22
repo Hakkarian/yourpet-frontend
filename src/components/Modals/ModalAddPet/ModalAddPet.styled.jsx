@@ -20,29 +20,30 @@ text-align: center;
 justify-content: space-between;
 margin: 0 auto;
 flex-direction: column;
+margin-top: 16px;
 
 @media (min-width: 767px) {
   flex-direction: row;
 }
   
 
-.btn {
-  padding: 0;
- height: 40px;
- font-weight: 700;
- font-size: 16px;
- margin-top: 8px;
+// .btn {
+//   padding: 0;
+//  height: 40px;
+//  font-weight: 700;
+//  font-size: 16px;
+//  margin-top: 8px;
 
- //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
-  :hover {
-    background: ${({ theme }) => theme.background.azure};
-    border: none;
-  }
-  @media (min-width: 767px) {
-    width: 129px;
-    margin-top: 0;
-    margin-right: 17px;
-  }
+//  //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+//   :hover {
+//     background: ${({ theme }) => theme.background.azure};
+//     border: none;
+//   }
+//   @media (min-width: 767px) {
+//     width: 129px;
+//     margin-top: 0;
+//     margin-right: 17px;
+//   }
 }}`;
 
 export const ButtonRegister = styled(NavLink)`
@@ -69,9 +70,9 @@ align-items: center;
 `
 
 export const ModalTitle = styled.h2`
-margin-bottom: 48px;
+margin-bottom: 16px;
 font-weight: 500;
-font-size: 24px;
+font-size: 14px;
 letter-spacing: 0.04em;
 color: ${({ theme }) => theme.colors.black};
 

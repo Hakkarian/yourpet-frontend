@@ -11,8 +11,9 @@ const ModalAddPet = () => {
   return (
     <Container>
       <ModalTitle>
-        To add a pet,<br></br>you need to register
+      You need to register<br></br> to add a pet
       </ModalTitle>
+      <img src={angryDog} alt='not allowed' width='120' height='120'/>
       <ContainerButton>
         <ButtonRegister to={'/register'}>
           Register <PawIcon />
