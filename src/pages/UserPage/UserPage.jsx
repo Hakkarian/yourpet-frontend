@@ -18,7 +18,7 @@ import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
  const user = useSelector(selectUser);
@@ -29,10 +29,10 @@ const UserPage = () => {
   useEffect(() => {
     const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
     if (!visitedBefore) {
-      setShowModal(true);
+      open();
       localStorage.setItem(`visitedBefore_${userId}`, true)
     }
-  }, [userId, setShowModal]);
+  }, [userId, open]);
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
@@ -46,7 +46,8 @@ const UserPage = () => {
 
   return (
     <>
-      {showModal && <ModalCongrats setShowModal={setShowModal} />}
+      {/* {showModal && <ModalCongrats setShowModal={setShowModal} />} */}
+      {isOpen && <Modal onClose={close}><ModalCongrats onClose={close} setShowModal={open}/></Modal>}
         <UserDiv>
           <div>
           <Title>My information:</Title>
@@ -54,11 +55,11 @@ const UserPage = () => {
             <UserData
             />
             <Logout onClick={open} />
-            {isOpen && (
+            {/* {isOpen && (
               <Modal onClose={close}>
-                {/* <ModalLogOut onClose={close} /> */}
+                <ModalLogOut onClose={close} />
               </Modal>
-            )}
+            )} */}
           </Wrap>
           </div>
           <PetsData />
