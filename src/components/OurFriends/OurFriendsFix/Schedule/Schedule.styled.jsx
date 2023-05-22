@@ -4,12 +4,13 @@ export const List = styled.ul`
   position: absolute;
   top: 30px;
   left: 0;
-  width: 100%;
-  padding: 12px;
-  border-color: border-color: ${({ theme }) => theme.colors.blue};
-  background-color: ${({ theme }) => theme.colors.lightblue};
-  border-radius: ${({ theme }) => theme.spacing(3)};
-  border-color: ${({ theme }) => theme.colors.white};
+  width: 140px;
+  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(1)};
+
+  border-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: ${({ theme }) => theme.spacing(2)};
+  border: 1px solid ${({ theme }) => theme.colors.blue};
   &:not(:last-child) {
     margin-bottom: 12px;
   }
@@ -20,8 +21,9 @@ export const Wrapper = styled.div`
     border: none;
     display: block;
     margin-bottom: 16px;
+    background-color: transparent;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 16px;
     color: ${({ theme }) => theme.colors.blue};
     transition: color 250ms ease-in-out;
 
@@ -42,7 +44,4 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: 'transparent';
-  p {
-    margin-right: 12px;
-  }
 `;

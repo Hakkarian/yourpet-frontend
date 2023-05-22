@@ -1,13 +1,7 @@
 // import PropTypes from 'prop-types';
 
 import { Schedule } from '../Schedule/Schedule';
-import {
-  Item,
-  Title,
-  Wrap,
-  WrapImg,
-  WrapInfo,
-} from './OurFriendsItem.styled';
+import { Item, Title, Wrap, WrapImg, WrapInfo } from './OurFriendsItem.styled';
 
 export const OurFriendsItem = ({
   title,
@@ -21,12 +15,18 @@ export const OurFriendsItem = ({
 }) => {
   return (
     <Item>
-      <Title>{title}</Title>
+      <Title href={url} target="_blank" rel="noreferrer noopener">
+        {title}
+      </Title>
       <Wrap>
         <WrapImg>
           <img
-            src={imageUrl !== null ? imageUrl : '../../../../icons/.png'}
-            alt={`Логотип компаніі ${title}`}
+            src={
+              imageUrl !== null
+                ? imageUrl
+                : 'https://i.ibb.co/kqpsyG0/cat-baby-787084-640.jpg'
+            }
+            alt={`Логотип компанії ${title}`}
             loading="lazy"
             width="280"
             height="252"

@@ -68,7 +68,7 @@ export const ButtonNav = styled(NavLink)`
   font-size: 14px;
   line-height: 1.35;
   align-items: center;
-  &:hover,  &:focus: {
+  &:hover, &:focus {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue};
   }

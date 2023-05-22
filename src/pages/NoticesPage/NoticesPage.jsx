@@ -47,15 +47,15 @@ const NoticesPage = () => {
   // const handlerInput = e => {
   //   setInput(e.target.value);
   // };
-
   const showWarning = () => {
     setSearchParams({ search: '' });
   };
 
+
   return (
     <>
       <ReusableTitle>Find your favorite pet</ReusableTitle>
-      <NoticesSearch onSubmit={handlerSubmit} onClick={showWarning} />
+      <NoticesSearch onSubmit={handlerSubmit} />
       <NoticesCategoryList onUpdateStatus={noticesByCategory} />
 
       <PaginateComponent

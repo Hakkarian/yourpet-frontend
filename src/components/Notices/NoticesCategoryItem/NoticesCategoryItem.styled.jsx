@@ -13,9 +13,6 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
-  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -31,10 +28,6 @@ export const Image = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 288px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
     height: 288px;
   }
 `;
@@ -164,9 +157,6 @@ export const DescriptionInner = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 336px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
   }
 `;
 
