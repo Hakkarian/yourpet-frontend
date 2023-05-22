@@ -9,6 +9,7 @@ export const ButtonIconForm = ({ searchQuery, onClick }) => {
       <ButtonIcon
         type="submit"
         color={'#757575'}
+        fill={'#757575'}
         hovercolor={'#54ADFF'}
         style={{ marginRight: '10px' }}
       >
@@ -18,6 +19,7 @@ export const ButtonIconForm = ({ searchQuery, onClick }) => {
         <ButtonIcon
           type="button"
           color="#757575"
+          fill={'#757575'}
           hovercolor="#F43F5E"
           onClick={onClick}
         >
