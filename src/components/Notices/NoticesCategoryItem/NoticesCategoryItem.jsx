@@ -137,8 +137,11 @@ const NoticesCategoryItem = ({
         <CardContainer>
           <ImageWrapper>
             <Image src={photo} alt="Pet" loading="lazy" />
-          </ImageWrapper>
-          <CategoryName>{category}</CategoryName>
+            </ImageWrapper>
+            { category  === 'for-free' ? (<CategoryName>in good hands</CategoryName>):
+          (<CategoryName>{category}</CategoryName>)
+            }
+      
           {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>

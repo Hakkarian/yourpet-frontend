@@ -10,7 +10,7 @@ export const TitleSearch = styled.h2`
   margin-bottom: 28px;
   color: ${({ theme }) => theme.colors.black};
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     font-size: 48px;
     margin-bottom: 40px;
   }
@@ -26,7 +26,7 @@ export const FormSearch = styled.form`
     width: 492px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     width: 608px;
   }
 `;
@@ -45,7 +45,7 @@ export const InputSearch = styled.input`
   //   width:492px;
   //   height:40px;}
 
-  //   @media screen and (min-width: 1024px) {
+  //   @media screen and (min-width: 1280px) {
   //   width:608px;
   //   height:44px;}
 
@@ -64,7 +64,7 @@ export const InputSearch = styled.input`
   @media screen and (min-width: 768px) {
     width: 492px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     width: 608px;
     font-size: 20px;
     &:: placeholder {
@@ -88,7 +88,7 @@ export const ButtonIcon = styled.button`
     right: 15px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     top: 105px;
   }
 `;
