@@ -1,8 +1,7 @@
-import React, {useRef, useState} from "react";
-import { useDispatch} from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import React, {useRef, useState, useEffect} from "react";
+import { useDispatch, useSelector} from "react-redux";
 
-// import { selectIsLoggedIn, selectUser } from "redux/auth/auth-selector";
+import {selectUser } from "redux/auth/auth-selector";
 import { ImageDef, InputP, SelectWrap, Confirm, ConfirmBtn, Input, InputWrap, IconWrap, InputText, Label, CameraIcon, FormThumb, CrossIcon, Wrapper, MainWrap} from "./UserData.styled";
 import { info } from "redux/auth/auth-operations";
 import UserDataItem from "components/UserDataItem";
@@ -19,50 +18,55 @@ const initialState = {
 const UserData = () => {
   const [user, setUser] = useState(initialState);
   const [isConfirm, setIsConfirm] = useState(false);
-  //const token = useSelector(store => store.auth.token);
    const dispatch = useDispatch();
-  //  const navigate = useNavigate();
-  //  const isLogin = useSelector(selectIsLoggedIn);
    const fileRef = useRef(null);
-  //  const userData = useSelector(selectUser);
-  //  const {email} = userData;
-  //  const splitName = email.split("@")[0];
-   
-  //  useEffect(() => {
-  //   //  if(!isLogin) {
-  //   //  navigate('/login');
-  //   //  }
-  //   //  const getUser =  token => {
-  //   //     const res = dispatch(refreshUser(token));
-  //   //     setUser({ ...res.data});
-  //   //   };
-  //   //   getUser(token);
-  //  }, [dispatch, isLogin, navigate, token]);
+   const userData = useSelector(selectUser);
+   console.log(userData.avatar);
 
-   const selectHandler = (event) => {
-    setUser({ ...user, photo: event.target.files[0] });
+   const { avatar} = userData;
+
+  const selectHandler = (event) => {
+    setUser({ ...user});
     setIsConfirm(true);
    };
 
-   const handleChangeFile =(event) => {
-      event.preventDefault();
+  useEffect(() => {
+    const updateAvatar = () => {
+      if(avatar) {
+      setUser({...user, photo: avatar});
+      }
+    };
+    updateAvatar();
+  }, [avatar, user]);
 
-    let formData = new FormData();
-    formData.append("avatar", user.photo)
-     dispatch(info(formData));
-     setIsConfirm(false);
+   const handleChangeFile =(event) => {
+    event.preventDefault();
+     const data = new FormData();
+     const av = URL.createObjectURL(event.target.files[0]);
+     
+    data.append('image', event.target.files[0]);
+    setUser({...user, avatar : av});
+    dispatch(info(data));
+
+
+    //   event.preventDefault();
+
+    //  let formData = new FormData();
+    //  formData.append("avatar", user.photo)
+    //  dispatch(info(formData));
+    //  setIsConfirm(false);
     };
 
     return (
         <MainWrap>
             <FormThumb onSubmit={handleChangeFile}>
-            {user.photo ? 
-                <ImageDef src={URL.createObjectURL(user.photo)} alt="User" /> : 
-                 <ImageDef src={require("../../images/default-user-img.jpg")} 
-                 alt="User" 
-                 width="182px" 
-                 height="182px"   
-                 onClick={() => {fileRef.current.click() }}/>}
+            {user.photo  ?
+                <ImageDef src={user.photo} alt="User" /> : <ImageDef src={require("../../images/default-user-img.jpg")} 
+                alt="User" 
+                width="182px" 
+                height="182px"   
+                onClick={() => {fileRef.current.click() }}/>}
+              
              {!isConfirm ? (
                <InputWrap>
                <Input  accept="image/png, image/jpeg" type="file" name="avatar" id="input__file" ref={fileRef} onChange={selectHandler}/>
@@ -86,7 +90,7 @@ const UserData = () => {
              )}
          </FormThumb>
             <Wrapper>
-                <UserDataItem/>
+            <UserDataItem  />
             </Wrapper>
         </MainWrap>
     )

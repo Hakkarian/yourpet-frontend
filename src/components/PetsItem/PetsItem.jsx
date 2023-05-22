@@ -2,7 +2,9 @@ import React, {useState} from "react";
 
 
 import {Item, DeleteBtn, Span, BtnWrap, Icon, Image, TextWrap, Text  } from './PetsItem.styled';
-// import ModalDelete from "components/ModalDelete";
+
+// import ModalDelete from "../Modals/ModalDelete/index";
+
 
 
 const PetsItem = ({pet }) => {

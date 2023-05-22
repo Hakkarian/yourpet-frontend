@@ -13,9 +13,6 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
-  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -31,10 +28,6 @@ export const Image = styled.img`
 
   @media screen and (min-width: 768px) {
     width: 336px;
-    height: 288px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
     height: 288px;
   }
 `;
@@ -80,6 +73,21 @@ export const AddToFavoriteBtn = styled.button`
 export const RemoveFromFavoriteBtn = styled.button`
   cursor: pointer;
   background-color: transparent;
+  border: none;
+`;
+
+export const RemoveFromOwnBtn = styled.button`
+  position: absolute;
+  right: 12px;
+  top: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: ${({ theme }) => theme.colors.lightblue};
+  border-radius: 50%;
+  cursor: pointer;
   border: none;
 `;
 
@@ -149,9 +157,6 @@ export const DescriptionInner = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 336px;
-  }
-  @media screen and (min-width: 1024px) {
-    width: 288px;
   }
 `;
 

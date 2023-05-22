@@ -15,7 +15,7 @@ body {
   line-height: 1.2;
   letter-spacing: 0.03em;
 
-  background-color: #FDF7F2;
+  background-color: #fdf7f2;
 }
 
 code {
@@ -29,7 +29,7 @@ ul {
 
 img {
   display: block;
-  max-width: 100%;
+  /* max-width: 100%; */
   /* height: auto; */
 }
 
@@ -48,5 +48,5 @@ h6 {
 a {
   text-decoration: none;
   color: inherit;
-  padding: 3px;
+  padding: 0;
 }

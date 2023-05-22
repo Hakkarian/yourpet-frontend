@@ -43,7 +43,7 @@ const validationSchema = Yup.object({
     .when('category', {
       is: 'my pet',
       then: schema => schema.notRequired(),
-      otherwise: schema => schema.required(),
+      otherwise: schema => schema.required('Please choose your pet sex'),
     }),
   location: Yup.string()
     .matches(/^[A-Z]{1}[a-z]{1,20}$/, 'Enter a correct city name')
@@ -54,11 +54,12 @@ const validationSchema = Yup.object({
       otherwise: schema => schema.required('Please enter your city'),
     }),
   price: Yup.number('A price must be a number')
+    .typeError('A price must be a number')
     .moreThan(0, 'A price should be greater than 0')
     .when('category', {
       is: 'sell',
-      then: schema => schema.required(),
-      otherwise: schema => schema.notRequired('Please enter a price'),
+      then: schema => schema.required('Please enter a price'),
+      otherwise: schema => schema.notRequired(),
     }),
   comments: Yup.string()
     .min(8, `Please include more details...`)

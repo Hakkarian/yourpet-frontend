@@ -7,4 +7,5 @@ export const selectIsLoading = state => state.notices.isLoading;
 export const selectIsError = state => state.notices.isError;
 export const selectIsNoticeAdded = state => state.notices.isNoticeAdded;
 export const selectTotalPages = state => state.notices.totalPages;
-export const selectListOfFavoritesPets = state => state.notices.favoritePets;
+export const selectAllFavoritePets = state => state.notices.allFavoritesPets;
+export const selectAllOwnPets = state => state.notices.allOwnPets;

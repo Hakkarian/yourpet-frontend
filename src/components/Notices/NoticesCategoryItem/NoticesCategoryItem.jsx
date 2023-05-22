@@ -1,17 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
+import { categoryShelf } from '../NoticesCategoryList/NoticesCategoryList';
 import {
   getNoticeByCategory,
   addToFavorites,
   getFavorites,
   deleteFromFavorites,
   getUserNotices,
-  // deleteUserNotice,
+  deleteUserNotice,
 } from 'redux/notices/notices-operations';
-import { useMemo } from 'react';
 
 // import { setNotices } from 'redux/notices/notices-slice';
 import { selectIsLoggedIn } from 'redux/auth/auth-selector';
+import {
+  selectAllFavoritePets,
+  selectAllOwnPets,
+} from 'redux/notices/notices-selector';
 import ModalNotice from '../../Modals/ModalNotice/ModalNotice';
 import { useToggle } from 'shared/hooks/useToggle';
 // import { Tooltip, IconButton } from '@mui/material';
@@ -32,6 +36,7 @@ import {
   Span,
   CardContainer,
   DescriptionInner,
+  RemoveFromOwnBtn,
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
 import { ReactComponent as FemaleIcon } from 'icons/female.svg';
@@ -40,33 +45,29 @@ import { ReactComponent as ClockIcon } from 'icons/clock.svg';
 import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
-// import { TrashIcon } from './NoticesCategoryItem.styled';
+import { TrashIcon } from './NoticesCategoryItem.styled';
+import angryDog from '../../../images/angry-dog.png';
+import { useState } from 'react';
+import Modal from 'shared/components/Modal';
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
 
-const categoryShelf = {
-  sell: 'sell',
-  'lost-found': 'lost-found',
-  'in-good-hands': 'in-good-hands',
-};
-
 const NoticesCategoryItem = ({
   notice,
-  isOwner,
   categoryPet,
+  page,
+  query,
   user,
-  listOfFavorites = [],
   id,
 }) => {
   const { photo, birthday, sex, location, title, _id, category } = notice;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const listOfFavorites = useSelector(selectAllFavoritePets);
+  const allOwnPets = useSelector(selectAllOwnPets);
 
-  const isFavorite = useMemo(() => {
-    return listOfFavorites.find(pet => pet._id === id);
-  }, [id, listOfFavorites]);
-
-  let query = null;
+  const isFavorite = listOfFavorites.find(pet => pet._id === id);
+  const isOwnPet = allOwnPets.find(pet => pet._id === id);
 
   const getAge = utcDate => {
     const date = new Date(utcDate);
@@ -87,42 +88,32 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
-  const refreshingPage = categoryPet => {
-    if (categoryPet === categoryShelf[categoryPet])
-      dispatch(getNoticeByCategory({ category, query }));
-    dispatch(getFavorites({ query }));
+  const [open1, setOpen1] = useState(false);
+
+  const refreshingPage = () => {
+    if (categoryPet === categoryShelf[categoryPet]) {
+      dispatch(getNoticeByCategory({ category, query, page }));
+    }
     if (categoryPet === 'favorites-ads') {
-      dispatch(getFavorites({ query }));
+      dispatch(getFavorites({ query, page }));
     }
     if (categoryPet === 'my-ads') {
-      dispatch(getUserNotices({ query }));
-      dispatch(getFavorites({ query }));
+      dispatch(getUserNotices({ query, page }));
     }
   };
 
-  // const handleDeleteClick = () => {
-  //   dispatch(deleteUserNotice(_id));
-  //   dispatch(setNotices(_id));
-  //   toggle();
-  // };
+  const handleDeleteClick = async () => {
+    dispatch(deleteUserNotice(_id)).then(() => {
+      refreshingPage();
+    });
+  };
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      // toast.error('You need to authorize before adding pets to favorites.');
-      toast('You need to authorize before adding pets to favorites.', {
-        icon: '❕',
-        style: {
-          borderRadius: '10px',
-          background: '#B70404',
-          color: '#fff',
-        },
-      });
+      setOpen1(true);
       return;
     }
-    dispatch(addToFavorites(_id)).then(() => {
-      refreshingPage(categoryPet);
-      // onUpdateStatus();
-    });
+    dispatch(addToFavorites(_id));
   };
 
   const removeFromFavorite = async () => {
@@ -132,12 +123,15 @@ const NoticesCategoryItem = ({
       );
     }
     dispatch(deleteFromFavorites(_id)).then(() => {
-      refreshingPage(categoryPet);
-      // onUpdateStatus();
+      if (categoryPet === 'favorites-ads') {
+        dispatch(getFavorites({ page, query }));
+      }
     });
   };
 
   return (
+  <>
+    {open1 && <Modal onClose={() => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
     <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
@@ -158,6 +152,11 @@ const NoticesCategoryItem = ({
                 <FilledHeartIcon alt="heart" width="24" height="24" />
               </RemoveFromFavoriteBtn>
             </SvgWrapper>
+          )}
+          {isOwnPet && (
+            <RemoveFromOwnBtn onClick={handleDeleteClick}>
+              <TrashIcon alt="trash" width="24" height="24" />
+            </RemoveFromOwnBtn>
           )}
 
           <DescriptionWrapper>
@@ -205,13 +204,9 @@ const NoticesCategoryItem = ({
             removeFromFavorite={removeFromFavorite}
           />
         )}
-        {/* {isOwner === isOwnerNotices && (
-            <Button onClick={open} deleteNotice={handleDeleteClick}>
-              <TrashIcon alt="trash" width="24" height="24" />
-            </Button>
-        )} */}
       </ButtonDiv>
-    </Item>
+      </Item>
+      </>
   );
 };
 

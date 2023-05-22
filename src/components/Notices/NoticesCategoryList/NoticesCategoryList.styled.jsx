@@ -18,7 +18,7 @@ export const List = styled.ul`
     gap: 32px;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 32px;
   }
