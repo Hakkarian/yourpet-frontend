@@ -47,7 +47,6 @@ import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 import { TrashIcon } from './NoticesCategoryItem.styled';
 import angryDog from '../../../images/angry-dog.png';
-import ModalAddPet from 'components/Modals/ModalAddPet';
 import { useState } from 'react';
 import Modal from 'shared/components/Modal';
 // import { selectUserNotices } from 'redux/notices/notices-selector';
