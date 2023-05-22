@@ -6,9 +6,48 @@ export const Wrapper = styled.div`
   padding-top: 28px;
 `;
 
-export const AddPetButton = styled(NavLink)``;
+export const AddPetButton = styled(NavLink)`
+  position: fixed;
+  bottom: 2%;
+  right: 5%;
+  z-index: 1;
+     width: 80px;
+      height: 80px;
+      padding-bottom: 7px;
 
-export const AddBtn = styled.button`
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: ${({ theme }) => theme.colors.blue};
+      border-radius: 50%;
+      border: none;
+
+
+        min-width: 44px;
+      
+  color: ${({ theme }) => theme.colors.white};
+ 
+  svg path {
+    stroke: ${({ theme }) => theme.colors.white};
+
+    transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 1px solid ease-in-out stroke 250ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      background: ${({ theme }) => theme.colors.lightblue};
+      color: ${({ theme }) => theme.colors.blue};
+      svg path {
+    stroke: ${({ theme }) => theme.colors.blue};
+    }
+
+    }  `;
+
+/* export const AddBtn = styled.button`
   position: fixed;
   bottom: 2%;
   right: 5%;
@@ -45,7 +84,7 @@ export const AddBtn = styled.button`
     }
 
     }  
-`;
+`; */
 
 export const IconAdd = styled.img`
   position: absolute;
