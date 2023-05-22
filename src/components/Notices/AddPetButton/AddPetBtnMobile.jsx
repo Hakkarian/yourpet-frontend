@@ -8,7 +8,7 @@ import { AddCss } from './AddPetBtn.styled';
 // import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 // import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const AddPetButtonMobile = () => {
   // const isLogined = useSelector(selectIsLoggedIn);

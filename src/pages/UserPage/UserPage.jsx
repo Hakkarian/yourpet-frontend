@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Loader } from 'components/Loader';
@@ -18,7 +18,6 @@ import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  // const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
  const user = useSelector(selectUser);
@@ -46,7 +45,6 @@ const UserPage = () => {
 
   return (
     <>
-      {/* {showModal && <ModalCongrats setShowModal={setShowModal} />} */}
       {isOpen && <Modal onClose={close}><ModalCongrats onClose={close} setShowModal={open}/></Modal>}
         <UserDiv>
           <div>
@@ -55,11 +53,6 @@ const UserPage = () => {
             <UserData
             />
             <Logout onClick={open} />
-            {/* {isOpen && (
-              <Modal onClose={close}>
-                <ModalLogOut onClose={close} />
-              </Modal>
-            )} */}
           </Wrap>
           </div>
           <PetsData />

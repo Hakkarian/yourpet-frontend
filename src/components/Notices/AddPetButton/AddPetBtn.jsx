@@ -8,7 +8,7 @@ import ModalAddPet from 'components/Modals/ModalAddPet';
 import { useLocation } from 'react-router-dom';
 
 import { ReactComponent as Add } from '../../../icons/plus.svg';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const AddNoticePetButton = () => {
   const location = useLocation();
