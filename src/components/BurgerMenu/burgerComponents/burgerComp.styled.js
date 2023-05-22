@@ -11,6 +11,7 @@ export const BurgerAuthNavStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap:12px;
+    margin-bottom: 40px;
 
     button {
         min-width: 165px;
@@ -44,17 +45,33 @@ export const BurgerAuthNavStyled = styled.div`
     }
     .one {
         animation-name: rotateXItems;
-        animation-duration: 700ms;
+        animation-duration: 600ms;
         animation-timing-function: linear;
     }
     .two {
         animation-name: rotateXItems;
-        animation-duration: 800ms;
+        animation-duration: 700ms;
         animation-timing-function: linear;
     }
 // @media (min-width: 1279px) {
 //     flex-direction: row;
 // }
+`;
+
+export const BurgerUserStyled = styled.div`
+    display: flex;
+    align-items: center;
+    gap:12px;
+    margin-top: 40px;
+    margin-bottom: 84px;
+
+    p {
+        color: ${({ theme }) => theme.colors.yellow};
+        // font-weight: 500;
+        // font-size: 16px;
+        line-height: calc(22 / 16);
+        letter-spacing: 0.04em;
+    }
 `;
 
 export const BurgerNavStyled = styled.div`
@@ -63,7 +80,7 @@ export const BurgerNavStyled = styled.div`
     align-items: center;
     gap:20px;
 
-    margin-top: 40px;
+    // margin-top: 40px;
 
     // a:first-of-type {
     //     color: red;
@@ -95,17 +112,28 @@ export const BurgerNavStyled = styled.div`
     }
     .four {
         animation-name: rotateXItems;
-        animation-duration: 900ms;
+        animation-duration: 800ms;
         animation-timing-function: linear;
     }
     .five {
         animation-name: rotateXItems;
-        animation-duration: 1000ms;
+        animation-duration: 900ms;
         animation-timing-function: linear;
     }
     .six {
         animation-name: rotateXItems;
-        animation-duration: 1100ms;
+        animation-duration: 1000ms;
         animation-timing-function: linear;
     }
+
+@media (min-width: 768px) {
+    margin-top: 90px;
+    gap: 60px;
+
+    a {
+        font-size: 48px;
+        line-height: calc(66 / 48);
+        letter-spacing: 0.04em;
+    }
+}
 `;
