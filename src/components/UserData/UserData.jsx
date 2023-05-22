@@ -37,12 +37,13 @@ const UserData = () => {
       }
     };
     updateAvatar();
-  }, [avatar]);
+  }, [avatar, user]);
 
    const handleChangeFile =(event) => {
     event.preventDefault();
-    const av = URL.createObjectURL(event.target.files[0]);
-    const data = new FormData();
+     const data = new FormData();
+     const av = URL.createObjectURL(event.target.files[0]);
+     
     data.append('image', event.target.files[0]);
     setUser({...user, avatar : av});
     dispatch(info(data));

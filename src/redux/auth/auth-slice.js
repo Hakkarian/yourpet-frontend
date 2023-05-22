@@ -54,13 +54,12 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(info.rejected, (state, { payload }) => {
-        console.log('info rejected')
-        console.log(payload)
+        console.log('here info slice');
+        console.log('user info rej', payload);
         state.isLoading = false;
         state.error = payload;
       })
       .addCase(refreshUser.rejected, state => {
-        console.log('here rejected refresh')
         state.isRefreshing = false;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
@@ -71,7 +70,6 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         const { user, token } = payload;
-        console.log(payload);
         state.isLoading = false;
         state.user = user;
         state.token = token;
@@ -84,14 +82,12 @@ const authSlice = createSlice({
         state.isLogin = false;
       })
       .addCase(info.fulfilled, (state, { payload }) => {
-        console.log('here info')
-        console.log(payload)
+        console.log('here info slice');
+        console.log('user info fulf', payload);
         state.isLoading = false;
         state.user = payload;
       })
       .addCase(refreshUser.fulfilled, (state, {payload}) => {
-        console.log('here refresh slice')
-        console.log('refresh', payload)
         state.user = payload.user;
         state.isLogin = true;
         state.isRefreshing = false;
@@ -100,10 +96,14 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(getUserInfo.fulfilled, (state, {payload}) => {
-        state.user = payload;
+                console.log('here user info slice');
+                console.log('user info fulf', payload.user);
+        state.user = payload.user;
         state.isLoading = false;
       })
-      .addCase(getUserInfo.rejected, (state, {payload}) => {
+      .addCase(getUserInfo.rejected, (state, { payload }) => {
+        console.log('here user info slice');
+        console.log('user info rejected', payload);
         state.isLoading = false;
         state.error = payload;
       });

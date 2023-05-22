@@ -11,9 +11,10 @@ import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
 
-import ModalCongrats from 'components/Modals/ModalCongrats';
-import ModalLogOut from 'components/Modals/ModalLogOut';
+// import ModalCongrats from 'components/Modals/ModalCongrats';
+// import ModalLogOut from 'components/Modals/ModalLogOut';
 import { getUserInfo } from 'redux/auth/auth-operations';
+import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
@@ -31,7 +32,7 @@ const UserPage = () => {
       setShowModal(true);
       localStorage.setItem(`visitedBefore_${userId}`, true)
     }
-  }, [userId]);
+  }, [userId, setShowModal]);
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
@@ -45,7 +46,7 @@ const UserPage = () => {
 
   return (
     <>
-      {/* {showModal && <ModalCongrats setShowModal={setShowModal} />} */}
+      {showModal && <ModalCongrats setShowModal={setShowModal} />}
         <UserDiv>
           <div>
           <Title>My information:</Title>

@@ -138,8 +138,6 @@ export const info = createAsyncThunk(
     try {
       console.log('before info operation')
       const result = await infoService(data);
-      console.log('info operation', result);
-      console.log('after info operation');
       toast('Changed succesfully!', {
         icon: '😊',
         style: {
@@ -221,7 +219,10 @@ export const getUserInfo = createAsyncThunk(
     
     try {
       // setAuthHeader(persistedToken);
-      const { data } = await getUserInfoService();
+      console.log('before userinfo operation');
+      const  data  = await getUserInfoService();
+      console.log('userinfo operation', data);
+      console.log('after userinfo operation');
       //  toast('Checking updates...', {
       //   icon: '⏳',
       //   style: {
