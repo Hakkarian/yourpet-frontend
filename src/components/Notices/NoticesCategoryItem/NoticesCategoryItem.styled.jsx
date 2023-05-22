@@ -13,7 +13,6 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-
 `;
 
 export const ImageWrapper = styled.div`

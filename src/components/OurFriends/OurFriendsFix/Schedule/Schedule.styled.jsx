@@ -4,7 +4,7 @@ export const List = styled.ul`
   position: absolute;
   top: 30px;
   left: 0;
-  width: 100%;
+  width: 140px;
   padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(1)};
 
   border-color: ${({ theme }) => theme.colors.blue};

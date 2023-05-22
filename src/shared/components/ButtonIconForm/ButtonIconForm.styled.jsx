@@ -20,10 +20,16 @@ export const ButtonIcon = styled.button`
   color: '#757575';
   svg {
     color: ${({ color }) => color ?? color};
+    fill: ${({ color }) => color ?? color};
+
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
+    // path {
+    //   stroke: ${({ color }) => color ?? color};
+    // }
   }
   svg:hover {
     color: ${({ hovercolor }) => hovercolor ?? hovercolor};
+    fill: ${({ hovercolor }) => hovercolor ?? hovercolor};
   }
   @media screen and (min-width: 768px) {
     right: 20px;
