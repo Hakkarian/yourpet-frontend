@@ -21,6 +21,8 @@ export const ButtonIcon = styled.button`
   color: '#757575';
   svg {
     color: ${({ color }) => color ?? color};
+    fill: ${({ color }) => color ?? color};
+
     transition: transform 250ms ease-in-out, border 250ms ease-in-out;
 
     path {

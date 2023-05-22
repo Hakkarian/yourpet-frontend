@@ -46,6 +46,9 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 import { TrashIcon } from './NoticesCategoryItem.styled';
+import angryDog from '../../../images/angry-dog.png';
+import { useState } from 'react';
+import Modal from 'shared/components/Modal';
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
 
@@ -85,6 +88,8 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
+  const [open1, setOpen1] = useState(false);
+
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
       dispatch(getNoticeByCategory({ category, query, page }));
@@ -105,14 +110,7 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      toast('You need to authorize before adding pets to favorites.', {
-        icon: '❕',
-        style: {
-          borderRadius: '10px',
-          background: '#B70404',
-          color: '#fff',
-        },
-      });
+      setOpen1(true);
       return;
     }
     dispatch(addToFavorites(_id));
@@ -132,6 +130,8 @@ const NoticesCategoryItem = ({
   };
 
   return (
+  <>
+    {open1 && <Modal onClose={() => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
     <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
@@ -205,7 +205,8 @@ const NoticesCategoryItem = ({
           />
         )}
       </ButtonDiv>
-    </Item>
+      </Item>
+      </>
   );
 };
 

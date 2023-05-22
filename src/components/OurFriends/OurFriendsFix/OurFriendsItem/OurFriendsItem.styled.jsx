@@ -70,7 +70,6 @@ export const WrapImg = styled.div`
 `;
 
 export const WrapInfo = styled.div`
-  width: 140px;
   p {
     font-weight: 500;
     font-size: 12px;
