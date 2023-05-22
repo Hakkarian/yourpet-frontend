@@ -8,7 +8,7 @@ import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
-import Modal from 'shared/components/Modal/Modal';
+import Modal from 'shared/components/Modal';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
 
 // import ModalCongrats from 'components/Modals/ModalCongrats';
