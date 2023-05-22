@@ -7,6 +7,7 @@ import {
   infoService,
   instance,
   setAuthHeader,
+  getUserInfoService,
 } from 'shared/services/auth-api';
 
 export const register = createAsyncThunk(
@@ -207,6 +208,28 @@ export const refreshUser = createAsyncThunk(
           color: '#fff',
         },
       });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getUserInfo = createAsyncThunk(
+  'auth/userInfo',
+  async (_, thunkAPI) => {
+    
+    try {
+      // setAuthHeader(persistedToken);
+      const { data } = await getUserInfoService();
+      //  toast('Checking updates...', {
+      //   icon: '⏳',
+      //   style: {
+      //     borderRadius: '10px',
+      //     background: 'darkorange',
+      //     color: '#fff',
+      //   },
+      // });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

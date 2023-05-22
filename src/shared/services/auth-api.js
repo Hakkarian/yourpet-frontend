@@ -47,6 +47,12 @@ export const infoService = async data => {
   return result;
 };
 
+export const getUserInfoService = async data => {
+  const { data: result } = await instance.get('/user/current', data);
+  setAuthHeader(result.token);
+  return result;
+};
+
 export const refreshUserService = async data => {
   setToken(data);
   const { data: result } = await instance.get('/user/current');
