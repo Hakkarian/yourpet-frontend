@@ -70,23 +70,24 @@ export const WrapImg = styled.div`
 `;
 
 export const WrapInfo = styled.div`
+  width: 140px;
   p {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
     color: ${({ theme }) => theme.colors.black};
   }
-  a,
-  button {
+  a {
     display: block;
     margin-bottom: 16px;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 12px;
+    background-color: transparent;
     color: ${({ theme }) => theme.colors.black};
-    transition: color 250ms ease-in-out;
+    transition: 250ms ease-in-out;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.blue};
+      color: ${({ theme }) => theme.colors.grey};
     }
     .addressItem {
       height: 48px;
@@ -100,22 +101,8 @@ export const WrapInfo = styled.div`
   }
 `;
 
-//  svg {
-//     color: ${({ color }) => color ?? color};
-//     transition: transform 250ms ease-in-out, color 250ms ease-in-out;
-//   }
-//   svg:hover {
-//     color: ${({ hovercolor }) => hovercolor ?? hovercolor};
-//   }
-
 export const Plug = styled(Notify)`
   width: 280px;
   height: 280px;
   fill: #54adff;
 `;
-
-// overflow: hidden;
-//   text-overflow: ellipsis;
-//   display: -webkit-box;
-//   -webkit-line-clamp: 2;
-//   -webkit-box-orient: vertical;
