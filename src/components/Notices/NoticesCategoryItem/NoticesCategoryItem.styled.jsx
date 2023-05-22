@@ -83,6 +83,21 @@ export const RemoveFromFavoriteBtn = styled.button`
   border: none;
 `;
 
+export const RemoveFromOwnBtn = styled.button`
+  position: absolute;
+  right: 12px;
+  top: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: ${({ theme }) => theme.colors.lightblue};
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+`;
+
 export const Title = styled.h3`
   font-weight: 700;
   font-size: 28;
