@@ -7,7 +7,6 @@ export const addPet = async data => {
   return result;
 };
 
-
 export const fetchPets = async () => {
   try {
     const { data } = await instance.get('/pets');
@@ -17,3 +16,10 @@ export const fetchPets = async () => {
   }
 };
 
+export const deletePet = async petId => {
+  try {
+    await instance.delete(`/pets/${petId}`);
+  } catch (error) {
+    console.error('Failed to get pets', error.message);
+  }
+};

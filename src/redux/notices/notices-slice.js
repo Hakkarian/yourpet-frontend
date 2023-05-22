@@ -17,7 +17,7 @@ const initialState = {
   oneNoticeMoreInfo: [],
   allFavoritesPets: [],
   allOwnPets: [],
-  totalPages: 1,
+  totalPage: null,
   isFavorite: false,
   isLoading: false,
   isError: null,
@@ -49,9 +49,11 @@ const noticesSlice = createSlice({
         state.isLoading = true;
         state.isError = null;
       })
-      .addCase(getNoticeByCategory.fulfilled, (state, { payload }) => {
-        state.noticesByCategory = payload.notices;
-        state.totalPages = payload.totalPages;
+      .addCase(getNoticeByCategory.fulfilled, (state, action) => {
+        state.noticesByCategory = action.payload.notices;
+        state.totalPage = action.payload.total
+          ? Math.ceil(action.payload.total / action.payload.per_page)
+          : 0;
         state.isLoading = false;
         state.isError = null;
       })
@@ -93,7 +95,9 @@ const noticesSlice = createSlice({
         state.isError = null;
       })
       .addCase(getFavorites.fulfilled, (state, { payload }) => {
-        state.totalPages = payload.totalPages;
+        state.totalPage = payload.total
+          ? Math.ceil(payload.total / payload.per_page)
+          : 0;
         state.noticesByCategory = payload.notices;
         state.isLoading = false;
         state.isError = null;
@@ -171,7 +175,9 @@ const noticesSlice = createSlice({
       })
       .addCase(getUserNotices.fulfilled, (state, { payload }) => {
         state.noticesByCategory = payload.notices;
-        state.totalPages = payload.totalPages;
+        state.totalPage = payload.total
+          ? Math.ceil(payload.total / payload.per_page)
+          : 0;
         state.isLoading = false;
         state.isError = null;
       })

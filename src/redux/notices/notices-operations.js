@@ -8,16 +8,22 @@ import { instance } from 'shared/services/auth-api';
 // отримання оголошень по категоріях
 export const getNoticeByCategory = createAsyncThunk(
   'notices/getNoticesByCategory',
-  async ({ category, query, page }, { rejectWithValue }) => {
+  async ({ category, search, page }, { rejectWithValue }) => {
     try {
-      if (query === null) {
+      if (search === '') {
+        console.log(page);
+        console.log(search);
+        console.log(category);
         const { data } = await instance.get(`/notices/${category}`, {
-          params: { page },
+          params: { page, search, category },
         });
         return data;
       } else {
         const { data } = await instance.get(
-          `/notices/title/search/${category}?search=${query}`
+          `/notices/title/search/${category}`,
+          {
+            params: { page, search, category },
+          }
         );
         return data;
       }
@@ -68,19 +74,23 @@ export const addToFavorites = createAsyncThunk(
 // get отримання оголошень авторизованого користувача доданих ним же в обрані (враховуючи пагінацію та рядок запиту)
 export const getFavorites = createAsyncThunk(
   'notices/getFavorites',
-  async ({ query, page }, { rejectWithValue }) => {
+  async ({ search, page }, { rejectWithValue }) => {
     try {
-      if (query === null) {
+      console.log(page);
+      console.log(search);
+
+      if (search === '') {
         const { data } = await instance.get(`/notices/user/favorite`, {
-          params: { page },
+          params: { page, search },
         });
-        console.log(data);
+        // console.log(data);
 
         return data;
       } else {
-        const { data } = await instance.get(
-          `/notices/title/favorite?search=${query}`
-        );
+        const { data } = await instance.get(`/notices/title/favorite`, {
+          params: { page, search },
+        });
+
         return data;
       }
     } catch (error) {
@@ -180,18 +190,22 @@ export const createNotice = createAsyncThunk(
 // get отримання оголошень авторизованого кoристувача створених цим же користувачем
 export const getUserNotices = createAsyncThunk(
   'notices/getUserNotices',
-  async ({ query, page }, { rejectWithValue }) => {
+  async ({ search, page }, { rejectWithValue }) => {
     try {
-      if (query === null) {
+      console.log(page);
+      console.log(search);
+
+      if (search === '') {
         const { data } = await instance.get(`/notices/user/own`, {
-          params: { page },
+          params: { page, search },
         });
+
         return data;
       } else {
-        const { data } = await instance.get(
-          `/notices/title/own?search=${query}`
-        );
-        console.log(data);
+        const { data } = await instance.get(`/notices/title/own`, {
+          params: { page, search },
+        });
+        // console.log(data);
 
         return data;
       }

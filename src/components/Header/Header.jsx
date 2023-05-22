@@ -17,7 +17,7 @@ import { selectIsLoggedIn, selectUser  } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
 // --------------------------------------------| МОДАЛКА |--------------|
 import { useContext } from 'react';
-import ModalContext from 'shared/components/Modalll/utils/modalContext'; 
+import {ModalContext} from 'shared/components/Modalll/utils/ModalProvider'; 
 import Modalll from 'shared/components/Modalll/Modalll';
 import BurgerMenuPage from 'components/BurgerMenu/BurgerMenuPage';
 // ---------------------------------------------------------------------|

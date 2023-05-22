@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useSearchParams } from 'react-router-dom';
-
 import NoticeCategoryItem from '../NoticesCategoryItem/NoticesCategoryItem';
 import { Loader } from '../../Loader/Loader';
 import {
@@ -18,8 +17,9 @@ import {
   selectIsFavorite,
 } from 'redux/notices/notices-selector';
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
-import { Wrapper, List } from './NoticesCategoryList.styled';
+import { List } from './NoticesCategoryList.styled';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage';
+import { Container } from 'shared/components/Container/Container.styled';
 
 export const categoryShelf = {
   sell: 'sell',
@@ -37,38 +37,43 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const user = useSelector(selectUser);
   let favoriteNotice = useSelector(selectIsFavorite);
   const category = location.pathname.split('/')[2];
-  const [search] = useSearchParams();
-  const query = search.get('query');
-  const page = search.get('page');
+  // const [search] = useSearchParams();
+  // const query = search.get('query');
+  // const page = search.get('page');
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const search = searchParams.get('search') ?? '';
 
   useEffect(() => {
-    dispatch(getAllFavorites());
-    dispatch(getAllUserNotices());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(getAllFavorites());
+      dispatch(getAllUserNotices());
+    }
+  }, [dispatch, isLoggedIn]);
 
   useEffect(() => {
     if (category) {
-      if (category === categoryShelf[category] && query) {
-        dispatch(getNoticeByCategory({ category: category, query, page }));
+      if (category === categoryShelf[category] && search) {
+        dispatch(getNoticeByCategory({ category: category, search, page }));
       }
-      if (category === 'favorites-ads' && query) {
-        dispatch(getFavorites({ query, page }));
+      if (category === 'favorites-ads' && search) {
+        dispatch(getFavorites({ search, page }));
       }
-      if (category === 'my-ads' && query) {
-        dispatch(getUserNotices({ query, page }));
+      if (category === 'my-ads' && search) {
+        dispatch(getUserNotices({ search, page }));
       } else {
         if (category === categoryShelf[category]) {
-          dispatch(getNoticeByCategory({ category: category, query, page }));
+          dispatch(getNoticeByCategory({ category: category, search, page }));
         }
         if (category === 'favorites-ads') {
-          dispatch(getFavorites({ query, page }));
+          dispatch(getFavorites({ search, page }));
         }
         if (category === 'my-ads') {
-          dispatch(getUserNotices({ query, page }));
+          dispatch(getUserNotices({ search, page }));
         }
       }
     }
-  }, [query, dispatch, category, isNoticeAdded, page]);
+  }, [search, dispatch, category, isNoticeAdded, page]);
 
   // const petsToShow =
   //   category === 'favorites-ads' ? [...favorites] : [...notices];
@@ -85,11 +90,11 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   // }
 
   return !isLoading && notices.length === 0 ? (
-    <Wrapper>
+    <Container>
       <ErrorPage />
-    </Wrapper>
+    </Container>
   ) : (
-    <Wrapper>
+    <Container>
       {notices && notices.length > 0 ? (
         <>
           <List>
@@ -123,7 +128,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
                     isOwner={isOwner}
                     categoryPet={category}
                     page={page}
-                    query={query}
+                    search={search}
                     onUpdateStatus={onUpdateStatus}
                     id={notice._id}
                   />
@@ -134,7 +139,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
       ) : (
         <Loader />
       )}
-    </Wrapper>
+    </Container>
   );
 };
 

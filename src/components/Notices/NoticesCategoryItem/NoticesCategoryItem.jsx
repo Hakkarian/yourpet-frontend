@@ -56,7 +56,7 @@ const NoticesCategoryItem = ({
   notice,
   categoryPet,
   page,
-  query,
+  search,
   user,
   id,
 }) => {
@@ -92,13 +92,13 @@ const NoticesCategoryItem = ({
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
-      dispatch(getNoticeByCategory({ category, query, page }));
+      dispatch(getNoticeByCategory({ category, search, page }));
     }
     if (categoryPet === 'favorites-ads') {
-      dispatch(getFavorites({ query, page }));
+      dispatch(getFavorites({ search, page }));
     }
     if (categoryPet === 'my-ads') {
-      dispatch(getUserNotices({ query, page }));
+      dispatch(getUserNotices({ search, page }));
     }
   };
 
@@ -124,7 +124,7 @@ const NoticesCategoryItem = ({
     }
     dispatch(deleteFromFavorites(_id)).then(() => {
       if (categoryPet === 'favorites-ads') {
-        dispatch(getFavorites({ page, query }));
+        dispatch(getFavorites({ page, search }));
       }
     });
   };
@@ -139,8 +139,11 @@ const NoticesCategoryItem = ({
         <CardContainer>
           <ImageWrapper>
             <Image src={photo} alt="Pet" loading="lazy" />
-          </ImageWrapper>
-          <CategoryName>{category}</CategoryName>
+            </ImageWrapper>
+            { category  === 'for-free' ? (<CategoryName>in good hands</CategoryName>):
+          (<CategoryName>{category}</CategoryName>)
+            }
+      
           {!isFavorite && (
             <SvgWrapper>
               <AddToFavoriteBtn onClick={addToFavorite}>
