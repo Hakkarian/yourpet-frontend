@@ -56,7 +56,7 @@ border-radius: 20px;
   };
 `;
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
   width: 355px;
   margin: 0px;
@@ -64,7 +64,7 @@ export const Wrapper = styled.form`
   };
 `;
 
-export const ItemWrap = styled.div`
+export const ItemWrap = styled.form`
 &:not(:last-child) {
   margin-bottom: 12px;
   @media screen and (min-width: 768px) {

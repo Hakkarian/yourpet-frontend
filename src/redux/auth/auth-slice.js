@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { info, login, logout, register, refreshUser } from './auth-operations';
+import { info, login, logout, register, refreshUser, getUserInfo } from './auth-operations';
 import { setToken } from 'shared/services/auth-api';
 
 const authSlice = createSlice({
@@ -95,6 +95,17 @@ const authSlice = createSlice({
         state.user = payload.user;
         state.isLogin = true;
         state.isRefreshing = false;
+      })
+      .addCase(getUserInfo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserInfo.fulfilled, (state, {payload}) => {
+        state.user = payload;
+        state.isLoading = false;
+      })
+      .addCase(getUserInfo.rejected, (state, {payload}) => {
+        state.isLoading = false;
+        state.error = payload;
       });
   },
 });
