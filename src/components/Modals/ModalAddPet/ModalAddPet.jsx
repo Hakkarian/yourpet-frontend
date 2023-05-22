@@ -5,6 +5,7 @@ import {
   ButtonRegister,
   PawIcon,
 } from './ModalAddPet.styled';
+import angryDog from '../../../images/angry-dog.png';
 
 const ModalAddPet = () => {
   return (

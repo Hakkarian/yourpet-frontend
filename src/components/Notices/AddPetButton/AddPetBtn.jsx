@@ -12,29 +12,31 @@ import { useNavigate } from 'react-router-dom';
 
 const AddNoticePetButton = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { isOpen, open, close } = useToggle();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const isLogined = useSelector(selectIsLoggedIn);
 
   return (
     <>
-    {isLoggedIn ? (
-//   <AddPetButton onClick={() => navigate('/add-pet')}>Add pet
-//   <Add width='24' height='24'/></AddPetButton>
-// ) : (<AddPetButton type='button' onClick={open}>Add pet
-// <Add width='24' height='24'/></AddPetButton>
-
-// )}
-// {isOpen && (<Modal onClose={close}><ModalAddPet onClose={close}/></Modal>)}
-<AddPetButton state={{ from: location }} to={'/add-pet'}>Add pet
-<Add width='24' height='24'/></AddPetButton>
-) : (<AddPetButton type='button' onClick={open}>Add pet
-<Add width='24' height='24'/></AddPetButton>
-)}
-{isOpen && (<Modal onClose={close}><ModalAddPet onClose={close}/></Modal>)}
+      {isLoggedIn ? (
+        <AddPetButton state={{ from: location }} to={'/add-pet'}>
+          Add pet
+          <Add width="24" height="24" />
+        </AddPetButton>
+      ) : (
+        <AddPetButton type="button" onClick={open}>
+          Add pet
+          <Add width="24" height="24" />
+        </AddPetButton>
+      )}
+      {isOpen && (
+        <Modal onClose={close}>
+          <ModalAddPet onClose={close} />
+        </Modal>
+      )}
     </>
-    
+
     // <AddPetButton state={{ from: location }} to={'/add-pet'}>
     //   Add pet
     //   <Add width="24" height="24" />
@@ -43,7 +45,6 @@ const AddNoticePetButton = () => {
     //   Add pet
     //   <Add width="24" height="24" />
     // </AddBtn>
-    
   );
 };
 
