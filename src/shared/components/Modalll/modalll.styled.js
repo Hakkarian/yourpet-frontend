@@ -18,7 +18,7 @@ export const BackdropDiv = styled.div`
 
 
 const choseStyles = ({ customStyles, theme }) => {
-  console.log("customStyles-->", customStyles);
+  // console.log("customStyles-->", customStyles);
   switch (customStyles) {
     case "default":
       return defaultModalStyles(theme);

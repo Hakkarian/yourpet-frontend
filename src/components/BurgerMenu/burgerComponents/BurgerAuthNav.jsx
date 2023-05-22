@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import ModalContext from "shared/components/Modalll/utils/modalContext";
+import {ModalContext} from "shared/components/Modalll/utils/ModalProvider";
 
 import Button from "shared/components/Button/Button";
 import { BurgerAuthNavStyled } from "./burgerComp.styled";

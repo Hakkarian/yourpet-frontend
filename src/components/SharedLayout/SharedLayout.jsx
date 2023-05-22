@@ -3,15 +3,13 @@ import Header from 'components/Header/Header'
 import React, { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import ModalContext from 'shared/components/Modalll/utils/modalContext';
-import { useToggleModalContexst } from 'shared/components/Modalll/utils/useToggleModalContexst';
+import {ModalProvider} from 'shared/components/Modalll/utils/ModalProvider';
 
 
 const SharedLayout = () => {
-  const { isOpenContext, open, close, toggleContext } = useToggleModalContexst(false);
 
   return (
-    <ModalContext.Provider value={{ isOpenContext, open, close, toggleContext }}>
+    <ModalProvider>
       <div>
         <Container>
           <Header />
@@ -20,7 +18,7 @@ const SharedLayout = () => {
           </Suspense>
         </Container>
       </div>
-    </ModalContext.Provider>
+    </ModalProvider>
   );
 }
 

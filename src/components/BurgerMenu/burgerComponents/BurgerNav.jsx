@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
-import ModalContext from "shared/components/Modalll/utils/modalContext";
+import {ModalContext} from "shared/components/Modalll/utils/ModalProvider";
 
 import navListData from "./headerNavList.json";
 import { BurgerNavStyled } from "./burgerComp.styled";
