@@ -25,7 +25,11 @@ export const OurFriendsItem = ({
       <Wrap>
         <WrapImg>
           <img
-            src={imageUrl !== null ? imageUrl : '../../../../icons/.png'}
+            src={
+              imageUrl !== null
+                ? imageUrl
+                : 'https://i.ibb.co/kqpsyG0/cat-baby-787084-640.jpg'
+            }
             alt={`Логотип компаніі ${title}`}
             loading="lazy"
             width="280"
