@@ -3,6 +3,75 @@ import { ReactComponent as Camera } from '../../icons/camera.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small-2.svg';
 import {ReactComponent as ConfirmIcon} from '../../icons/check.svg';
 
+export const BtnWrap = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 22px;
+`;
+
+export const DeleteBtn = styled.button`
+  display: flex;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover{
+  background-color: #54ADFF;
+  };
+`;
+
+export const EditBtn = styled.button`
+  margin-bottom: 22px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+justify-content: center;
+align-items: center;
+gap: 11px;
+width: 94px;
+padding: 0;
+background-color: transparent;
+border: none;
+
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 1.83;
+cursor: pointer;
+`;
+
+export const Button = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 11px;
+width: 94px;
+padding: 0;
+background-color: transparent;
+border: none;
+font-weight: 400;
+font-size: 12px;
+line-height: 1.83;
+cursor: pointer;
+`;
+
+export const ImageBox = styled.div`
+position: relative;
+margin-bottom: 14px;
+width: 182px;
+height: 182px;
+border-radius: 40px;
+overflow: hidden;
+font-weight: 600;
+font-size: 14px;
+line-height: 19px;
+letter-spacing: 0.04em;
+`;
+
 export const MainWrap = styled.div`
 
  @media screen and (min-width: 768px) {
@@ -20,6 +89,7 @@ export const Confirm = styled(ConfirmIcon)`
 fill: none;
 width: 24px;
 height: 24px;
+stroke: #54ADFF;
 `;
 
 export const ConfirmBtn = styled.button`
@@ -50,7 +120,7 @@ export const CrossIcon = styled(Cross)`
   stroke: #bf342a;
 `;
 
-export const FormThumb = styled.form`
+export const FormThumb = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
@@ -63,12 +133,11 @@ export const CheckWrap = styled.div`
   align-items: center;
 `;
 
-export const ImageDef = styled.img`
-  margin-bottom: 14px;
-  width: 182px;
-  height: 182px;
-  border-radius: 40px;
-  overflow: hidden;
+export const Image = styled.img`
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: top;
 `;
 
 export const UserImage = styled.img`

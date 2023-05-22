@@ -148,7 +148,7 @@ export const info = createAsyncThunk(
       });
       return result;
     } catch (error) {
-      rejectWithValue(error);
+      rejectWithValue(error.message);
     }
   }
 );
