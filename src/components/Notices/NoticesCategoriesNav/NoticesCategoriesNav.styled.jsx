@@ -26,16 +26,7 @@ export const ListNav = styled.ul`
   flex-wrap: wrap;
   gap: 12px;
 
-  @media screen and (min-width: 1024px) {
-    flex-wrap: nowrap;
-    flex-direction: row;
-    padding: 0;
-    // width: 540px;
-    // height: 35px;
-    // gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
-  }
+
 `;
 
 export const ContainerNav = styled.div`
@@ -68,7 +59,7 @@ export const ButtonNav = styled(NavLink)`
   font-size: 14px;
   line-height: 1.35;
   align-items: center;
-  &:hover,  &:focus: {
+  &:hover, &:focus {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue};
   }

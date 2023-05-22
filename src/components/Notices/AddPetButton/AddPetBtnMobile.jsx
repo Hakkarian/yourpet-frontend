@@ -6,7 +6,7 @@ import { AddPetButton } from './AddPetBtnMobile.style';
 import ModalAddPet from 'components/Modals/ModalAddPet';
 import { AddCss } from './AddPetBtn.styled';
 // import { useNavigate } from 'react-router-dom';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 const AddPetButtonMobile = () => {

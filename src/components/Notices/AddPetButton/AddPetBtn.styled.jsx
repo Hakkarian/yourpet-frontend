@@ -68,7 +68,7 @@ export const AddPetButton = styled(NavLink)`
   border-radius: 40px;
 
   transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
-    border 1px solid ease-in-out stroke 250ms ease-in-out;
+    border 1px solid ease-in-out, stroke 250ms ease-in-out;
 
   &:hover,
   &:focus {
