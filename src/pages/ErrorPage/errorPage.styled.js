@@ -21,7 +21,7 @@ export const DivTag = styled.div`
 
         text-align:center;
         line-height: calc(33 /24);
-
+        color: ${({theme})=>theme.colors.black};
     }
     .cat_div {
         width: 280px;

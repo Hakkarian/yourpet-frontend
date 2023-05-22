@@ -11,12 +11,12 @@ const BurgerMain = () => {
     const isLogin = useSelector(selectIsLoggedIn);
     const { name } = useSelector(selectUser);
 
-    const ViewAuth = () => (
+    const ViewAuth = (props) => (
         <MediaQuery maxWidth={767}>
             <BurgerAuthNav />
         </MediaQuery>
     );
-    const ViewUser = () => (
+    const ViewUser = (props) => (
         <MediaQuery maxWidth={767}>
             <BurgerUser userName={name} />
         </MediaQuery>
