@@ -8,8 +8,8 @@ import {
   getNoticeByCategory,
   getFavorites,
   getUserNotices,
-  getAllFavorites,
-  getAllUserNotices,
+  // getAllFavorites,
+  // getAllUserNotices,
 } from 'redux/notices/notices-operations';
 import {
   selectNoticesByCategory,
@@ -37,38 +37,21 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const user = useSelector(selectUser);
   let favoriteNotice = useSelector(selectIsFavorite);
   const category = location.pathname.split('/')[2];
-  const [search] = useSearchParams();
-  const query = search.get('query');
-  const page = search.get('page');
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const search = searchParams.get('search') ?? '';
 
   useEffect(() => {
-    dispatch(getAllFavorites());
-    dispatch(getAllUserNotices());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (category) {
-      if (category === categoryShelf[category] && query) {
-        dispatch(getNoticeByCategory({ category: category, query, page }));
-      }
-      if (category === 'favorites-ads' && query) {
-        dispatch(getFavorites({ query, page }));
-      }
-      if (category === 'my-ads' && query) {
-        dispatch(getUserNotices({ query, page }));
-      } else {
-        if (category === categoryShelf[category]) {
-          dispatch(getNoticeByCategory({ category: category, query, page }));
-        }
-        if (category === 'favorites-ads') {
-          dispatch(getFavorites({ query, page }));
-        }
-        if (category === 'my-ads') {
-          dispatch(getUserNotices({ query, page }));
-        }
-      }
+    if (category === categoryShelf[category]) {
+      dispatch(getNoticeByCategory({ category: category, search, page }));
     }
-  }, [query, dispatch, category, isNoticeAdded, page]);
+    if (category === 'favorites-ads') {
+      dispatch(getFavorites({ search, page }));
+    }
+    if (category === 'my-ads') {
+      dispatch(getUserNotices({ search, page }));
+    }
+  }, [search, dispatch, category, isNoticeAdded, page]);
 
   // const petsToShow =
   //   category === 'favorites-ads' ? [...favorites] : [...notices];
@@ -123,7 +106,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
                     isOwner={isOwner}
                     categoryPet={category}
                     page={page}
-                    query={query}
+                    search={search}
                     onUpdateStatus={onUpdateStatus}
                     id={notice._id}
                   />

@@ -17,7 +17,7 @@ const BurgerAuthNav = (props) => {
                     <Paw/>
                 </Button>
             </Link>
-            <Link to="/registration">
+            <Link to="/register">
                 <Button className="two" onClick={close} color="yellow" scale="0.8">Registration</Button>
             </Link>
         </BurgerAuthNavStyled>

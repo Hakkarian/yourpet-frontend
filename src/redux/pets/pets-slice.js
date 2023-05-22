@@ -19,6 +19,7 @@ export const petsSlice = createSlice({
     builder
       .addCase(getAllPets.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getAllPets.fulfilled, (state, { payload }) => {
         state.items = payload;
@@ -47,11 +48,10 @@ export const petsSlice = createSlice({
       })
       .addCase(deletePets.pending, state => {
         state.isLoading = true;
-        // state.error = null;
+        state.error = null;
       })
       .addCase(deletePets.fulfilled, (state, { payload }) => {
-        const index = state.items.findIndex(item => item.id === payload);
-        state.items.splice(index, 1);
+        state.items = state.items.filter(item => item._id !== payload);
         state.isLoading = false;
         state.error = null;
       })
