@@ -49,8 +49,7 @@ export const InputSearch = styled.input`
   //   width:608px;
   //   height:44px;}
 
-
- width: 100%;
+  width: 100%;
   height: 44px;
   box-shadow: ${({ theme }) => theme.shadow.default};
   border-radius: 40px;
@@ -58,6 +57,7 @@ export const InputSearch = styled.input`
   padding: 8px 20px;
   box-sizing: border-box;
   outline: none;
+  font-size: 14px;
   &::placeholder {
     font-size: 14px;
   }
@@ -66,10 +66,12 @@ export const InputSearch = styled.input`
   }
   @media screen and (min-width: 1024px) {
     width: 608px;
+    font-size: 20px;
     &:: placeholder {
       font-size: 20px;
     }
-  }`;
+  }
+`;
 
 export const ButtonIcon = styled.button`
   position: absolute;

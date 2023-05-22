@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 import { ButtonIconForm } from 'shared/components/ButtonIconForm/ButtonIconForm';
 import { FormSearch, InputSearch } from './NoticesSearch.styled';
 import NoticesCategoriesNav from '../NoticesCategoriesNav';
+import { useSearchParams } from 'react-router-dom';
 
-const NoticesSearch = ({ onSubmit, onClick }) => {
+const NoticesSearch = ({ onSubmit }) => {
+  const [searchParams] = useSearchParams();
+  const params = useMemo(
+    () => Object.fromEntries([...searchParams]),
+    [searchParams]
+  );
   const [searchQuery, setSearchQuery] = useState('');
   const handleSubmit = e => {
     e.preventDefault();
@@ -25,13 +31,19 @@ const NoticesSearch = ({ onSubmit, onClick }) => {
     onSubmit(searchQuery);
   };
 
+  useEffect(() => {
+    if (params.query === undefined) {
+      setSearchQuery('');
+    }
+  }, [params.query]);
+
   const handleChange = e => {
     setSearchQuery(e.target.value.toLowerCase().trim());
   };
 
   const handleReset = () => {
     setSearchQuery('');
-    onClick(searchQuery);
+    onSubmit('');
   };
 
   return (
@@ -54,7 +66,6 @@ const NoticesSearch = ({ onSubmit, onClick }) => {
 
 NoticesSearch.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default NoticesSearch;
