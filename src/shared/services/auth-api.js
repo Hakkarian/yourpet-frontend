@@ -21,14 +21,12 @@ export const setAuthHeader = token => {
 };
 
 export const registere = async thing => {
-  console.log('here api');
   const { data: result } = await instance.post('/auth/register', thing);
   return result;
 };
 
 export const logine = async data => {
   const { data: result } = await instance.post('/auth/login', data);
-  console.log('log api', result);
   setToken(result.token);
   return result;
 };
@@ -42,15 +40,21 @@ export const logoute = async () => {
 export const infoService = async data => {
   const { data: result } = await instance.patch('/user/info', data);
   console.log('here info api');
-  console.log('info api', result);
+  console.log('user api result', result);
   setToken(result.token);
+  return result;
+};
+
+export const getUserInfoService = async data => {
+  const { data: result } = await instance.get('/user/current', data);
+  console.log('here user');
+  console.log('user api result', result)
+  setAuthHeader(result.token);
   return result;
 };
 
 export const refreshUserService = async data => {
   setToken(data);
   const { data: result } = await instance.get('/user/current');
-  console.log('here refresh api');
-  console.log('refresh api', result);
   return result;
 };

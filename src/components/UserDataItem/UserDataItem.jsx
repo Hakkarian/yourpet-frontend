@@ -1,107 +1,232 @@
-// import { useState, useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {useMemo} from "react";
 import { nanoid } from "nanoid";
 
-// import { selectUser } from 'redux/auth/auth-selector';
-// import { info } from 'redux/auth/auth-operations';
-import {Edit, EditButton, Input, ItemWrap, Wrapper, Label, InputWrap, Span, } from './UserDataItem.styled';
+import { selectUser, selectIsRegistered } from 'redux/auth/auth-selector';
+import { info } from 'redux/auth/auth-operations';
+import {Edit, EditButton, Input, ItemWrap, Wrapper, Label, InputWrap, Span, CheckIcon} from './UserDataItem.styled';
+
+const initialState ={
+  name: '',
+  email: '',
+  birthday: '',
+  phone: '',
+  city: ''
+};
 
 const UserDataItem = () => {
-  // const dispatch = useDispatch();
-  // const user = useSelector(selectUser);
-  // const { email, phone, birthday, city} = user;
-  // const userName = email.split("@")[0];
-  // const [disabled, setDisabled] = useState(true);
-  // const [data, setData] = useState({});
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const {name, email, phone, birthday, city} = user;
+  const isRegister = useSelector(selectIsRegistered);
+  const [isEdit, setIsEdit] = useState(false);
+  const [data, setData] = useState(initialState);
   const id = useMemo(() => nanoid(), []);
 
-    // const onEditBtn = () => {
-    
-    //   setTimeout(() => {
-      
-    //   }, 1000);
-    // };
+  useEffect(() => {
+     if(isRegister) {
+        const userName = email.split("@")[0];
+        setData({...data, name: userName});
+     }
+  }, [data, email, isRegister]);
 
-    const  handleSubmit = (event) => {
+    const onEditBtn = () => {
+     setIsEdit(true);
+    };
+
+    const  handleNameSubmit = (event) => {
       event.preventDefault();
-      // const form = event.currentTarget;
-      // const userName = form.elements.name.value;
-      // const userPhone = form.elements.phone.value;
-      // const userBirthday = form.elements.birthday.value;
-      // const userEmail = form.elements.email.value;
-      // const userCity = form.elements.city.value;
-
-
-      // const req = {[name]: data };
-      // dispatch(info(req))
+      const form = event.target;
+      const userName = form.elements.name.value;
  
-      // dispatch(info({
-      //   name: userName, 
-      //   email: userEmail,
-      //   birthday: userBirthday,
-      //   phone: userPhone,
-      //   city: userCity}));
+      dispatch(info({name: userName}));
+      };
+
+      const handleEmailSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const userEmail = form.elements.email.value;
+
+        dispatch(info({email: userEmail}));
+      };
+
+      const handleBirthdaySubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const userBirthday = form.elements.birthday.value;
+
+        dispatch(info({birthday: userBirthday}));
+      };
+
+      const handlePhoneSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const userPhone = form.elements.phone.value;
+
+        dispatch(info({phone: userPhone}));
+      };
+
+      const handleCitySubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const userCity = form.elements.city.value;
+
+        dispatch(info({city: userCity}));
       };
  
     return (
-    <Wrapper onSubmit={handleSubmit}>
-      
-    <ItemWrap><InputWrap><Span>Name: </Span><Label htmlFor={id}></Label>
-    <EditButton type='submit'><Edit /></EditButton>
-     <Input type='text' 
-   //onChange={e => setData(e.target.value)}
-     name="name" id={id}   
-    pattern="[A-Za-z]{1,32}"/>
-    </InputWrap></ItemWrap>
-     
-    <ItemWrap><InputWrap><Span>Email: </Span><Label htmlFor={id}></Label>
-    <EditButton type='button'><Edit /></EditButton>
-     <Input 
-     type='email' 
-     name='email' id={id} 
-     pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"/>
-     </InputWrap></ItemWrap>
-     
-    <ItemWrap><InputWrap><Span>Birthday: </Span><Label htmlFor={id}></Label>
-    <EditButton type='button'><Edit /></EditButton>
-     <Input type='text' name='birthday' id={id} 
-     placeholder="DD.MM.YYYY"
-     dateFormat="dd.MM.yyyy"
-     pattern="(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)"/></InputWrap></ItemWrap>
+      <Wrapper>
+        <ItemWrap onSubmit={handleNameSubmit}>
+          <InputWrap>
+            <Span>Name: </Span>
+            <Label htmlFor={id}></Label>
+            {!isEdit && (
+              <>
+                <EditButton type="button" onClick={onEditBtn}>
+                  <Edit />
+                </EditButton>
+                <Input readOnly defaultValue={name} />{' '}
+              </>
+            )}
+            {isEdit && (
+              <>
+                <EditButton type="submit">
+                  <CheckIcon />
+                </EditButton>
+                <Input
+                  type="text"
+                  defaultValue={name}
+                  name="name"
+                  id={id}
+                  pattern="[A-Za-z]{1,32}"
+                />
+              </>
+            )}
+          </InputWrap>
+        </ItemWrap>
 
-    <ItemWrap><InputWrap><Span>Phone: </Span><Label htmlFor={id}></Label>
-    <EditButton type='button'><Edit /></EditButton>
-     <Input type='phone' name="phone" id={id} 
-       pattern="[\+]\d{3}\s[\(]\d{2}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"
-       minlength="13"
-       maxlength="13"
-       placeholder="+380XXXXXXXXX"  />
-       </InputWrap></ItemWrap>
-     
-    <ItemWrap><InputWrap><Span>City:</Span><Label htmlFor={id}></Label>
-    <EditButton type='button'><Edit /></EditButton>
-     <Input type='text' name="city" id={id} 
-      pattern="/([A-Za-z]+(?: [A-Za-z]+)*)/"
+        <ItemWrap onSubmit={handleEmailSubmit}>
+          <InputWrap>
+            <Span>Email: </Span>
+            <Label htmlFor={id}></Label>
+            {!isEdit && (
+              <>
+                <EditButton type="button" onClick={onEditBtn}>
+                  <Edit />
+                </EditButton>{' '}
+                <Input readOnly defaultValue={email} />
+              </>
+            )}
+            {isEdit && (
+              <>
+                <EditButton type="submit">
+                  <CheckIcon />
+                </EditButton>
+                <Input
+                  type="email"
+                  defaultValue={email}
+                  name="email"
+                  id={id}
+                  pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
+                />
+              </>
+            )}
+          </InputWrap>
+        </ItemWrap>
 
-      placeholder='Kyiv'/>
-      </InputWrap></ItemWrap>
+        <ItemWrap onSubmit={handleBirthdaySubmit}>
+          <InputWrap>
+            <Span>Birthday: </Span>
+            <Label htmlFor={id}></Label>
+            {!isEdit && (
+              <>
+                <EditButton type="button" onClick={onEditBtn}>
+                  <Edit />
+                </EditButton>
+                <Input readOnly defaultValue={birthday} />
+              </>
+            )}
+            {isEdit && (
+              <>
+                <EditButton type="submit">
+                  <CheckIcon />
+                </EditButton>
+                <Input
+                  type="text"
+                  name="birthday"
+                  id={id}
+                  defaultValue={birthday}
+                  placeholder="DD.MM.YYYY"
+                  dateFormat="dd.MM.yyyy"
+                  pattern="(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)"
+                />
+              </>
+            )}
+          </InputWrap>
+        </ItemWrap>
 
+        <ItemWrap onSubmit={handlePhoneSubmit}>
+          <InputWrap>
+            <Span>Phone: </Span>
+            <Label htmlFor={id}></Label>
+            {!isEdit && (
+              <>
+                <EditButton type="button">
+                  <Edit onClick={onEditBtn} />
+                </EditButton>
+                <Input readOnly defaultValue={phone} />
+              </>
+            )}
+            {isEdit && (
+              <>
+                <EditButton type="submit">
+                  <CheckIcon />
+                </EditButton>
+                <Input
+                  type="phone"
+                  name="phone"
+                  id={id}
+                  defaultValue={phone}
+                  minlength="12"
+                  maxlength="12"
+                  placeholder="+380XXXXXXXXX"
+                />
+              </>
+            )}
+          </InputWrap>
+        </ItemWrap>
 
-
-        {/* 
-        {isEdit ? <Input autoComplete={label} {...props} id={id}/> : <Input autoComplete={label} {...props} id={id} {...field} readOnly/> }
-        {isCheck ? <EditButton type='button' onClick={event => checkData(event.currentTarget.value)}><CheckIcon /></EditButton> : (
-          <EditButton type="button" onClick={onEditBtn}><Edit /></EditButton>
-        )}
-        </InputWrap> */}
-    </Wrapper>
+        <ItemWrap onSubmit={handleCitySubmit}>
+          <InputWrap>
+            <Span>City:</Span>
+            <Label htmlFor={id}></Label>
+            {!isEdit && (
+              <>
+                <EditButton type="button" onClick={onEditBtn}>
+                  <Edit />
+                </EditButton>
+                <Input readOnly defaultValue={city} />
+              </>
+            )}
+            {isEdit && (
+              <>
+                <EditButton type="submit">
+                  <CheckIcon />
+                </EditButton>
+                <Input
+                  type="text"
+                  name="city"
+                  id={id}
+                  defaultValue={city}
+                  placeholder="Kyiv"
+                />
+              </>
+            )}
+          </InputWrap>
+        </ItemWrap>
+      </Wrapper>
     );
 };
-
-// UserDataItem.propTypes = {
-//     label: PropTypes.string.isRequired,
-//     handleChange: PropTypes.func,
-// };
 
 export default UserDataItem;
