@@ -31,6 +31,21 @@ width: 100%;
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 40px;
 
+// @keyframes openModal {
+//   0% {
+//       height: 0vh;
+//   }
+//   60% {
+//       height: 0vh;
+//   }
+//   100% {
+//       height: 100vh;
+//   }
+// }
+// animation-name: openModal;
+// animation-duration: 400ms;
+// animation-timing-function: linear;
+
 @media (min-width: 767px) {
   min-height: 354px;
   max-width: 608px;

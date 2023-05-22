@@ -34,6 +34,7 @@ import {
   DescriptionInner,
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
+
 import { ReactComponent as FemaleIcon } from 'icons/female.svg';
 import { ReactComponent as MaleIcon } from 'icons/male.svg';
 import { ReactComponent as ClockIcon } from 'icons/clock.svg';
@@ -41,6 +42,7 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 // import { TrashIcon } from './NoticesCategoryItem.styled';
+// import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
 
@@ -156,7 +158,6 @@ const NoticesCategoryItem = ({
               </RemoveFromFavoriteBtn>
             </SvgWrapper>
           )}
-
           <DescriptionWrapper>
             <DescriptionTextContainer>
               <LocationIcon alt="location" width="24" height="24" />

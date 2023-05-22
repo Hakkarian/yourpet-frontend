@@ -44,6 +44,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 
   @media (min-width: 767px) {
   }
@@ -58,12 +59,13 @@ export const ContainerList = styled.div`
     margin-left: 24px;
   }
 `;
-export const ContainerDiv = styled.div`
+export const ContainerBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const ContainerBox = styled.div`
+export const ContainerPet = styled.div`
+margin-bottom: 5px;
   @media (min-width: 767px) {
     display: flex;
     margin-bottom: 28px;
@@ -93,11 +95,13 @@ export const Text = styled.ul`
 `;
 
 export const Coments = styled.p`
+
   font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 16px;
+  font-size: 14px;
+  margin-bottom: 13px;
 
   @media (min-width: 767px) {
+    font-size: 16px;
     margin-bottom: 28px;
   }
 `;
@@ -140,6 +144,7 @@ margin: 0 auto;
 
     :last-child {
       margin-right: 0;
+      
    }
 }
 
@@ -187,10 +192,7 @@ export const ColumOne = styled.td`
   font-weight: 600;
   font-size: 14px;
   padding-bottom: 8px;
-  :last-child {
-    padding-bottom: 0;
-  }
-
+ 
   @media (min-width: 767px) {
     font-size: 16px;
   }
@@ -207,21 +209,28 @@ export const ColumTwo = styled.td`
   }
 `;
 
-export const ImgBox = styled.div`
+export const ContainerImg = styled.div`
   position: relative;
   overflow: hidden;
   margin-bottom: 12px;
 
   img {
     border-radius: 0px 0px 40px 40px;
-    width: 240px;
-    height: 240px;
+    width: 100%;
+    // width: 240px;
+    // height: 240px;
   }
 
+
+
   @media (min-width: 767px) {
+width: 262px;
+height: 298px;
+
     img {
-      width: 262px;
-      height: 298px;
+      width: 100%;
+      // width: 262px;
+      // height: 298px;
       margin-bottom: 0;
     }
   }

@@ -17,13 +17,13 @@ import {
   BtnContainer,
   ContainerList,
   Coments,
-  ContainerDiv,
   ContainerBox,
+  ContainerPet,
   Link,
   ColumTwo,
   ColumOne,
   CategoryBox,
-  ImgBox,
+  ContainerImg,
 } from './ModalNotice.styled';
 
 import CrossButton from 'shared/components/CrossButton/CrossButton';
@@ -80,13 +80,13 @@ const ModalNotice = ({
       <Wrapper>
         <CrossButton type="button" onClick={onClose} />
         <Container>
-          <ContainerBox>
-            <ImgBox>
+          <ContainerPet>
+            <ContainerImg>
               <img src={photo} alt={name} />
               <CategoryBox>
                 <p>{category}</p>
               </CategoryBox>
-            </ImgBox>
+            </ContainerImg>
 
             <ContainerList>
               <Title>{title}</Title>
@@ -127,10 +127,10 @@ const ModalNotice = ({
                 </tbody>
               </table>
             </ContainerList>
-          </ContainerBox>
+          </ContainerPet>
 
-          <ContainerDiv>
-            <Coments>Comments:{comments}</Coments>
+          <ContainerBox>
+            <Coments>Comments: {comments}</Coments>
 
             <BtnContainer>
               {!isFavorite && (
@@ -152,7 +152,7 @@ const ModalNotice = ({
                   width="256px"
                   onClick={removeFromFavorite}
                 >
-                  Remove from <FilledHeartIcon width="24" height="24" />
+                  Remove <FilledHeartIcon width="24" height="24" />
                 </Button>
               )}
 
@@ -160,7 +160,7 @@ const ModalNotice = ({
                 <a href="tel:{noticeDeteils.owner.phone}">Contacts</a>
               </Button>
             </BtnContainer>
-          </ContainerDiv>
+          </ContainerBox>
         </Container>
       </Wrapper>
     </Backdrop>,

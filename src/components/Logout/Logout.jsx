@@ -4,26 +4,6 @@ import ModalLogOut from "components/Modals/ModalLogOut";
 import Modal from "shared/components/Modal";
 import { useToggle } from "shared/hooks/useToggle";
 
-// const Logout = () => {
-//     const [isOpenModal, setIsOpenModal] = useState(false);
-
-//     const onLogOut = () => {
-//       setIsOpenModal(true)
-//     };
-
-//     return (
-//         <OutWrap>
-//             <OutBtn type="button" onClick={onLogOut} >
-//                 <Icon />
-//             </OutBtn>
-//             <OutText>Log Out</OutText>
-//             {isOpenModal && (
-//                 <ModalLogOut /> )}
-//         </OutWrap>
-//     )
-// };
-
-// export default Logout;
 
 const Logout = () => {
     const { isOpen, open, close } = useToggle();
