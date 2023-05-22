@@ -6,7 +6,7 @@ import { AddBtn } from './AddPetBtnMobile.style';
 import ModalAddPet from 'components/Modals/ModalAddPet';
 import { AddCss } from './AddPetBtn.styled';
 // import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 const AddPetButtonMobile = () => {
@@ -15,12 +15,13 @@ const AddPetButtonMobile = () => {
   const [open1] = useState(false);
   // const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
 
 
   return (
     <>
       {open1 && <ModalAddPet />}
-      <AddBtn state={{ from: location }}>
+      <AddBtn onClick={() => navigate('/add-pet')} state={{ from: location }}>
         <AddCss width="24" height="24" />
         Add pet
       </AddBtn>
