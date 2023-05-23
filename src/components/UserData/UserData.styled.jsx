@@ -101,18 +101,6 @@ display: flex;
 align-items: center;
 `;
 
-export const ErrorWrap = styled.div`
-  position: absolute;
-  top: -12px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  line-height: 1.33;
-  color: #f43f5e;
-`;
-
 export const CrossIcon = styled(Cross)`
   fill: none;
   width: 24px;
@@ -228,4 +216,5 @@ export const CameraIcon = styled(Camera)`
   fill: none;
 `;
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+`;

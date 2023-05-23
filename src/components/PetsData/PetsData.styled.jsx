@@ -33,6 +33,19 @@ export const Button = styled.button`
     border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
+    @media screen and (min-width: 768px) {
+    position: static;
+    translate: 0px;
+    flex-direction: row;
+    gap: 8px;
+    width: 134px;
+    height: 40px;
+    padding: 4px 20px;
+    font-family: Manrope-Bold;
+    font-size: 16px;
+    border-radius: 40px;
+   };
+
   &::before {
     content: '';
     position: absolute;
@@ -95,7 +108,7 @@ export const Box = styled.div`
 `;
 
 export const PetsWrap = styled.div`
-  flex-grow: 1;
+  position: relative;
   width: 100%;
 `;
 
@@ -106,6 +119,7 @@ export const BtnWrap = styled.div`
   -webkit-box-pack: justify;
   justify-content: space-between;
   height: 40px;
+  width: 100%;
   margin: 40px 0px 24px;
 
   @media screen and (min-width: 768px) {
