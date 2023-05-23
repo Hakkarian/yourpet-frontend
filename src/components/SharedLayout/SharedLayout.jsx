@@ -1,4 +1,4 @@
-import { Container } from 'shared/components/Container/Container.styled';
+// import { Container } from 'shared/components/Container/Container.styled';
 import Header from 'components/Header/Header';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { theme, themeDark } from 'constants';
 import { useContext } from 'react';
 import { ThemeContext } from 'shared/utils/ThemeContext/themeProvider';
 import { ModalProvider } from 'shared/components/Modalll/utils/ModalProvider';
+import { ContainerWrapper } from 'shared/components/ContainerWrapper/ContainerWrapper.styled';
 
 const SharedLayout = () => {
   const { isLight } = useContext(ThemeContext);
@@ -15,14 +16,14 @@ const SharedLayout = () => {
   return (
     <ThemeProvider theme={isLight ? theme : themeDark}>
       <ModalProvider>
-        <div>
-          <Container>
+        {/* <div> */}
+          <ContainerWrapper>
             <Header />
             <Suspense fallback={null}>
               <Outlet />
             </Suspense>
-          </Container>
-        </div>
+          </ContainerWrapper>
+        {/* </div> */}
       </ModalProvider>
     </ThemeProvider>
   );

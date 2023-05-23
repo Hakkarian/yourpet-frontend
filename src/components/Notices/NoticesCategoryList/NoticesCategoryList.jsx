@@ -19,7 +19,6 @@ import {
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { List } from './NoticesCategoryList.styled';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage';
-import { Container } from 'shared/components/Container/Container.styled';
 
 export const categoryShelf = {
   sell: 'sell',
@@ -37,9 +36,6 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   const user = useSelector(selectUser);
   let favoriteNotice = useSelector(selectIsFavorite);
   const category = location.pathname.split('/')[2];
-  // const [search] = useSearchParams();
-  // const query = search.get('query');
-  // const page = search.get('page');
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
   const search = searchParams.get('search') ?? '';
@@ -75,29 +71,14 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
     }
   }, [search, dispatch, category, isNoticeAdded, page]);
 
-  // const petsToShow =
-  //   category === 'favorites-ads' ? [...favorites] : [...notices];
-  // let petsToShow = [];
-  // switch (category) {
-  //   case 'favorites-ads':
-  //     petsToShow = [...favorites];
-  //     break;
-  //   case 'my-ads':
-  //     petsToShow = [...ownPets];
-  //     break;
-  //   default:
-  //     petsToShow = [...notices];
-  // }
-
   return !isLoading && notices.length === 0 ? (
-    <Container>
+    <>
       <ErrorPage />
-    </Container>
+    </>
   ) : (
-    <Container>
+    <>
       {notices && notices.length > 0 ? (
-        <>
-          <List>
+                 <List>
             {!isLoggedIn &&
               notices.map(notice => (
                 <NoticeCategoryItem
@@ -135,11 +116,10 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
                 );
               })}
           </List>
-        </>
-      ) : (
+         ) : (
         <Loader />
       )}
-    </Container>
+    </>
   );
 };
 

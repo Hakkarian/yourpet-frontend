@@ -3,11 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 export const NavStyle = styled.div`
   position: relative;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
-
-  @media screen and (min-width: 480px) {
-    width: 480px;
+  @media screen and (max-width: 767px) {
+    width: 280px;
   }
 
   @media screen and (min-width: 768px) {
@@ -16,11 +15,11 @@ export const NavStyle = styled.div`
     align-items: flex-start;
     margin-top: 40px;
     margin-bottom: 60px;
-    width: 768px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+     width: 1248px;
   }
 `;
 
@@ -32,15 +31,12 @@ export const ListNav = styled.ul`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-   
+
   @media screen and (min-width: 1280px) {
     flex-wrap: nowrap;
     flex-direction: row;
     padding: 0;
-    // width: 540px;
-    // height: 35px;
-    // gap: 12px;
-   }
+  }
 `;
 
 export const ContainerNav = styled.div`
@@ -73,7 +69,8 @@ export const ButtonNav = styled(NavLink)`
   font-size: 14px;
   line-height: 1.35;
   align-items: center;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue};
   }

@@ -1,10 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 import { ButtonIconForm } from 'shared/components/ButtonIconForm/ButtonIconForm';
 import { FormSearch, InputSearch } from './NoticesSearch.styled';
-import NoticesCategoriesNav from '../NoticesCategoriesNav';
 import { useSearchParams } from 'react-router-dom';
 
 const NoticesSearch = ({ onSubmit }) => {
@@ -47,7 +45,7 @@ const NoticesSearch = ({ onSubmit }) => {
   };
 
   return (
-    <div>
+    <>
       <FormSearch onSubmit={handleSubmit}>
         <InputSearch
           placeholder="Search"
@@ -58,9 +56,7 @@ const NoticesSearch = ({ onSubmit }) => {
         />
         <ButtonIconForm searchQuery={searchQuery} onClick={handleReset} />
       </FormSearch>
-      <NoticesCategoriesNav />
-      <Outlet />
-    </div>
+    </>
   );
 };
 
