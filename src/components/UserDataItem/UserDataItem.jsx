@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useMemo } from 'react';
-import { nanoid } from 'nanoid';
+// import { useMemo } from 'react';
+// import { nanoid } from 'nanoid';
 
 import { selectUser, selectIsInputUpdated } from 'redux/auth/auth-selector';
 import { changeIsInputUpdatedStatus } from 'redux/auth/auth-slice';
@@ -18,13 +18,6 @@ import {
   CheckIcon,
 } from './UserDataItem.styled';
 
-const initialState = {
-  name: '',
-  email: '',
-  birthday: '',
-  phone: '',
-  city: '',
-};
 
 const UserDataItem = () => {
   const dispatch = useDispatch();
@@ -34,8 +27,7 @@ const UserDataItem = () => {
   const [isEditBirthday, setIsEditBirthday] = useState(false);
   const [isEditPhone, setIsEditPhone] = useState(false);
   const [isEditCity, setIsEditCity] = useState(false);
-  const [data, setData] = useState(initialState);
-  const id = useMemo(() => nanoid(), []);
+  // const id = useMemo(() => nanoid(), []);
 
   const isInputUpdated = useSelector(selectIsInputUpdated);
   console.log('isInputUpdated', isInputUpdated);
@@ -59,7 +51,6 @@ const UserDataItem = () => {
     const userName = form.elements.name.value;
 
     dispatch(info({ name: userName }));
-    setData(prevState => ({ ...prevState, name: userName }));
     setIsEditName(false);
   };
 
@@ -69,7 +60,6 @@ const UserDataItem = () => {
     const userEmail = form.elements.email.value;
 
     dispatch(info({ email: userEmail }));
-    setData(prevState => ({ ...prevState, email: userEmail }));
     setIsEditEmail(false);
   };
 
@@ -79,7 +69,6 @@ const UserDataItem = () => {
     const userBirthday = form.elements.birthday.value;
 
     dispatch(info({ birthday: userBirthday }));
-    setData(prevState => ({ ...prevState, birthday: userBirthday }));
     setIsEditBirthday(false);
   };
 
@@ -89,7 +78,6 @@ const UserDataItem = () => {
     const userPhone = form.elements.phone.value;
 
     dispatch(info({ phone: userPhone }));
-    setData(prevState => ({ ...prevState, phone: userPhone }));
     setIsEditPhone(false);
   };
 
@@ -99,7 +87,6 @@ const UserDataItem = () => {
     const userCity = form.elements.city.value;
 
     dispatch(info({ city: userCity }));
-    setData(prevState => ({ ...prevState, city: userCity }));
     setIsEditCity(false);
   };
 
