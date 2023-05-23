@@ -9,6 +9,7 @@ export const petsSlice = createSlice({
     error: null,
     isLoading: false,
     isPetAdded: false,
+    totalPage: null,
   },
   reducers: {
     changeIsPetAdded(state) {
@@ -22,9 +23,12 @@ export const petsSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllPets.fulfilled, (state, { payload }) => {
-        state.items = payload;
+        state.items = payload.pets;
         state.error = null;
         state.isLoading = false;
+        state.totalPage = payload.total
+          ? Math.ceil(payload.total / payload.per_page)
+          : 0;
       })
       .addCase(getAllPets.rejected, (state, { payload }) => {
         state.error = payload;

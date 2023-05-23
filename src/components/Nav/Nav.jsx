@@ -1,12 +1,25 @@
 import React from 'react';
-import { NavCss, NavLinkCss } from './Nav.styled';
+import { NavLink } from 'react-router-dom';
+import { NavCss } from './Nav.styled';
 
 const Nav = () => {
   return (
     <NavCss>
-      <NavLinkCss to='/news'>News</NavLinkCss>
-      <NavLinkCss to="/notices">Find pet</NavLinkCss>
-      <NavLinkCss to="/friends">Our friends</NavLinkCss>
+      <li>
+        <NavLink className="link" to="/news">
+          News
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="link" to="/notices">
+          Find pet
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="link" to="/friends">
+          Our friends
+        </NavLink>
+      </li>
     </NavCss>
   );
 };

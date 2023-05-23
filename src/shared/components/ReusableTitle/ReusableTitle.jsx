@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const ReusableTitle = styled.h1`
+const ReusableTitle = styled.h1`
   margin-top: 40px;
   margin-bottom: 24px;
 

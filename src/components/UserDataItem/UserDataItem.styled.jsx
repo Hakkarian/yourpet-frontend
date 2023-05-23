@@ -43,7 +43,8 @@ fill: #54ADFF;
 `;
 
 export const Input = styled.input`
-width: calc(60vw);
+width: 100%;
+max-width: 190px;
 height: 28px;
 padding: 4px 12px;
 background: transparent;
@@ -51,7 +52,8 @@ border: 1px solid rgb(84, 173, 255);
 border-radius: 20px;
 
   @media screen and (min-width: 768px){
-    width: 255px;
+    width: 100%;
+    max-width: 255px;
     height: 32px;
   };
 `;
@@ -82,17 +84,4 @@ display: flex;
 align-items: center;
 -webkit-box-pack: justify;
 justify-content: space-between;
-`;
-
-export const ErrorBox = styled.div`
-height: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-`;
-
-export const Error = styled.div`
-font-size: 10px;
-line-height: 1.33;
-color: #F43F5E;;
 `;

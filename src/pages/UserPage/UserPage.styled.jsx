@@ -38,6 +38,7 @@ margin-bottom:18px;
 
 export const UserDiv = styled.div`
   background-color: #FEF9F9;
+  max-width: 340px;
 
  @media screen and (min-width: 1280px) {
     display: flex;

@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { info, login, logout, register, refreshUser, getUserInfo } from './auth-operations';
+import {
+  info,
+  login,
+  logout,
+  register,
+  refreshUser,
+  getUserInfo,
+} from './auth-operations';
 import { setToken } from 'shared/services/auth-api';
 
 const authSlice = createSlice({
@@ -15,13 +22,13 @@ const authSlice = createSlice({
   },
   reducers: {
     googleAuth: (state, { payload }) => {
-      setToken(payload.token)
-      console.log(payload)
+      setToken(payload.token);
+      console.log(payload);
       state.token = payload.token;
       state.isLogin = true;
       state.isLoading = false;
-      state.user = payload.user
-    }
+      state.user = payload.user;
+    },
   },
   extraReducers: builder => {
     builder
@@ -91,19 +98,19 @@ const authSlice = createSlice({
         state.error = null;
         state.isLogin = true;
       })
-      .addCase(refreshUser.fulfilled, (state, {payload}) => {
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.isLogin = true;
         state.isRefreshing = false;
         state.error = null;
       })
-      .addCase(getUserInfo.pending, (state) => {
+      .addCase(getUserInfo.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(getUserInfo.fulfilled, (state, {payload}) => {
-                console.log('here user info slice');
-                console.log('user info fulf', payload.user);
+      .addCase(getUserInfo.fulfilled, (state, { payload }) => {
+        // console.log('here user info slice');
+        // console.log('user info fulf', payload.user);
         state.user = payload.user;
         state.isLoading = false;
         state.error = null;

@@ -3,12 +3,12 @@ import MediaQuery from 'react-responsive';
 import { useContext } from 'react';
 import { ThemeContext } from 'shared/utils/ThemeContext/themeProvider';
 
-import { SectionTag } from "./MainPage.styled";
+import { SectionTag } from './MainPage.styled';
 import ThemeSwitcher from 'shared/utils/ThemeContext/ThemeSwitcher/ThemeSwitcher';
 
 const MainPage = () => {
   const { isLight, toggleTheme } = useContext(ThemeContext);
- 
+
   return (
     <SectionTag>
       <div>

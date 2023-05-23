@@ -14,22 +14,20 @@ import {
   ContentWrap,
 } from './PetsItem.styled';
 import Modal from 'shared/components/Modal/Modal';
-import ModalDelete from '../Modals/ModalDelete/index';
+import ModalDelitePets from 'components/Modals/ModalDelitePets';
 import { useToggle } from 'shared/hooks/useToggle';
 
-const PetsItem = ({ pet, id }) => {
+
+const PetsItem = ({ pet, id, updatePage }) => {
   const [, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { isOpen, open, close } = useToggle();
-
-  //   const onDeleteBtn = () => {
-  //     setIsModalOpen(true);
-  //   };
 
   const handleDelete = async () => {
     dispatch(deletePets(id)).then(() => {
       setIsModalOpen(false);
       dispatch(getAllPets());
+      updatePage(1);
     });
   };
 
@@ -61,12 +59,15 @@ const PetsItem = ({ pet, id }) => {
           <BtnWrap>
             <DeleteBtn type="button" onClick={open}>
               <Icon />
-              {isOpen && (
-                <Modal onClose={close}>
-                  <ModalDelete onClick={handleDelete} onClose={close} />
-                </Modal>
-              )}
             </DeleteBtn>
+            {isOpen && (
+              <Modal onClose={close}>
+                <ModalDelitePets
+                  onClick={handleDelete}
+                  onClose={close}
+                ></ModalDelitePets>
+              </Modal>
+            )}
           </BtnWrap>
         </ContentWrap>
       </Item>

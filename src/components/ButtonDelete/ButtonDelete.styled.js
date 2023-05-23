@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ReactComponent as Trash } from 'icons/trash.svg';
 
-export const SvgWrapper = styled.div`
+export const SvgWrapper = styled.button`
   position: absolute;
   right: 12px;
   top: 68px;
@@ -12,19 +12,16 @@ export const SvgWrapper = styled.div`
   height: 40px;
   background-color: ${({ theme }) => theme.colors.lightblue};
   border-radius: 50%;
-
-  .btn {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-  }
+  cursor: pointer;
+//   background-color: transparent;
+  border: none;
 `;
 
 export const TrashIcon = styled(Trash)`
   width: 24px;
   height: 24px;
   fill: transparent;
-  margin-left: 0;
+ 
 
   path {
     stroke: ${({ theme }) => theme.colors.blue};
