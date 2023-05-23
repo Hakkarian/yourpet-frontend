@@ -57,6 +57,7 @@ export const Title = styled.h2`
   height: ${({ theme }) => theme.spacing(16.5)};
   font-weight: 700;
   font-size: ${({ theme }) => theme.spacing(6)};
+  color: ${({ theme }) => theme.colors.black}
   line-height: 1.37;
   letter-spacing: -0.01em;
   overflow: hidden;
@@ -69,6 +70,7 @@ export const Title = styled.h2`
 export const Decsr = styled.p`
   font-weight: 400;
   line-height: 1.37;
+   color: ${({ theme }) => theme.colors.black}
   height: ${({ theme }) => theme.spacing(27.5)};
   overflow: hidden;
   text-overflow: ellipsis;
