@@ -3,7 +3,7 @@ import MediaQuery from 'react-responsive';
 
 import AuthNav from 'components/AuthNav';
 import Nav from 'components/Nav/Nav';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled';
 
 import moblogo from '../../images/moblogo1x.png';
