@@ -210,7 +210,8 @@ export const IconWrap = styled.span`
 `;
 
 export const Label = styled.label`
-  width: 100%;
+  width: 110%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

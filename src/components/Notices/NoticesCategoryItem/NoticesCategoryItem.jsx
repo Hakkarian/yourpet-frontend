@@ -90,7 +90,7 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
-  const [open1, setOpen1] = useState(false);
+  const [setOpen1] = useState(false);
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
