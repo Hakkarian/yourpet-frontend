@@ -11,3 +11,5 @@ export const selectIsPetOrNoticeLoading = state =>
 
 export const selectIsPetOrNoticeError = state =>
   state.pets.error || state.notices.isError;
+
+export const selectTotalPage = store => store.pets.totalPage;
