@@ -36,6 +36,7 @@ export const UserWrapCss = styled.div`
 `;
 
 export const InfoCss = styled.p`
+  color: ${({theme})=>theme.colors.black};
   @media screen and (min-width: 768px) {
     display: inline-block;
   }
