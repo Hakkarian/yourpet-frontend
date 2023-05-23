@@ -42,7 +42,7 @@ export const infoService = async data => {
     const { data: result } = await instance.patch('/user/info', data);
     console.log('here info api');
     console.log('user api result', result);
-    setAuthHeader(result.token);
+    // setAuthHeader(result.token);
     return result;
   } catch (error) {
     return error.message;
@@ -53,7 +53,7 @@ export const getUserInfoService = async data => {
   const { data: result } = await instance.get('/user/current', data);
   // console.log('here user');
   // console.log('user api result', result)
-  setAuthHeader(result.token);
+  // setAuthHeader(result.token);
   return result;
 };
 
