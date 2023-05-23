@@ -13,12 +13,14 @@ import {
   Text,
   ContentWrap,
 } from './PetsItem.styled';
-
-// import ModalDelete from '../Modals/ModalDelete/index';
+import Modal from 'shared/components/Modal/Modal';
+import ModalDelete from '../Modals/ModalDelete/index';
+import { useToggle } from 'shared/hooks/useToggle';
 
 const PetsItem = ({ pet, id }) => {
   const [, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+  const { isOpen, open, close } = useToggle();
 
   //   const onDeleteBtn = () => {
   //     setIsModalOpen(true);
@@ -56,20 +58,14 @@ const PetsItem = ({ pet, id }) => {
               Comments: <Span>{pet.comments}</Span>
             </Text>
           </TextWrap>
-          {/* <BtnWrap>
-            <DeleteBtn type="button" onClick={() => setIsModalOpen(true)}>
-              <Icon />
-            </DeleteBtn>
-            {isModalOpen && (
-              <ModalDelete
-                onClick={handleDelete}
-                onClose={() => setIsModalOpen(false)}
-              />
-            )}
-          </BtnWrap> */}
           <BtnWrap>
-            <DeleteBtn type="button" onClick={handleDelete}>
+            <DeleteBtn type="button" onClick={open}>
               <Icon />
+              {isOpen && (
+                <Modal onClose={close}>
+                  <ModalDelete onClick={handleDelete} onClose={close} />
+                </Modal>
+              )}
             </DeleteBtn>
           </BtnWrap>
         </ContentWrap>

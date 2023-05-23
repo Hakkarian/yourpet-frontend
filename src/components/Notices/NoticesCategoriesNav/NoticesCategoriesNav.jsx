@@ -57,7 +57,7 @@ const authButtons = [
 ];
 
 const NoticesCategoriesNav = () => {
-  // const { isOpen, open, close } = useToggle();
+
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (

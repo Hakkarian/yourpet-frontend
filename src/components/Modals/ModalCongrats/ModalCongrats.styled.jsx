@@ -7,17 +7,20 @@ display: flex;
 align-items: center;
 text-align: center;
 flex-direction: column;
-margin-bottom: 60px;
+margin-bottom: 40px;
 
 .btn {
   font-weight: 700;
 font-size: 16px;
 letter-spacing: 0.04em;
+margin-top: 15px;
 
   :hover focus {
     background: ${({ theme }) => theme.background.azure};
     border: none;
   }
+
+
 }
 }
 `
@@ -29,7 +32,7 @@ letter-spacing: 0.04em;
 //   }
 
 export const Text = styled.p`
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   font-weight: 500;
   font-size: 16px;
 
@@ -39,8 +42,8 @@ export const Text = styled.p`
 `;
 
 export const Title = styled.h2`
-  margin-top: 60px;
-  margin-bottom: 52px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   font-weight: 500;
   font-size: 24px;
 

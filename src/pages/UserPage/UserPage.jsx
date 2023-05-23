@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
@@ -18,7 +18,6 @@ import ModalCongrats from 'components/Modals/ModalCongrats';
 
 const UserPage = () => {
   const { isOpen, open, close } = useToggle();
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
  const user = useSelector(selectUser);
@@ -28,10 +27,10 @@ const UserPage = () => {
   useEffect(() => {
     const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
     if (!visitedBefore) {
-      setShowModal(true);
+      open();
       localStorage.setItem(`visitedBefore_${userId}`, true)
     }
-  }, [userId, setShowModal]);
+  }, [userId, open]);
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
@@ -48,7 +47,7 @@ const UserPage = () => {
 
   return (
     <>
-      {showModal && <ModalCongrats setShowModal={setShowModal} />}
+      {isOpen && <Modal onClose={close}><ModalCongrats onClose={close} setShowModal={open}/></Modal>}
         <UserDiv>
           <div>
           <Title>My information:</Title>
@@ -56,11 +55,6 @@ const UserPage = () => {
             <UserData handleSubmit={handleSubmit}
             />
             <Logout onClick={open} />
-            {isOpen && (
-              <Modal onClose={close}>
-                {/* <ModalLogOut onClose={close} /> */}
-              </Modal>
-            )}
           </Wrap>
           </div>
           <PetsData />

@@ -31,12 +31,12 @@ import {
   DescriptionText,
   AddToFavoriteBtn,
   RemoveFromFavoriteBtn,
-  ButtonDiv,
+  // ButtonDiv,
   SvgWrapper,
   Span,
   CardContainer,
   DescriptionInner,
-  RemoveFromOwnBtn,
+  // RemoveFromOwnBtn,
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
 import { ReactComponent as FemaleIcon } from 'icons/female.svg';
@@ -45,10 +45,12 @@ import { ReactComponent as ClockIcon } from 'icons/clock.svg';
 import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
-import { TrashIcon } from './NoticesCategoryItem.styled';
-import angryDog from '../../../images/angry-dog.png';
+// import { TrashIcon } from './NoticesCategoryItem.styled';
+// import angryDog from '../../../images/angry-dog.png';
 import { useState } from 'react';
-import Modal from 'shared/components/Modal';
+
+import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
+
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
 
@@ -131,7 +133,9 @@ const NoticesCategoryItem = ({
 
   return (
   <>
-    {open1 && <Modal onClose={() => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
+ 
+    {/* {open1 && <Modal onClose={
+      () => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>} */}
     <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
@@ -157,11 +161,13 @@ const NoticesCategoryItem = ({
             </SvgWrapper>
           )}
           {isOwnPet && (
-            <RemoveFromOwnBtn onClick={handleDeleteClick}>
-              <TrashIcon alt="trash" width="24" height="24" />
-            </RemoveFromOwnBtn>
+            // <RemoveFromOwnBtn onClick={handleDeleteClick}>
+            //   <TrashIcon alt="trash" width="24" height="24" />
+            // </RemoveFromOwnBtn>
+            <ButtonDelete onClick={handleDeleteClick} ></ButtonDelete>
+           
           )}
-
+ {/* {isOpen && (<Modal onClose={close}><ModalDelete onClick={handleDeleteClick} onClose={close}/></Modal>)} */}
           <DescriptionWrapper>
             <DescriptionTextContainer>
               <LocationIcon alt="location" width="24" height="24" />
@@ -196,7 +202,7 @@ const NoticesCategoryItem = ({
         </Button>
       </DescriptionInner>
 
-      <ButtonDiv>
+      {/* <ButtonDiv> */}
         {isOpen && (
           <ModalNotice
             userDeteils={user}
@@ -207,7 +213,7 @@ const NoticesCategoryItem = ({
             removeFromFavorite={removeFromFavorite}
           />
         )}
-      </ButtonDiv>
+      {/* </ButtonDiv> */}
       </Item>
       </>
   );
