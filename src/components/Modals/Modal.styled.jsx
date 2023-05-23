@@ -1,4 +1,20 @@
 import styled from '@emotion/styled';
+import { ReactComponent as Trash } from 'icons/trash.svg';
+import { ReactComponent as LogOut } from 'icons/logout.svg';
+
+export const LogOutIcon = styled(LogOut)`
+  path {
+    fill: transparent;
+    stroke: ${({ theme }) => theme.colors.white};
+  }
+`;
+
+export const TrashIcon = styled(Trash)`
+  path {
+    fill: transparent;
+    stroke: ${({ theme }) => theme.colors.white};
+  }
+`;
 
 export const ModalText = styled.p`
 margin-bottom: 48px;

@@ -1,4 +1,12 @@
 import styled from '@emotion/styled';
+// import { ReactComponent as LogOut } from 'icons/logout.svg';
+
+// export const LogOutIcon = styled(LogOut)`
+//   path {
+//     fill: transparent;
+//     stroke: ${({ theme }) => theme.colors.white};
+//   }
+// `;
 
 export const Container = styled.div`
 display: flex;
@@ -22,7 +30,6 @@ flex-direction: column;
 @media (min-width: 767px) {
   flex-direction: row;
 }
-  
 
 .btn {
   padding: 0;
@@ -31,7 +38,6 @@ flex-direction: column;
  font-size: 16px;
  margin-top: 8px;
 
- //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
   :hover {
     background: ${({ theme }) => theme.background.azure};
     border: none;
@@ -40,6 +46,9 @@ flex-direction: column;
     width: 129px;
     margin-top: 0;
     margin-right: 17px;
+
+    :last-child{
+      margin-right: 0;
   }
 }}`;
 

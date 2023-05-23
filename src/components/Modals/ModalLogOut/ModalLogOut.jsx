@@ -1,26 +1,40 @@
-import { ContainerButton, ModalTitle, Container} from './ModalLogOut.styled';
-// import { Container } from 'shared/components/Modal/ContainerModal/ContainerModal.styled';
+import {
+  ContainerButton,
+  ModalTitle,
+  Container,
+  LogOutIcon,
+} from '../Modal.styled';
 import Button from 'shared/components/Button/Button';
-import {ReactComponent as LogOutIcon} from '../../../icons/logout.svg';
-import PropTypes from 'prop-types';
 import { logout } from 'redux/auth/auth-operations';
 import { useDispatch } from 'react-redux';
-// import Container from 'shared/components/Modal/ContainerModal/ContainerModal';
 
+import PropTypes from 'prop-types';
 
-const ModalLogOut = ({ onClose}) => {
+const ModalLogOut = ({ onClose }) => {
   const dispatch = useDispatch();
-    const handleLogOut = () => dispatch(logout());
+  const handleLogOut = () => dispatch(logout());
 
   return (
     <Container>
-    <ModalTitle>Already leaving?</ModalTitle>
+      <ModalTitle>Already leaving?</ModalTitle>
       <ContainerButton>
-        <Button className="btn" type="button" color="white" width="256px" onClick={onClose}>
+        <Button
+          className="btn"
+          type="button"
+          color="white"
+          width="256px"
+          onClick={onClose}
+        >
           Cancel
         </Button>
-        <Button onClick={handleLogOut} className="btn" type="button" color="blue" width="256px">
-          Yes <LogOutIcon stroke="#FFFFFF" fill="none" className="svg" width="24px" height="24px" />
+        <Button
+          onClick={handleLogOut}
+          className="btn"
+          type="button"
+          color="blue"
+          width="256px"
+        >
+          Yes <LogOutIcon width="24px" height="24px" />
         </Button>
       </ContainerButton>
     </Container>

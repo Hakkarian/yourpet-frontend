@@ -5,6 +5,7 @@ margin-bottom: 48px;
 font-weight: 500;
 font-size: 16px;
 letter-spacing: -0.01em;
+
 `
 
 export const ModalTitle = styled.h2`
@@ -32,14 +33,18 @@ justify-content: space-between;
 flex-direction: column;
 margin: 0 auto;
 
+
 @media (min-width: 767px) {
   flex-direction: row;
 }
+
+
   .svg {
     fill: none;
     stroke: '#FFFFFF';
   }
 
+// прибрати ці стилі якщо вони зєявиться в блакитній та жовтій кнопках
 .btn {
   padding: 0;
  height: 40px;
@@ -47,17 +52,20 @@ margin: 0 auto;
  font-size: 16px;
  margin-top: 8px;
 
+
+
+
+    //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
     :hover {
       background: ${({ theme }) => theme.background.azure};
       border: none;
     }
+  }
   @media (min-width: 767px) {
     width: 129px;
     margin-right: 17px;
-
-    :last-child{
-      margin-right: 0;
-    }
+  
+  
    }
 }
 `
@@ -66,12 +74,12 @@ display: flex;
 align-items: center;
 text-align: center;
 flex-direction: column;
-width: 100%;
-height: 100%;
 margin-bottom: 16px;
 
 @media (min-width: 767px) {
   
   margin-bottom: 60px;
+}
+
 }
 `
