@@ -38,12 +38,16 @@ export const logoute = async () => {
 };
 
 export const infoService = async data => {
-  const { data: result } = await instance.patch('/user/info', data);
-  console.log('here info api');
-  console.log('user api result', result);
-  setToken(result.token);
-  return result;
-};
+  try{
+    const { data: result } = await instance.patch('/user/info', data);
+    console.log('here info api');
+    console.log('user api result', result);
+    setAuthHeader(result.token);
+    return result;
+  }catch(error){
+    return error.message;
+  };
+};  
 
 export const getUserInfoService = async data => {
   const { data: result } = await instance.get('/user/current', data);

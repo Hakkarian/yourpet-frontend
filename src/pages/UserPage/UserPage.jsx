@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Loader } from 'components/Loader';
 import { selectUser } from 'redux/auth/auth-selector';
 import { Wrap, UserDiv, Title } from './UserPage.styled';
 import UserData from 'components/UserData';
@@ -10,6 +9,7 @@ import Logout from 'components/Logout';
 import { useToggle } from 'shared/hooks/useToggle';
 import Modal from 'shared/components/Modal';
 import { changeIsPetAdded } from 'redux/pets/pets-slice';
+import { info } from 'redux/auth/auth-operations';
 
 // import ModalCongrats from 'components/Modals/ModalCongrats';
 // import ModalLogOut from 'components/Modals/ModalLogOut';
@@ -22,7 +22,6 @@ const UserPage = () => {
   const dispatch = useDispatch();
 
  const user = useSelector(selectUser);
-  const isLoading = useSelector(state => state.auth.isLoading);
   const { userId } = user;
 
 
@@ -39,10 +38,13 @@ const UserPage = () => {
     dispatch(getUserInfo());
   }, [dispatch]);
 
-
-  if(isLoading) {
-    return <Loader />;
+  const handleSubmit = async (value ) => {
+    try {
+      await dispatch(info(value));
+  } catch (error) {
+    console.log('Error updating user data:', error);
   }
+};
 
   return (
     <>
@@ -51,7 +53,7 @@ const UserPage = () => {
           <div>
           <Title>My information:</Title>
           <Wrap>
-            <UserData
+            <UserData handleSubmit={handleSubmit}
             />
             <Logout onClick={open} />
             {isOpen && (

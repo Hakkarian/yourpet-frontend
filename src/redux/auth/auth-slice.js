@@ -36,9 +36,11 @@ const authSlice = createSlice({
       })
       .addCase(info.pending, state => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
+        state.error = null;
       })
       .addCase(register.rejected, (state, action) => {
         // action.payload
@@ -86,20 +88,25 @@ const authSlice = createSlice({
         console.log('user info fulf', payload);
         state.isLoading = false;
         state.user = payload;
+        state.error = null;
+        state.isLogin = true;
       })
       .addCase(refreshUser.fulfilled, (state, {payload}) => {
         state.user = payload.user;
         state.isLogin = true;
         state.isRefreshing = false;
+        state.error = null;
       })
       .addCase(getUserInfo.pending, (state) => {
         state.isLoading = true;
+        state.error = null;
       })
       .addCase(getUserInfo.fulfilled, (state, {payload}) => {
                 console.log('here user info slice');
                 console.log('user info fulf', payload.user);
         state.user = payload.user;
         state.isLoading = false;
+        state.error = null;
       })
       .addCase(getUserInfo.rejected, (state, { payload }) => {
         console.log('here user info slice');
