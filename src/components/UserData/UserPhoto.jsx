@@ -1,27 +1,26 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import defImg from '../../images/default-user-img.jpg';
 import { selectUser } from 'redux/auth/auth-selector';
 import { info } from 'redux/auth/auth-operations';
 import { userPhotoValidationSchema } from './userValidation';
-
-import { Input, Label, CameraIcon, Confirm, EditBtn, BtnWrap, CrossIcon,ImageBox, Image, Button} from './UserData.styled';
+import { Input, Label, CameraIcon, Confirm, EditBtn, BtnWrap, CrossIcon,ImageBox, Image, Button } from './UserData.styled';
 
 const UserPhoto = () => {
     const dispatch = useDispatch();
     const user = useSelector(selectUser);
     const {avatar} = user;
-    const photoFromServer = avatar;
     const [uploadedPhoto, setUploadedPhoto] = useState('');
-    const [userAvatar, setUserAvatar] = useState(photoFromServer);
+    const [userAvatar, setUserAvatar] = useState(avatar || defImg);
     const [isSubmitted, setIsSubmitted] = useState(true);
     const [errors, setErrors] = useState({});
     const fileRef = useRef(null);
  
-    const updateAvatar = (data) => {
+    const updateAvatar = async (data) => {
       try {
-        const response =  dispatch(info(data));
-        if (response.status === 201) {
+        const response = await dispatch(info(data));
+        if (response.status === 200) {
       } return response.data;
       } catch (error) {
         return error.message;
@@ -31,8 +30,8 @@ const UserPhoto = () => {
     const handleSubmit = () => {
       const formDataSend = new FormData();
       formDataSend.append("avatar", uploadedPhoto);
-      updateAvatar(formDataSend);
-      setUserAvatar(photoFromServer)
+      updateAvatar( formDataSend);
+      setUserAvatar(avatar)
       setIsSubmitted(true);
     };
 
@@ -57,11 +56,6 @@ const UserPhoto = () => {
       fileRef.current.click();
     };
 
-      const handleDeletePhoto = () => {
-      setUserAvatar(photoFromServer)
-      setUploadedPhoto(null);
-    };
-
   return (
 
     <div>
@@ -84,20 +78,20 @@ const UserPhoto = () => {
                 src={userAvatar}
                 alt="User avatar"
               />)
-            } 
+            }
         </Label>
         {errors.uploadedPhoto && <p >{errors.uploadedPhoto}</p>}
       </ImageBox>
       
-      {!userAvatar && (
+      {!userAvatar  &&(
         <BtnWrap>
           <Button type="submit" onClick={handleSubmit}>
             <Confirm />
             Confirm
           </Button>
-          <Button type="button" onClick={handleDeletePhoto} >
+          <Button type="button" onClick={handlePreviewClick} >
             <CrossIcon/>
-            Delete 
+            Change
           </Button>
           </BtnWrap>
       )}
@@ -112,6 +106,6 @@ const UserPhoto = () => {
     )}
     </div>
   )
-}
+};
       
 export default UserPhoto;

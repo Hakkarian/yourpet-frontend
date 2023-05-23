@@ -1,22 +1,17 @@
 import styled from "@emotion/styled";
-// import { Link } from 'react-router-dom';
 import {ReactComponent as OutIcon} from '../../icons/logout.svg';
 
 export const Icon = styled(OutIcon)`
+stroke: #54ADFF;
 fill: none;
+width: 24px;
+height: 24px;
 `;
-
-// export const OutBtn = styled(Link)`
-//  cursor: pointer;
-//  border: none;
-//  background-color: transparent;
-//  width: 24px;
-//  height: 24px;
-//  margin-right: 16px;
-// `;
 
 export const OutBtn = styled.button`
  cursor: pointer;
+ display: flex;
+ align-items: center;
  border: none;
  background-color: transparent;
  width: 24px;

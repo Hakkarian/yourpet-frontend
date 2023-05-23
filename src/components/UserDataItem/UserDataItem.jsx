@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useMemo} from "react";
 import { nanoid } from "nanoid";
 
-import { selectUser, selectIsRegistered } from 'redux/auth/auth-selector';
+import { selectUser } from 'redux/auth/auth-selector';
 import { info } from 'redux/auth/auth-operations';
 import {Edit, EditButton, Input, ItemWrap, Wrapper, Label, InputWrap, Span, CheckIcon} from './UserDataItem.styled';
 
@@ -19,29 +19,23 @@ const UserDataItem = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const {name, email, phone, birthday, city} = user;
-  const isRegister = useSelector(selectIsRegistered);
-  const [isEdit, setIsEdit] = useState(false);
+  const [isEditName, setIsEditName] = useState(false);
+  const [isEditEmail, setIsEditEmail] = useState(false);
+  const [isEditBirthday, setIsEditBirthday] = useState(false);
+  const [isEditPhone, setIsEditPhone] = useState(false);
+  const [isEditCity, setIsEditCity] = useState(false);
   const [data, setData] = useState(initialState);
   const id = useMemo(() => nanoid(), []);
 
-  useEffect(() => {
-     if(isRegister) {
-        const userName = email.split("@")[0];
-        setData({...data, name: userName});
-     }
-  }, [data, email, isRegister]);
-
-    const onEditBtn = () => {
-     setIsEdit(true);
-    };
-
-    const  handleNameSubmit = (event) => {
+  const  handleNameSubmit = (event) => {
       event.preventDefault();
       const form = event.target;
       const userName = form.elements.name.value;
  
       dispatch(info({name: userName}));
-      };
+      setData({...data, name: userName});
+      setIsEditName(false);
+    };
 
       const handleEmailSubmit = (event) => {
         event.preventDefault();
@@ -49,6 +43,8 @@ const UserDataItem = () => {
         const userEmail = form.elements.email.value;
 
         dispatch(info({email: userEmail}));
+        setData({...data, email: userEmail});
+        setIsEditEmail(false);
       };
 
       const handleBirthdaySubmit = (event) => {
@@ -57,6 +53,8 @@ const UserDataItem = () => {
         const userBirthday = form.elements.birthday.value;
 
         dispatch(info({birthday: userBirthday}));
+        setData({...data, birthday: userBirthday});
+        setIsEditBirthday(false);
       };
 
       const handlePhoneSubmit = (event) => {
@@ -65,6 +63,8 @@ const UserDataItem = () => {
         const userPhone = form.elements.phone.value;
 
         dispatch(info({phone: userPhone}));
+        setData({...data, phone: userPhone});
+        setIsEditPhone(false);
       };
 
       const handleCitySubmit = (event) => {
@@ -73,6 +73,8 @@ const UserDataItem = () => {
         const userCity = form.elements.city.value;
 
         dispatch(info({city: userCity}));
+        setData({...data, city: userCity});
+        setIsEditCity(false);
       };
  
     return (
@@ -81,15 +83,15 @@ const UserDataItem = () => {
           <InputWrap>
             <Span>Name: </Span>
             <Label htmlFor={id}></Label>
-            {!isEdit && (
+            {!isEditName && (
               <>
-                <EditButton type="button" onClick={onEditBtn}>
+                <EditButton type="button" onClick={() => setIsEditName(true)} >
                   <Edit />
                 </EditButton>
-                <Input readOnly defaultValue={name} />{' '}
+                <Input readOnly defaultValue={data.name || name}  placeholder="Name" />
               </>
             )}
-            {isEdit && (
+            {isEditName && (
               <>
                 <EditButton type="submit">
                   <CheckIcon />
@@ -99,6 +101,7 @@ const UserDataItem = () => {
                   defaultValue={name}
                   name="name"
                   id={id}
+                  placeholder='Name'
                   pattern="[A-Za-z]{1,32}"
                 />
               </>
@@ -110,15 +113,15 @@ const UserDataItem = () => {
           <InputWrap>
             <Span>Email: </Span>
             <Label htmlFor={id}></Label>
-            {!isEdit && (
+            {!isEditEmail && (
               <>
-                <EditButton type="button" onClick={onEditBtn}>
+                <EditButton type="button" onClick={() => setIsEditEmail(true)}>
                   <Edit />
-                </EditButton>{' '}
-                <Input readOnly defaultValue={email} />
+                </EditButton>
+                <Input readOnly defaultValue={data.email || email} placeholder='example@gmail.com'/>
               </>
             )}
-            {isEdit && (
+            {isEditEmail && (
               <>
                 <EditButton type="submit">
                   <CheckIcon />
@@ -139,15 +142,15 @@ const UserDataItem = () => {
           <InputWrap>
             <Span>Birthday: </Span>
             <Label htmlFor={id}></Label>
-            {!isEdit && (
+            {!isEditBirthday && (
               <>
-                <EditButton type="button" onClick={onEditBtn}>
+                <EditButton type="button" onClick={() => setIsEditBirthday(true)}>
                   <Edit />
                 </EditButton>
-                <Input readOnly defaultValue={birthday} />
+                <Input readOnly defaultValue={data.birthday || birthday} placeholder='DD.MM.YYYY'/>
               </>
             )}
-            {isEdit && (
+            {isEditBirthday && (
               <>
                 <EditButton type="submit">
                   <CheckIcon />
@@ -170,15 +173,15 @@ const UserDataItem = () => {
           <InputWrap>
             <Span>Phone: </Span>
             <Label htmlFor={id}></Label>
-            {!isEdit && (
+            {!isEditPhone && (
               <>
-                <EditButton type="button">
-                  <Edit onClick={onEditBtn} />
+                <EditButton type="button" onClick={() => setIsEditPhone(true)}>
+                  <Edit  />
                 </EditButton>
-                <Input readOnly defaultValue={phone} />
+                <Input readOnly defaultValue={data.phone || phone} placeholder='+380XXXXXXXXX'/>
               </>
             )}
-            {isEdit && (
+            {isEditPhone && (
               <>
                 <EditButton type="submit">
                   <CheckIcon />
@@ -201,15 +204,15 @@ const UserDataItem = () => {
           <InputWrap>
             <Span>City:</Span>
             <Label htmlFor={id}></Label>
-            {!isEdit && (
+            {!isEditCity && (
               <>
-                <EditButton type="button" onClick={onEditBtn}>
+                <EditButton type="button" onClick={() => setIsEditCity(true)}>
                   <Edit />
                 </EditButton>
-                <Input readOnly defaultValue={city} />
+                <Input readOnly defaultValue={data.city || city} placeholder="Kyiv"/>
               </>
             )}
-            {isEdit && (
+            {isEditCity && (
               <>
                 <EditButton type="submit">
                   <CheckIcon />

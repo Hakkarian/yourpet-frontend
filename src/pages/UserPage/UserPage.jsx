@@ -34,6 +34,9 @@ const UserPage = () => {
 
   useEffect(() => {
     dispatch(changeIsPetAdded());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(getUserInfo());
   }, [dispatch]);
 
