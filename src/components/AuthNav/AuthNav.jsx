@@ -1,18 +1,22 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import { AuthNavCss, ButtonCss, PawCss } from './AuthNav.styled';
+import { AuthNavCss, PawCss } from './AuthNav.styled';
 
 const AuthNav = () => {
-  const navigate = useNavigate();
-
   return (
     <AuthNavCss>
-      <ButtonCss onClick={() => navigate('/login')}>
-        Log IN
-        <PawCss width="24" height="24" fill='none' />
-      </ButtonCss>
-      <ButtonCss onClick={() => navigate('/register')}>Register</ButtonCss>
+      <li>
+        <NavLink className="link" style={{ minWidth: '165px' }} to="/login">
+          Log IN
+          <PawCss width="24" height="24" fill="none" />
+        </NavLink>
+      </li>
+      <li>
+        <NavLink className="link" to="/register">
+          Register
+        </NavLink>
+      </li>
     </AuthNavCss>
   );
 };
