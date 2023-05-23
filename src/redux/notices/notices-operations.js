@@ -11,9 +11,6 @@ export const getNoticeByCategory = createAsyncThunk(
   async ({ category, search, page }, { rejectWithValue }) => {
     try {
       if (search === '') {
-        console.log(page);
-        console.log(search);
-        console.log(category);
         const { data } = await instance.get(`/notices/${category}`, {
           params: { page, search, category },
         });
@@ -76,9 +73,6 @@ export const getFavorites = createAsyncThunk(
   'notices/getFavorites',
   async ({ search, page }, { rejectWithValue }) => {
     try {
-      console.log(page);
-      console.log(search);
-
       if (search === '') {
         const { data } = await instance.get(`/notices/user/favorite`, {
           params: { page, search },
@@ -192,9 +186,6 @@ export const getUserNotices = createAsyncThunk(
   'notices/getUserNotices',
   async ({ search, page }, { rejectWithValue }) => {
     try {
-      console.log(page);
-      console.log(search);
-
       if (search === '') {
         const { data } = await instance.get(`/notices/user/own`, {
           params: { page, search },

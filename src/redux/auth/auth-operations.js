@@ -23,9 +23,9 @@ export const register = createAsyncThunk(
           color: '#fff',
         },
       });
-      
+
       return result;
-    } catch ({response}) {
+    } catch ({ response }) {
       //error.response
       if (response.status === 400) {
         toast(
@@ -55,13 +55,11 @@ export const register = createAsyncThunk(
   }
 );
 
-
-
 export const login = createAsyncThunk(
   'auth/login',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('log operation before')
+      console.log('log operation before');
       const result = await logine(data);
       toast('Long time no see!', {
         icon: '😉',
@@ -74,7 +72,7 @@ export const login = createAsyncThunk(
       return result;
     } catch ({ response }) {
       if (response.status === 400) {
-              console.log('log operation error');
+        console.log('log operation error');
         toast(
           'Please enter the correct value. For example, "email: apple@gmail.com, password: 123apple"',
           {
@@ -136,7 +134,7 @@ export const info = createAsyncThunk(
   '/user/info',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('before info operation')
+      console.log('before info operation');
       const result = await infoService(data);
       toast('Changed succesfully!', {
         icon: '😊',
@@ -189,7 +187,7 @@ export const refreshUser = createAsyncThunk(
     const state = thunkAPI.getState();
     // console.log('refresh token', state.auth.token)
     const persistedToken = state.auth.token;
-    console.log('refresh operation', persistedToken)
+    // console.log('refresh operation', persistedToken)
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -198,7 +196,7 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await instance.get('/user/current');
-       toast('Checking updates...', {
+      toast('Checking updates...', {
         icon: '⏳',
         style: {
           borderRadius: '10px',
@@ -216,13 +214,12 @@ export const refreshUser = createAsyncThunk(
 export const getUserInfo = createAsyncThunk(
   'auth/userInfo',
   async (_, thunkAPI) => {
-    
     try {
       // setAuthHeader(persistedToken);
-      console.log('before userinfo operation');
-      const  data  = await getUserInfoService();
-      console.log('userinfo operation', data);
-      console.log('after userinfo operation');
+      // console.log('before userinfo operation');
+      const data = await getUserInfoService();
+      // console.log('userinfo operation', data);
+      // console.log('after userinfo operation');
       //  toast('Checking updates...', {
       //   icon: '⏳',
       //   style: {

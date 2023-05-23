@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
@@ -20,15 +20,14 @@ const UserPage = () => {
   const { isOpen, open, close } = useToggle();
   const dispatch = useDispatch();
 
- const user = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const { userId } = user;
-
 
   useEffect(() => {
     const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
     if (!visitedBefore) {
       open();
-      localStorage.setItem(`visitedBefore_${userId}`, true)
+      localStorage.setItem(`visitedBefore_${userId}`, true);
     }
   }, [userId, open]);
 
@@ -37,28 +36,31 @@ const UserPage = () => {
     dispatch(getUserInfo());
   }, [dispatch]);
 
-  const handleSubmit = async (value ) => {
+  const handleSubmit = async value => {
     try {
       await dispatch(info(value));
-  } catch (error) {
-    console.log('Error updating user data:', error);
-  }
-};
+    } catch (error) {
+      console.log('Error updating user data:', error);
+    }
+  };
 
   return (
     <>
-      {isOpen && <Modal onClose={close}><ModalCongrats onClose={close} setShowModal={open}/></Modal>}
-        <UserDiv>
-          <div>
+      {isOpen && (
+        <Modal onClose={close}>
+          <ModalCongrats onClose={close} setShowModal={open} />
+        </Modal>
+      )}
+      <UserDiv>
+        <div>
           <Title>My information:</Title>
           <Wrap>
-            <UserData handleSubmit={handleSubmit}
-            />
+            <UserData handleSubmit={handleSubmit} />
             <Logout onClick={open} />
           </Wrap>
-          </div>
-          <PetsData />
-        </UserDiv>
+        </div>
+        <PetsData />
+      </UserDiv>
     </>
   );
 };

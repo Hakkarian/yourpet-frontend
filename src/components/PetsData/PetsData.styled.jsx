@@ -61,6 +61,67 @@ export const Button = styled.button`
   }
 `;
 
+export const ButtonMore = styled.button`
+  position: relative;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 8px;
+  min-width: 129px;
+  max-height: 40px;
+  padding: 8px 0px;
+  font-family: Manrope-SemiBold;
+  font-size: 16px;
+  color: rgb(253, 247, 242);
+  background-color: rgb(84, 173, 255);
+  border-width: 0px;
+  border-color: rgb(84, 173, 255);
+  border-style: solid;
+  border-radius: 40px;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+`;
+
+export const ButtonPrev = styled.button`
+  position: relative;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  gap: 8px;
+  min-width: 129px;
+  max-height: 40px;
+  padding: 8px 0px;
+  font-family: Manrope-SemiBold;
+  font-size: 16px;
+  color: rgb(253, 247, 242);
+  background-color: rgb(84, 173, 255);
+  border-width: 0px;
+  border-color: rgb(84, 173, 255);
+  border-style: solid;
+  border-radius: 40px;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+`;
+
+export const Box = styled.div`
+  height: 70px;
+  width: 70px;
+`;
+
 export const PetsWrap = styled.div`
   flex-grow: 1;
   width: 100%;

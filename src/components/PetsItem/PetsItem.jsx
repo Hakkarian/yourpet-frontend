@@ -17,7 +17,7 @@ import Modal from 'shared/components/Modal/Modal';
 import ModalDelete from '../Modals/ModalDelete/index';
 import { useToggle } from 'shared/hooks/useToggle';
 
-const PetsItem = ({ pet, id }) => {
+const PetsItem = ({ pet, id, updatePage }) => {
   const [, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { isOpen, open, close } = useToggle();
@@ -30,6 +30,7 @@ const PetsItem = ({ pet, id }) => {
     dispatch(deletePets(id)).then(() => {
       setIsModalOpen(false);
       dispatch(getAllPets());
+      updatePage(1);
     });
   };
 
