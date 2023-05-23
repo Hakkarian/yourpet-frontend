@@ -19,7 +19,6 @@ import {
 import { selectUser, selectIsLoggedIn } from 'redux/auth/auth-selector';
 import { List } from './NoticesCategoryList.styled';
 import ErrorPage from '../../../pages/ErrorPage/ErrorPage';
-import { Container } from 'shared/components/Container/Container.styled';
 
 export const categoryShelf = {
   sell: 'sell',
@@ -73,11 +72,11 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
   }, [search, dispatch, category, isNoticeAdded, page]);
 
   return !isLoading && notices.length === 0 ? (
-    <Container>
+    <>
       <ErrorPage />
-    </Container>
+    </>
   ) : (
-    <Container>
+    <>
       {notices && notices.length > 0 ? (
                  <List>
             {!isLoggedIn &&
@@ -120,7 +119,7 @@ const NoticesCategoryList = ({ onClick, onUpdateStatus }) => {
          ) : (
         <Loader />
       )}
-    </Container>
+    </>
   );
 };
 

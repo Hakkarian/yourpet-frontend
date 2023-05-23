@@ -5,9 +5,8 @@ export const NavStyle = styled.div`
   position: relative;
   margin-top: 20px;
   margin-bottom: 30px;
-
-  @media screen and (min-width: 480px) {
-    width: 480px;
+  @media screen and (max-width: 767px) {
+    width: 280px;
   }
 
   @media screen and (min-width: 768px) {
@@ -16,11 +15,11 @@ export const NavStyle = styled.div`
     align-items: flex-start;
     margin-top: 40px;
     margin-bottom: 60px;
-    width: 768px;
+    width: 704px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1280px;
+     width: 1248px;
   }
 `;
 
@@ -37,9 +36,6 @@ export const ListNav = styled.ul`
     flex-wrap: nowrap;
     flex-direction: row;
     padding: 0;
-    // width: 540px;
-    // height: 35px;
-    // gap: 12px;
   }
 `;
 
