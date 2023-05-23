@@ -17,6 +17,7 @@ export const ButtonCss = styled(Button)`
     transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
 
     &:hover {
+      padding: 8px 20px;
       border: 1px solid ${({ theme }) => theme.colors.yellow};
       color: ${({ theme }) => theme.colors.yellow};
       background: none;
