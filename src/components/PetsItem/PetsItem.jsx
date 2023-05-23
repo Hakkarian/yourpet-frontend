@@ -18,7 +18,6 @@ import ModalDelitePets from 'components/Modals/ModalDelitePets';
 import { useToggle } from 'shared/hooks/useToggle';
 
 
-
 const PetsItem = ({ pet, id }) => {
   const [, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -28,6 +27,7 @@ const PetsItem = ({ pet, id }) => {
     dispatch(deletePets(id)).then(() => {
       setIsModalOpen(false);
       dispatch(getAllPets());
+      updatePage(1);
     });
   };
 

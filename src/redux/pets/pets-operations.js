@@ -5,10 +5,11 @@ import * as api from 'shared/services/pets-api';
 
 export const getAllPets = createAsyncThunk(
   'pets/fetchAll',
-  async (_, thunkAPI) => {
+  async (credential, thunkAPI) => {
     try {
-      const response = await api.fetchPets();
-      return response.pets;
+      const response = await api.fetchPets(credential);
+
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

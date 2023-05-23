@@ -1,33 +1,28 @@
-// import { ImSearch } from 'react-icons/im';
+import { ImSearch } from 'react-icons/im';
 import { RxCross1 } from 'react-icons/rx';
-import { ReactComponent as SearchIcon } from 'icons/search.svg';
 
 import { Wrap, ButtonIcon } from './ButtonIconForm.styled';
 
 export const ButtonIconForm = ({ searchQuery, onClick }) => {
   return (
     <Wrap>
-      {/* <ButtonIcon
+      <ButtonIcon
         type="submit"
-        color={'#757575'}
-        fill={'#757575'}
-        hovercolor={'#54ADFF'}
+        color="#54ADFF"
+        fill="#54ADFF"
         style={{ marginRight: '10px' }}
       >
-        <ImSearch size={24} hovercolor={'#54ADFF'} />
-      </ButtonIcon> */}
-      <ButtonIcon type="submit" color="#54ADFF" hovercolor="#1075d3">
-        <SearchIcon />
+        <ImSearch size={24} />
       </ButtonIcon>
+
       {searchQuery !== '' && (
         <ButtonIcon
           type="button"
-          color="#757575"
-          fill={'#757575'}
-          hovercolor="#F43F5E"
+          color="#F43F5E"
+          fill="#F43F5E"
           onClick={onClick}
         >
-          <RxCross1 size={24} hovercolor={'#F43F5E'} />
+          <RxCross1 size={24} />
         </ButtonIcon>
       )}
     </Wrap>

@@ -32,7 +32,7 @@ const App = () => {
   // const shouldRedirect = !isLoggedIn && !isRefreshing;
 
   return isRefreshing ? (
-    <Loader />
+    <Loader marginTop="30px" />
   ) : (
     <>
       <div>
