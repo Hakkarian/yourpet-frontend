@@ -12,6 +12,7 @@ import {
 import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
+import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav';
 
 const NoticesPage = () => {
   const [category] = useState('');
@@ -37,27 +38,11 @@ const NoticesPage = () => {
     setSearchParams(nextParams);
   };
 
-  // const handlerReset = e => {
-  //   e.preventDefault();
-  //   // setInput('');
-  //   setSearchValue('');
-  //   setSearchParams({ query: '' });
-  // };
-
-  // const handlerInput = e => {
-  //   setInput(e.target.value);
-  // };
-  // const showWarning = () => {
-  //   setSearchParams({ search: '' });
-  // };
-
-
-  return (
+   return (
     <>
       <ReusableTitle>Find your favorite pet</ReusableTitle>
-      <NoticesSearch onSubmit={handlerSubmit} />
+      <NoticesSearch onSubmit={handlerSubmit} /> <NoticesCategoriesNav />
       <NoticesCategoryList onUpdateStatus={noticesByCategory} />
-
       <PaginateComponent
         count={pageQty}
         page={page}
