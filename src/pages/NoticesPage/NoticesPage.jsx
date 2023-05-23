@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
 import { Container } from 'shared/components/Container/Container.styled';
+import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav';
 
 const NoticesPage = () => {
   const [category] = useState('');
@@ -57,8 +58,8 @@ const NoticesPage = () => {
     <Container>
       <ReusableTitle>Find your favorite pet</ReusableTitle>
       <NoticesSearch onSubmit={handlerSubmit} />
+      <NoticesCategoriesNav />
       <NoticesCategoryList onUpdateStatus={noticesByCategory} />
-
       <PaginateComponent
         count={pageQty}
         page={page}
