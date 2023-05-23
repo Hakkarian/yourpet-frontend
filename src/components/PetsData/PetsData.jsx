@@ -32,11 +32,11 @@ const PetsData = () => {
     dispatch(getAllPets({ page }));
   }, [dispatch, page]);
 
-  const buttonMoreClick = () => {
+  const onButtonMoreClick = () => {
     setPage(prev => prev + 1);
   };
 
-  const buttonPrevClick = () => {
+  const onButtonPrevClick = () => {
     setPage(prev => prev - 1);
   };
 
@@ -56,7 +56,7 @@ const PetsData = () => {
         <Box></Box>
       ) : (
         page > 1 && (
-          <ButtonPrev type="button" onClick={buttonPrevClick}>
+          <ButtonPrev type="button" onClick={onButtonPrevClick}>
             Prev pets
           </ButtonPrev>
         )
@@ -69,7 +69,7 @@ const PetsData = () => {
       ) : (
         page < totalPage &&
         totalPage > 1 && (
-          <ButtonMore type="button" onClick={buttonMoreClick}>
+          <ButtonMore type="button" onClick={onButtonMoreClick}>
             Next pets
           </ButtonMore>
         )
