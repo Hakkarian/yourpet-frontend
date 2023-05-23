@@ -32,7 +32,7 @@ text-align: center;
 justify-content: space-between;
 flex-direction: column;
 margin: 0 auto;
-width: 250px;
+
 
 @media (min-width: 767px) {
   flex-direction: row;
