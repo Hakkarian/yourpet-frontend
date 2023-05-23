@@ -46,7 +46,10 @@ const validationSchema = Yup.object({
       otherwise: schema => schema.required('Please choose your pet sex'),
     }),
   location: Yup.string()
-    .matches(/^[A-Z]{1}[a-z]{1,20}$/, 'Enter a correct city name')
+    .matches(
+      /^(?:[A-Z]{1}[a-z]{1,20}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/,
+      'Enter a correct city name'
+    )
     .trim()
     .when('category', {
       is: 'my pet',
