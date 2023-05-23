@@ -19,6 +19,7 @@ import { useContext } from 'react';
 import { ModalContext } from 'shared/components/Modalll/utils/ModalProvider';
 import Modalll from 'shared/components/Modalll/Modalll';
 import BurgerMenuPage from 'components/BurgerMenu/BurgerMenuPage';
+import { Container } from 'shared/components/Container/Container.styled';
 // ---------------------------------------------------------------------|
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
   const { name } = useSelector(selectUser);
 
   return (
-    <>
+    <Container>
       <HeaderCss>
         <AdaptiveLogo />
         <MediaQuery minWidth={1280}>
@@ -62,7 +63,7 @@ const Header = () => {
           </Modalll>
         )}
       </HeaderCss>
-    </>
+    </Container>
   );
 };
 
