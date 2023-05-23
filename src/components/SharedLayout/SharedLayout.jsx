@@ -1,4 +1,4 @@
-import { Container } from 'shared/components/Container/Container.styled';
+// import { Container } from 'shared/components/Container/Container.styled';
 import Header from 'components/Header/Header';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
