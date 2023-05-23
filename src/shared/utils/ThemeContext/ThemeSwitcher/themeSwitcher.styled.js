@@ -26,13 +26,15 @@ export const SwitcherStyled = styled.p`
     bottom: 64px;
 }
 @media (min-width: 1280px) {
-    flex-direction: row-reverse;
-    top: 8px;
+    // flex-direction: row-reverse;
+    position: absolute;
+    top: 0px;
     bottom: auto;
-    left:88px;
-    right: auto;
+    // left:22px;
+    right: -1238px;
+    width: 88px;
     svg {
-        transform: rotateY(180deg);;
+        transform: rotateY(180deg);
     }
 }
 `;

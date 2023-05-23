@@ -11,11 +11,14 @@ const MainPage = () => {
 
   return (
     <SectionTag>
-      <MediaQuery minWidth={1280}>
-        <ThemeSwitcher isLight={isLight} onClick={toggleTheme} />
-      </MediaQuery>
+      <div>
+        <MediaQuery minWidth={1280}>
+          <ThemeSwitcher isLight={isLight} onClick={toggleTheme}/>
+        </MediaQuery>
+      </div>
       <h1>Take good care of your small pets</h1>
-      <div></div>
+      <div className='bg_div'>
+      </div>
     </SectionTag>
   );
 };
