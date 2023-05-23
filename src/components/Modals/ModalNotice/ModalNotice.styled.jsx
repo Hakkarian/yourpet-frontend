@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-// import styled from 'styled-components';
 import { ReactComponent as Heart } from 'icons/heart.svg';
 
 export const Backdrop = styled.div`
@@ -149,8 +148,6 @@ margin: 0 auto;
 }
 
 svg {
-  fill: white;
-  stroke: red;
   margin: 0px;
   margin-left: 9px;
 }
