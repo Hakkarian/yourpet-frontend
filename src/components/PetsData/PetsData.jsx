@@ -8,8 +8,7 @@ import {
   PlusIcon,
   Title,
   Button,
-  ButtonMore,
-  ButtonPrev,
+  PaginationButton,
   Box,
 } from './PetsData.styled';
 import { getAllPets } from 'redux/pets/pets-operations';
@@ -56,9 +55,9 @@ const PetsData = () => {
         <Box></Box>
       ) : (
         page > 1 && (
-          <ButtonPrev type="button" onClick={onButtonPrevClick}>
+          <PaginationButton type="button" onClick={onButtonPrevClick}>
             Prev pets
-          </ButtonPrev>
+          </PaginationButton>
         )
       )}
 
@@ -69,9 +68,9 @@ const PetsData = () => {
       ) : (
         page < totalPage &&
         totalPage > 1 && (
-          <ButtonMore type="button" onClick={onButtonMoreClick}>
+          <PaginationButton type="button" onClick={onButtonMoreClick}>
             Next pets
-          </ButtonMore>
+          </PaginationButton>
         )
       )}
     </PetsWrap>
