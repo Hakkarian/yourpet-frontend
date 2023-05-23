@@ -19,6 +19,8 @@ const authSlice = createSlice({
     isRefreshing: false,
     isLoading: false,
     error: null,
+    isInputUpdated: false,
+    inputUpdateinError: false,
   },
   reducers: {
     googleAuth: (state, { payload }) => {
@@ -28,6 +30,9 @@ const authSlice = createSlice({
       state.isLogin = true;
       state.isLoading = false;
       state.user = payload.user;
+    },
+    changeIsInputUpdatedStatus: state => {
+      state.isInputUpdated = false;
     },
   },
   extraReducers: builder => {
@@ -44,6 +49,8 @@ const authSlice = createSlice({
       .addCase(info.pending, state => {
         state.isLoading = true;
         state.error = null;
+        state.inputUpdateinError = null;
+        state.isInputUpdated = false;
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
@@ -66,7 +73,9 @@ const authSlice = createSlice({
         console.log('here info slice');
         console.log('user info rej', payload);
         state.isLoading = false;
-        state.error = payload;
+        // state.error = payload;
+        state.inputUpdateinError = payload;
+        state.isInputUpdated = false;
       })
       .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
@@ -91,12 +100,14 @@ const authSlice = createSlice({
         state.isLogin = false;
       })
       .addCase(info.fulfilled, (state, { payload }) => {
-        console.log('here info slice');
-        console.log('user info fulf', payload);
         state.isLoading = false;
-        state.user = payload;
+        console.log('payload', payload);
+        if (payload.user) {
+          state.user = payload.user;
+        }
         state.error = null;
         state.isLogin = true;
+        state.isInputUpdated = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
@@ -124,6 +135,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { googleAuth } = authSlice.actions;
+export const { googleAuth, changeIsInputUpdatedStatus } = authSlice.actions;
 
 export default authSlice.reducer;

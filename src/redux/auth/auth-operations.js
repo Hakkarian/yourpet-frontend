@@ -134,8 +134,8 @@ export const info = createAsyncThunk(
   '/user/info',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('before info operation');
       const result = await infoService(data);
+      console.log('try');
       toast('Changed succesfully!', {
         icon: '😊',
         style: {
@@ -145,8 +145,17 @@ export const info = createAsyncThunk(
         },
       });
       return result;
-    } catch (error) {
-      rejectWithValue(error.message);
+    } catch ({ response }) {
+      console.dir();
+      toast(response.data.message, {
+        icon: '❕',
+        style: {
+          borderRadius: '10px',
+          background: 'red',
+          color: '#fff',
+        },
+      });
+      return rejectWithValue(response.data.message);
     }
   }
 );
