@@ -22,25 +22,19 @@ export const ButtonIcon = styled.button`
   svg {
     color: ${({ color }) => color ?? color};
     fill: ${({ color }) => color ?? color};
-
-    transition: transform 250ms ease-in-out, border 250ms ease-in-out;
+    opacity: 0.5;
+    transition: color 250ms ease-in-out opacity 250ms ease-in-out;
 
     path {
       stroke: ${({ color }) => color ?? color};
-      transition: transform 250ms ease-in-out, border 250ms ease-in-out;
+      transition: transform 250ms ease-in-out;
     }
   }
   svg:hover {
-    color: ${({ hovercolor }) => hovercolor ?? hovercolor};
-
-    path {
-      stroke: ${({ hovercolor }) => hovercolor ?? hovercolor};
-    }
+    opacity: 1;
   }
 
   @media screen and (min-width: 768px) {
     right: 20px;
-  }
-  @media screen and (min-width: 1024px) {
   }
 `;
