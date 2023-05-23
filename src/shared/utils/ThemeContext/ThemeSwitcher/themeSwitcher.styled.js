@@ -27,10 +27,12 @@ export const SwitcherStyled = styled.p`
 }
 @media (min-width: 1280px) {
     flex-direction: row-reverse;
-    top: 8px;
+    position: absolute;;
+    top: 0px;
     bottom: auto;
-    left:88px;
+    left:22px;
     right: auto;
+    width: 88px;
     svg {
         transform: rotateY(180deg);;
     }
