@@ -6,6 +6,5 @@ const instance = axios.create({
 
 export const getAllFriend = async () => {
   const { data } = await instance.get('/friends');
-  console.log('friends api', data);
   return data;
 };

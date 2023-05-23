@@ -6,14 +6,21 @@ export const NavStyle = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
 
+  @media screen and (min-width: 480px) {
+    width: 480px;
+  }
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 40px;
     margin-bottom: 60px;
+    width: 768px;
   }
-  @media screen and (min-width: 1024px) {
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
   }
 `;
 
@@ -25,7 +32,7 @@ export const ListNav = styled.ul`
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 12px;
-
+   
   @media screen and (min-width: 1280px) {
     flex-wrap: nowrap;
     flex-direction: row;
@@ -33,9 +40,7 @@ export const ListNav = styled.ul`
     // width: 540px;
     // height: 35px;
     // gap: 12px;
-    align-items: center;
-    justify-content: flex-start;
-  }
+   }
 `;
 
 export const ContainerNav = styled.div`
@@ -76,7 +81,7 @@ export const ButtonNav = styled(NavLink)`
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blue};
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     font-size: 20px;
     // height:35px;
   }

@@ -7,6 +7,7 @@ import { FormThumb,  Wrapper, MainWrap} from "./UserData.styled";
 import UserDataItem from "components/UserDataItem";
 import UserPhoto from "./UserPhoto";
 
+
 // const initialState = {
 //   name: '',
 //   email: '',
@@ -15,6 +16,7 @@ import UserPhoto from "./UserPhoto";
 //   city: '',
 //   photo: null,
 // };
+
 
 const UserData = ({handleSubmit}) => {
   // const [user, setUser] = useState(initialState);
@@ -29,6 +31,7 @@ const UserData = ({handleSubmit}) => {
   //   setUser({ ...user, avatar: event.target.files[0]});
   //   setIsConfirm(true);
   //  };
+
 
   // useEffect(() => {
   //   const updateAvatar = () => {

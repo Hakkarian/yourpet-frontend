@@ -29,7 +29,6 @@ export const Button = styled.button`
   border-color: rgb(84, 173, 255);
   border-style: solid;
   border-radius: 40px;
-  z-index: 2;
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;

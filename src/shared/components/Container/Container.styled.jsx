@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 
 import bg_mobile_paws from '../../../images/bg_img/mobile/bg_mobile_paws_full_original.png';
 import bg_mobile_paws_2x from '../../../images/bg_img/mobile/bg_mobile_paws_full_2x_original.png';
@@ -12,6 +12,7 @@ export const Container = styled.div`
   /* width: 100%; */
   margin: 0 auto;
 
+  background-color: ${({theme})=>theme.colors.white};
   @media screen and (max-width: 767px) {
     padding: 0 20px;
 
