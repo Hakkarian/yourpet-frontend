@@ -7,7 +7,7 @@ import {
     TrashIcon,
   } from '../Modal.styled';
   import Button from 'shared/components/Button/Button';
-  import { ReactComponent as DeleteIcon } from '../../../icons/trash.svg';
+  // import { ReactComponent as DeleteIcon } from '../../../icons/trash.svg';
   import PropTypes from 'prop-types';
 
   

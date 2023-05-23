@@ -18,7 +18,7 @@ import ModalDelitePets from 'components/Modals/ModalDelitePets';
 import { useToggle } from 'shared/hooks/useToggle';
 
 
-const PetsItem = ({ pet, id }) => {
+const PetsItem = ({ pet, id, updatePage }) => {
   const [, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { isOpen, open, close } = useToggle();
