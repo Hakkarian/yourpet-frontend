@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import MediaQuery from 'react-responsive';
 
-import AuthNav from 'components/AuthNav'
-import Nav from 'components/Nav/Nav'
-import { Link } from 'react-router-dom'
-import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled'
-
+import AuthNav from 'components/AuthNav';
+import Nav from 'components/Nav/Nav';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthWrapCss, HeaderCss, InfoCss, UserWrapCss } from './Header.styled';
 
 import moblogo from '../../images/moblogo1x.png';
 import tablogo from '../../images/tablogo1x.png';
@@ -13,21 +12,19 @@ import logo from '../../images/logo1x.png';
 
 import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
-import { selectIsLoggedIn, selectUser  } from 'redux/auth/auth-selector';
+import { selectIsLoggedIn, selectUser } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';
 // --------------------------------------------| МОДАЛКА |--------------|
 import { useContext } from 'react';
-import {ModalContext} from 'shared/components/Modalll/utils/ModalProvider'; 
+import { ModalContext } from 'shared/components/Modalll/utils/ModalProvider';
 import Modalll from 'shared/components/Modalll/Modalll';
 import BurgerMenuPage from 'components/BurgerMenu/BurgerMenuPage';
 // ---------------------------------------------------------------------|
 
-
-
 const Header = () => {
-  const {isOpenContext, toggleContext} = useContext(ModalContext);
-  
-  const isLogin = useSelector(selectIsLoggedIn)
+  const { isOpenContext, toggleContext } = useContext(ModalContext);
+
+  const isLogin = useSelector(selectIsLoggedIn);
   const { name } = useSelector(selectUser);
 
   return (
@@ -59,15 +56,15 @@ const Header = () => {
           </MediaQuery>
         </AuthWrapCss>
 
-        {isOpenContext &&
+        {isOpenContext && (
           <Modalll toggleModal={toggleContext}>
-            <BurgerMenuPage onClick={toggleContext}/>
+            <BurgerMenuPage onClick={toggleContext} />
           </Modalll>
-        }
+        )}
       </HeaderCss>
     </>
   );
-}
+};
 
 const AdaptiveLogo = () => {
   const [isSmall, setIsSmall] = useState(false);
@@ -94,4 +91,4 @@ const AdaptiveLogo = () => {
   );
 };
 
-export default Header
+export default Header;
