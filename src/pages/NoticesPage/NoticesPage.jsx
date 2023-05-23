@@ -12,8 +12,8 @@ import {
 import { useDispatch } from 'react-redux';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { PaginateComponent } from 'shared/components/Pagination/Pagination';
-import { Container } from 'shared/components/Container/Container.styled';
 import NoticesCategoriesNav from 'components/Notices/NoticesCategoriesNav';
+import { ContainerCss } from './NoticesPage.styled';
 
 const NoticesPage = () => {
   const [category] = useState('');
@@ -55,7 +55,7 @@ const NoticesPage = () => {
 
 
   return (
-    <Container>
+    <ContainerCss>
       <ReusableTitle>Find your favorite pet</ReusableTitle>
       <NoticesSearch onSubmit={handlerSubmit} />
       <NoticesCategoriesNav />
@@ -67,7 +67,7 @@ const NoticesPage = () => {
           setSearchParams({ search: search, page: num });
         }}
       />
-    </Container>
+    </ContainerCss>
   );
 };
 
