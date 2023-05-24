@@ -27,7 +27,7 @@ export const Schedule = ({ workDays }) => {
         return `${day.from} - ${day.to}`;
       }
       if (currentDay === day.dayOfWeek && !day.isOpen) {
-        return 'closed';
+        return 'closed today';
       }
     }
   };
@@ -48,7 +48,7 @@ export const Schedule = ({ workDays }) => {
                   </div>
 
                   {!isOpen ? (
-                    <p>closed today</p>
+                    <p>closed</p>
                   ) : (
                     <p>
                       {[from]} - {[to]}
