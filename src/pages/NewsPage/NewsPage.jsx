@@ -10,7 +10,7 @@ import {
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-// import { Container } from 'shared/components/Container/Container.styled';
+import { Container } from 'shared/components/Container/Container.styled';
 import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { NewsList } from 'components/News/NewsList/NewsList';
@@ -48,7 +48,7 @@ const NewsPage = () => {
     setState({ search: '' });
   };
   return (
-    <>
+    <Container>
       <ReusableTitle>News</ReusableTitle>
       <SearchNewsForm onSubmit={handleNewsSearchSubmit} onClick={showWarning} />
       {isLoading && !error && <Loader />}
@@ -107,7 +107,7 @@ const NewsPage = () => {
           </MediaQuery> */}
         </>
       )}
-    </>
+    </Container>
   );
 };
 
