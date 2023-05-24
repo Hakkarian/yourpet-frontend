@@ -10,7 +10,7 @@ import {
 } from 'redux/news/news-selector';
 
 import { Loader } from 'components/Loader';
-// import { Container } from 'shared/components/Container/Container.styled';
+import { Container } from 'shared/components/Container/Container.styled';
 import { SearchNewsForm } from 'components/News/SearchNewsForm/SearchNewsForm';
 import ReusableTitle from 'shared/components/ReusableTitle';
 import { NewsList } from 'components/News/NewsList/NewsList';
@@ -48,7 +48,7 @@ const NewsPage = () => {
     setState({ search: '' });
   };
   return (
-    <>
+    <Container>
       <ReusableTitle>News</ReusableTitle>
       <SearchNewsForm onSubmit={handleNewsSearchSubmit} onClick={showWarning} />
       {isLoading && !error && <Loader />}
@@ -65,49 +65,9 @@ const NewsPage = () => {
               setState({ search: search, page: num });
             }}
           />
-          {/* <MediaQuery maxWidth={767}>
-            <Box display="flex" justifyContent="center" pb="20px" pt="30px">
-              <Stack spacing={2}>
-                {!!pageQty && (
-                  <Pagination
-                    count={pageQty}
-                    page={page}
-                    onChange={(_, num) => {
-                      setState({ search: search, page: num });
-                    }}
-                    showFirstButton={false}
-                    showLastButton={false}
-                    hidePrevButton={true}
-                    hideNextButton={true}
-                    color="primary"
-                  />
-                )}
-              </Stack>
-            </Box>
-          </MediaQuery> */}
-          {/* <MediaQuery minWidth={768}>
-            <Box display="flex" justifyContent="center" pb="60px" pt="60px">
-              <Stack spacing={2}>
-                {!!pageQty && (
-                  <Pagination
-                    count={pageQty}
-                    page={page}
-                    onChange={(_, num) => {
-                      setState({ search: search, page: num });
-                    }}
-                    showFirstButton={true}
-                    showLastButton={true}
-                    hidePrevButton={false}
-                    hideNextButton={false}
-                    color="primary"
-                  />
-                )}
-              </Stack>
-            </Box>
-          </MediaQuery> */}
         </>
       )}
-    </>
+    </Container>
   );
 };
 

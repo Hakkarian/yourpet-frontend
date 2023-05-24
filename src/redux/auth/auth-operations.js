@@ -59,7 +59,6 @@ export const login = createAsyncThunk(
   'auth/login',
   async (data, { rejectWithValue }) => {
     try {
-      console.log('log operation before');
       const result = await logine(data);
       toast('Long time no see!', {
         icon: '😉',
@@ -72,7 +71,6 @@ export const login = createAsyncThunk(
       return result;
     } catch ({ response }) {
       if (response.status === 400) {
-        console.log('log operation error');
         toast(
           'Please enter the correct value. For example, "email: apple@gmail.com, password: 123apple"',
           {
@@ -135,7 +133,6 @@ export const info = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await infoService(data);
-      console.log('try');
       toast('Changed succesfully!', {
         icon: '😊',
         style: {
@@ -146,7 +143,6 @@ export const info = createAsyncThunk(
       });
       return result;
     } catch ({ response }) {
-      console.dir();
       toast(response.data.message, {
         icon: '❕',
         style: {
@@ -205,14 +201,14 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await instance.get('/user/current');
-      toast('Checking updates...', {
-        icon: '⏳',
-        style: {
-          borderRadius: '10px',
-          background: 'darkorange',
-          color: '#fff',
-        },
-      });
+      // toast('Checking updates...', {
+      //   icon: '⏳',
+      //   style: {
+      //     borderRadius: '10px',
+      //     background: 'darkorange',
+      //     color: '#fff',
+      //   },
+      // });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

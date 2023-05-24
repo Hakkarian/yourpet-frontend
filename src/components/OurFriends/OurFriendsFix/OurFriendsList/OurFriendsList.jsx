@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { OurFriendsItem } from '../OurFriendsItem/OurFriendsItem';
 import { List } from './OurFriendsList.styled';
@@ -33,4 +33,22 @@ export const OurFriendsList = ({ friends }) => {
       )}
     </List>
   );
+};
+
+OurFriendsList.propTypes = {
+  _id: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
+  addressUrl: PropTypes.string,
+  imageUrl: PropTypes.string,
+  address: PropTypes.string,
+  workDays: PropTypes.arrayOf(
+    PropTypes.shape({
+      isOpen: PropTypes.bool.isRequired,
+      from: PropTypes.string,
+      to: PropTypes.string,
+    })
+  ),
+  email: PropTypes.string,
+  phone: PropTypes.string,
 };

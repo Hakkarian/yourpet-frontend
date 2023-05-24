@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 
 export const CenrteredDiv = styled.section`
@@ -5,3 +6,4 @@ export const CenrteredDiv = styled.section`
   align-items: center;
   justify-content: center;
 `;
+

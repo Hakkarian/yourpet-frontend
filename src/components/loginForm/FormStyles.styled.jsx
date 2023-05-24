@@ -98,6 +98,11 @@ export const ReusableButtonCss = styled(ReusableButton)`
   width: 100%;
 
   ${color('#fff', ({ theme }) => theme.colors.blue)}
+
+
+  &:hover, &:focus {
+    border: 1px solid blue;
+  }
 `;
 export const AbsDivCss = styled.span`
   position: absolute;

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useMemo } from 'react';
-// import { nanoid } from 'nanoid';
 
 import { selectUser, selectIsInputUpdated } from 'redux/auth/auth-selector';
 import { changeIsInputUpdatedStatus } from 'redux/auth/auth-slice';
@@ -30,7 +28,6 @@ const UserDataItem = () => {
   // const id = useMemo(() => nanoid(), []);
 
   const isInputUpdated = useSelector(selectIsInputUpdated);
-  console.log('isInputUpdated', isInputUpdated);
   // console.log('data', data);
   // console.log('data.name', data.name);
 

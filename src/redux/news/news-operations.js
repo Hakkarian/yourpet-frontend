@@ -6,7 +6,6 @@ export const fetchNews = createAsyncThunk(
   'news/fetchNews',
   async (credential, thunkAPI) => {
     try {
-      console.log('fetchNews credential', credential);
       const data = await getNews(credential);
 
       return data;

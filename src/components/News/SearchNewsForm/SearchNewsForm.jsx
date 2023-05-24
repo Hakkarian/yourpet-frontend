@@ -25,7 +25,6 @@ export const SearchNewsForm = ({ onSubmit, onClick }) => {
   };
 
   const handleChange = e => {
-    console.log('e.target.value--->', e.target.value);
     setSearchQuery(e.target.value.toLowerCase().trim());
   };
 

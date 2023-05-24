@@ -110,21 +110,25 @@ export const Box = styled.div`
 export const PetsWrap = styled.div`
   position: relative;
   width: 100%;
+
+  @media screen and (min-width: 768px and max-width: 1279px) {
+    width: 700px
+  };
 `;
 
 export const BtnWrap = styled.div`
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  height: 40px;
-  width: 100%;
-  margin: 40px 0px 24px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+    margin: 40px 0px 24px;
 
   @media screen and (min-width: 768px) {
     margin: 40px 0px 20px;
-  }
+  };
 
   @media screen and (min-width: 1280px) {
     margin: 60px 0px 24px;

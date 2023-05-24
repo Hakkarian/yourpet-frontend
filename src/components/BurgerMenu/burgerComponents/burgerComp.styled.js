@@ -2,15 +2,21 @@ import styled from "@emotion/styled";
 
 export const BurgerMainStyled = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 82px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    // gap:40px;
+    margin-top: 13vh;
 `;
 
 export const BurgerAuthNavStyled = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap:12px;
+    width: 260px;
+    margin-top: 40px;
     margin-bottom: 40px;
 
     button {
@@ -60,8 +66,10 @@ export const BurgerAuthNavStyled = styled.div`
 
 export const BurgerUserStyled = styled.div`
     display: flex;
+    justify-content: center;
     align-items: center;
     gap:12px;
+    width: 260px;
     margin-top: 40px;
     margin-bottom: 84px;
 
@@ -79,12 +87,8 @@ export const BurgerNavStyled = styled.div`
     flex-direction: column;
     align-items: center;
     gap:20px;
+    width: 260px;
 
-    // margin-top: 40px;
-    
-    // a:first-of-type {
-    //     color: red;
-    // }
     a {
         color: ${({theme})=>theme.colors.black};
         // text-transform: capitalize;
@@ -127,8 +131,8 @@ export const BurgerNavStyled = styled.div`
     }
 
 @media (min-width: 768px) {
-    margin-top: 90px;
     gap: 60px;
+    width: auto;
 
     a {
         font-size: 48px;

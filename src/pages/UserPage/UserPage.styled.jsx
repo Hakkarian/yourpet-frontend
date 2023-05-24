@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
 
+export const Section = styled.section`
+display: flex;
+-webkit-box-pack: center;
+justify-content: center;
+align-items: flex-start;
+width: 100vw;
+height: 100%;    
+`;
+
 export const Wrap = styled.div`
 padding: 20px 8px 25px;
 background: rgb(255, 255, 255);
@@ -37,12 +46,22 @@ margin-bottom:18px;
 `;
 
 export const UserDiv = styled.div`
-  background-color: #FEF9F9;
   max-width: 340px;
+  position: relative;
+  width: 100%;
+  padding: 0px 20px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 100%;
+    width: 768px;
+    padding: 0px 32px;
+  };
 
  @media screen and (min-width: 1280px) {
     display: flex;
     gap: 32px;
+    width: 1280px;
+    padding: 0px 16px;
   };
 `;
 

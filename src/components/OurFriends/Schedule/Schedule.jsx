@@ -7,9 +7,9 @@ export const Schedule = ({ workDays }) => {
   const days = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
   let date = new Date();
 
-  function getWeekDay(date) {
+  const getWeekDay = date => {
     return days[date.getDay()];
-  }
+  };
 
   const newWorkDays = [...workDays].map((workDay, idx) => {
     return { ...workDay, dayOfWeek: days[idx] };
@@ -31,13 +31,16 @@ export const Schedule = ({ workDays }) => {
   };
 
   return (
-    <Wrapper onMouseLeave={() => {setIsShow(false)}} >
-      
+    <Wrapper
+      onMouseLeave={() => {
+        setIsShow(false);
+      }}
+    >
       <button type="button" onClick={handleToggle}>
         {workOurs(newWorkDays)}
       </button>
       {isShow && (
-        <List >
+        <List>
           {newWorkDays.map(({ isOpen, from, to, dayOfWeek }) => (
             <Item key={dayOfWeek}>
               {isShow && (

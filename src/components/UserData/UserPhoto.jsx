@@ -1,111 +1,118 @@
-import React, { useRef, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import defImg from '../../images/default-user-img.jpg';
-import { selectUser } from 'redux/auth/auth-selector';
-import { info } from 'redux/auth/auth-operations';
-import { userPhotoValidationSchema } from './userValidation';
-import { Input, Label, CameraIcon, Confirm, EditBtn, BtnWrap, CrossIcon,ImageBox, Image, Button } from './UserData.styled';
+import {
+  selectUserAvatar,
+  selectIsInputUpdated,
+} from 'redux/auth/auth-selector';
+import {
+  InputP,
+  Confirm,
+  ConfirmButton,
+  IconWrap,
+  InputText,
+  Label,
+  CameraIcon,
+  FormWrapper,
+  CrossIcon,
+  CustomLabel,
+  FilePreview,
+  StyledDiv,
+  ButtonWrap,
+} from './UserData.styled';
+import { info, getUserInfo } from 'redux/auth/auth-operations';
+import { CustomInput } from 'pages/AddPetPage/AddPetForm/FormFields/FileInput/FileInput.styled';
+import { changeIsInputUpdatedStatus } from 'redux/auth/auth-slice';
 
 const UserPhoto = () => {
-    const dispatch = useDispatch();
-    const user = useSelector(selectUser);
-    const {avatar} = user;
-    const [uploadedPhoto, setUploadedPhoto] = useState('');
-    const [userAvatar, setUserAvatar] = useState(avatar || defImg);
-    const [isSubmitted, setIsSubmitted] = useState(true);
-    const [errors, setErrors] = useState({});
-    const fileRef = useRef(null);
- 
-    const updateAvatar = async (data) => {
-      try {
-        const response = await dispatch(info(data));
-        if (response.status === 200) {
-      } return response.data;
-      } catch (error) {
-        return error.message;
-      }
-    };
-  
-    const handleSubmit = () => {
-      const formDataSend = new FormData();
-      formDataSend.append("avatar", uploadedPhoto);
-      updateAvatar( formDataSend);
-      setUserAvatar(avatar)
-      setIsSubmitted(true);
-    };
+  const dispatch = useDispatch();
+  const [visibleSubmit, setVisibleSubmit] = useState(false);
 
-     const handleFileChange = async (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        await userPhotoValidationSchema
-        .validate({ avatar: file })
-        .then(() => {
-          setUserAvatar(null);
-          setUploadedPhoto(file);
-          setIsSubmitted(false);
-          setErrors({});
-        })
-        .catch((error) => {
-          setErrors({ uploadedPhoto: error.message });
-        });
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (!photo) {
+      return;
+    }
+    let formData = new FormData();
+    formData.append('avatar', photo);
+
+    dispatch(info(formData)).catch(err => console.log(err));
+    setVisibleSubmit(false);
+  };
+
+  const isAvatarReady = useSelector(selectIsInputUpdated);
+  if (isAvatarReady) {
+    dispatch(getUserInfo());
+    dispatch(changeIsInputUpdatedStatus());
+  }
+
+  const [photo, setPhoto] = useState(null);
+  const photoUrl = photo ? URL.createObjectURL(photo) : null;
+  let avatarFromDB = useSelector(selectUserAvatar);
+  // console.log('avatarFromDB', avatarFromDB);
+
+  const handleChange = e => {
+    if (e.currentTarget.files[0]) {
+      setPhoto(e.currentTarget.files[0]);
+      setVisibleSubmit(true);
     }
   };
 
-      const handlePreviewClick = () => {
-      fileRef.current.click();
-    };
-
   return (
-
-    <div>
-      <ImageBox>
-          <Input
-            ref={fileRef}
-            type="file"
-            id="avatar"
-            onChange={handleFileChange}
-          />
-        <Label htmlFor="avatar"> 
-            {uploadedPhoto ? (
-              <Image
-                src={URL.createObjectURL(uploadedPhoto)}
-                alt="User avatar"
-              />
-            )
-              :
-            (<Image
-                src={userAvatar}
-                alt="User avatar"
-              />)
-            }
-        </Label>
-        {errors.uploadedPhoto && <p >{errors.uploadedPhoto}</p>}
-      </ImageBox>
-      
-      {!userAvatar  &&(
-        <BtnWrap>
-          <Button type="submit" onClick={handleSubmit}>
-            <Confirm />
-            Confirm
-          </Button>
-          <Button type="button" onClick={handlePreviewClick} >
-            <CrossIcon/>
-            Change
-          </Button>
-          </BtnWrap>
+    <FormWrapper onSubmit={handleSubmit}>
+      <CustomLabel htmlFor="avatar_input">
+        <FilePreview
+          src={
+            photoUrl
+              ? photoUrl
+              : avatarFromDB
+              ? avatarFromDB
+              : require('../../images/default-user-img.jpg')
+          }
+        />
+      </CustomLabel>
+      <div>
+        <CustomInput
+          type="file"
+          name="avatar"
+          id="avatar_input"
+          onChange={handleChange}
+        />
+      </div>
+      {!photoUrl && !avatarFromDB && (
+        <StyledDiv>
+          <Label htmlFor="avatar_input">
+            <IconWrap>
+              <CameraIcon />
+            </IconWrap>
+            <InputText>Edit photo</InputText>
+          </Label>
+        </StyledDiv>
       )}
-      {(uploadedPhoto && isSubmitted) ? (
-        <EditBtn type="button" onClick={handlePreviewClick}>
-          <CameraIcon />
-          Edit photo</EditBtn>
-      ) : (
-        !uploadedPhoto && <EditBtn type="button" onClick={handlePreviewClick} >
-            <CameraIcon />
-          Edit photo</EditBtn>
-    )}
-    </div>
-  )
+      <ButtonWrap>
+        {(photoUrl || avatarFromDB) && (
+          <StyledDiv>
+            <Label htmlFor="avatar_input">
+              <IconWrap>
+                <CrossIcon />
+              </IconWrap>
+              <InputText>Change photo</InputText>
+            </Label>
+          </StyledDiv>
+        )}
+        {photoUrl && visibleSubmit && (
+          <StyledDiv>
+            <ConfirmButton type="submit">
+              <IconWrap>
+                <Confirm />
+              </IconWrap>
+              <InputP>Confirm</InputP>
+            </ConfirmButton>
+          </StyledDiv>
+        )}
+      </ButtonWrap>
+    </FormWrapper>
+  );
 };
-      
+
 export default UserPhoto;

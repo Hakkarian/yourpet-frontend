@@ -13,7 +13,10 @@ export const Item = styled.li`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
-`;
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+  }
+  `;
 
 export const ImageWrapper = styled.div`
   // position: relative;
@@ -29,6 +32,10 @@ export const Image = styled.img`
   @media screen and (min-width: 768px) {
     width: 336px;
     height: 288px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 288px;
   }
 `;
 
@@ -158,6 +165,10 @@ export const DescriptionInner = styled.div`
   @media screen and (min-width: 768px) {
     width: 336px;
   }
+
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+  }
 `;
 
 export const DescriptionTextContainer = styled.div`
@@ -177,14 +188,11 @@ export const DescriptionTextContainer = styled.div`
 
  }
 
-  svg {
-    width: 24px;
-    height: 24px;
+
+ svg {
     fill: transparent;
   }
-  path {
-    stroke: ${({ theme }) => theme.colors.blue};
-  }
+
 `;
 
 export const DescriptionText = styled.p`

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { List, Item, Wrap, Wrapper } from './Schedule.styled';
 
@@ -7,9 +8,9 @@ export const Schedule = ({ workDays }) => {
   const days = ['MN', 'TU', 'WE', 'TH', 'FR', 'SA', 'SU'];
   let date = new Date();
 
-  function getWeekDay(date) {
+  const getWeekDay = date => {
     return days[date.getDay()];
-  }
+  };
 
   const newWorkDays = [...workDays].map((workDay, idx) => {
     return { ...workDay, dayOfWeek: days[idx] };
@@ -20,14 +21,13 @@ export const Schedule = ({ workDays }) => {
   };
   const workOurs = data => {
     const currentDay = getWeekDay(date);
-    console.log('currentDay--->', currentDay);
+
     for (let day of data) {
-      console.log('WorkDay--->', day.dayOfWeek);
       if (currentDay === day.dayOfWeek && day.isOpen) {
-        return `${day.from} - ${day.to}`;
+        return `${day.from}- ${day.to}`;
       }
       if (currentDay === day.dayOfWeek && !day.isOpen) {
-        return 'closed';
+        return 'closed today';
       }
     }
   };
@@ -51,7 +51,7 @@ export const Schedule = ({ workDays }) => {
                     <p>closed</p>
                   ) : (
                     <p>
-                      {[from]} - {[to]}
+                      {[from]}- {[to]}
                     </p>
                   )}
                 </Wrap>
@@ -62,4 +62,14 @@ export const Schedule = ({ workDays }) => {
       )}
     </Wrapper>
   );
+};
+
+Schedule.propTypes = {
+  workDays: PropTypes.arrayOf(
+    PropTypes.shape({
+      isOpen: PropTypes.bool.isRequired,
+      from: PropTypes.string,
+      to: PropTypes.string,
+    })
+  ),
 };

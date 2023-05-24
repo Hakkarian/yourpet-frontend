@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectUser } from 'redux/auth/auth-selector';
-import { Wrap, UserDiv, Title } from './UserPage.styled';
+import { Wrap, UserDiv, Title, Section } from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
 import Logout from 'components/Logout';
@@ -55,6 +55,7 @@ const UserPage = () => {
           <ModalCongrats onClose={close} setShowModal={open} />
         </Modal>
       )}
+      <Section>
       <UserDiv>
         <div>
           <Title>My information:</Title>
@@ -65,6 +66,7 @@ const UserPage = () => {
         </div>
         <PetsData />
       </UserDiv>
+      </Section>
     </>
   );
 };
