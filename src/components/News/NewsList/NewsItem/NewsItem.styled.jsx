@@ -77,7 +77,7 @@ export const Wrap = styled.div`
   padding-left: ${({ theme }) => theme.spacing(2)};
   padding-right: ${({ theme }) => theme.spacing(2)};
 `;
-// export const Title = styled.h2`
+
 // margin-left: 0;
 // margin-bottom: ${({ theme }) => theme.spacing(4)};
 // height: ${({ theme }) => theme.spacing(16.5)};
