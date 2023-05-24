@@ -111,7 +111,7 @@ export const PetsWrap = styled.div`
   position: relative;
   width: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px and max-width: 1279px) {
     width: 700px
   };
 `;
