@@ -7,6 +7,7 @@ export const List = styled.ul`
 export const NoPetMessage = styled.p`
   font-size: 16px;
   text-align: center;
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     font-size: 20px;

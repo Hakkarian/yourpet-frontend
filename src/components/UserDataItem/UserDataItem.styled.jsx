@@ -8,6 +8,7 @@ font-weight: 600;
 font-size: 14px;
 line-height: 1.35;
 letter-spacing: 0.04em;
+color: ${({ theme }) => theme.colors.black};
 
 @media screen and (min-width: 768px){
   font-size: 18px;
@@ -51,6 +52,10 @@ background: transparent;
 border: 1px solid rgb(84, 173, 255);
 border-radius: 20px;
 
+ &::placeholder {
+  color: #888888;
+ };
+
   @media screen and (min-width: 768px){
     width: 100%;
     max-width: 255px;
@@ -75,6 +80,7 @@ export const ItemWrap = styled.form`
 }`;
 
 export const Label = styled.label`
+color: ${({ theme }) => theme.colors.black};
 `;
 
 export const InputWrap = styled.div`

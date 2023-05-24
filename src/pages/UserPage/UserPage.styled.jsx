@@ -6,7 +6,7 @@ display: flex;
 justify-content: center;
 align-items: flex-start;
 width: 100vw;
-height: 100%;    
+height: 100vw;    
 `;
 
 export const Wrap = styled.div`
@@ -15,6 +15,7 @@ background: rgb(255, 255, 255);
 background: #FFFFFF;
 box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 border-radius: 20px;
+background: inherit;
 
 @media screen and (min-width: 768px) {
   flex-direction: row-reverse;
@@ -33,14 +34,14 @@ border-radius: 20px;
 export const Title = styled.h2`
 font-size: 20px;
 font-weight: 500;
-color: #000000;
+color: ${({ theme }) => theme.colors.black};
 letter-spacing: 0.04em;
 line-height: 1.35;
 margin-bottom:18px;
 
 @media screen and (min-width: 768px) {
   font-size: 28px;
-  color: #111111;
+  color: ${({ theme }) => theme.colors.black};
   margin: 60px 0px 24px;
 }
 `;
@@ -50,6 +51,7 @@ export const UserDiv = styled.div`
   position: relative;
   width: 100%;
   padding: 0px 20px;
+  background: inherit;
 
   @media screen and (min-width: 768px) {
     max-width: 100%;
