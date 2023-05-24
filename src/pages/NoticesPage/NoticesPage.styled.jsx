@@ -5,6 +5,10 @@ export const GlobalBox = styled.div``;
 
 export const ContainerCss = styled(Container)`
     width: 320px;
+    
+  .MuiButtonBase-root {
+    color: ${({theme})=>theme.colors.black};
+  }
 `
 
 
