@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Schedule } from '../Schedule/Schedule';
 import { Item, Title, Wrap, WrapImg, WrapInfo } from './OurFriendsItem.styled';
@@ -99,13 +99,19 @@ export const OurFriendsItem = ({
   );
 };
 
-// OurFriendsItem.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   url: PropTypes.string.isRequired,
-//   addressUrl: PropTypes.string,
-//   imageUrl: PropTypes.string.isRequired,
-//   address: PropTypes.string.isRequired,
-//   workDays: PropTypes.string,
-//   email: PropTypes.string,
-//   phone: PropTypes.string,
-// };
+OurFriendsItem.propTypes = {
+  title: PropTypes.string,
+  url: PropTypes.string,
+  addressUrl: PropTypes.string,
+  imageUrl: PropTypes.string,
+  address: PropTypes.string,
+  workDays: PropTypes.arrayOf(
+    PropTypes.shape({
+      isOpen: PropTypes.bool.isRequired,
+      from: PropTypes.string,
+      to: PropTypes.string,
+    })
+  ),
+  email: PropTypes.string,
+  phone: PropTypes.string,
+};

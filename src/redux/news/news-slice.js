@@ -20,7 +20,6 @@ const newsSlice = createSlice({
         store.isLoading = false;
         store.error = null;
         store.items = action.payload.news;
-        console.log(action.payload);
         store.totalPage = action.payload.total
           ? Math.ceil(action.payload.total / action.payload.per_page)
           : 0;

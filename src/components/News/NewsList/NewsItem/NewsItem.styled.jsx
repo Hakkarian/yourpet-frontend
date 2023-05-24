@@ -27,6 +27,32 @@ export const Item = styled.li`
   @media screen and (min-width: 1280px) {
     flex-basis: calc((100% - 2 * 32px) / 3);
   }
+  .title {
+    margin-left: 0;
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
+    height: ${({ theme }) => theme.spacing(16.5)};
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.spacing(6)};
+    line-height: 1.37;
+    letter-spacing: -0.01em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: ${({ theme }) => theme.colors.black};
+  }
+  .descr {
+    font-weight: 400;
+    line-height: 1.37;
+    color: ${({ theme }) => theme.colors.black};
+    height: ${({ theme }) => theme.spacing(27.5)};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
 `;
 
 export const WrapImg = styled.div`
@@ -51,33 +77,33 @@ export const Wrap = styled.div`
   padding-left: ${({ theme }) => theme.spacing(2)};
   padding-right: ${({ theme }) => theme.spacing(2)};
 `;
-export const Title = styled.h2`
-  margin-left: 0;
-  margin-bottom: ${({ theme }) => theme.spacing(4)};
-  height: ${({ theme }) => theme.spacing(16.5)};
-  font-weight: 700;
-  font-size: ${({ theme }) => theme.spacing(6)};
-  color: ${({ theme }) => theme.colors.black}
-  line-height: 1.37;
-  letter-spacing: -0.01em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
 
-export const Decsr = styled.p`
-  font-weight: 400;
-  line-height: 1.37;
-   color: ${({ theme }) => theme.colors.black}
-  height: ${({ theme }) => theme.spacing(27.5)};
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-`;
+// margin-left: 0;
+// margin-bottom: ${({ theme }) => theme.spacing(4)};
+// height: ${({ theme }) => theme.spacing(16.5)};
+// font-weight: 700;
+// font-size: ${({ theme }) => theme.spacing(6)};
+// color: ${({ theme }) => theme.colors.black}
+// line-height: 1.37;
+// letter-spacing: -0.01em;
+// overflow: hidden;
+// text-overflow: ellipsis;
+// display: -webkit-box;
+// -webkit-line-clamp: 2;
+// -webkit-box-orient: vertical;
+// `;
+
+// export const Decsr = styled.p`
+//   font-weight: 400;
+//   line-height: 1.37;
+//    color: ${({ theme }) => theme.colors.black}
+//   height: ${({ theme }) => theme.spacing(27.5)};
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   display: -webkit-box;
+//   -webkit-line-clamp: 5;
+//   -webkit-box-orient: vertical;
+// `;
 
 export const WrapBottom = styled.div`
   display: flex;
