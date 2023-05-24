@@ -129,12 +129,14 @@ export const AbsDivCss = styled.span`
 
 export const ReusableTitleCss = styled(ReusableTitle)`
   margin-top: 0;
-  margin-bottom: 30px;
+
 
   text-align: center;
   font-size: ${({ theme }) => theme.spacing(6)};
   font-weight: 500;
   line-height: 1.375;
+
+  color: #111111;
 
   @media screen and (min-width: 768px) {
     margin-top: 0;

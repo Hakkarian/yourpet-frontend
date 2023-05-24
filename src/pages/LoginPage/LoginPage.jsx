@@ -1,5 +1,5 @@
 import React from 'react';
-import { CenrteredDiv } from './LoginPage.styled';
+import { CenrteredDiv, LoginTitleCss } from './LoginPage.styled';
 
 import { useState } from 'react';
 
@@ -21,7 +21,6 @@ import {
   AbsDivCss,
   ButtonEye,
   FlexDivCss,
-  ReusableTitleCss,
   TextWrapCss,
   TextCss,
   StyledLink,
@@ -58,7 +57,7 @@ const LoginPage = () => {
   return (
     <CenrteredDiv>
       <FlexDivCss>
-        <ReusableTitleCss>Login</ReusableTitleCss>
+        <LoginTitleCss>Login</LoginTitleCss>
         <Formik
           initialValues={{ email: '', password: '' }}
           validateOnBlur={false}
