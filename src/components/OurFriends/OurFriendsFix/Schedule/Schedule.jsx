@@ -48,7 +48,7 @@ export const Schedule = ({ workDays }) => {
                   </div>
 
                   {!isOpen ? (
-                    <p>closed</p>
+                    <p>closed today</p>
                   ) : (
                     <p>
                       {[from]} - {[to]}
