@@ -27,6 +27,7 @@ import {
   StyledLink,
 } from 'components/RegisterForm/RegisterForm.styled';
 import FormError from 'pages/AddPetPage/AddPetForm/FormFields/FormError/FormError';
+import { ReusableButtonCss } from 'components/LoginForm/FormStyles.styled';
 
 const validateShecma = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -132,9 +133,9 @@ const LoginPage = () => {
                   )}
                 </AnchorCss>
 
-                <Button className="form-button" type="submit">
+                <ReusableButtonCss className="form-button" type="submit">
                   Submit
-                </Button>
+                </ReusableButtonCss>
                 <TextWrapCss>
                   <TextCss>Don't have an account?</TextCss>
                   <StyledLink to="/register">Register</StyledLink>
