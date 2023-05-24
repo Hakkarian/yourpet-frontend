@@ -4,16 +4,13 @@ export const List = styled.ul`
   position: absolute;
   top: 30px;
   left: 0;
-  width: 140px;
-  padding: ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(1)};
+  // width: 120px;
+  padding: ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(3)};
 
   border-color: ${({ theme }) => theme.colors.blue};
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.spacing(2)};
   border: 1px solid ${({ theme }) => theme.colors.blue};
-  &:not(:last-child) {
-    margin-bottom: 12px;
-  }
 `;
 export const Wrapper = styled.div`
   position: relative;
@@ -30,14 +27,15 @@ export const Wrapper = styled.div`
     &:hover {
       color: ${({ theme }) => theme.colors.grey};
     }
-    .addressItem {
-      height: 48px;
-    }
+    
   }
   }
 `;
 export const Item = styled.li`
-  width: 100%;
+  width: 120px;
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
 `;
 
 export const Wrap = styled.div`
