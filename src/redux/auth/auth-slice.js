@@ -116,8 +116,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
-        // console.log('here user info slice');
-        // console.log('user info fulf', payload.user);
         state.user = payload.user;
         state.isLoading = false;
         state.error = null;

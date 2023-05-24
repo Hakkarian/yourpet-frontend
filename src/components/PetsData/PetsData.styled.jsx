@@ -33,7 +33,7 @@ export const Button = styled.button`
     border-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     position: static;
     translate: 0px;
     flex-direction: row;
@@ -44,7 +44,7 @@ export const Button = styled.button`
     font-family: Manrope-Bold;
     font-size: 16px;
     border-radius: 40px;
-   };
+  }
 
   &::before {
     content: '';
@@ -112,23 +112,23 @@ export const PetsWrap = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px and max-width: 1279px) {
-    width: 700px
-  };
+    width: 700px;
+  }
 `;
 
 export const BtnWrap = styled.div`
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    width: 100%;
-    height: 40px;
-    margin: 40px 0px 24px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  margin: 40px 0px 24px;
 
   @media screen and (min-width: 768px) {
     margin: 40px 0px 20px;
-  };
+  }
 
   @media screen and (min-width: 1280px) {
     margin: 60px 0px 24px;
@@ -140,6 +140,7 @@ export const Title = styled.h2`
   font-size: 20px;
   line-height: 1.36;
   letter-spacing: 0.04em;
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     font-size: 28px;

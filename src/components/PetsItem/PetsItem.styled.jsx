@@ -6,6 +6,7 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 1.36;
   letter-spacing: 0.04em;
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     font-weight: 600;
@@ -48,7 +49,7 @@ export const Icon = styled(DeleteIcon)`
 export const Item = styled.li`
   padding: 20px 20px 40px;
   margin-bottom: 20px;
-  background: rgb(255, 255, 255);
+  background: inherit;
   box-shadow: rgba(136, 198, 253, 0.19) 3px 8px 14px;
   border-radius: 20px;
   width: 100%;
@@ -84,7 +85,7 @@ export const DeleteBtn = styled.button`
 export const Span = styled.span`
   font-size: 14px;
   line-height: 1.57;
-  color: #000000;
+  color: ${({ theme }) => theme.colors.black};
   font-weight: 400;
   display: inline;
 `;

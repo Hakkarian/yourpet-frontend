@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -41,15 +41,18 @@ const UserPhoto = () => {
   };
 
   const isAvatarReady = useSelector(selectIsInputUpdated);
-  if (isAvatarReady) {
-    dispatch(getUserInfo());
-    dispatch(changeIsInputUpdatedStatus());
-  }
+
+  useEffect(() => {
+    if (isAvatarReady) {
+      dispatch(getUserInfo());
+      dispatch(changeIsInputUpdatedStatus());
+    }
+  }, [dispatch, isAvatarReady]);
+
 
   const [photo, setPhoto] = useState(null);
   const photoUrl = photo ? URL.createObjectURL(photo) : null;
   let avatarFromDB = useSelector(selectUserAvatar);
-  // console.log('avatarFromDB', avatarFromDB);
 
   const handleChange = e => {
     if (e.currentTarget.files[0]) {
