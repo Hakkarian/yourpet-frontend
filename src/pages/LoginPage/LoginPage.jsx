@@ -7,7 +7,7 @@ import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
-import Button from 'shared/components/Button/Button';
+// import Button from 'shared/components/Button/Button';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
@@ -21,13 +21,13 @@ import {
   AbsDivCss,
   ButtonEye,
   FlexDivCss,
+  ReusableButtonCss,
   ReusableTitleCss,
   TextWrapCss,
   TextCss,
   StyledLink,
 } from 'components/RegisterForm/RegisterForm.styled';
 import FormError from 'pages/AddPetPage/AddPetForm/FormFields/FormError/FormError';
-import { ReusableButtonCss } from 'components/LoginForm/FormStyles.styled';
 
 const validateShecma = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),

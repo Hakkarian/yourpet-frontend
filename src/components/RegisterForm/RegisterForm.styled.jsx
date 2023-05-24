@@ -105,6 +105,8 @@ export const ReusableButtonCss = styled(ReusableButton)`
   width: 100%;
 
   ${color('#fff', ({ theme }) => theme.colors.blue)}
+
+  border: #54ADFF;
 `;
 
 export const ButtonEye = styled(ReusableButton)`
