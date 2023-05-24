@@ -51,7 +51,6 @@ const LoginPage = () => {
   const handleSubmit = (values, actions) => {
     const { email, password } = values;
     const payload = { email, password };
-    console.log('submit');
     dispatch(login(payload));
     navigate('/user');
     actions.resetForm();
