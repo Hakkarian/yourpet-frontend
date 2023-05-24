@@ -189,6 +189,9 @@ export const DescriptionTextContainer = styled.div`
  }
 
 
+ svg {
+    fill: transparent;
+  }
 
 `;
 
