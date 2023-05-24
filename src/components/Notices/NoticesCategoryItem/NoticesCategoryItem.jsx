@@ -90,7 +90,7 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
-  const [setOpen1] = useState(false);
+  // const [setOpen1] = useState(false);
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
@@ -112,7 +112,7 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      setOpen1(true);
+      // setOpen1(true);
       return;
     }
     dispatch(addToFavorites(_id));
