@@ -24,7 +24,7 @@ export const TextWrap = styled.div`
 export const Image = styled.img`
   width: 240px;
   height: 240px;
-  /* margin: 0px auto 20px; */
+  margin: 0px auto 20px; 
   border-radius: 20px;
 
   @media screen and (min-width: 768px) {

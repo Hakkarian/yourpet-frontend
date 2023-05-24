@@ -13,6 +13,7 @@ import {
 } from './PetsData.styled';
 import { getAllPets } from 'redux/pets/pets-operations';
 import { useDispatch, useSelector } from 'react-redux';
+import { Loader } from 'components/Loader';
 import {
   selectAllPets,
   selectIsLoading,
@@ -43,6 +44,15 @@ const PetsData = () => {
     <PetsWrap>
       <BtnWrap>
         <Title>My pets:</Title>
+        {isLoading ? (
+       <Loader />
+      ) : (
+        page > 1 && (
+          <PaginationButton type="button" onClick={onButtonPrevClick}>
+            Prev pets
+          </PaginationButton>
+        )
+      )}
         <Link to="/add-pet" state={{ from: location }}>
           <Button type="button">
             Add Pet
@@ -51,15 +61,15 @@ const PetsData = () => {
         </Link>
       </BtnWrap>
 
-      {isLoading ? (
-        <Box></Box>
+      {/* {isLoading ? (
+       <Loader />
       ) : (
         page > 1 && (
           <PaginationButton type="button" onClick={onButtonPrevClick}>
             Prev pets
           </PaginationButton>
         )
-      )}
+      )} */}
 
       <PetsList pets={pets} updatePage={setPage} />
 

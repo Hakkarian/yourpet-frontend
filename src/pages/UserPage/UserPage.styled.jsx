@@ -40,9 +40,14 @@ export const UserDiv = styled.div`
   background-color: #FEF9F9;
   max-width: 340px;
 
+  @media screen and (min-width: 768px) {
+    max-width: 100%;
+  };
+
  @media screen and (min-width: 1280px) {
     display: flex;
     gap: 32px;
+    max-width: 100%;
   };
 `;
 
