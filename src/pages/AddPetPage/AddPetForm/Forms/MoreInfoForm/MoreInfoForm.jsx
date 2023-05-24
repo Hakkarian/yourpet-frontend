@@ -122,7 +122,7 @@ const MoreInfoForm = ({
           </Button>
         </BtnWrapper>
       )}
-      {isLoading && <Loader />}
+      {isLoading && <Loader marginBottom={0} marginTop={0} />}
       {error &&
         toast(error, {
           icon: '🤯',
