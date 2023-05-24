@@ -1,6 +1,12 @@
 import styled from "@emotion/styled";
 
 export const BurgerDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    // align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+
     @keyframes openModal {
         0% {
             height: 0vh;
@@ -15,12 +21,6 @@ export const BurgerDiv = styled.div`
     animation-name: openModal;
     animation-duration: 300ms;
     animation-timing-function: linear;
-
-    display: flex;
-    justify-content: center;
-    // align-items: flex-start;
-    width: 100vw;
-    height: 100vh;
 
     a {
         text-decoration: none;

@@ -14,15 +14,11 @@ import bg_desc_pets_2x from '../../images/bg_img/desc/bg_desc_pets_full_2x_origi
 // import bg_desc_paws_2x from '../../images/bg_img/desc/bg_desc_paws_full_2x_original.png';
 
 export const SectionTag = styled.section`
-    // position: absolute;
-    // top: 60px;
-    // right: 0;
-    // bottom: 0;
-    // left: 0;
-
     height: calc(100vh - 76px);
     min-height: calc(600px - 76px);
-    padding-top: 60px;
+    padding-top: calc(18vh - 76px);
+    padding-left: 20px;
+    padding-right: 20px;
 
     background: rgbs(0,0,0,0);
 
@@ -58,37 +54,39 @@ export const SectionTag = styled.section`
     }
 
 
-    @media (min-width: 768px) {
-        // height: calc(100vh );
-        // min-height: calc(768px - 60px - 45px - 43px);
-        padding-top: 80px;
-        width: calc(768px - 64px)
-        margin-left: auto;
-        margin-right: auto;
-        // margin-top: 88px;
+@media (min-width: 768px) {
+    // height: calc(100vh );
+    // min-height: calc(768px - 60px - 45px - 43px);
+    padding-top: calc(12vh - 76px);
+    padding-left: 32px;
+    padding-right: 32px;
+    width: calc(768px);
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 88px;
 
-        
-        h1 {
-            font-size: 68px;
-            line-height: calc(100 / 68);
-        }
-        .bg_div {
-            top: 375px;
-            min-width: calc(768px - 64px);
-            min-height: calc(394px);
+    
+    h1 {
+        font-size: 68px;
+        line-height: calc(100 / 68);
+    }
+    .bg_div {
+        top: 375px;
+        min-width: calc(768px - 64px);
+        min-height: calc(394px);
 
-            // background-color: red;
-            background-image:url(${bg_tab_pets});
-            background-position: 46% -112px;
-            background-size: 986px 982px;
-            @media (min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-            background-image:
-                url(${bg_tab_pets_2x});
-            }
+        // background-color: red;
+        background-image:url(${bg_tab_pets});
+        background-position: 46% -112px;
+        background-size: 986px 982px;
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image:
+            url(${bg_tab_pets_2x});
         }
     }
+}
 
 
     @media (min-width: 1280px) {
