@@ -30,7 +30,6 @@ const UserPhoto = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log('photo', photo);
     if (!photo) {
       return;
     }
@@ -42,7 +41,6 @@ const UserPhoto = () => {
   };
 
   const isAvatarReady = useSelector(selectIsInputUpdated);
-  console.log('isAvatarReady', isAvatarReady);
   if (isAvatarReady) {
     dispatch(getUserInfo());
     dispatch(changeIsInputUpdatedStatus());

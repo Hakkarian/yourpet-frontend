@@ -46,11 +46,12 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 // import { TrashIcon } from './NoticesCategoryItem.styled';
-import angryDog from '../../../images/angry-dog.png';
-import { useState } from 'react';
+// import angryDog from '../../../images/angry-dog.png';
+// import { useState } from 'react';
 
 import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
-import Modal from 'shared/components/Modal';
+// import Modal from 'shared/components/Modal';
+// import { ButtonRegister, ContainerButton, PawIcon } from 'components/Modals/ModalAddPet/ModalAddPet.styled';
 
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
@@ -91,7 +92,6 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
-  const [open1, setOpen1] = useState(false);
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
@@ -113,7 +113,14 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      setOpen1(true);
+      toast('To add to favorites you need to register first.', {
+        icon: '❕',
+        style: {
+          borderRadius: '10px',
+          background: 'red',
+          color: '#fff',
+        },
+      });
       return;
     }
     dispatch(addToFavorites(_id));
@@ -133,77 +140,86 @@ const NoticesCategoryItem = ({
   };
 
   return (
-  <>
- 
-    {open1 && <Modal onClose={
-      () => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
-    <Item key={_id}>
-      <DescriptionInner>
-        <CardContainer>
-          <ImageWrapper>
-            <Image src={photo} alt="Pet" loading="lazy" />
+    <>
+      {/* {isOpen && (
+        <Modal onClose={close}>
+          To add to favorite, you need to register
+          <img src={angryDog} alt="not allowed" width="200" height="200" />
+          <ContainerButton>
+            <ButtonRegister to={'/register'}>
+              Register <PawIcon />
+            </ButtonRegister>
+          </ContainerButton>
+        </Modal>
+      )} */}
+      <Item key={_id}>
+        <DescriptionInner>
+          <CardContainer>
+            <ImageWrapper>
+              <Image src={photo} alt="Pet" loading="lazy" />
             </ImageWrapper>
-            { category  === 'for-free' ? (<CategoryName>in good hands</CategoryName>):
-          (<CategoryName>{category}</CategoryName>)
-            }
-      
-          {!isFavorite && (
-            <SvgWrapper>
-              <AddToFavoriteBtn onClick={addToFavorite}>
-                <HeartIcon alt="heart" width="24" height="24" />
-              </AddToFavoriteBtn>
-            </SvgWrapper>
-          )}
-          {isFavorite && (
-            <SvgWrapper>
-              <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
-                <FilledHeartIcon alt="heart" width="24" height="24" />
-              </RemoveFromFavoriteBtn>
-            </SvgWrapper>
-          )}
-          {isOwnPet && (
-            // <RemoveFromOwnBtn onClick={handleDeleteClick}>
-            //   <TrashIcon alt="trash" width="24" height="24" />
-            // </RemoveFromOwnBtn>
-            <ButtonDelete onClick={handleDeleteClick} ></ButtonDelete>
-           
-          )}
- {/* {isOpen && (<Modal onClose={close}><ModalDelete onClick={handleDeleteClick} onClose={close}/></Modal>)} */}
-          <DescriptionWrapper>
-            <DescriptionTextContainer>
-              <LocationIcon alt="location" width="24" height="24" />
-              <DescriptionText data-tooltip={location}>
-                {location}
-              </DescriptionText>
-            </DescriptionTextContainer>
+            {category === 'for-free' ? (
+              <CategoryName>in good hands</CategoryName>
+            ) : (
+              <CategoryName>{category}</CategoryName>
+            )}
 
-            <DescriptionTextContainer>
-              <ClockIcon alt="clock" width="24" height="24" />
-              <DescriptionText>
-                {age === 0 && '\u2248 1 year'}
-                {age === 1 && `${age} year`}
-                {age !== 1 && age !== 0 && `${age} years`}
-              </DescriptionText>
-            </DescriptionTextContainer>
-            <DescriptionTextContainer>
-              {sex.toLowerCase() === 'female' && (
-                <FemaleIcon alt="sex" width="24" height="24" />
-              )}
-              {sex.toLowerCase() === 'male' && (
-                <MaleIcon alt="sex" width="24" height="24" />
-              )}
-              <DescriptionText>{sex}</DescriptionText>
-            </DescriptionTextContainer>
-          </DescriptionWrapper>
-        </CardContainer>
-        <Title>{title}</Title>
+            {!isFavorite && (
+              <SvgWrapper>
+                <AddToFavoriteBtn onClick={addToFavorite}>
+                  <HeartIcon alt="heart" width="24" height="24" />
+                </AddToFavoriteBtn>
+              </SvgWrapper>
+            )}
+            {isFavorite && (
+              <SvgWrapper>
+                <RemoveFromFavoriteBtn onClick={removeFromFavorite}>
+                  <FilledHeartIcon alt="heart" width="24" height="24" />
+                </RemoveFromFavoriteBtn>
+              </SvgWrapper>
+            )}
+            {isOwnPet && (
+              // <RemoveFromOwnBtn onClick={handleDeleteClick}>
+              //   <TrashIcon alt="trash" width="24" height="24" />
+              // </RemoveFromOwnBtn>
+              <ButtonDelete onClick={handleDeleteClick}></ButtonDelete>
+            )}
+            {/* {isOpen && (<Modal onClose={close}><ModalDelete onClick={handleDeleteClick} onClose={close}/></Modal>)} */}
+            <DescriptionWrapper>
+              <DescriptionTextContainer>
+                <LocationIcon alt="location" width="24" height="24" />
+                <DescriptionText data-tooltip={location}>
+                  {location}
+                </DescriptionText>
+              </DescriptionTextContainer>
 
-        <Button type="button" onClick={open} width="248px">
-          <Span> Learn more </Span>
-        </Button>
-      </DescriptionInner>
+              <DescriptionTextContainer>
+                <ClockIcon alt="clock" width="24" height="24" />
+                <DescriptionText>
+                  {age === 0 && '\u2248 1 year'}
+                  {age === 1 && `${age} year`}
+                  {age !== 1 && age !== 0 && `${age} years`}
+                </DescriptionText>
+              </DescriptionTextContainer>
+              <DescriptionTextContainer>
+                {sex.toLowerCase() === 'female' && (
+                  <FemaleIcon alt="sex" width="24" height="24" />
+                )}
+                {sex.toLowerCase() === 'male' && (
+                  <MaleIcon alt="sex" width="24" height="24" />
+                )}
+                <DescriptionText>{sex}</DescriptionText>
+              </DescriptionTextContainer>
+            </DescriptionWrapper>
+          </CardContainer>
+          <Title>{title}</Title>
 
-      {/* <ButtonDiv> */}
+          <Button type="button" onClick={open} width="248px">
+            <Span> Learn more </Span>
+          </Button>
+        </DescriptionInner>
+
+        {/* <ButtonDiv> */}
         {isOpen && (
           <ModalNotice
             userDeteils={user}
@@ -214,9 +230,9 @@ const NoticesCategoryItem = ({
             removeFromFavorite={removeFromFavorite}
           />
         )}
-      {/* </ButtonDiv> */}
+        {/* </ButtonDiv> */}
       </Item>
-      </>
+    </>
   );
 };
 

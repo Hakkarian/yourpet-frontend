@@ -56,9 +56,7 @@ const RegisterForm = () => {
     dispatch(register(payload))
       .then(() => {
         dispatch(login(payload));
-        console.log('before');
         navigate('/user');
-        console.log('after');
       })
       .catch(err => console.log(err));
 

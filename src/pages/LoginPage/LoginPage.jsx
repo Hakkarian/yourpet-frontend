@@ -7,7 +7,7 @@ import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 
-import Button from 'shared/components/Button/Button';
+// import Button from 'shared/components/Button/Button';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
@@ -21,6 +21,7 @@ import {
   AbsDivCss,
   ButtonEye,
   FlexDivCss,
+  ReusableButtonCss,
   ReusableTitleCss,
   TextWrapCss,
   TextCss,
@@ -50,7 +51,6 @@ const LoginPage = () => {
   const handleSubmit = (values, actions) => {
     const { email, password } = values;
     const payload = { email, password };
-    console.log('submit');
     dispatch(login(payload));
     navigate('/user');
     actions.resetForm();
@@ -132,9 +132,9 @@ const LoginPage = () => {
                   )}
                 </AnchorCss>
 
-                <Button className="form-button" type="submit">
+                <ReusableButtonCss className="form-button" type="submit">
                   Submit
-                </Button>
+                </ReusableButtonCss>
                 <TextWrapCss>
                   <TextCss>Don't have an account?</TextCss>
                   <StyledLink to="/register">Register</StyledLink>

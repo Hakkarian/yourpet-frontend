@@ -19,6 +19,11 @@ export const PlusIcon = styled(Plus)`
   fill: ${({ theme }) => theme.colors.blue};
   transform: scale(2) translate(-25%, -25%);
 
+  path {
+    fill: ${({ theme }) => theme.colors.blue};
+    stroke: ${({ theme }) => theme.colors.blue};
+  }
+
   @media screen and (min-width: 768px) {
     width: ${({ theme }) => theme.spacing(9.6)};
     height: ${({ theme }) => theme.spacing(9.6)};

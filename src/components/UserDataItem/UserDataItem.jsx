@@ -28,7 +28,6 @@ const UserDataItem = () => {
   // const id = useMemo(() => nanoid(), []);
 
   const isInputUpdated = useSelector(selectIsInputUpdated);
-  console.log('isInputUpdated', isInputUpdated);
   // console.log('data', data);
   // console.log('data.name', data.name);
 
