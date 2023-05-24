@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { ReactComponent as User } from '../../icons/user.svg';
+
 export const HeaderCss = styled.header`
   height: ${({ theme }) => theme.spacing(19)};
   display: flex;
@@ -49,3 +51,8 @@ export const NavConnect = styled.nav`
     gap: 450px;
   }
 `;
+
+export const UserCss = styled(User)`
+  width: 30;
+  height: 30;
+`

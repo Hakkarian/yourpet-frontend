@@ -193,9 +193,7 @@ export const DescriptionTextContainer = styled.div`
     height: 24px;
     fill: transparent;
   }
-  path {
-    stroke: ${({ theme }) => theme.colors.blue};
-  }
+
 `;
 
 export const DescriptionText = styled.p`

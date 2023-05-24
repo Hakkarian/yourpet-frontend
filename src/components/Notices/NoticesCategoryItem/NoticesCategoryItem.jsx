@@ -46,10 +46,11 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 // import { TrashIcon } from './NoticesCategoryItem.styled';
-// import angryDog from '../../../images/angry-dog.png';
+import angryDog from '../../../images/angry-dog.png';
 import { useState } from 'react';
 
 import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
+import Modal from 'shared/components/Modal';
 
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
@@ -90,7 +91,7 @@ const NoticesCategoryItem = ({
 
   const { isOpen, open, close } = useToggle();
 
-  const [setOpen1] = useState(false);
+  const [open1, setOpen1] = useState(false);
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
@@ -134,8 +135,8 @@ const NoticesCategoryItem = ({
   return (
   <>
  
-    {/* {open1 && <Modal onClose={
-      () => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>} */}
+    {open1 && <Modal onClose={
+      () => setOpen1(false)}>To add to favorite, you need to register<img src={angryDog} alt='not allowed' width='200' height='200'/></Modal>}
     <Item key={_id}>
       <DescriptionInner>
         <CardContainer>
