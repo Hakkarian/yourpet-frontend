@@ -113,7 +113,14 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      // open();
+      toast('To add to favorites you need to register first.', {
+        icon: '❕',
+        style: {
+          borderRadius: '10px',
+          background: 'red',
+          color: '#fff',
+        },
+      });
       return;
     }
     dispatch(addToFavorites(_id));
