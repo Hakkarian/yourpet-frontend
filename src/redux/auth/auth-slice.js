@@ -25,7 +25,6 @@ const authSlice = createSlice({
   reducers: {
     googleAuth: (state, { payload }) => {
       setToken(payload.token);
-      console.log(payload);
       state.token = payload.token;
       state.isLogin = true;
       state.isLoading = false;
@@ -70,8 +69,6 @@ const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(info.rejected, (state, { payload }) => {
-        console.log('here info slice');
-        console.log('user info rej', payload);
         state.isLoading = false;
         // state.error = payload;
         state.inputUpdateinError = payload;
@@ -101,7 +98,6 @@ const authSlice = createSlice({
       })
       .addCase(info.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        console.log('payload', payload);
         if (payload.user) {
           state.user = payload.user;
         }
@@ -120,15 +116,11 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(getUserInfo.fulfilled, (state, { payload }) => {
-        // console.log('here user info slice');
-        // console.log('user info fulf', payload.user);
         state.user = payload.user;
         state.isLoading = false;
         state.error = null;
       })
       .addCase(getUserInfo.rejected, (state, { payload }) => {
-        console.log('here user info slice');
-        console.log('user info rejected', payload);
         state.isLoading = false;
         state.error = payload;
       });

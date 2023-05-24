@@ -16,7 +16,6 @@ import {
   CheckIcon,
 } from './UserDataItem.styled';
 
-
 const UserDataItem = () => {
   const dispatch = useDispatch();
 
@@ -25,12 +24,8 @@ const UserDataItem = () => {
   const [isEditBirthday, setIsEditBirthday] = useState(false);
   const [isEditPhone, setIsEditPhone] = useState(false);
   const [isEditCity, setIsEditCity] = useState(false);
-  // const id = useMemo(() => nanoid(), []);
 
   const isInputUpdated = useSelector(selectIsInputUpdated);
-  console.log('isInputUpdated', isInputUpdated);
-  // console.log('data', data);
-  // console.log('data.name', data.name);
 
   useEffect(() => {
     if (isInputUpdated) {
@@ -40,7 +35,6 @@ const UserDataItem = () => {
   }, [dispatch, isInputUpdated]);
 
   const user = useSelector(selectUser);
-  console.log('user', user);
   const { name, email, phone, birthday, city } = user;
 
   const handleNameSubmit = event => {

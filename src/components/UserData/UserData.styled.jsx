@@ -193,11 +193,11 @@ export const InputP = styled.p`
 export const IconWrap = styled.span`
   width: 24px;
   height: 24px;
-  margin-right: 12px;
+  margin-right: 6px;
 `;
 
 export const Label = styled.label`
-  width: 110%;
+  /* width: 110%; */
   height: 100%;
   display: flex;
   align-items: center;
@@ -238,7 +238,9 @@ export const CustomLabel = styled.label`
   margin-bottom: ${({ theme }) => theme.spacing(3.75)};
 `;
 
-export const StyledDiv = styled.div``;
+export const StyledDiv = styled.div`
+  margin: 0 auto;
+`;
 
 export const ConfirmButton = styled.button`
   border: none;
@@ -270,5 +272,5 @@ export const ButtonWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 25px;
+  gap: 20px;
 `;
