@@ -10,7 +10,6 @@ import moblogo from '../../images/moblogo1x.png';
 import tablogo from '../../images/tablogo1x.png';
 import logo from '../../images/logo1x.png';
 
-import { ReactComponent as User } from '../../icons/user.svg';
 import { ReactComponent as BurgerMenu } from '../../icons/burger-menu.svg';
 import { selectIsLoggedIn, selectUser } from 'redux/auth/auth-selector';
 import { useSelector } from 'react-redux';

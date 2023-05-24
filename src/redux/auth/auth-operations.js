@@ -203,14 +203,14 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const { data } = await instance.get('/user/current');
-      toast('Checking updates...', {
-        icon: '⏳',
-        style: {
-          borderRadius: '10px',
-          background: 'darkorange',
-          color: '#fff',
-        },
-      });
+      // toast('Checking updates...', {
+      //   icon: '⏳',
+      //   style: {
+      //     borderRadius: '10px',
+      //     background: 'darkorange',
+      //     color: '#fff',
+      //   },
+      // });
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
