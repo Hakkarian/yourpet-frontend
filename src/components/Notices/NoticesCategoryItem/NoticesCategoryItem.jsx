@@ -46,12 +46,12 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 // import { TrashIcon } from './NoticesCategoryItem.styled';
-import angryDog from '../../../images/angry-dog.png';
-import { useState } from 'react';
+// import angryDog from '../../../images/angry-dog.png';
+// import { useState } from 'react';
 
 import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
-import Modal from 'shared/components/Modal';
-import { ButtonRegister, ContainerButton, PawIcon } from 'components/Modals/ModalAddPet/ModalAddPet.styled';
+// import Modal from 'shared/components/Modal';
+// import { ButtonRegister, ContainerButton, PawIcon } from 'components/Modals/ModalAddPet/ModalAddPet.styled';
 
 // import { selectUserNotices } from 'redux/notices/notices-selector';
 // import { selectIsFavorite } from 'redux/notices/notices-selector';
