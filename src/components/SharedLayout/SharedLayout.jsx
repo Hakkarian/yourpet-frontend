@@ -2,19 +2,21 @@
 import Header from 'components/Header/Header';
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import { ThemeProvider } from '@emotion/react';
-import { theme, themeDark } from 'constants';
+// import { ThemeProvider } from '@emotion/react';
+// import { theme, themeDark } from 'constants';
 // import { Loader } from 'components/Loader';
-import { useContext } from 'react';
-import { ThemeContext } from 'shared/utils/ThemeContext/themeProvider';
+// import { useContext } from 'react';
+// import { ThemeContext } from 'shared/utils/ThemeContext/themeProvider';
 import { ModalProvider } from 'shared/components/Modalll/utils/ModalProvider';
+import EmotionThemeProvider from 'shared/utils/ThemeContext/EmotionThemeProvider/EmotionThemeProvider';
 import { ContainerWrapper } from 'shared/components/ContainerWrapper/ContainerWrapper.styled';
 
 const SharedLayout = () => {
-  const { isLight } = useContext(ThemeContext);
+  // const { isLight } = useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={isLight ? theme : themeDark}>
+    // <ThemeProvider theme={isLight ? theme : themeDark}>
+    <EmotionThemeProvider>
       <ModalProvider>
         {/* <div> */}
           <ContainerWrapper>
@@ -25,7 +27,8 @@ const SharedLayout = () => {
           </ContainerWrapper>
         {/* </div> */}
       </ModalProvider>
-    </ThemeProvider>
+    </EmotionThemeProvider>
+    // </ThemeProvider>
   );
 };
 

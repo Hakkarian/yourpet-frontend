@@ -5,6 +5,10 @@ export const Container = styled.div`
   /* width: 100%; */
   margin: 0 auto;
 
+  .MuiButtonBase-root {
+    color: ${({theme})=>theme.colors.black};
+  }
+
   background-color: ${({theme})=>theme.colors.white};
   @media screen and (max-width: 767px) {
     padding: 0 20px;
