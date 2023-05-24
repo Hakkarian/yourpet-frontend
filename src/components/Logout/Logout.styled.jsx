@@ -9,14 +9,19 @@ height: 24px;
 `;
 
 export const OutBtn = styled.button`
- cursor: pointer;
  display: flex;
+ -webkit-box-align: center;
  align-items: center;
+ gap: 12px;
+ margin: 21px 0px 0px 2px;
+ font-family: Manrope-Medium;
+ font-weight: 500;
+ font-size: 16px;
+ line-height: 1.35;
+ background: transparent;
  border: none;
- background-color: transparent;
- width: 24px;
- height: 24px;
- margin-right: 16px;
+ letter-spacing: 0.04em;
+ color: rgb(136, 136, 136);
 `;
 
 export const OutWrap = styled.div`
@@ -25,7 +30,7 @@ export const OutWrap = styled.div`
  align-items: center;
 
  @media screen and (min-width: 768px){
-    margin: 13px 0px 0px;
+    margin: 0px 0px 0px;
    };
 `;
 

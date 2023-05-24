@@ -13,8 +13,8 @@ const Logout = () => {
     return (
         <OutWrap>
             <OutBtn type="button" onClick={open}>
-            <OutText>Log Out</OutText>
             <Icon/>
+            <OutText>Log Out</OutText>
             </OutBtn>
             {isOpen && <Modal onClose={close}>
             <ModalLogOut onClose={close}/>
