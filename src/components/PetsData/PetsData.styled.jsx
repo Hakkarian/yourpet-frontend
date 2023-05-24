@@ -140,6 +140,7 @@ export const Title = styled.h2`
   font-size: 20px;
   line-height: 1.36;
   letter-spacing: 0.04em;
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
