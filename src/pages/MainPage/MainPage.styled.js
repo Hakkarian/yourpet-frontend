@@ -62,7 +62,7 @@ export const SectionTag = styled.section`
         // height: calc(100vh );
         // min-height: calc(768px - 60px - 45px - 43px);
         padding-top: 80px;
-        width: calc(768px - 64px)
+        width: calc(768px - 64px);
         margin-left: auto;
         margin-right: auto;
         // margin-top: 88px;
