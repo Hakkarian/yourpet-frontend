@@ -125,7 +125,7 @@ margin: 0 auto;
   font-weight: 700;
   font-size: 16px;
   margin-bottom: 8px;
-  //  прибрати цей ховер якщо він зєявиться в блакитній та жовтій кнопках
+  
    :hover {
      background: ${({ theme }) => theme.background.azure};
      border: none;
@@ -180,6 +180,11 @@ export const Link = styled.a`
   font-weight: 500;
   font-size: 12px;
   text-decoration-line: underline;
+
+  &:hover, &:focus {
+    color: ${({ theme }) => theme.colors.blue};
+  }
+
   @media (min-width: 767px) {
     font-size: 16px;
   }
