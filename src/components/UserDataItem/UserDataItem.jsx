@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useMemo } from 'react';
-// import { nanoid } from 'nanoid';
 
 import { selectUser, selectIsInputUpdated } from 'redux/auth/auth-selector';
 import { changeIsInputUpdatedStatus } from 'redux/auth/auth-slice';
