@@ -69,8 +69,11 @@ export const WrapImg = styled.div`
   }
 `;
 
-export const WrapInfo = styled.div`
+export const WrapInfo = styled.ul`
+  width: 144px;
+
   p {
+    margin-bottom: 1px;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
@@ -78,18 +81,21 @@ export const WrapInfo = styled.div`
   }
   a {
     display: block;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     font-weight: 400;
     font-size: 12px;
     background-color: transparent;
     color: ${({ theme }) => theme.colors.black};
     transition: 250ms ease-in-out;
 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
     &:hover {
       color: ${({ theme }) => theme.colors.grey};
-    }
-    .addressItem {
-      height: 48px;
     }
   }
   .time {

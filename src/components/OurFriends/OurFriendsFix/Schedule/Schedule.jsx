@@ -24,7 +24,7 @@ export const Schedule = ({ workDays }) => {
 
     for (let day of data) {
       if (currentDay === day.dayOfWeek && day.isOpen) {
-        return `${day.from} - ${day.to}`;
+        return `${day.from}- ${day.to}`;
       }
       if (currentDay === day.dayOfWeek && !day.isOpen) {
         return 'closed today';
@@ -51,7 +51,7 @@ export const Schedule = ({ workDays }) => {
                     <p>closed</p>
                   ) : (
                     <p>
-                      {[from]} - {[to]}
+                      {[from]}- {[to]}
                     </p>
                   )}
                 </Wrap>
