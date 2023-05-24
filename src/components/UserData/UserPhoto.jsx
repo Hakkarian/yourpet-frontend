@@ -41,12 +41,14 @@ const UserPhoto = () => {
   };
 
   const isAvatarReady = useSelector(selectIsInputUpdated);
+
   useEffect(() => {
     if (isAvatarReady) {
       dispatch(getUserInfo());
       dispatch(changeIsInputUpdatedStatus());
     }
   }, [dispatch, isAvatarReady]);
+
 
   const [photo, setPhoto] = useState(null);
   const photoUrl = photo ? URL.createObjectURL(photo) : null;

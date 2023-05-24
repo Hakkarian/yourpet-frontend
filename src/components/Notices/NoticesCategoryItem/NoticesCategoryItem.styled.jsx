@@ -188,9 +188,8 @@ export const DescriptionTextContainer = styled.div`
 
  }
 
-  svg {
-    width: 24px;
-    height: 24px;
+
+ svg {
     fill: transparent;
   }
 
