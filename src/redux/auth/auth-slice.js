@@ -33,6 +33,12 @@ const authSlice = createSlice({
     changeIsInputUpdatedStatus: state => {
       state.isInputUpdated = false;
     },
+    // ________
+    statusIsRegister: (state, {payload}) => {
+      state.isRegister = payload;
+    },
+
+    // _________
   },
   extraReducers: builder => {
     builder
@@ -127,6 +133,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { googleAuth, changeIsInputUpdatedStatus } = authSlice.actions;
+export const { googleAuth, changeIsInputUpdatedStatus, statusIsRegister } = authSlice.actions;
 
 export default authSlice.reducer;
