@@ -27,21 +27,20 @@ const ModalDelete = ({ onClick, onClose }) => {
         <Button
           className="btn"
           type="button"
+          onClick={onClick}
+          color="blue"
+          width="256px"
+        >
+          Yes <TrashIcon width="24" height="24" />
+        </Button>
+        <Button
+          className="btn"
+          type="button"
           color="white"
           width="256px"
           onClick={onClose}
         >
           Cancel
-        </Button>
-        <Button
-          className="btn"
-          type="button"
-          onClick={onClick}
-          color="blue"
-          width="256px"
-        >
-          Yes{' '}
-          <TrashIcon width="24" height="24"/>
         </Button>
       </ContainerButton>
     </Container>
