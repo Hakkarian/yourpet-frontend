@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { selectUser } from 'redux/auth/auth-selector';
 import { Wrap, UserDiv, Title, Section } from './UserPage.styled';
 import UserData from 'components/UserData';
 import PetsData from 'components/PetsData';
@@ -22,26 +21,13 @@ const UserPage = () => {
   const dispatch = useDispatch();
   // _____
 const { isRegisteredIn } = useAuth();
-  // _____
-
-  const user = useSelector(selectUser);
-  const { userId } = user;
-
-  // useEffect(() => {
-  //   const visitedBefore = localStorage.getItem(`visitedBefore_${userId}`);
-  //   if (!visitedBefore) {
-  //     open();
-  //     localStorage.setItem(`visitedBefore_${userId}`, true);
-  //   }
-  // }, [userId, open]);
-
   // _______
   useEffect(() => {
     if (isRegisteredIn) {
       open(isRegisteredIn);
       dispatch(statusIsRegister(false));
     }
-  }, [isRegisteredIn, dispatch]);
+  }, [isRegisteredIn, dispatch, open]);
   // _______
 
   useEffect(() => {
