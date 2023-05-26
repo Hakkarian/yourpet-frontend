@@ -7,3 +7,4 @@ export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectError = state => state.auth.error;
 export const selectUserAvatar = state => state.auth.user.avatar;
 export const selectIsInputUpdated = state => state.auth.isInputUpdated;
+export const selectUserFirstLogin = state => state.auth.user.firstLogin;
