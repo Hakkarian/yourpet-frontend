@@ -19,15 +19,6 @@ const ModalLogOut = ({ onClose }) => {
       <ModalTitle>Already leaving?</ModalTitle>
       <ContainerButton>
         <Button
-          className="btn"
-          type="button"
-          color="white"
-          width="256px"
-          onClick={onClose}
-        >
-          Cancel
-        </Button>
-        <Button
           onClick={handleLogOut}
           className="btn"
           type="button"
@@ -35,6 +26,15 @@ const ModalLogOut = ({ onClose }) => {
           width="256px"
         >
           Yes <LogOutIcon width="24px" height="24px" />
+        </Button>
+        <Button
+          className="btn"
+          type="button"
+          color="white"
+          width="256px"
+          onClick={onClose}
+        >
+          Cancel
         </Button>
       </ContainerButton>
     </Container>

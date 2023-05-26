@@ -15,7 +15,7 @@ const ModalDelete = ({ onClick, onClose }) => {
  
   return (
     <Container>
-      <ModalTitle>Delete adverstiment?</ModalTitle>
+      <ModalTitle>Delete advertisment?</ModalTitle>
       <ModalText>
         Are you sure you want to delete{' '}
         <ColorSpan>
