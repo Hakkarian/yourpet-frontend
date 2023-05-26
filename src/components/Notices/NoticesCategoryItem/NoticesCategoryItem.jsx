@@ -36,6 +36,7 @@ import {
   Span,
   CardContainer,
   DescriptionInner,
+  ModalCss,
   // RemoveFromOwnBtn,
 } from './NoticesCategoryItem.styled';
 import Button from 'shared/components/Button/Button';
@@ -46,10 +47,12 @@ import { ReactComponent as LocationIcon } from 'icons/location-pet.svg';
 import { HeartIcon } from './NoticesCategoryItem.styled';
 import { FilledHeartIcon } from './NoticesCategoryItem.styled';
 // import { TrashIcon } from './NoticesCategoryItem.styled';
-// import angryDog from '../../../images/angry-dog.png';
+import angryDog from '../../../images/angry-dog.png';
 // import { useState } from 'react';
 
 import ButtonDelete from 'components/ButtonDelete/ButtonDelete';
+import { ButtonRegister, ContainerButton, PawIcon } from 'components/Modals/ModalAddPet/ModalAddPet.styled';
+import { useState } from 'react';
 // import Modal from 'shared/components/Modal';
 // import { ButtonRegister, ContainerButton, PawIcon } from 'components/Modals/ModalAddPet/ModalAddPet.styled';
 
@@ -91,7 +94,7 @@ const NoticesCategoryItem = ({
   const age = difOfAge(birthday);
 
   const { isOpen, open, close } = useToggle();
-
+  const [open1, setOpen1] = useState(false);
 
   const refreshingPage = () => {
     if (categoryPet === categoryShelf[categoryPet]) {
@@ -113,14 +116,15 @@ const NoticesCategoryItem = ({
 
   const addToFavorite = async () => {
     if (!isLoggedIn) {
-      toast('To add to favorites you need to register first.', {
-        icon: '❕',
-        style: {
-          borderRadius: '10px',
-          background: 'red',
-          color: '#fff',
-        },
-      });
+      // toast('To add to favorites you need to register first.', {
+      //   icon: '❕',
+      //   style: {
+      //     borderRadius: '10px',
+      //     background: 'red',
+      //     color: '#fff',
+      //   },
+      // });
+      setOpen1(true);
       return;
     }
     dispatch(addToFavorites(_id));
@@ -141,8 +145,8 @@ const NoticesCategoryItem = ({
 
   return (
     <>
-      {/* {isOpen && (
-        <Modal onClose={close}>
+      {open1 && (
+        <ModalCss onClose={() => setOpen1(false)}>
           To add to favorite, you need to register
           <img src={angryDog} alt="not allowed" width="200" height="200" />
           <ContainerButton>
@@ -150,8 +154,8 @@ const NoticesCategoryItem = ({
               Register <PawIcon />
             </ButtonRegister>
           </ContainerButton>
-        </Modal>
-      )} */}
+        </ModalCss>
+      )}
       <Item key={_id}>
         <DescriptionInner>
           <CardContainer>

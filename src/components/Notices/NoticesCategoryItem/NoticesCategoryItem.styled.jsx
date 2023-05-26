@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { ReactComponent as Heart } from 'icons/heart.svg';
 import { ReactComponent as Trash } from 'icons/trash.svg';
+import Modal from 'shared/components/Modal';
 
 export const Item = styled.li`
   position: relative;
@@ -247,3 +248,9 @@ export const TrashIcon = styled(Trash)`
     stroke: ${({ theme }) => theme.colors.blue};
   }
 `;
+
+export const ModalCss = styled(Modal)`
+  max-width: 1000px;
+  width: 100%;
+  bakground-color: black;
+`
