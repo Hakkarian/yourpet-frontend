@@ -237,3 +237,14 @@ export const getUserInfo = createAsyncThunk(
     }
   }
 );
+
+export const changeFirstLogin = createAsyncThunk(
+  '/user/firstLogin',
+  async (_, { rejectWithValue }) => {
+    try {
+      await infoService({ firstLogin: false });
+    } catch ({ response }) {
+      return rejectWithValue(response.data.message);
+    }
+  }
+);

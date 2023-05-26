@@ -6,6 +6,7 @@ import {
   register,
   refreshUser,
   getUserInfo,
+  changeFirstLogin,
 } from './auth-operations';
 import { setToken } from 'shared/services/auth-api';
 
@@ -121,6 +122,19 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(getUserInfo.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(changeFirstLogin.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(changeFirstLogin.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.user.firstLogin = false;
+        state.error = null;
+      })
+      .addCase(changeFirstLogin.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       });
