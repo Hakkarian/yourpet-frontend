@@ -12,7 +12,7 @@ export const StyledForm = styled(Form)`
 
 export const ContainerCss = styled.div`
   width: ${({ theme }) => theme.spacing(70)};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   padding-top: ${({ theme }) => theme.spacing(5)};
   padding-bottom: ${({ theme }) => theme.spacing(2)};
   padding-left: ${({ theme }) => theme.spacing(2)};
@@ -21,6 +21,7 @@ export const ContainerCss = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: ${({ theme }) => theme.spacing(6)};
+  box-shadow: ${({ theme }) => theme.shadow.default};
 
   @media screen and (min-width: 768px) {
     width: ${({ theme, currentStep, category }) => {

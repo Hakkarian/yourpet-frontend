@@ -5,8 +5,10 @@ display: flex;
 -webkit-box-pack: center;
 justify-content: center;
 align-items: flex-start;
-width: 100vw;
-height: 100vw;    
+
+body {
+  background-color: ${({theme}) => theme.colors.white}
+}
 `;
 
 export const Wrap = styled.div`

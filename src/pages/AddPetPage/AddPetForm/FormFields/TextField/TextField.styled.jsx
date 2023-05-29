@@ -6,6 +6,7 @@ export const Label = styled.label`
   font-size: ${({ theme }) => theme.spacing(3.5)};
   font-weight: 500;
   margin-bottom: ${({ theme }) => theme.spacing(1)};
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     font-size: ${({ theme }) => theme.spacing(5)};

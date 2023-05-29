@@ -6,11 +6,10 @@ import ReusableTitle from 'shared/components/ReusableTitle';
 import { color, font } from 'shared/utils/mixin.styled';
 
 export const FlexDivCss = styled.div`
-  margin-top: 40px;
   margin-bottom: 40px;
   padding: 40px 12px;
 
-  background-color: #fff;
+  background-color: ${({theme}) => theme.colors.white};
 
   border-radius: 20px;
 
@@ -135,6 +134,7 @@ export const TextWrapCss = styled.div`
 
 export const TextCss = styled.p`
   margin: 0;
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const ErrorText = styled.div`

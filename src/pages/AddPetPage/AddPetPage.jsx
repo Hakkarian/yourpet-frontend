@@ -1,12 +1,11 @@
 import AddPetForm from './AddPetForm/AddPetForm';
-
-// import { Container } from 'shared/components/Container/Container.styled';
+import { ContainerCss } from './AddPetPage.styled';
 
 const AddPetPage = () => {
   return (
-    // <Container>
+    <ContainerCss>
     <AddPetForm />
-    // </Container>
+    </ContainerCss>
   );
 };
 

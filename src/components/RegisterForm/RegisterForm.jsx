@@ -20,7 +20,7 @@ import {
   StyledLink,
 } from './RegisterForm.styled';
 import Button from 'shared/components/Button/Button';
-
+import { ReactComponent as Correct } from '../../icons/check.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
@@ -97,6 +97,17 @@ const RegisterForm = () => {
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
                   )}
+                  {!errors.email && values.email && (
+                    <>
+                      <AbsDivCss
+                        onClick={() => {
+                          setFieldValue('password', '');
+                        }}
+                      >
+                        <Correct width="24" height="24" stroke="#00C3AD" />
+                      </AbsDivCss>
+                    </>
+                  )}
                 </RelativeDiv>
                 <FormError name="email" />
               </AnchorCss>
@@ -121,6 +132,17 @@ const RegisterForm = () => {
                     >
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
+                  )}
+                  {!errors.password && values.password && (
+                    <>
+                      <AbsDivCss
+                        onClick={() => {
+                          setFieldValue('password', '');
+                        }}
+                      >
+                        <Correct width="24" height="24" stroke="#00C3AD" />
+                      </AbsDivCss>
+                    </>
                   )}
                 </RelativeDiv>
                 <FormError name="password" />
@@ -162,6 +184,17 @@ const RegisterForm = () => {
                     >
                       <Cross width="24" height="24" stroke="#F43F5E" />
                     </AbsDivCss>
+                  )}
+                  {!errors.confirmPassword && values.confirmPassword && (
+                    <>
+                      <AbsDivCss
+                        onClick={() => {
+                          setFieldValue('password', '');
+                        }}
+                      >
+                        <Correct width="24" height="24" stroke="#00C3AD" />
+                      </AbsDivCss>
+                    </>
                   )}
                 </RelativeDiv>
                 <FormError name="confirmPassword" />

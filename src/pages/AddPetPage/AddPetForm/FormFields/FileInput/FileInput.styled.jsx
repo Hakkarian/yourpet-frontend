@@ -54,6 +54,7 @@ export const CustomLabel = styled.label`
   width: ${({ theme }) => theme.spacing(28)};
   height: ${({ theme }) => theme.spacing(28)};
   background-color: ${({ theme }) => theme.colors.lightblue};
+  color: ${({ theme }) => theme.colors.black};
   border-radius: ${({ theme }) => theme.spacing(5)};
   cursor: pointer;
 

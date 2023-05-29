@@ -5,6 +5,7 @@ export const StyledTitle = styled.h2`
   font-size: ${({ theme }) => theme.spacing(5)};
   margin-bottom: ${({ theme }) => theme.spacing(4)};
   margin-left: ${({ theme }) => theme.spacing(3)};
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     margin-left: 0;

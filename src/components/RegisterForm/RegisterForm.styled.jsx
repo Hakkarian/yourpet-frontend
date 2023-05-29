@@ -10,7 +10,7 @@ export const FlexDivCss = styled.div`
   margin-bottom: 40px;
   padding: 40px 12px;
 
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.white};
 
   border-radius: 20px;
   box-shadow: ${({ theme }) => theme.shadow.default};
@@ -123,6 +123,9 @@ export const AbsDivCss = styled.span`
   top: 20%;
   right: 14%;
   cursor: pointer;
+  svg path {
+    fill: none
+  }
 
   @media screen and (min-width: 768px) {
     right: 8%;
@@ -132,13 +135,12 @@ export const AbsDivCss = styled.span`
 export const ReusableTitleCss = styled(ReusableTitle)`
   margin-top: 0;
 
-
   text-align: center;
   font-size: ${({ theme }) => theme.spacing(6)};
   font-weight: 500;
   line-height: 1.375;
 
-  color: #111111;
+  color: ${({ theme }) => theme.colors.black};
 
   @media screen and (min-width: 768px) {
     margin-top: 0;
@@ -163,6 +165,7 @@ export const TextCss = styled.p`
   font-family: 'Manrope';
   font-size: 12px;
   font-weight: 400;
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const StyledLink = styled(Link)`

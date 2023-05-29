@@ -55,7 +55,7 @@ export const CategoryName = styled.p`
   align-items: center;
   font-size: 12px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.black};
+  color: #111111;
   line-height: 16px;
 `;
 
@@ -136,7 +136,7 @@ export const DescriptionWrapper = styled.div`
     left: 0;
     top: 0;
     background: ${({ theme }) => theme.colors.blue};
-    color: ${({ theme }) => theme.colors.black};
+    color: #111111;
     padding: 2px;
     pointer-events: none;
     opacity: 0;
@@ -206,7 +206,7 @@ export const DescriptionText = styled.p`
   line-height: 16px;
   letter-spacing: 0.04em;
   line-height: 1.33;
-  color: ${({ theme }) => theme.colors.black};
+  color: #111111;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
