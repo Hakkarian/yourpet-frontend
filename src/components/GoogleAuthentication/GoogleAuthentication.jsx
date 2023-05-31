@@ -8,7 +8,10 @@ const GoogleAuthentication = () => {
   console.log(`${frontendUrl}/auth/google`);
   
   return (
-    <GoogleCss href="http://localhost:3030/api/auth/google"> <img src={google} alt="Google logo" width='30' height='30'/> Authenticate with Google</GoogleCss>
+    <GoogleCss href={`${frontendUrl}/auth/google`}>
+      <img src={google} alt="Google logo" width="30" height="30" /> Authenticate
+      with Google
+    </GoogleCss>
   );
 }
 
