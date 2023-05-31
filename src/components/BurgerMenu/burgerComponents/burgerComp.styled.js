@@ -73,6 +73,12 @@ export const BurgerUserStyled = styled.div`
     margin-top: 40px;
     margin-bottom: 84px;
 
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     p {
         color: ${({ theme }) => theme.colors.yellow};
         // font-weight: 500;
