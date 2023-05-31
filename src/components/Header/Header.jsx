@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive';
 import AuthNav from 'components/AuthNav';
 import Nav from 'components/Nav/Nav';
 import { Link } from 'react-router-dom';
-import { AuthWrapCss, HeaderCss, InfoCss, UserCss, UserWrapCss } from './Header.styled';
+import { AuthWrapCss, HeaderCss, ImgCss, InfoCss, UserCss, UserWrapCss } from './Header.styled';
 
 import moblogo from '../../images/moblogo1x.png';
 import tablogo from '../../images/tablogo1x.png';
@@ -25,7 +25,7 @@ const Header = () => {
   const { isOpenContext, toggleContext } = useContext(ModalContext);
 
   const isLogin = useSelector(selectIsLoggedIn);
-  const { name } = useSelector(selectUser);
+  const { name, avatar } = useSelector(selectUser);
 
   return (
     <Container>
@@ -38,7 +38,8 @@ const Header = () => {
           {isLogin ? (
             <UserWrapCss>
               <Link to="/user">
-                <UserCss width="30" height="30" />
+                {!avatar && <UserCss width="30" height="30" />}
+                {avatar && <ImgCss src={avatar} alt='user' width="30" height="30" />}
               </Link>
               <MediaQuery minWidth={768}>
                 <InfoCss>{name || 'Stranger'}</InfoCss>

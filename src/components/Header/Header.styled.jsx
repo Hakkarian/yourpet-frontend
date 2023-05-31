@@ -56,3 +56,8 @@ export const UserCss = styled(User)`
   width: 30;
   height: 30;
 `
+
+export const ImgCss = styled.img`
+  border-radius: 10px;
+  border: 1px dashed ${({theme}) => theme.colors.black};
+`

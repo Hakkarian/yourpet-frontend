@@ -8,6 +8,7 @@ import {
   instance,
   setAuthHeader,
   getUserInfoService,
+  google,
 } from 'shared/services/auth-api';
 
 export const register = createAsyncThunk(
@@ -100,6 +101,17 @@ export const login = createAsyncThunk(
   }
 );
 
+export const googleAuth = createAsyncThunk('google/callback', async (_, { rejectWithValue }) => {
+  try {
+    console.log('here oper google')
+    const result = await google();
+    console.log('oper google', result);
+    return result;
+  } catch ({response}) {
+    rejectWithValue(response)
+  }
+})
+
 export const logout = createAsyncThunk(
   'logout',
   async (_, { rejectWithValue }) => {
@@ -190,7 +202,9 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
+    console.log('oper current')
     const persistedToken = state.auth.token;
+    console.log('oper current', persistedToken)
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');

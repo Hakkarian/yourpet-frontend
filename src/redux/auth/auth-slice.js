@@ -23,12 +23,14 @@ const authSlice = createSlice({
     inputUpdateinError: false,
   },
   reducers: {
-    googleAuth: (state, { payload }) => {
-      setToken(payload.token);
-      state.token = payload.token;
+    setGoogleUser: (state, { payload }) => {
+      const { token, user } = payload
+      console.log('auth slice token', token)
+      setToken(token);
+      state.token = token;
+      state.user = user;
       state.isLogin = true;
-      state.isLoading = false;
-      state.user = payload.user;
+
     },
     changeIsInputUpdatedStatus: state => {
       state.isInputUpdated = false;
@@ -133,6 +135,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { googleAuth, changeIsInputUpdatedStatus, statusIsRegister } = authSlice.actions;
+export const { setGoogleUser, changeIsInputUpdatedStatus, statusIsRegister } = authSlice.actions;
 
 export default authSlice.reducer;

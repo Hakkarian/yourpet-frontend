@@ -6,6 +6,10 @@ display: flex;
 justify-content: center;
 align-items: flex-start;
 
+@media screen and (min-width: 1280px) {
+  height: 89.6vh;
+}
+
 body {
   background-color: ${({theme}) => theme.colors.white}
 }

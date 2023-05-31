@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Form } from 'formik';
 import ReusableButton from 'shared/components/ReusableButton';
 import ReusableTitle from 'shared/components/ReusableTitle';
-import { color, font } from 'shared/utils/mixin.styled';
+import { font } from 'shared/utils/mixin.styled';
 import { Link } from 'react-router-dom';
 
 export const FlexDivCss = styled.div`
@@ -56,20 +56,6 @@ export const FormCss = styled(Form)`
   div input::placeholder {
     font-size: 16px;
   }
-  .form-button {
-    width: 100%;
-    color: #fff;
-    background-color: ${({ theme }) => theme.colors.blue};
-    border: 1px solid transparent;
-
-    transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
-
-    &:hover {
-      border: 1px solid ${({ theme }) => theme.colors.blue};
-      color: ${({ theme }) => theme.colors.blue};
-      background: none;
-      background-color: transparent;
-    }
 
   .form-div {
     position: absolute;
@@ -104,9 +90,18 @@ export const LabelCss = styled.label`
 export const ReusableButtonCss = styled(ReusableButton)`
   width: 100%;
 
-  ${color('#fff', ({ theme }) => theme.colors.blue)}
+  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.black};
 
-  border: #54ADFF;
+  border: #54adff;
+
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out,
+    border 250ms ease-in-out;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue};
+    background-color: ${({ theme }) => theme.colors.lightblue};
+  }
 `;
 
 export const ButtonEye = styled(ReusableButton)`

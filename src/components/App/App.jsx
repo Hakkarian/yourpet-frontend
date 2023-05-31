@@ -1,5 +1,5 @@
 import SharedLayout from 'components/SharedLayout';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'shared/hooks/useAuth';
@@ -9,6 +9,7 @@ import { Loader } from 'components/Loader';
 import { Toaster } from 'react-hot-toast';
 import PrivateView from 'views/PrivateView';
 import RestrictedView from 'views/RestrictedView';
+import { setGoogleUser } from 'redux/auth/auth-slice';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
@@ -24,6 +25,30 @@ const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams({})
+
+  useEffect(() => {
+    const token = searchParams.get('token');
+    const email = searchParams.get('email');
+    const userId = searchParams.get('userId');
+    const name = searchParams.get('name');
+    const avatar = searchParams.get('avatar');
+    if (token) {
+      const payload = {
+        token,
+        user: {
+          email, userId, name, avatar
+        }
+      }
+      dispatch(setGoogleUser(payload))
+      searchParams.delete('token');
+      searchParams.delete('email');
+      searchParams.delete('userId');
+      searchParams.delete('name');
+      searchParams.delete('avatar');
+      setSearchParams(searchParams)
+    }
+  }, [dispatch, searchParams, setSearchParams])
 
   useEffect(() => {
     dispatch(refreshUser());

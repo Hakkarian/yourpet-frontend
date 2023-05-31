@@ -29,6 +29,7 @@ import {
   StyledLink,
 } from 'components/RegisterForm/RegisterForm.styled';
 import FormError from 'pages/AddPetPage/AddPetForm/FormFields/FormError/FormError';
+import GoogleAuthentication from 'components/GoogleAuthentication';
 
 const validateShecma = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -161,6 +162,9 @@ const LoginPage = () => {
                 <TextWrapCss>
                   <TextCss>Don't have an account?</TextCss>
                   <StyledLink to="/register">Register</StyledLink>
+                </TextWrapCss>
+                <TextWrapCss>
+                  <GoogleAuthentication />
                 </TextWrapCss>
               </FormCss>
             );

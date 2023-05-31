@@ -31,6 +31,13 @@ export const logine = async data => {
   return result;
 };
 
+export const google = async data => {
+  console.log('before api google');
+  const { data: result } = await instance.get('/google/callback');
+  console.log('after api google');
+  console.log(result)
+  return result;
+}
 export const logoute = async () => {
   const { data } = await instance.post('/user/logout');
   setToken();
@@ -49,6 +56,8 @@ export const getUserInfoService = async data => {
 
 export const refreshUserService = async data => {
   setToken(data);
+  console.log('here api current')
   const { data: result } = await instance.get('/user/current');
+  console.log('auth api current', result)
   return result;
 };

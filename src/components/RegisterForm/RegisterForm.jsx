@@ -18,13 +18,13 @@ import {
   TextWrapCss,
   RelativeDiv,
   StyledLink,
+  ReusableButtonCss,
 } from './RegisterForm.styled';
-import Button from 'shared/components/Button/Button';
 import { ReactComponent as Correct } from '../../icons/check.svg';
 import { ReactComponent as Cross } from '../../icons/cross-small.svg';
 import { ReactComponent as EyeOpen } from '../../icons/eye-open.svg';
 import { ReactComponent as EyeClosed } from '../../icons/eye-closed.svg';
-// import GoogleAuthentication from 'components/GoogleAuthentication';
+import GoogleAuthentication from 'components/GoogleAuthentication';
 
 
 const validationSchema = Yup.object().shape({
@@ -223,17 +223,16 @@ const RegisterForm = () => {
                   </ButtonEye>
                 )}
               </AnchorCss>
-              <Button className="form-button" type="submit">
+              <ReusableButtonCss className="form-button" type="submit">
                 Submit
-              </Button>
+              </ReusableButtonCss>
               <TextWrapCss>
                 <TextCss>Already have an account?</TextCss>
                 <StyledLink to="/login">Login</StyledLink>
               </TextWrapCss>
-              {/* <TextWrapCss>
-                  <TextCss>Or sign in with Google!</TextCss>
-                  <GoogleAuthentication />
-                </TextWrapCss> */}
+              <TextWrapCss>
+                <GoogleAuthentication />
+              </TextWrapCss>
             </FormCss>
           );
         }}
@@ -241,5 +240,21 @@ const RegisterForm = () => {
     </FlexDivCss>
   );
 };
+  // const onSuccess = async res => {
+  //   try {
+  //     console.log(res);
+  //     const payload = jwtDecode(res.credential);
+
+  //     // if (payload) {
+  //     //   console.log(payload);
+  //     //   axios.post('http://localhost:3030/api/auth/google', {
+  //     //     email: payload.email, token: res.credential
+  //     //   }).then(response => console.log(response.data)).catch(error => console.log(error))
+  //     // }
+  //     console.log(payload);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
 export default RegisterForm;
