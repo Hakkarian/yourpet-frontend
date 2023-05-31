@@ -10,7 +10,7 @@ import { ImgCss } from 'components/Header/Header.styled';
 
 const BurgerUser = ({ userName }) => {
     const { close } = useContext(ModalContext);
-    const avatar = useSelector(selectUser);
+    const {avatar} = useSelector(selectUser);
     
     return (
       <BurgerUserStyled>
