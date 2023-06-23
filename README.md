@@ -1,8 +1,8 @@
-# Project Name
+# Booldog
 
-A brief description of your project.
+A multipage application for finding pets for sell, taking for free or finding, if lost. Here user can add his own pet to the private gallery, place for sell, to give for free or in trying to find. 
 
-## Booldog
+# Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
