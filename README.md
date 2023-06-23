@@ -64,7 +64,7 @@ User can edit and save his edited credentials, the list of his own pets, which h
 
 ## Contributing
 
-Contributors - Solomakha Vladislav, Hurylov Dmytro, Mariia Savchyn, Serhii Markov ...
+Contributors - Solomakha Vladislav, Dmytro Hurylov, Mariia Savchyn, Serhii Markov, Nataliia Maksymeiko, Nadiia Pekaruk, Olena Bondar ...
 
 
 
