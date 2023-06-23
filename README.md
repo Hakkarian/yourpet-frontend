@@ -64,6 +64,7 @@ User can edit and save his edited credentials, the list of his own pets, which h
 
 ## Contributing
 
+Contributors - Solomakha Vladislav ...
 
 
 
