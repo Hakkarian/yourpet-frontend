@@ -1,42 +1,71 @@
-# Фінальний проект на React. Сайт Your pet
+# Project Name
 
-Запуск - npm start
+A brief description of your project.
 
-# Хедер (Header)
+## Booldog
 
-Реалізований адаптивний логотип, навігаційна панель, панель з користувачем. На мобільній версії бургер з навігаційною та користувацькою панеллю.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
 
-# Головна сторінка (MainPage)
+## Installation
 
-Реалізоване прев'ю
+!important (Make sure you've installed a backend for this project. Here is the link for backend: https://github.com/Hakkarian/yourpet-backend)
 
-# Реєстрація (RegisterPage)
+- git clone https://github.com/Hakkarian/yourpet-frontend.git app
+- cd app
+- npm i
+- npm start
+- Your app is up and running!
 
-Реалізована форма реєстрації та валідація до неї.
+## Usage
 
-# Логін (LoginPage)
+An app, where user can find pets by category such as "for sell", "in good hands" or "lost/found". Only authorized user can add the pet he want to sell/find/take for free, add some pet to favorite or even add to private gallery. Therefore user firstly identifies himself, and only after that he can carry out specific operations, outlined above. 
+Last, but not least - user can read news, review friends/partnership with our app, and find out their schedule.
 
-Реалізована форма логіну та валідація до неї.
+## Features
 
-# Сторінка з новинами (NewsPage)
+Header
 
-Реалізований список з новинами, пошуковим полем, пагінація до новин.
+Has a responsive logo, navigation panel, user panel. On the mobile, there is a burger with navigation and user panel. 
 
-# Сторінка з оголошеннями (NoticesPage)
+MainPage
 
-Реалізований список оголошень по категоріям та пошуковим полем. Оголошення ожна додавати та видаляти з улюблених, реалізований список особистих оголошень по категоріям, особисті картки можна видаляти. Неавторизованим користувачам висвітлюється повідомлення що для додавання карток необхідно зареєструватись.
+Implemented preview of the multipage application.
 
-# Сторінка з друзями (FriendsPage)
+RegisterPage
 
-Реалізований список карток-партнерів з детальною інформацією та випадаючими вікнами з детальною інформацією про дні та час роботи.
+Implemented the registration form and its validation. Created google authentication using url-string.
 
-# Сторінка з формою додавання до особистих улюбленців та оголошень (AddPetPage)
+LoginPage
 
-Реалізована покрокова форма з валідацією, додавання по категоріям або в галерею користувача, додавання текстової інформації та фото, визначення статі та коментарі. 
+Implemented login form and its validation. Created google authentication using url-string.
 
-# Сторінка з користувачем (UserPage)
+NewsPage
 
-Реалізована можливість редагування особистої інформації користувача та список улюбленців, які можна видаляти чи додавати.
+User can see the list of news, search box and pagination to the news.
 
-Реалізоване збереження інформації про користувача.
+NoticesPage
+
+User can see the list of notices, filtered by category, with search box. User can add or delete notices from favorite. Created the list of own notices, filtered by category. User can delete own notices. If user is NOT authorized, an appropriate notification is highlighted.
+
+FriendsPage
+
+User can see the list of partners with information about their contacts and schedule.
+
+AddPetPage
+
+Implemented step-by-step validation form, add by categories or into the user's gallery, adding text information and a photo, defining pet's gender and adding a commentary to the notice.
+
+UserPage
+
+User can edit and save his edited credentials, the list of his own pets, which he can add or delete.
+
+## Contributing
+
+
+
+
+
 
