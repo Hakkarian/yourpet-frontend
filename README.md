@@ -65,7 +65,10 @@ User can edit and save his edited credentials, the list of his own pets, which h
 ## Contributing
 
 Contributors - 
-Solomakha Vladislav 
+<p>
+    <img src="[path_to_image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26)" alt>
+    <em>Solomakha Vladislav</em>
+</p>
 
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26)
 Dmytro Hurylov, 
