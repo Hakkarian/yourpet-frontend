@@ -68,31 +68,45 @@ Contributors -
 
 
 <p style={{display: "flex", flexDirection: "column"}}>
-    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26" alt width="50" height="50" >
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26" alt="Solomakha Vladislav" width="50" height="50" >
     <em>Solomakha Vladislav</em>
 </p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26" alt="Dmytro Hurylov" width="50" height="50" >
+    <em>Dmytro Hurylov</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/9b03ed33-f56b-4554-8254-9d04481a9d6e" alt="Mariia Savchyn" width="50" height="50" >
+    <em>Mariia Savchyn</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/3e43d8b1-1095-43ca-8514-d47f72c107aa" alt="Serhii Markov" width="50" height="50" >
+    <em>Serhii Markov</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/ebb2c46b-44d2-4033-8050-fded2982c49e" alt="Nataliia Maksymeiko" width="50" height="50" >
+    <em>Nataliia Maksymeiko</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/6eea81a7-679f-4cbf-81a8-bc19b7af5edb" alt="Nadiia Pekaruk" width="50" height="50" >
+    <em>Nadiia Pekaruk</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/20b8acf0-14f0-46cf-acd1-c5be1369184f" alt="Olena Bondar" width="50" height="50" >
+    <em>Olena Bondar</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a098cc1c-46f1-46c7-b0e6-b0c2e703c4ef" alt="Iryna Kniazeva" width="50" height="50" >
+    <em>Iryna Kniazeva</em>
+</p>
+<p style={{display: "flex", flexDirection: "column"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a6c69abe-337c-4bf9-9bf6-b43eca139384" alt="Oleksandr Drahanchuk" width="50" height="50" >
+    <em>Oleksandr Drahanchuk</em>
+</p>
 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26)
-Dmytro Hurylov, 
 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/9b03ed33-f56b-4554-8254-9d04481a9d6e)
-Mariia Savchyn, 
 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/ffb2b82d-2136-4386-a63d-458aef569973)
-Serhii Markov, 
 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/8fb6ec9f-ed8a-4a48-81cc-ad386998d86a)
-Nataliia Maksymeiko,
-
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/4cf2ad09-ee75-4ca0-b8e6-32a3ac9e9436)
-Nadiia Pekaruk, 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/e48e67ca-56ce-4cc6-8a58-3bc5144a946c)
-Olena Bondar, 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/20b8acf0-14f0-46cf-acd1-c5be1369184f)
-Iryna Kniazeva, 
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a098cc1c-46f1-46c7-b0e6-b0c2e703c4ef)
-Oleksandr Drahanchuk
-![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a6c69abe-337c-4bf9-9bf6-b43eca139384)
 
 
 
