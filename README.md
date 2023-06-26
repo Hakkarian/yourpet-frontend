@@ -66,14 +66,19 @@ User can edit and save his edited credentials, the list of his own pets, which h
 
 Contributors - 
 Solomakha Vladislav 
+
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26)
 Dmytro Hurylov, 
+
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/9b03ed33-f56b-4554-8254-9d04481a9d6e)
 Mariia Savchyn, 
+
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/ffb2b82d-2136-4386-a63d-458aef569973)
 Serhii Markov, 
+
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/8fb6ec9f-ed8a-4a48-81cc-ad386998d86a)
 Nataliia Maksymeiko,
+
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/4cf2ad09-ee75-4ca0-b8e6-32a3ac9e9436)
 Nadiia Pekaruk, 
 ![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/e48e67ca-56ce-4cc6-8a58-3bc5144a946c)
