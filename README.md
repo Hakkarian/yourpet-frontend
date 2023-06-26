@@ -64,7 +64,26 @@ User can edit and save his edited credentials, the list of his own pets, which h
 
 ## Contributing
 
-Contributors - Solomakha Vladislav, Dmytro Hurylov, Mariia Savchyn, Serhii Markov, Nataliia Maksymeiko, Nadiia Pekaruk, Olena Bondar ...
+Contributors - 
+Solomakha Vladislav 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26)
+Dmytro Hurylov, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/9b03ed33-f56b-4554-8254-9d04481a9d6e)
+Mariia Savchyn, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/ffb2b82d-2136-4386-a63d-458aef569973)
+Serhii Markov, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/8fb6ec9f-ed8a-4a48-81cc-ad386998d86a)
+Nataliia Maksymeiko,
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/4cf2ad09-ee75-4ca0-b8e6-32a3ac9e9436)
+Nadiia Pekaruk, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/e48e67ca-56ce-4cc6-8a58-3bc5144a946c)
+Olena Bondar, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/20b8acf0-14f0-46cf-acd1-c5be1369184f)
+Iryna Kniazeva, 
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a098cc1c-46f1-46c7-b0e6-b0c2e703c4ef)
+Oleksandr Drahanchuk
+![image](https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a6c69abe-337c-4bf9-9bf6-b43eca139384)
+
 
 
 
