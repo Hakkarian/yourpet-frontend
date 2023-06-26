@@ -92,7 +92,7 @@ Contributors -
     <em>Nadiia Pekaruk</em>
 </p>
 <p style={{display: "flex", flexDirection: "column"}}>
-    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/eb4bcbeb-60d2-4d91-9b53-248c7dbd57bc" alt="Olena Bondar" width="50" height="50" >
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/b62031d0-2379-4182-8d8f-6f525cedd93a" alt="Olena Bondar" width="50" height="50" >
     <em>Olena Bondar</em>
 </p>
 <p style={{display: "flex", flexDirection: "column"}}>
