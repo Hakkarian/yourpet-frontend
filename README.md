@@ -76,7 +76,7 @@ Contributors -
     <em>Dmytro Hurylov</em>
 </p>
 <p style={{display: "flex", flexDirection: "column"}}>
-    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/9b03ed33-f56b-4554-8254-9d04481a9d6e" alt="Mariia Savchyn" width="50" height="50" >
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/61ba2b3f-221c-46ab-adc1-6f8e0bc6487f" alt="Mariia Savchyn" width="50" height="50" >
     <em>Mariia Savchyn</em>
 </p>
 <p style={{display: "flex", flexDirection: "column"}}>
@@ -103,7 +103,6 @@ Contributors -
     <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a6c69abe-337c-4bf9-9bf6-b43eca139384" alt="Oleksandr Drahanchuk" width="50" height="50" >
     <em>Oleksandr Drahanchuk</em>
 </p>
-
 
 
 
