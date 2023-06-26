@@ -66,89 +66,9 @@ User can edit and save his edited credentials, the list of his own pets, which h
 
 Contributors - 
 
-<svg fill="none" viewBox="0 0 600 300" width="200" height="100" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <style>
-        @keyframes hi  {
-            0% { transform: rotate( 0.0deg) }
-           10% { transform: rotate(14.0deg) }
-           20% { transform: rotate(-8.0deg) }
-           30% { transform: rotate(14.0deg) }
-           40% { transform: rotate(-4.0deg) }
-           50% { transform: rotate(10.0deg) }
-           60% { transform: rotate( 0.0deg) }
-          100% { transform: rotate( 0.0deg) }
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .container {
-          --color-main: #5452ee;
-          --color-primary: #e73c7e;
-          --color-secondary: #23a6d5;
-          --color-tertiary: #ffff;
-
-          background: linear-gradient(-45deg, var(--color-main), var(--color-primary), var(--color-secondary), var(--color-tertiary));
-          background-size: 400% 400%;
-          animation: gradient 15s ease infinite;
-
-          width: 100%;
-          height: 300px;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: white;
-
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
-
-        .hi {
-          animation: hi 1.5s linear -0.5s infinite;
-          display: inline-block;
-          transform-origin: 70% 70%;
-        }
-
-        @media (prefers-color-scheme: light) {
-          .container {
-            --color-main: #F15BB5;
-            --color-primary: #24b0ef;
-            --color-secondary: #4526f6;
-            --color-tertiary: #f6f645;
-          }
-        }
-
-        @media (prefers-reduced-motion) {
-          .container {
-            animation: none;
-          }
-
-          .hi {
-            animation: none;
-          }
-        }
-      </style>
-
-      <div class="container">
-        <h1>Hi there, my name is Nikola <div class="hi">👋</div></h1>
-      </div>
-    </div>
-  </foreignObject>
-</svg>
 
 <p style={{display: "flex", flexDirection: "column"}}>
-    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26" alt width="50" height="50" style={{borderRadius="20px"}}>
+    <img src="https://github.com/Hakkarian/yourpet-frontend/assets/51460023/a1b3772a-fe18-47bb-8b2c-ac185e42bf26" alt width="50" height="50" >
     <em>Solomakha Vladislav</em>
 </p>
 
